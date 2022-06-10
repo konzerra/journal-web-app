@@ -1,0 +1,63 @@
+
+
+<div class="wrapper container mt-5">
+  <h2>Личный кабинет</h2>
+
+
+  <!-- Form to change name  -->
+  <div class = "col-lg-6 col-md-offset-1">
+    <form class="needs-validation" novalidate [formGroup]="formGroup.formGroup" (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label class="control-label" for="email"> Имя </label>
+        <input type="text"
+               id="email"
+               class="form-control"
+               [formControl]="formGroup.name"
+               placeholder="Введите ваше имя"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(formGroup.name)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.name.errors?.['required']">
+            Введите имя
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 mt-3">
+            <input type="submit" name="login-submit" id="login-submit"
+                   class="form-control btn btn-primary" value="Обновить" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <h4 class ="mt-5">Мои статьи</h4>
+
+  <!-- Table of user articles  -->
+  <table class="table " >
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Название</th>
+      <th scope="col">Журнал</th>
+      <th scope="col">Категория</th>
+      <th scope="col">статус</th>
+    </tr>
+    </thead>
+
+    <tbody >
+    <tr *ngFor="let model of modelList;">
+      <th>{{model.id}}</th>
+      <td>{{model.name}}</td>
+      <td>{{model.journal.name +" "+ model.journal.version}}</td>
+      <td>{{model.category}}</td>
+      <td>{{model.status}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

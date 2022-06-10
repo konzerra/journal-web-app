@@ -1,0 +1,7 @@
+import {ModelI} from "../../_generic/model/ModelI";
+
+export interface Journal extends ModelI{
+  id:Number,
+  name:string,
+  version:string,
+}

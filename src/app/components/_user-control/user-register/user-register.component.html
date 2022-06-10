@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <h2>Регистрация</h2>
+  <div class = "col-lg-6 col-md-offset-1">
+    <div class="alert alert-danger" role="alert"
+         *ngIf="errorParam.includes('error')">
+      <h4 class="alert-heading">Ошибка!</h4>
+      <p>{{errorParam}}</p>
+    </div>
+    <form class="needs-validation" novalidate [formGroup]="formGroup.formGroup" (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label class="control-label" for="name"> Имя пользователя </label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               [formControl]="formGroup.name"
+               placeholder="Введите имя"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(formGroup.name)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.name.errors?.['required']">
+            Введите почту
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="email"> Почта </label>
+        <input type="text"
+               id="email"
+               class="form-control"
+               [formControl]="formGroup.email"
+               placeholder="Введите почту"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(formGroup.email)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.email.errors?.['required']">
+            Введите почту
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="password"> Пароль </label>
+        <input type="password"
+               id="password"
+               class="form-control"
+               [formControl]="formGroup.password"
+               placeholder="Введите пароль"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(formGroup.password)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.password.errors?.['required']">
+            Введите пароль
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 mt-3">
+            <input type="submit" name="register-submit" id="register-submit"
+                   class="form-control btn btn-primary" value="Зарегистрироваться" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="form-group">
+      <span>Уже зарегистрированы? <a routerLink="/login">Войти</a></span>
+    </div>
+  </div>
+
+
+</div>

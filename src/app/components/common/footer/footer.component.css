@@ -1,0 +1,17 @@
+
+.row-c{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer{
+  background-color: #89BE3F;
+  flex-shrink: 0;
+}
+ul{
+  list-style: none;
+}
+a{
+  color: white;
+}
+
