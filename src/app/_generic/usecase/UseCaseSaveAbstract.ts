@@ -3,18 +3,18 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {SaveDtoI} from "../model/SaveDtoI";
 
-export abstract class UseCaseSaveAbstract<SaveDto extends SaveDtoI>{
+export abstract class UseCaseSaveAbstract<SaveDto>{
   protected constructor(
     protected apiPath:string,
     protected httpClient:HttpClient
   ) {
   }
 
-  publicRequestHeader = new HttpHeaders({ 'No-Auth': 'True' })
+  protected abstract requestHeader : HttpHeaders
 
   public execute(saveDto:SaveDto):Observable<any>{
     return this.httpClient.post(this.apiPath,saveDto,{
-      headers: this.publicRequestHeader,
+      headers: this.requestHeader,
     })
   }
 

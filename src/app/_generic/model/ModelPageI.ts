@@ -1,29 +1,29 @@
 
 export interface ModelPageI<Model> {
   content : Array<Model>
-  pageable: {
+  pageable?: {
     sort: {
       empty: boolean
       sorted: boolean
       unsorted: boolean
     },
-    offset: Number
-    pageNumber: Number
-    pageSize: Number
+    offset: number
+    pageNumber: number
+    pageSize: number
     unpaged: boolean
     paged: boolean
   },
-  last: boolean,
-  totalPages: Number
-  totalElements: Number
-  size: Number
-  number: Number
-  sort: {
+  last?: boolean,
+  totalPages: number
+  totalElements: number
+  size: number
+  number: number
+  sort?: {
     empty: boolean,
     sorted: boolean,
     unsorted: boolean
   },
   first: boolean,
-  numberOfElements: Number
+  numberOfElements: number
   empty: boolean
 }

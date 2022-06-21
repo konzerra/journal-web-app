@@ -1,30 +1,39 @@
 import {FormControl} from "@angular/forms";
 import {UseCaseUpdateAbstract} from "../../usecase/UseCaseUpdateAbstract";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {GenericUpdateFormGroup} from "../../form-group/GenericUpdateFormGroup";
 import {ModelI} from "../../model/ModelI";
 import {UpdateDtoI} from "../../model/UpdateDtoI";
 import {genericCheckFormControl} from "../../util/genericCheckFormControl";
-import {CategoryUseCaseFindByIdForUpdate} from "../../../domain/category/usecase/CategoryUseCaseFindByIdForUpdate";
-import {UseCaseFindByIdAbstract} from "../../usecase/UseCaseFindByIdAbstract";
+import {UseCaseGetByIdFullAbstract} from "../../usecase/get/UseCaseGetByIdFullAbstract";
+import {DataControlsAbstract} from "../../form-group/DataControlsAbstract";
 
-export abstract class GenericModelEditorUpdateComponent<Model extends ModelI, UpdateDto extends UpdateDtoI>{
-  protected constructor(
-    protected useCaseUpdate:UseCaseUpdateAbstract<UpdateDto>,
-    protected useCaseFindById: UseCaseFindByIdAbstract<Model, UpdateDto>,
-    protected route: ActivatedRoute
-  ) {
 
-  }
-  abstract formGroup:GenericUpdateFormGroup<Model,UpdateDto>
-  abstract onSuccessfulUpdate():void
+export abstract class GenericModelEditorUpdateComponent<
+  ModelData extends ModelI,
+  ModelDataControls extends DataControlsAbstract<ModelData>,
+  UpdateDto extends UpdateDtoI
+  >
+{
+
+  protected abstract useCaseUpdate:UseCaseUpdateAbstract<UpdateDto>
+  protected abstract useCaseFindByIdFull: UseCaseGetByIdFullAbstract<UpdateDto>
+
+  protected abstract route: ActivatedRoute
+
+  abstract formGroup:GenericUpdateFormGroup<ModelData,ModelDataControls,UpdateDto>
+
+  protected constructor() {}
 
   abstractOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          this.useCaseFindById.execute(JSON.parse(  param["model"])).subscribe({
-            next:(updateDto) =>{
-              this.formGroup.setUpdateDto(updateDto)
+          this.useCaseFindByIdFull.execute(param["id"]).subscribe({
+            next:(v)=>{
+              this.formGroup.setDto(v)
+            },
+            error:(err) =>{
+
             }
           })
         }
@@ -32,8 +41,10 @@ export abstract class GenericModelEditorUpdateComponent<Model extends ModelI, Up
     )
   }
   onSubmit() {
-    if (this.formGroup.formGroup.valid) {
-      this.useCaseUpdate.execute(this.formGroup.getUpdateDto()).subscribe({
+    if (this.formGroup.valid()) {
+      const updateDto:UpdateDto = this.formGroup.getDto()
+      console.log(updateDto)
+      this.useCaseUpdate.execute(updateDto).subscribe({
         next:(value) =>{
 
         },
@@ -41,16 +52,25 @@ export abstract class GenericModelEditorUpdateComponent<Model extends ModelI, Up
           alert(error)
         },
         complete:()=>{
-          alert('Обновлено')
-          this.formGroup.formGroup.reset()
+          alert('Сохранено')
           this.onSuccessfulUpdate()
         }
       })
+    }else{
+      alert("Не все данные введены")
     }
   }
 
-
-  checkFormControl(formControl:FormControl):boolean{
-    return genericCheckFormControl(formControl)
+  onLangChange(lang: string) {
+    this.formGroup.onLangChange(lang)
   }
+
+  checkFormControl(name: FormControl):boolean {
+    return genericCheckFormControl(name)
+  }
+
+  protected abstract onSuccessfulUpdate():void
+
+  abstract onCancelClicked() : void
+
 }

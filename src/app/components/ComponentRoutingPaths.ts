@@ -15,9 +15,16 @@ export class ComponentRoutingPaths {
   public static adminControl = {
 
     category : {
-      main: "category/main",
-      save: "category/save",
-      update: "category/update"
+      main: "admin/category/main",
+      save: "admin/category/save",
+      update: "admin/category/update"
+    },
+
+    journal: {
+      main:"admin/journal/main",
+      save:"admin/journal/save",
+      update:"admin/journal/update",
+      updateArticles:"admin/journal/articles/update"
     }
   }
 }

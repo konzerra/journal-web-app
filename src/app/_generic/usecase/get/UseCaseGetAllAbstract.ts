@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ModelI} from "../model/ModelI";
+import {ModelI} from "../../model/ModelI";
 
 export abstract class UseCaseGetAllAbstract<Model extends ModelI>{
   protected constructor(
@@ -9,11 +9,11 @@ export abstract class UseCaseGetAllAbstract<Model extends ModelI>{
   ) {
   }
 
-  publicRequestHeader = new HttpHeaders({ 'No-Auth': 'True' })
+  protected abstract requestHeader : HttpHeaders //= new HttpHeaders({ 'No-Auth': 'True' })
 
   public execute():Observable<Array<Model>>{
     return this.httpClient.get<Array<Model>>(this.apiPath,{
-      headers: this.publicRequestHeader,
+      headers: this.requestHeader,
     })
   }
 

@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserUseCaseLogin} from "../../../domain/user/usecase/UserUseCaseLogin";
 import {UserLoginFormGroup} from "./form-group/UserLoginFormGroup";
 import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {DialogsService} from "../../common/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-user-login',
@@ -17,6 +18,7 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private router:Router,
     private route: ActivatedRoute,
+    private dialogsService:DialogsService,
     private userUseCaseLogin:UserUseCaseLogin,
     private userAuthService:UserAuthService
   ) { }
@@ -35,20 +37,23 @@ export class UserLoginComponent implements OnInit {
     )
   }
   onSubmit() {
-    let userLoginDto:UserLoginDto = {
-      email : this.formGroup.email.value,
-      password : this.formGroup.password.value
+    if(this.formGroup.formGroup.valid){
+      let userLoginDto:UserLoginDto = {
+        email : this.formGroup.email.value,
+        password : this.formGroup.password.value
+      }
+      this.userUseCaseLogin.execute(userLoginDto).subscribe({
+        next: (response) => {
+          this.userAuthService.setData(response)
+        },
+        error: (e) => {
+          this.errorParam = "произошла неизвестная ошибка"
+          this.dialogsService.openInfoDialog(e)
+        },
+        complete: () => this.router.navigate([''])
+      })
     }
-    this.userUseCaseLogin.execute(userLoginDto).subscribe({
-      next: (response) => {
-        this.userAuthService.setData(response)
-      },
-      error: (e) => {
-        this.errorParam = "произошла неизвестная ошибка"
-        alert(e)
-      },
-      complete: () => this.router.navigate([''])
-    })
+
   }
   public isInfoRegistered(){
     if(this.infoParam){

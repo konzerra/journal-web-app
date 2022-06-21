@@ -2,7 +2,7 @@ import {GenericSaveFormGroup} from "../../../../_generic/form-group/GenricSaveFo
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
-export class UserLoginFormGroup extends GenericSaveFormGroup{
+export class UserLoginFormGroup{
   email: FormControl =  new FormControl("", Validators.required);
   password: FormControl = new FormControl("", Validators.required);
 

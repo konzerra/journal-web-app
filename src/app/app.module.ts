@@ -18,13 +18,23 @@ import { CategoryEditorUpdateComponent } from './components/_admin-control/categ
 import { UserProfileComponent } from './components/_user-control/user-profile/user-profile.component';
 import { JournalEditorMainComponent } from './components/_admin-control/journal/journal-editor-main/journal-editor-main.component';
 import { JournalEditorUpdateComponent } from './components/_admin-control/journal/journal-editor-update/journal-editor-update.component';
-import { JournalArticlesEditorComponent } from './components/_admin-control/journal/journal-articles-editor/journal-articles-editor.component';
 import { JournalEditorSaveComponent } from './components/_admin-control/journal/journal-editor-save/journal-editor-save.component';
 import { ForbiddenComponent } from './components/common/forbidden/forbidden.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { UserHandbookComponent } from './components/_user-control/user-handbook/user-handbook.component';
 import { UserArticlesComponent } from './components/common/user-articles/user-articles.component';
 import { UserPublishComponent } from './components/_user-control/user-publish/user-publish.component';
+import { ReviewerEditorMainComponent } from './components/_admin-control/reviewer/reviewer-editor-main/reviewer-editor-main.component';
+import { ReviewerEditorSaveComponent } from './components/_admin-control/reviewer/reviewer-editor-save/reviewer-editor-save.component';
+import { ReviewerEditorUpdateComponent } from './components/_admin-control/reviewer/reviewer-editor-update/reviewer-editor-update.component';
+import { MatConfirmDialogComponent } from './components/common/dialogs/mat-confirm-dialog/mat-confirm-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DialogsService} from "./components/common/dialogs/dialogs.service";
+import {AngularMaterialModule} from "./angular-material/angular-material.module";
+import {MatIconModule} from "@angular/material/icon";
+import {NgxPaginationModule} from "ngx-pagination";
+import { MatInfoDialogComponent } from './components/common/dialogs/mat-info-dialog/mat-info-dialog.component';
+import { ArticleEditorMainComponent } from './components/_admin-control/article/article-editor-main/article-editor-main.component';
 
 
 @NgModule({
@@ -40,21 +50,31 @@ import { UserPublishComponent } from './components/_user-control/user-publish/us
     UserProfileComponent,
     JournalEditorMainComponent,
     JournalEditorUpdateComponent,
-    JournalArticlesEditorComponent,
     JournalEditorSaveComponent,
     ForbiddenComponent,
     FooterComponent,
     UserHandbookComponent,
     UserArticlesComponent,
     UserPublishComponent,
+    ReviewerEditorMainComponent,
+    ReviewerEditorSaveComponent,
+    ReviewerEditorUpdateComponent,
+    MatConfirmDialogComponent,
+    MatInfoDialogComponent,
+    ArticleEditorMainComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        RouterModule,
-        ReactiveFormsModule,
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    MatIconModule,
+    NgxPaginationModule,
+
+  ],
   providers: [
     AuthGuard,
     {
@@ -62,7 +82,11 @@ import { UserPublishComponent } from './components/_user-control/user-publish/us
       useClass: AuthInterceptor,
       multi:true
     },
+    DialogsService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    MatConfirmDialogComponent,
+    MatInfoDialogComponent,]
 })
 export class AppModule { }

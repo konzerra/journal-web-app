@@ -39,9 +39,13 @@ export class UserAuthService {
   }
 
   public hasRole(role:string):boolean{
+    let found = false
+    if(this.isJwtTokenExpired()){
+      return false
+    }
     let roles:Array<Role> = new Array<Role>()
     let rolesJson = localStorage.getItem("roles" || "[]")
-    let found = false
+
     if(rolesJson!=null){
       roles = JSON.parse(rolesJson)
       roles.forEach((it)=>{
@@ -57,6 +61,9 @@ export class UserAuthService {
     localStorage.setItem("jwtToken",jwtToken)
   }
   public getJwtToken():string | null{
+    if(this.isJwtTokenExpired()){
+      return null
+    }
     return localStorage.getItem("jwtToken")
   }
 
@@ -70,6 +77,7 @@ export class UserAuthService {
   public isLoggedIn():boolean{
     return this.getJwtToken()!=null
   }
+
   public isJwtTokenExpired():boolean{
     let token = localStorage.getItem("jwtToken")
     if(token!=null){

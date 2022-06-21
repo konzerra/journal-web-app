@@ -1,1 +1,100 @@
-<p>journal-editor-update works!</p>
+<div class="wrapper container mt-5">
+  <h2>Обновление журнала</h2>
+  <div class = "col-lg-6 col-md-offset-1">
+
+    <form class="needs-validation">
+
+
+      <!-- Category select -->
+      <div class="form-group">
+        <label class = "mt-2">Статус</label>
+        <select class="form-control"
+                id="category"
+                [formControl]="formGroup.status"
+                required
+        >
+          <option value="" disabled selected hidden>Выберите статус</option>
+          <option *ngFor="let status of formGroup.journalStatuses"
+                  [value]="status">{{status}}
+          </option>
+        </select>
+        <div *ngIf="checkFormControl(formGroup.status)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.status.errors?.['required']">
+            Выберите статус.
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Select input language   radio-buttons -->
+      <label class = "mt-2">Введите данные на языках</label>
+      <br>
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <div *ngFor="let lang of formGroup.requiredLangs" >
+          <input
+            [value]="lang"
+            type="radio"
+            class="btn-check"
+            name="btnradio"
+            id="btnradio{{lang}}"
+            (change)="onLangChange(lang)"
+            autocomplete="off"
+            [checked]="selectedRadioButton===lang"
+          >
+          <label class="btn btn-outline-primary" for="btnradio{{lang}}">&emsp;{{lang}}&emsp;</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="name"> Название </label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               [formControl]="formGroup.name"
+               placeholder="Введите название журнала"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(formGroup.name)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.name.errors?.['required']">
+            Введите название журнала
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="version"> Версия </label>
+        <input type="text"
+               id="version"
+               class="form-control"
+               [formControl]="formGroup.version"
+               placeholder="Введите версию"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(formGroup.version)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.version.errors?.['required']">
+            Введите версию
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="mt-4">
+          <button type="submit" name="login-submit" id="login-submit"
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()"> Сохранить </button>
+          <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
+                  (click)="onCancelClicked()">Отмена</button>
+        </div>
+      </div>
+
+    </form>
+
+
+  </div>
+
+
+</div>
+

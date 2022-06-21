@@ -11,6 +11,7 @@ import {catchError, Observable, throwError} from "rxjs";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {UserAuthService} from "../domain/user/service/UserAuthService";
+import {AppLanguage} from "../util/AppLanguage";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
@@ -22,6 +23,13 @@ export class AuthInterceptor implements HttpInterceptor{
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    req = req.clone({
+      setHeaders: {
+        'Accept-Language': AppLanguage.getLocalLanguage()
+      }
+    })
+    console.log(req.headers.get('Accept-Language'))
     if(req.headers.get('No-Auth')==='true'){
       return next.handle(req.clone()).pipe(
         catchError(

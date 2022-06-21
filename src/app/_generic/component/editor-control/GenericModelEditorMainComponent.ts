@@ -1,65 +1,96 @@
 import {Router} from "@angular/router";
-import {UseCaseGetAllAbstract} from "../../usecase/UseCaseGetAllAbstract";
+import {UseCaseGetAllAbstract} from "../../usecase/get/UseCaseGetAllAbstract";
 import {ModelI} from "../../model/ModelI";
 import {SaveDtoI} from "../../model/SaveDtoI";
 import {UpdateDtoI} from "../../model/UpdateDtoI";
 import {UseCaseDeleteByIdAbstract} from "../../usecase/UseCaseDeleteByIdAbstract";
+import {UseCaseGetAllPaginatedAbstract} from "../../usecase/get/UseCaseGetAllPaginatedAbstract";
+import {ModelPageI} from "../../model/ModelPageI";
+import {Journal} from "../../../domain/journal/Journal";
+import {DialogsService} from "../../../components/common/dialogs/dialogs.service";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
 
 export abstract class GenericModelEditorMainComponent
 < Model extends ModelI,
-  SaveDto extends SaveDtoI,
-  UpdateDto extends UpdateDtoI
+  ModelPage extends ModelPageI<Model>,
   > {
-  protected constructor(
-    protected modelSavePath: string,
-    protected modelUpdatePath: string,
-    protected router: Router,
-    protected useCaseGetAll:UseCaseGetAllAbstract<Model>,
-    protected useCaseDeleteById:UseCaseDeleteByIdAbstract<Model>,
-  ) {
+  protected abstract modelSavePath: string
+  protected abstract modelUpdatePath: string
+  protected abstract router: Router
+  protected abstract dialogsService: DialogsService
+  protected abstract useCaseGetAllPaginated:UseCaseGetAllPaginatedAbstract<Model,ModelPage>
+  protected abstract useCaseDeleteById:UseCaseDeleteByIdAbstract
+
+  protected constructor() {
+  }
+  modelPage:ModelPageI<Model> = {
+    content: new Array<Model>(),
+    empty: false,
+    first: false,
+    number: 0,
+    numberOfElements: 0,
+    size: 0,
+    totalElements: 0,
+    totalPages: 0
+
   }
 
-  modelList: Array<Model> = []
-  modelForDelete!: Model
-
   abstractOnInit(): void {
-    this.useCaseGetAll.execute().subscribe(
+    this.useCaseGetAllPaginated.execute(this.modelPage.number).subscribe(
       {
-        next: (v: Array<Model>) => {
-          this.modelList = v
+        next:(modelPage)=>{
+          this.modelPage = modelPage
+          console.log(modelPage)
         },
-        complete: () => {
+        error:()=>{
+
+        },
+        complete:()=>{
+
         }
       })
-
   }
 
   onAddClicked() {
     this.router.navigate([this.modelSavePath])
   }
 
-  onDeleteClicked(model: Model) {
-    this.modelForDelete = model
+  onDeleteClicked(model: Model, index: number) {
+    this.dialogsService.openConfirmDialog().afterClosed().subscribe({
+      next:(value)=>{
+        if(value){
+          this.useCaseDeleteById.execute(model.id.toString()).subscribe({
+            complete:()=>{
+              this.dialogsService.openInfoDialog("Успешно удалено")
+              this.modelPage.content.splice(index,1)
+            }
+          })
+        }
+      }
+    })
   }
 
   onEdit(model: Model) {
     this.router.navigate(
       [this.modelUpdatePath],
-      {queryParams: {id: JSON.stringify(model)}})
+      {queryParams: {id: JSON.stringify(model.id)}}
+    )
   }
 
-  onDeleteClickedModal():void{
-    this.useCaseDeleteById.execute(this.modelForDelete).subscribe({
-      next:(value)=>{
+  onPageChange($event: number) {
+    this.useCaseGetAllPaginated.execute($event-1).subscribe(
+      {
+        next:(modelPage)=>{
 
-      },
-      error:(error)=>{
-        alert(error)
-      },
-      complete:()=>{
-        alert('Удалено')
-        this.abstractOnInit()
-      }
-    })
+          this.modelPage = modelPage
+          console.log(this.modelPage)
+        },
+        error:()=>{
+
+        },
+        complete:()=>{
+
+        }
+      })
   }
 }

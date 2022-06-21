@@ -1,13 +1,30 @@
 import {AppApi} from "../../AppApi";
 
 export class JournalApi {
-  public static paths={
-    save: `${AppApi.server.protectedApi}/journal`,
-    deleteById: `${AppApi.server.publicApi}/journal/`,
-    update: `${AppApi.server.protectedApi}/journal`,
+  private static publicPath = `${AppApi.server.publicApi}/journal`
+  private static protectedPath = `${AppApi.server.protectedApi}/journal`
 
-    getById: `${AppApi.server.publicApi}/journal/`,
-    getAll: `${AppApi.server.publicApi}/journal/`,
-    getAllPaginated: `${AppApi.server.publicApi}/journal/all/`,
+
+
+  public static paths={
+
+    makeReport : `${this.protectedPath}/{id}`,
+
+    getAllArticlesPaginated : `${this.publicPath}/{id}/articles/{pageNumber}`,
+    getAllCategories : `${this.publicPath}/{id}/categories`,
+    getByIdFull : `${this.protectedPath}/full/{id}`,
+    getById: `${this.publicPath}/{id}`,
+    getAllPaginated: `${this.publicPath}/all/{pageNumber}`,
+
+    save: `${this.protectedPath}`,
+    deleteById: `${this.protectedPath}/{id}`,
+    update: `${this.protectedPath}`,
+
+
+
+
+
+
   }
+
 }

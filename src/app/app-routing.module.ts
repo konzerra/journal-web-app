@@ -9,6 +9,28 @@ import {UserProfileComponent} from "./components/_user-control/user-profile/user
 import {UserHandbookComponent} from "./components/_user-control/user-handbook/user-handbook.component";
 import {UserArticlesComponent} from "./components/common/user-articles/user-articles.component";
 import {UserPublishComponent} from "./components/_user-control/user-publish/user-publish.component";
+import {
+  JournalEditorMainComponent
+} from "./components/_admin-control/journal/journal-editor-main/journal-editor-main.component";
+import {
+  JournalEditorSaveComponent
+} from "./components/_admin-control/journal/journal-editor-save/journal-editor-save.component";
+import {
+  JournalEditorUpdateComponent
+} from "./components/_admin-control/journal/journal-editor-update/journal-editor-update.component";
+import {AuthGuard} from "./_auth/auth.guard";
+import {
+  CategoryEditorMainComponent
+} from "./components/_admin-control/category/category-editor-main/category-editor-main.component";
+import {
+  CategoryEditorSaveComponent
+} from "./components/_admin-control/category/category-editor-save/category-editor-save.component";
+import {
+  CategoryEditorUpdateComponent
+} from "./components/_admin-control/category/category-editor-update/category-editor-update.component";
+import {
+  ArticleEditorMainComponent
+} from "./components/_admin-control/article/article-editor-main/article-editor-main.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
@@ -16,13 +38,26 @@ const routes : Routes = [
   {path:`forbidden`, component: ForbiddenComponent},
   {path:`${ComponentRoutingPaths.userControl.login}`, component: UserLoginComponent},
   {path:`${ComponentRoutingPaths.userControl.register}`, component: UserRegisterComponent},
-  //User control
-  //data:{role:'User'}
 
-  {path:`${ComponentRoutingPaths.userControl.profile}`, component: UserProfileComponent, },
+  //User control
+  {path:`${ComponentRoutingPaths.userControl.profile}`, component: UserProfileComponent, canActivate:[AuthGuard],  data:{role:'User'} },
   {path:`${ComponentRoutingPaths.userControl.handbook}`, component: UserHandbookComponent, },
-  {path:`${ComponentRoutingPaths.userControl.publish}`, component: UserPublishComponent, },
+  {path:`${ComponentRoutingPaths.userControl.publish}`, component: UserPublishComponent, canActivate:[AuthGuard], data:{role:'User'} },
+
   //Admin control
+
+  //Journal
+  {path:`${ComponentRoutingPaths.adminControl.journal.main}`, component: JournalEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.journal.save}`, component: JournalEditorSaveComponent,  canActivate:[AuthGuard],data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.journal.update}`, component: JournalEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.journal.updateArticles}`, component: ArticleEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+
+  //Category
+  {path:`${ComponentRoutingPaths.adminControl.category.main}`, component: CategoryEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.category.save}`, component: CategoryEditorSaveComponent,  canActivate:[AuthGuard],data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.category.update}`, component: CategoryEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+
+
 ]
 
 @NgModule({

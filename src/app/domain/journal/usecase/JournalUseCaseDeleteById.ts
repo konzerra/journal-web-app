@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
-import {UseCaseGetAllAbstract} from "../../../_generic/usecase/UseCaseGetAllAbstract";
+import {UseCaseGetAllAbstract} from "../../../_generic/usecase/get/UseCaseGetAllAbstract";
 
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {UseCaseDeleteByIdAbstract} from "../../../_generic/usecase/UseCaseDeleteByIdAbstract";
 import {Journal} from "../Journal";
@@ -10,7 +10,7 @@ import {JournalApi} from "../api-path/JournalApi";
 @Injectable({
   providedIn : "root"
 })
-export class JournalUseCaseDeleteById extends UseCaseDeleteByIdAbstract<Journal>{
+export class JournalUseCaseDeleteById extends UseCaseDeleteByIdAbstract{
   constructor(
     httpClient:HttpClient
   ) {
@@ -19,4 +19,7 @@ export class JournalUseCaseDeleteById extends UseCaseDeleteByIdAbstract<Journal>
       httpClient
     );
   }
+
+  protected requestHeader: HttpHeaders = new HttpHeaders()
+
 }

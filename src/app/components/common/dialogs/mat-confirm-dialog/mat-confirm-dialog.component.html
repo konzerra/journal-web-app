@@ -1,0 +1,13 @@
+<div>
+
+  <div class="row">
+    <mat-icon  class = "ms-auto me-3" id="close-icon" (click)="closeDialog()">close</mat-icon>
+    <label class="mb-3">Потвердите действие</label>
+
+    <div class = "">
+      <button id="no-button" class=" btn btn-sm btn-outline-primary w-25" [mat-dialog-close]="false">NO</button>
+      <button id="yes-button" class=" btn btn-sm btn-primary w-25 ms-2" [mat-dialog-close]="true">YES</button>
+    </div>
+
+  </div>
+</div>

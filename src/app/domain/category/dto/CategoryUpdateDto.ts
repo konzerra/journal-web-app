@@ -1,11 +1,7 @@
 import {UpdateDtoI} from "../../../_generic/model/UpdateDtoI";
+import {CategoryData} from "../CategoryData";
 
 export interface CategoryUpdateDto extends UpdateDtoI{
-  dateList:[{
-    id:Number,
-    name:string,
-    lang:string,
-    overview:string,
-    status:string,
-  }]
+  id: Number | null
+  dataList:Array<CategoryData>
 }

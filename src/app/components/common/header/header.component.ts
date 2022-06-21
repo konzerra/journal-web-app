@@ -22,5 +22,8 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.userAuthService.clear()
   }
-
+  hasRole(role:string): boolean{
+    console.log(this.userAuthService.hasRole(role))
+    return this.userAuthService.hasRole(role)
+  }
 }

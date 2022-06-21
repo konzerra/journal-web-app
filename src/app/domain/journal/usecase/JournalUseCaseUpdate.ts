@@ -1,7 +1,7 @@
 
 import {Injectable} from "@angular/core";
 
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {UseCaseUpdateAbstract} from "../../../_generic/usecase/UseCaseUpdateAbstract";
 
@@ -20,4 +20,6 @@ export class JournalUseCaseUpdate extends UseCaseUpdateAbstract<JournalUpdateDto
       httpClient
     );
   }
+
+  protected requestHeader: HttpHeaders = new HttpHeaders();
 }

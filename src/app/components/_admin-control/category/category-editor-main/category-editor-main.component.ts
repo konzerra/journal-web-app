@@ -3,13 +3,12 @@ import {
   GenericModelEditorMainComponent
 } from "../../../../_generic/component/editor-control/GenericModelEditorMainComponent";
 import {Category} from "../../../../domain/category/Category";
-import {CategorySaveDto} from "../../../../domain/category/dto/CategorySaveDto";
-import {CategoryUpdateDto} from "../../../../domain/category/dto/CategoryUpdateDto";
 import {Router} from "@angular/router";
-import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
 import {CategoryUseCaseDeleteById} from "../../../../domain/category/usecase/CategoryUseCaseDeleteById";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {CategoryUseCaseFindByIdForUpdate} from "../../../../domain/category/usecase/CategoryUseCaseFindByIdForUpdate";
+import {CategoryPage} from "../../../../domain/category/CategoryPage";
+import {CategoryUseCaseGetAllPaginated} from "../../../../domain/category/usecase/CategoryUseCaseGetAllPaginated";
+import {DialogsService} from "../../../common/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-category-editor-main',
@@ -17,26 +16,35 @@ import {CategoryUseCaseFindByIdForUpdate} from "../../../../domain/category/usec
   styleUrls: ['./category-editor-main.component.css']
 })
 export class CategoryEditorMainComponent
-  extends GenericModelEditorMainComponent<Category, CategorySaveDto, CategoryUpdateDto>
+  extends GenericModelEditorMainComponent<Category, CategoryPage>
   implements OnInit {
+  override modelPage: CategoryPage = {
+    content: new Array<Category>(),
+    empty: false,
+    first: false,
+    number: 0,
+    numberOfElements: 0,
+    size: 0,
+    totalElements: 0,
+    totalPages: 0
+
+  }
+  override  modelSavePath = ComponentRoutingPaths.adminControl.category.save
+  override modelUpdatePath = ComponentRoutingPaths.adminControl.category.update
 
   constructor(
-    router:Router,
-    useCaseGetAll:CategoryUseCaseGetAll,
-    useCaseDeleteById:CategoryUseCaseDeleteById,
-
+    override useCaseDeleteById: CategoryUseCaseDeleteById,
+    override useCaseGetAllPaginated: CategoryUseCaseGetAllPaginated,
+    protected dialogsService: DialogsService,
+    protected router: Router,
   ) {
-    super(
-      ComponentRoutingPaths.adminControl.category.save,
-      ComponentRoutingPaths.adminControl.category.update,
-      router,
-      useCaseGetAll,
-      useCaseDeleteById
-    )
+    super();
   }
 
   ngOnInit(): void {
     this.abstractOnInit()
   }
+
+
 
 }

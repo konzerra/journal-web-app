@@ -1,6 +1,6 @@
 
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UseCaseSaveAbstract} from "../../../_generic/usecase/UseCaseSaveAbstract";
 import {JournalSaveDto} from "../dto/JournalSaveDto";
 import {JournalApi} from "../api-path/JournalApi";
@@ -17,4 +17,6 @@ export class JournalUseCaseSave extends UseCaseSaveAbstract<JournalSaveDto>{
       httpClient
     );
   }
+
+  protected requestHeader: HttpHeaders = new HttpHeaders();
 }

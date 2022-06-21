@@ -1,0 +1,11 @@
+<div>
+
+  <div class="row">
+    <mat-icon  class = "ms-auto me-3" id="close-icon" (click)="closeDialog()">close</mat-icon>
+    <label class="mb-3">{{data.message}}</label>
+    <div class = "">
+      <button id="yes-button" class=" btn btn-sm btn-primary w-100" [mat-dialog-close]="true">Ок</button>
+    </div>
+
+  </div>
+</div>

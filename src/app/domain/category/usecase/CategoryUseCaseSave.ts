@@ -1,6 +1,6 @@
 
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UseCaseSaveAbstract} from "../../../_generic/usecase/UseCaseSaveAbstract";
 import {CategorySaveDto} from "../dto/CategorySaveDto";
 import {CategoryApi} from "../api-path/CategoryApi";
@@ -17,4 +17,6 @@ export class CategoryUseCaseSave extends UseCaseSaveAbstract<CategorySaveDto>{
       httpClient
     );
   }
+
+  protected requestHeader: HttpHeaders = new HttpHeaders();
 }

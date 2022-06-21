@@ -18,14 +18,16 @@
         <li class="nav-item ms-3">
           <a class="nav-link active" aria-current="page" routerLink = "/user/handbook">Справочник</a>
         </li>
-        <li class="nav-item dropdown ms-3">
+
+        <!-- Admin control -->
+        <li class="nav-item dropdown ms-3" *ngIf="hasRole('Admin')">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Админ
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink = "/journal/main">Журналы</a></li>
-            <li><a class="dropdown-item" routerLink = "/category/main">Категории</a></li>
-            <li><a class="dropdown-item" routerLink = "/moderator/main">Модераторы</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/journal/main">Журналы</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/category/main">Категории</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/moderator/main">Модераторы</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
