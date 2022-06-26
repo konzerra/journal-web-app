@@ -6,7 +6,10 @@ import {Article} from "../../../../domain/article/Article";
 import {
   JournalUseCaseGetAllArticlesPaginated
 } from "../../../../domain/journal/usecase/JournalUseCaseGetAllArticlesPaginated";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
+import {ArticleUseCaseDeleteById} from "../../../../domain/article/usecase/ArticleUseCaseDeleteById";
+import {DialogsService} from "../../../common/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-article-editor-main',
@@ -36,7 +39,10 @@ export class ArticleEditorMainComponent
   }
   constructor(
     private journalUseCaseGetAllArticlesPaginated: JournalUseCaseGetAllArticlesPaginated,
-    private route:ActivatedRoute
+    private articleUseCaseDeleteById: ArticleUseCaseDeleteById,
+    private route:ActivatedRoute,
+    private router:Router,
+    private dialogsService: DialogsService
   ) { }
 
 
@@ -65,11 +71,18 @@ export class ArticleEditorMainComponent
 
 
   onEdit(model: Article) {
-
+    this.router.navigate(
+      [ComponentRoutingPaths.adminControl.article.update],
+      {queryParams: {id: JSON.stringify(model.id)}}
+    )
   }
 
   onDeleteClicked(model: Article, i: number) {
-
+    this.articleUseCaseDeleteById.execute(model.id.toString()).subscribe({
+      complete:()=>{
+        this.dialogsService.openInfoDialog("Удалено")
+      }
+    })
   }
 
   onPageChange($event: number) {

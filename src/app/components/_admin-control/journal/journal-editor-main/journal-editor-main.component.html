@@ -41,7 +41,7 @@
     totalItems: modelPage.totalElements
     }">
       <th>{{model.id}}</th>
-      <td (click)="onJournalClicked(i)">{{model.name}}</td>
+      <td (click)="onJournalClicked(i)"><a>{{model.name}}</a></td>
       <td>{{model.version}}</td>
       <td>{{model.status}}</td>
       <td>{{model.articlesCount}}</td>

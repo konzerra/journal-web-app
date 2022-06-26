@@ -4,11 +4,11 @@ import {Observable} from "rxjs";
 import {ApiPathUtil} from "../util/ApiPathUtil";
 
 export abstract class UseCaseDeleteByIdAbstract{
-  protected constructor(
-    protected apiPath:string,
-    protected httpClient:HttpClient,
-  ) {
-  }
+
+  protected constructor() {}
+
+  protected abstract apiPath:string
+  protected abstract httpClient:HttpClient
 
   protected abstract requestHeader : HttpHeaders //= new HttpHeaders({ 'No-Auth': 'True' })
   public execute(id : string):Observable<any>{

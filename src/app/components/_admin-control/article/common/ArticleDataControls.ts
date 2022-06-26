@@ -15,8 +15,8 @@ export class ArticleDataControls
   annotation: FormControl = new FormControl("", Validators.required)
   tags: FormControl = new FormControl("", Validators.required)
 
-  addAuthor(){
-    this.authors.push(new FormControl("",Validators.required))
+  addAuthor(author:string = ''){
+    this.authors.push(new FormControl(author,Validators.required))
   }
   removeAuthor(index:number){
     this.authors.splice(index,1)
@@ -26,6 +26,7 @@ export class ArticleDataControls
     this.authors.forEach((author)=>{
       authorsLine += author.value + "$"
     })
+    authorsLine.slice(authorsLine.length-1, 1)
     return {
       id:null,
       lang:this.lang,

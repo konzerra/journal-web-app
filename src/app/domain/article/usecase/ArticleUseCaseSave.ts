@@ -9,13 +9,12 @@ import {ArticleApi} from "../api-path/ArticleApi";
 })
 export class ArticleUseCaseSave extends UseCaseSaveAbstract<FormData>{
   protected requestHeader: HttpHeaders = new HttpHeaders();
-
+  protected apiPath: string = ArticleApi.paths.save
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      ArticleApi.paths.save,
-      httpClient
-    );
+    super()
   }
+
+
 }

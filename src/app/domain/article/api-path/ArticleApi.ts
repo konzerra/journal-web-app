@@ -4,7 +4,7 @@ export class ArticleApi {
   public static paths={
     save: `${AppApi.server.protectedApi}/article`,
     deleteById: `${AppApi.server.protectedApi}/article/{id}`,
-    update: `${AppApi.server.protectedApi}/article`,
+    updateByAdmin: `${AppApi.server.protectedApi}/admin/article`,
 
     getByIdFull: `${AppApi.server.protectedApi}/article/full/{id}`,
     getById: `${AppApi.server.publicApi}/article/`,

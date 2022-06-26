@@ -6,18 +6,17 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UseCaseDeleteByIdAbstract} from "../../../_generic/usecase/UseCaseDeleteByIdAbstract";
 import {Journal} from "../Journal";
 import {JournalApi} from "../api-path/JournalApi";
+import {CategoryApi} from "../../category/api-path/CategoryApi";
 
 @Injectable({
   providedIn : "root"
 })
 export class JournalUseCaseDeleteById extends UseCaseDeleteByIdAbstract{
+  protected apiPath: string = JournalApi.paths.deleteById
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      JournalApi.paths.deleteById,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders()

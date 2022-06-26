@@ -9,13 +9,11 @@ import {CategoryApi} from "../api-path/CategoryApi";
   providedIn : "root"
 })
 export class CategoryUseCaseGetAll extends UseCaseGetAllAbstract<Category>{
+  protected apiPath: string = CategoryApi.paths.getAll
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      CategoryApi.paths.getAll,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders({'No-Auth':'true'});

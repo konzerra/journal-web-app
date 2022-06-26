@@ -7,7 +7,8 @@ import {DataControlsAbstract} from "./DataControlsAbstract";
 export abstract class GenericUpdateFormGroup<
   ModelData extends ModelI,
   DataControls extends DataControlsAbstract<ModelData>,
-  UpdateDto extends UpdateDtoI
+  UpdateDto,
+
   >
 {
   abstract requiredLangs: Array<string>

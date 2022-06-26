@@ -4,12 +4,12 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiPathUtil} from "../../util/ApiPathUtil";
 
-export abstract class UseCaseGetByIdFullAbstract<Model extends ModelI>{
-  protected constructor(
-    protected apiPath:string,
-    protected httpClient:HttpClient,
-  ) {
-  }
+export abstract class UseCaseGetByIdFullAbstract<Model >{
+
+  protected constructor() {}
+
+  protected abstract apiPath:string
+  protected abstract httpClient:HttpClient
 
   protected abstract requestHeader : HttpHeaders //= new HttpHeaders({ 'No-Auth': 'True' })
 

@@ -31,15 +31,21 @@ import {
 import {
   ArticleEditorMainComponent
 } from "./components/_admin-control/article/article-editor-main/article-editor-main.component";
+import {
+  ArticleEditorUpdateComponent
+} from "./components/_admin-control/article/article-editor-update/article-editor-update.component";
+import {JournalsComponent} from "./components/common/journals/journals.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
   {path:ComponentRoutingPaths.common.articles, component: UserArticlesComponent},
   {path:`forbidden`, component: ForbiddenComponent},
-  {path:`${ComponentRoutingPaths.userControl.login}`, component: UserLoginComponent},
-  {path:`${ComponentRoutingPaths.userControl.register}`, component: UserRegisterComponent},
+  {path:`${ComponentRoutingPaths.common.journals}`, component: JournalsComponent},
+
 
   //User control
+  {path:`${ComponentRoutingPaths.userControl.login}`, component: UserLoginComponent},
+  {path:`${ComponentRoutingPaths.userControl.register}`, component: UserRegisterComponent},
   {path:`${ComponentRoutingPaths.userControl.profile}`, component: UserProfileComponent, canActivate:[AuthGuard],  data:{role:'User'} },
   {path:`${ComponentRoutingPaths.userControl.handbook}`, component: UserHandbookComponent, },
   {path:`${ComponentRoutingPaths.userControl.publish}`, component: UserPublishComponent, canActivate:[AuthGuard], data:{role:'User'} },
@@ -50,14 +56,16 @@ const routes : Routes = [
   {path:`${ComponentRoutingPaths.adminControl.journal.main}`, component: JournalEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.journal.save}`, component: JournalEditorSaveComponent,  canActivate:[AuthGuard],data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.journal.update}`, component: JournalEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
-  {path:`${ComponentRoutingPaths.adminControl.journal.updateArticles}`, component: ArticleEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+
 
   //Category
   {path:`${ComponentRoutingPaths.adminControl.category.main}`, component: CategoryEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.category.save}`, component: CategoryEditorSaveComponent,  canActivate:[AuthGuard],data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.category.update}`, component: CategoryEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
 
-
+  //Article
+  {path:`${ComponentRoutingPaths.adminControl.article.main}`, component: ArticleEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.article.update}`, component: ArticleEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
 ]
 
 @NgModule({

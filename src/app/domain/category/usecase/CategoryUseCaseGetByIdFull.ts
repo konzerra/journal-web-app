@@ -12,13 +12,12 @@ import {UseCaseGetByIdFullAbstract} from "../../../_generic/usecase/get/UseCaseG
   providedIn : "root"
 })
 export class CategoryUseCaseGetByIdFull extends UseCaseGetByIdFullAbstract<CategoryUpdateDto> {
+
+  protected apiPath: string = CategoryApi.paths.getByIdFull
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      CategoryApi.paths.getByIdFull,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders();

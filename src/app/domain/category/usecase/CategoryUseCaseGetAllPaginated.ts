@@ -11,13 +11,12 @@ import {CategoryPage} from "../CategoryPage";
   providedIn : "root"
 })
 export class CategoryUseCaseGetAllPaginated extends UseCaseGetAllPaginatedAbstract<Category, CategoryPage>{
+
+  protected apiPath: string = CategoryApi.paths.getAllPaginated
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      CategoryApi.paths.getAllPaginated,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders({});

@@ -9,13 +9,11 @@ import {JournalApi} from "../api-path/JournalApi";
   providedIn : "root"
 })
 export class JournalUseCaseSave extends UseCaseSaveAbstract<JournalSaveDto>{
+  protected apiPath: string = JournalApi.paths.save
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      JournalApi.paths.save,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders();

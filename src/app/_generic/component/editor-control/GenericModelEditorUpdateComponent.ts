@@ -3,7 +3,6 @@ import {UseCaseUpdateAbstract} from "../../usecase/UseCaseUpdateAbstract";
 import {ActivatedRoute, Router} from "@angular/router";
 import {GenericUpdateFormGroup} from "../../form-group/GenericUpdateFormGroup";
 import {ModelI} from "../../model/ModelI";
-import {UpdateDtoI} from "../../model/UpdateDtoI";
 import {genericCheckFormControl} from "../../util/genericCheckFormControl";
 import {UseCaseGetByIdFullAbstract} from "../../usecase/get/UseCaseGetByIdFullAbstract";
 import {DataControlsAbstract} from "../../form-group/DataControlsAbstract";
@@ -12,7 +11,7 @@ import {DataControlsAbstract} from "../../form-group/DataControlsAbstract";
 export abstract class GenericModelEditorUpdateComponent<
   ModelData extends ModelI,
   ModelDataControls extends DataControlsAbstract<ModelData>,
-  UpdateDto extends UpdateDtoI
+  UpdateDto
   >
 {
 

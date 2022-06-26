@@ -12,13 +12,11 @@ import {JournalApi} from "../api-path/JournalApi";
   providedIn : "root"
 })
 export class JournalUseCaseUpdate extends UseCaseUpdateAbstract<JournalUpdateDto>{
+  protected apiPath: string = JournalApi.paths.update
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      JournalApi.paths.update,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders();

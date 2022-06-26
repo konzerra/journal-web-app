@@ -10,13 +10,11 @@ import {UseCaseGetByIdFullAbstract} from "../../../_generic/usecase/get/UseCaseG
   providedIn : "root"
 })
 export class JournalUseCaseGetByIdFull extends UseCaseGetByIdFullAbstract<JournalUpdateDto> {
+  protected apiPath: string = JournalApi.paths.getByIdFull
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      JournalApi.paths.getByIdFull,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders= new HttpHeaders();

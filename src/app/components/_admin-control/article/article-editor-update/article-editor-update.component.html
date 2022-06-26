@@ -4,7 +4,7 @@
   xmlns="http://www.w3.org/1999/html"/>
 
 <div class="wrapper container mt-5 mb-5">
-  <h2>Публикация статьи</h2>
+  <h2>Обновление статьи</h2>
   <div class = "col-lg-6 col-md-offset-1">
     <form class="needs-validation" >
 
@@ -32,16 +32,16 @@
       </div>
 
       <!--  file select -->
-      <label class = "mt-2">Выберите файл</label>
+      <label class = "mt-2">Выберите word-файл статьи</label>
       <br>
       <input
         class = "form-control"
         type="file"
         id="wordFile"
-        accept=".doc, .docx"
         (change)="onFileChange($event)"
       />
-
+      <label *ngIf="formGroup.updateDto.wordDocId!=null" class=""><a>скачать существующий вариант</a></label>
+      <br>
       <!-- Select input language   radio-buttons -->
       <label class = "mt-2">Введите данные на языках</label>
       <br>
@@ -65,10 +65,10 @@
       <div class="form-group">
         <label class="control-label mt-2" for="name"> Название </label>
         <textarea type="text"
-               id="name"
-               class="form-control"
-               [formControl]="formGroup.name"
-               placeholder="Введите название статьи"
+                  id="name"
+                  class="form-control"
+                  [formControl]="formGroup.name"
+                  placeholder="Введите название статьи"
                   required autofocus="autofocus"
                   rows="3"></textarea>
         <div *ngIf="checkFormControl(formGroup.name)"
@@ -84,12 +84,12 @@
         <label class="mt-2">Автор {{i}}</label>
         <div class="input-group" >
           <input type="text"
-                    id="author{{i+selectedRadioButton}}"
-                    class="form-control"
-                    [formControl]="author"
-                    placeholder="Введите автора"
-                    required autofocus="autofocus"
-                    >
+                 id="author{{i+selectedRadioButton}}"
+                 class="form-control"
+                 [formControl]="author"
+                 placeholder="Введите автора"
+                 required autofocus="autofocus"
+          >
           <button class="btn btn-danger btn-sm ms-2" type="button" id="button-delete-author" (click)="onAuthorRemove(i)">
             <i class="bi bi-trash text-light"></i>
           </button>

@@ -11,13 +11,12 @@ import {CategoryApi} from "../api-path/CategoryApi";
   providedIn : "root"
 })
 export class CategoryUseCaseUpdate extends UseCaseUpdateAbstract<CategoryUpdateDto>{
+
+  protected apiPath: string = CategoryApi.paths.update
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      CategoryApi.paths.update,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders();

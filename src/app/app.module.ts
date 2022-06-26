@@ -35,6 +35,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {NgxPaginationModule} from "ngx-pagination";
 import { MatInfoDialogComponent } from './components/common/dialogs/mat-info-dialog/mat-info-dialog.component';
 import { ArticleEditorMainComponent } from './components/_admin-control/article/article-editor-main/article-editor-main.component';
+import { ArticleEditorUpdateComponent } from './components/_admin-control/article/article-editor-update/article-editor-update.component';
+import { JournalsComponent } from './components/common/journals/journals.component';
+import { ReviewerArticleMainComponent } from './components/_reviewer_control/reviewer-article-main/reviewer-article-main.component';
 
 
 @NgModule({
@@ -62,6 +65,9 @@ import { ArticleEditorMainComponent } from './components/_admin-control/article/
     MatConfirmDialogComponent,
     MatInfoDialogComponent,
     ArticleEditorMainComponent,
+    ArticleEditorUpdateComponent,
+    JournalsComponent,
+    ReviewerArticleMainComponent,
   ],
   imports: [
     BrowserModule,

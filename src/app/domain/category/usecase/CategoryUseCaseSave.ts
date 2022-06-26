@@ -9,13 +9,12 @@ import {CategoryApi} from "../api-path/CategoryApi";
   providedIn : "root"
 })
 export class CategoryUseCaseSave extends UseCaseSaveAbstract<CategorySaveDto>{
+
+  protected apiPath: string = CategoryApi.paths.save
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      CategoryApi.paths.save,
-      httpClient
-    );
+    super()
   }
 
   protected requestHeader: HttpHeaders = new HttpHeaders();

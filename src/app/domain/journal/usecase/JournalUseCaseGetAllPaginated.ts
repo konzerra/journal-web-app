@@ -11,13 +11,11 @@ import {JournalApi} from "../api-path/JournalApi";
   providedIn : "root"
 })
 export class JournalUseCaseGetAllPaginated extends UseCaseGetAllPaginatedAbstract<Journal,JournalPage>{
+  protected apiPath: string = JournalApi.paths.getAllPaginated
   constructor(
-    httpClient:HttpClient
+    protected httpClient:HttpClient
   ) {
-    super(
-      JournalApi.paths.getAllPaginated,
-      httpClient
-    );
+    super()
   }
   protected requestHeader: HttpHeaders = new HttpHeaders({'No-Auth':'true'});
 }

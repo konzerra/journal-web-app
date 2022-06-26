@@ -48,7 +48,7 @@ export class JournalEditorMainComponent
 
   onJournalClicked(index: number) {
     this.router.navigate(
-      [ComponentRoutingPaths.adminControl.journal.updateArticles],
+      [ComponentRoutingPaths.adminControl.article.main],
       {queryParams:{model:JSON.stringify(this.modelPage.content[index])}}
     )
   }

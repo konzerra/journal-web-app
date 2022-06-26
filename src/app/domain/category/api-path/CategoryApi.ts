@@ -9,5 +9,6 @@ export class CategoryApi {
     getByIdFull: `${AppApi.server.protectedApi}/category/full/{id}`,
     getById: `${AppApi.server.publicApi}/category/`,
     getAllPaginated: `${AppApi.server.protectedApi}/category/all/{pageNumber}`,
+    getAll:`${AppApi.server.protectedApi}/category/all`
   }
 }

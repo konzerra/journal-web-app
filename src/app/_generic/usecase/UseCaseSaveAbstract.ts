@@ -4,11 +4,11 @@ import {Observable} from "rxjs";
 import {SaveDtoI} from "../model/SaveDtoI";
 
 export abstract class UseCaseSaveAbstract<SaveDto>{
-  protected constructor(
-    protected apiPath:string,
-    protected httpClient:HttpClient
-  ) {
-  }
+
+  protected constructor() {}
+
+  protected abstract apiPath:string
+  protected abstract httpClient:HttpClient
 
   protected abstract requestHeader : HttpHeaders
 
