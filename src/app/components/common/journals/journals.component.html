@@ -1,0 +1,39 @@
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+/>
+
+<div class = "journals-background">
+  <div class="container">
+    <div class="col-lg-6">
+      <br>
+      <h2 class="mt-5">Журналы</h2>
+
+      <div *ngFor="let i = index; let model of modelPage.content | paginate :{
+      itemsPerPage: 10,
+      currentPage : modelPage.number+1,
+      totalItems: modelPage.totalElements
+      }">
+        <div class="panel mb-3" (click)="onJournalPanelClicked(model.id)">
+          <h4 class=" ms-3 pt-2">{{model.name}}</h4>
+          <h6 class=" ms-3  mt-1">{{model.version}}</h6>
+          <label class="link ms-3 pb-2">скачать pdf</label>
+        </div>
+      </div>
+
+
+
+      <!-- Pagination box -->
+      <pagination-controls
+        class="pagination mt-3"
+        (pageChange)="onPageChange($event)"
+      ></pagination-controls>
+    </div>
+  </div>
+
+
+</div>
+
+
+
