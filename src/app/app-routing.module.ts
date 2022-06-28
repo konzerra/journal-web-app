@@ -35,6 +35,15 @@ import {
   ArticleEditorUpdateComponent
 } from "./components/_admin-control/article/article-editor-update/article-editor-update.component";
 import {JournalsComponent} from "./components/common/journals/journals.component";
+import {
+  ReviewerEditorUpdateComponent
+} from "./components/_admin-control/reviewer/reviewer-editor-update/reviewer-editor-update.component";
+import {
+  ReviewerEditorSaveComponent
+} from "./components/_admin-control/reviewer/reviewer-editor-save/reviewer-editor-save.component";
+import {
+  ReviewerEditorMainComponent
+} from "./components/_admin-control/reviewer/reviewer-editor-main/reviewer-editor-main.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
@@ -66,6 +75,12 @@ const routes : Routes = [
   //Article
   {path:`${ComponentRoutingPaths.adminControl.article.main}`, component: ArticleEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.article.update}`, component: ArticleEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+
+
+  //Reviewer
+  {path:`${ComponentRoutingPaths.adminControl.reviewer.main}`, component: ReviewerEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.reviewer.save}`, component: ReviewerEditorSaveComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.reviewer.update}`, component: ReviewerEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
 ]
 
 @NgModule({

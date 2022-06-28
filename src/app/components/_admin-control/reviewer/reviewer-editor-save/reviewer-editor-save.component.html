@@ -1,1 +1,64 @@
-<p>reviewer-editor-save works!</p>
+
+<div class="wrapper container mt-5">
+  <h2 class="pt-5">Регистрация рецензента</h2>
+  <div class = "col-lg-6 col-md-offset-1">
+
+    <form class="needs-validation">
+      <div class="form-group">
+        <label class="control-label" for="email"> Почта </label>
+        <input type="text"
+               id="email"
+               class="form-control"
+               [formControl]="formGroup.email"
+               placeholder="Введите почту"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(formGroup.email)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.email.errors?.['required']">
+            Введите почту
+          </div>
+
+        </div>
+      </div>
+      <!-- Category select -->
+      <div class="form-group">
+        <label class = "mt-2">Категория</label>
+        <select class="form-control"
+                id="status"
+                [formControl]="formGroup.categoryId"
+                required
+        >
+          <option value="" disabled selected hidden>Выберите журнал</option>
+          <option *ngFor="let category of categoryList"
+                  [value]="category.id">{{category.name}}
+          </option>
+        </select>
+        <div *ngIf="checkFormControl(formGroup.categoryId)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.categoryId.errors?.['required']">
+            Выберите категорию.
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="mt-4">
+          <button type="button" name="login-submit" id="login-submit"
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > Сохранить </button>
+          <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
+                  (click)="onCancelClicked()">Отмена</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-group">
+      <span>Новый пользователь? <a routerLink="/register">Регистрация</a></span>
+    </div>
+  </div>
+
+
+</div>
+
+

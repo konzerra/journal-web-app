@@ -38,6 +38,7 @@ import { ArticleEditorMainComponent } from './components/_admin-control/article/
 import { ArticleEditorUpdateComponent } from './components/_admin-control/article/article-editor-update/article-editor-update.component';
 import { JournalsComponent } from './components/common/journals/journals.component';
 import { ReviewerArticleMainComponent } from './components/_reviewer_control/reviewer-article-main/reviewer-article-main.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { ReviewerArticleMainComponent } from './components/_reviewer_control/rev
       useClass: AuthInterceptor,
       multi:true
     },
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     DialogsService,
   ],
   bootstrap: [AppComponent],

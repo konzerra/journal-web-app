@@ -39,5 +39,17 @@ h6{
 label{
   color: white;
 }
+.pagination ::ng-deep .ngx-pagination .current {
+  border-radius: 5%;
+  background-color: rgb(10, 98, 191,0.5);
+  transition: 1s
+}
+.pagination ::ng-deep .ngx-pagination .current:hover {
+  background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
+}
 
 

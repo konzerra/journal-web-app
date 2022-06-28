@@ -13,12 +13,19 @@ export class ComponentRoutingPaths {
     articles: "articles",
     journals: "journals"
   }
+
   public static adminControl = {
 
     category : {
       main: "admin/category/main",
       save: "admin/category/save",
       update: "admin/category/update"
+    },
+
+    reviewer:{
+      main: "admin/reviewer/main",
+      save: "admin/reviewer/save",
+      update: "admin/reviewer/update"
     },
 
     journal: {

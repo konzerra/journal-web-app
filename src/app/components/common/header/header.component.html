@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-color">
+<nav class="navbar navbar-expand-lg navbar-color navbar-light ">
   <div class="container-fluid">
     <a class="navbar-brand ms-3" routerLink = "/">Известия</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,6 +15,17 @@
         <li class="nav-item ms-3">
           <a class="nav-link active" aria-current="page" routerLink = "/user/publish">Опубликовать</a>
         </li>
+        <!-- About journal -->
+        <li class="nav-item dropdown ms-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAboutJournal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            О журнале
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownAboutJournal">
+            <li><a class="dropdown-item" routerLink = "/admin/journal/main">О журнале</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/category/main">Этика публикации</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">Рабочий состав</a></li>
+          </ul>
+        </li>
         <li class="nav-item ms-3">
           <a class="nav-link active" aria-current="page" routerLink = "/user/handbook">Справочник</a>
         </li>
@@ -27,9 +38,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" routerLink = "/admin/journal/main">Журналы</a></li>
             <li><a class="dropdown-item" routerLink = "/admin/category/main">Категории</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/moderator/main">Модераторы</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">Рецензенты</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Страницы сайта</a></li>
           </ul>
         </li>
 

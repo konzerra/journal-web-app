@@ -13,7 +13,7 @@
         <label class = "mt-2">Журнал</label>
         <select class="form-control"
                 id="status"
-                [formControl]="formGroup.journal"
+                [formControl]="formGroup.journalId"
                 required
         >
           <option value="" disabled selected hidden>Выберите журнал</option>
@@ -21,10 +21,10 @@
                   [value]="journal.id">{{journal.name}}
           </option>
         </select>
-        <div *ngIf="checkFormControl(formGroup.journal)"
+        <div *ngIf="checkFormControl(formGroup.journalId)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.journal.errors?.['required']">
+          <div *ngIf="formGroup.journalId.errors?.['required']">
             Выберите журнал.
           </div>
 

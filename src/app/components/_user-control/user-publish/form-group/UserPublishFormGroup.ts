@@ -16,7 +16,7 @@ export class UserPublishFormGroup
 {
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
 
-  journal: FormControl = new FormControl(null, Validators.required)
+  journalId: FormControl = new FormControl(null, Validators.required)
   wordFile: File | null = null
 
 
@@ -54,7 +54,7 @@ export class UserPublishFormGroup
   getDto(): FormData {
     let articleSaveDto:ArticleSaveDto = {
       ownerId: 1,
-      journalId: this.journal.value,
+      journalId: this.journalId.value,
       dataList: new Array<ArticleData>()
     }
     this.dataControlsList.forEach((data)=>{
@@ -90,7 +90,7 @@ export class UserPublishFormGroup
 
   valid(): boolean {
     return (
-      this.journal.valid &&
+      this.journalId.valid &&
         this.wordFile != null &&
         this.isDataControlsListValid()
     )
