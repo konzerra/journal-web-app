@@ -45,6 +45,7 @@ export class UserPublishComponent
       version: "2022",
       status: "Open",
       articlesCount: 0
+
     }
   )
 
