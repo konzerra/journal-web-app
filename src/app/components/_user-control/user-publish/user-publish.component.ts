@@ -42,7 +42,7 @@ export class UserPublishComponent
 
   journalList = new Array<Journal>(
     {
-      id: 5,
+      id: 1,
       name: "Журнал Известия им. КГТУ",
       version: "2022",
       status: "Open",
