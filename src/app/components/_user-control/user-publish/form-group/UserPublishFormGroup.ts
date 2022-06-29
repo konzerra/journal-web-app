@@ -18,6 +18,7 @@ export class UserPublishFormGroup
 
   journalId: FormControl = new FormControl(null, Validators.required)
   wordFile: File | null = null
+  userId : Number  = 0
 
 
   //For each language
@@ -52,8 +53,9 @@ export class UserPublishFormGroup
 
   //call if formGroup valid
   getDto(): FormData {
+
     let articleSaveDto:ArticleSaveDto = {
-      ownerId: 1,
+      ownerId: this.userId,
       journalId: this.journalId.value,
       dataList: new Array<ArticleData>()
     }

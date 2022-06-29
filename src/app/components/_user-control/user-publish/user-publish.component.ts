@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { UseCaseSaveAbstract } from 'src/app/_generic/usecase/UseCaseSaveAbstract';
 import { DialogsService } from '../../common/dialogs/dialogs.service';
 import {ArticleUseCaseSave} from "../../../domain/article/usecase/ArticleUseCaseSave";
+import {UserAuthService} from "../../../domain/user/service/UserAuthService";
 
 @Component({
   selector: 'app-user-publish',
@@ -34,6 +35,7 @@ export class UserPublishComponent
     protected router: Router,
     protected saveUseCase: ArticleUseCaseSave,
     protected dialogsService: DialogsService,
+    private userService: UserAuthService,
   ) {
     super()
   }
@@ -62,7 +64,9 @@ export class UserPublishComponent
   }
 
   override onSubmit() {
-    if (this.formGroup.valid()) {
+    let userId = this.userService.getUser()?.id
+    if (this.formGroup.valid() && userId!=undefined) {
+      this.formGroup.userId = userId
       const formData:FormData = this.formGroup.getDto()
       this.saveUseCase.execute(formData).subscribe({
         next:(value) =>{
