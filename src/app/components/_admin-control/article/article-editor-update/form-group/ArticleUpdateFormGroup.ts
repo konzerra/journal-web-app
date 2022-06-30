@@ -1,11 +1,13 @@
 
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 
 import {ArticleData} from "../../../../../domain/article/ArticleData";
 import {ArticleDataControls} from "../../common/ArticleDataControls";
 import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
 import {ArticleUpdateDtoByAdmin} from "../../../../../domain/article/dto/ArticleUpdateDtoByAdmin";
 import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
+import {ArticleStatusesAdmin} from "../../../../../domain/article/status/ArticleStatusesAdmin";
+import {Category} from "../../../../../domain/category/Category";
 
 
 
@@ -14,14 +16,16 @@ export class ArticleUpdateFormGroup
   extends GenericUpdateFormGroup<ArticleData, ArticleDataControls, ArticleUpdateDtoByAdmin>
 {
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
+  articleStatuses : Array<string> = Object.values(ArticleStatusesAdmin)
 
   journal: FormControl = new FormControl(null, Validators.required)
-  category = new FormControl(null)
+  category : Category | null = null
   wordFile: File | null = null
   pdfFile: File | null = null
   antiplagiat = new FormControl(null)
   pagesInJournal = new FormControl(null)
   status = new FormControl("",Validators.required)
+
 
 
 
@@ -52,6 +56,7 @@ export class ArticleUpdateFormGroup
   setDto(updateDto: ArticleUpdateDtoByAdmin): void {
     this.updateDto = updateDto
     this.status.setValue(updateDto.status)
+    this.journal.setValue(updateDto.journalId)
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((modelData)=>{
       let articleDataControls = new ArticleDataControls(modelData.lang, modelData.id)
@@ -84,7 +89,7 @@ export class ArticleUpdateFormGroup
   getDto(): ArticleUpdateDtoByAdmin {
     let articleUpdateDto:ArticleUpdateDtoByAdmin = {
       antiplagiat: this.antiplagiat.value,
-      categoryId: this.category.value,
+      categoryId: this.category?.id || null,
       dataList: new Array<ArticleData>(),
       id: this.updateDto.id,
       journalId: this.journal.value,
@@ -94,6 +99,7 @@ export class ArticleUpdateFormGroup
       verificationDocId: this.updateDto.verificationDocId,
       wordDocId: this.updateDto.wordDocId,
     }
+    console.log(articleUpdateDto)
     this.dataControlsList.forEach((data)=>{
       articleUpdateDto.dataList.push(data.getData())
     })
@@ -119,7 +125,6 @@ export class ArticleUpdateFormGroup
   valid(): boolean {
     return (
       this.journal.valid &&
-        this.wordFile != null &&
         this.isDataControlsListValid()
     )
   }

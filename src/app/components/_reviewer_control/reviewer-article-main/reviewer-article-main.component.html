@@ -15,34 +15,19 @@
     </tr>
     </thead>
     <tbody >
-    <tr *ngFor="let i = index; let model of modelPage.content | paginate :{
-    itemsPerPage: 10,
-    currentPage : modelPage.number+1,
-    totalItems: modelPage.totalElements
-    }">
+    <tr *ngFor="let i = index; let model of modelList">
       <th>{{model.id}}</th>
       <td>{{model.name}}</td>
       <td>{{model.status}}</td>
-      <td>Not_paid</td>
       <td class = "text-nowrap">
         <! –– edit button ––>
         <button type="button" class="btn btn-primary btn-sm me-2" (click)="onEdit(model)">
           <i class="bi bi-pencil"></i>
         </button>
-        <! –– delete ––>
-        <button type="button" class="btn btn-danger btn-sm" (click)="onDeleteClicked(model, i)">
-          <i class="bi bi-trash text-light"></i>
-        </button>
       </td>
     </tr>
     </tbody>
   </table>
-
-  <!-- Pagination box -->
-  <pagination-controls
-    class="pagination"
-    (pageChange)="onPageChange($event)"
-  ></pagination-controls>
 </div>
 
 

@@ -4,23 +4,20 @@
   xmlns="http://www.w3.org/1999/html"/>
 
 <div class="wrapper container mt-5 mb-5">
-  <h2>Обновление статьи</h2>
+  <br>
+  <h2 class="mt-5">Обновление статьи</h2>
   <div class = "col-lg-6 col-md-offset-1">
     <form class="needs-validation" >
 
       <!-- Journal select -->
       <div class="form-group">
-        <label class = "mt-2">Журнал</label>
-        <select class="form-control"
-                id="status"
-                [formControl]="formGroup.journal"
+        <label class = "mt-2">Журнал Id</label>
+        <input class="form-control"
+                id="journal"
+                [value]="formGroup.journal.value"
+                disabled
                 required
         >
-          <option value="" disabled selected hidden>Выберите журнал</option>
-          <option *ngFor="let journal of journalList"
-                  [value]="journal.id">{{journal.name}}
-          </option>
-        </select>
         <div *ngIf="checkFormControl(formGroup.journal)"
              class="alert-danger">
 
@@ -29,6 +26,49 @@
           </div>
 
         </div>
+      </div>
+      <!-- Status select -->
+      <div class="form-group">
+        <label class = "mt-2">Статус</label>
+        <select class="form-control"
+                id="status"
+                [formControl]="formGroup.status"
+                required
+        >
+          <option value="" disabled selected hidden>Выберите статус</option>
+          <option *ngFor="let status of formGroup.articleStatuses"
+                  [value]="status">{{status}}
+          </option>
+        </select>
+        <div *ngIf="checkFormControl(formGroup.status)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.status.errors?.['required']">
+            Выберите статус.
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Category select -->
+      <div class="form-group">
+        <label class = "mt-2">Категория</label>
+        <select class="form-control"
+                [(ngModel)]="formGroup.category"
+                name="category-select"
+                (ngModelChange)="onCategoryChanged($event)"
+                id="category"
+                required
+        >
+          <option [ngValue]="null"
+                  [selected]="formGroup.category == null"
+          >Выберите категорию</option>
+          <option *ngFor="let category of categoryList"
+                  [selected]="formGroup.category?.id == category.id"
+                  [ngValue]="category">
+            {{category.name}}
+          </option>
+        </select>
       </div>
 
       <!--  file select -->
@@ -156,6 +196,6 @@
       <span>Есть вопросы? <a routerLink="/user/handbook">справочник</a></span>
     </div>
   </div>
-
-
+<br>
 </div>
+

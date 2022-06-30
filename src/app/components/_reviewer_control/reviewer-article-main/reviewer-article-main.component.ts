@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticlePage} from "../../../domain/article/ArticlePage";
 import {Article} from "../../../domain/article/Article";
+import {ReviewerUseCaseGetAllArticles} from "../../../domain/reviewer/usecase/ReviewerUseCaseGetAllArticles";
+import {UserAuthService} from "../../../domain/user/service/UserAuthService";
 
 @Component({
   selector: 'app-reviewer-article-main',
@@ -10,20 +12,19 @@ import {Article} from "../../../domain/article/Article";
 export class ReviewerArticleMainComponent
   implements OnInit {
 
-  modelPage : ArticlePage = {
-    content: new Array<Article>(),
-    empty: false,
-    first: false,
-    number: 0,
-    numberOfElements: 0,
-    size: 0,
-    totalElements: 0,
-    totalPages: 0
-  }
+  modelList = new Array<Article>()
 
-  constructor() { }
+  constructor(
+    private reviewerUseCaseGetAllArticles : ReviewerUseCaseGetAllArticles,
+    private userAuthService:UserAuthService
+  ) { }
 
   ngOnInit(): void {
+    let userId = this.userAuthService.getUser()?.id
+    if(userId!=null){
+      this.reviewerUseCaseGetAllArticles.execute(userId)
+    }
+
   }
 
   onEdit(model: Article) {
@@ -31,10 +32,6 @@ export class ReviewerArticleMainComponent
   }
 
   onDeleteClicked(model: Article, i: number) {
-
-  }
-
-  onPageChange($event: number) {
 
   }
 }

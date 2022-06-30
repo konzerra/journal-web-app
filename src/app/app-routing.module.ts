@@ -44,6 +44,9 @@ import {
 import {
   ReviewerEditorMainComponent
 } from "./components/_admin-control/reviewer/reviewer-editor-main/reviewer-editor-main.component";
+import {
+  ReviewerArticleMainComponent
+} from "./components/_reviewer_control/reviewer-article-main/reviewer-article-main.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
@@ -81,6 +84,10 @@ const routes : Routes = [
   {path:`${ComponentRoutingPaths.adminControl.reviewer.main}`, component: ReviewerEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.reviewer.save}`, component: ReviewerEditorSaveComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.reviewer.update}`, component: ReviewerEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+
+
+  //Reviewer control
+  {path:`${ComponentRoutingPaths.reviewerControl.article.main}`, component: ReviewerArticleMainComponent, canActivate:[AuthGuard], data:{role:'Reviewer'}},
 ]
 
 @NgModule({

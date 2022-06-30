@@ -5,7 +5,7 @@ import {ArticlePage} from "../../../../domain/article/ArticlePage";
 import {Article} from "../../../../domain/article/Article";
 import {
   JournalUseCaseGetAllArticlesPaginated
-} from "../../../../domain/journal/usecase/JournalUseCaseGetAllArticlesPaginated";
+} from "../../../../domain/journal/usecase/get/JournalUseCaseGetAllArticlesPaginated";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {ArticleUseCaseDeleteById} from "../../../../domain/article/usecase/ArticleUseCaseDeleteById";

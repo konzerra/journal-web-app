@@ -7,7 +7,7 @@ import {JournalDataControls} from "../../journal/common/JournalDataControls";
 import {JournalUpdateDto} from "../../../../domain/journal/dto/JournalUpdateDto";
 import {ActivatedRoute, Router} from "@angular/router";
 import {JournalUseCaseUpdate} from "../../../../domain/journal/usecase/JournalUseCaseUpdate";
-import {JournalUseCaseGetByIdFull} from "../../../../domain/journal/usecase/JournalUseCaseGetByIdFull";
+import {JournalUseCaseGetByIdFull} from "../../../../domain/journal/usecase/get/JournalUseCaseGetByIdFull";
 import {JournalUpdateFormGroup} from "../../journal/journal-editor-update/form-group/JournalUpdateFormGroup";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategoryData} from "../../../../domain/category/CategoryData";

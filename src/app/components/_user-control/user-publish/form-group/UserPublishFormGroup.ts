@@ -30,7 +30,7 @@ export class UserPublishFormGroup
   constructor() {
     super();
     this.requiredLangs.forEach((lang)=>{
-      let articleDataControls = new ArticleDataControls(lang)
+      let articleDataControls = new ArticleDataControls(lang,null)
       this.dataControlsList.push(articleDataControls)
     })
 

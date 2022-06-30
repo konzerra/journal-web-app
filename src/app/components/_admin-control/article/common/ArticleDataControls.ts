@@ -6,7 +6,7 @@ export class ArticleDataControls
   extends DataControlsAbstract<ArticleData>
 {
 
-  constructor(lang:string,id : Number | null = null) {
+  constructor(lang:string,id : Number | null) {
     super(lang, id);
   }
 
@@ -26,9 +26,9 @@ export class ArticleDataControls
     this.authors.forEach((author)=>{
       authorsLine += author.value + "$"
     })
-    authorsLine.slice(authorsLine.length-1, 1)
+    authorsLine = authorsLine.slice(0,authorsLine.length-1)
     return {
-      id:null,
+      id:this.id,
       lang:this.lang,
       name:this.name.value,
       authors: authorsLine,

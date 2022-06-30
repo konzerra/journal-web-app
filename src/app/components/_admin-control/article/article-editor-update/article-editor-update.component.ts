@@ -1,23 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  GenericModelEditorSaveComponent
-} from "../../../../_generic/component/editor-control/GenericModelEditorSaveComponent";
-import {ArticleData} from "../../../../domain/article/ArticleData";
-import {ArticleDataControls} from "../common/ArticleDataControls";
-import {UserPublishFormGroup} from "../../../_user-control/user-publish/form-group/UserPublishFormGroup";
+
 import {ActivatedRoute, Router} from "@angular/router";
-import {ArticleUseCaseSave} from "../../../../domain/article/usecase/ArticleUseCaseSave";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
 import {Journal} from "../../../../domain/journal/Journal";
-import {
-  GenericModelEditorUpdateComponent
-} from "../../../../_generic/component/editor-control/GenericModelEditorUpdateComponent";
 import {ArticleUseCaseUpdateByAdmin} from "../../../../domain/article/usecase/ArticleUseCaseUpdateByAdmin";
 import {ArticleUseCaseGetByIdFull} from "../../../../domain/article/usecase/ArticleUseCaseGetByIdFull";
 import {ArticleUpdateFormGroup} from "./form-group/ArticleUpdateFormGroup";
-import {ArticleUpdateDtoByAdmin} from "../../../../domain/article/dto/ArticleUpdateDtoByAdmin";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
+import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
+import {Category} from "../../../../domain/category/Category";
 
 @Component({
   selector: 'app-article-editor-update',
@@ -29,29 +22,16 @@ export class ArticleEditorUpdateComponent
 
   formGroup = new ArticleUpdateFormGroup()
   selectedRadioButton: string = this.formGroup.requiredLangs[0]
-  onSuccessfulSave(): void {
-
-  }
-
+  categoryList = new Array<Category>()
+  selectedCategory: Category | null = null;
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
     protected useCaseFindByIdFull: ArticleUseCaseGetByIdFull,
     protected useCaseUpdate: ArticleUseCaseUpdateByAdmin,
+    private categoryUseCaseGetAll: CategoryUseCaseGetAll,
     protected dialogsService: DialogsService,
-  ) {
-
-  }
-
-  journalList = new Array<Journal>(
-    {
-      id: 1,
-      name: "Magazine",
-      version: "2022",
-      status: "Open",
-      articlesCount: 0
-    }
-  )
+  ) {}
 
 
   ngOnInit(): void {
@@ -63,11 +43,31 @@ export class ArticleEditorUpdateComponent
             },
             error:(err) =>{
 
+            },
+            complete:()=>{
+
+              this.categoryUseCaseGetAll.execute().subscribe({
+                next:(categoryList)=>{
+                  this.categoryList = categoryList
+                },
+                complete:()=>{
+                  if(this.formGroup.updateDto.categoryId!=null){
+                    for(const category of this.categoryList){
+                      if(category.id==this.formGroup.updateDto.categoryId){
+                        this.formGroup.category = category
+                      }
+                    }
+                  }
+                }
+              })
+
             }
+
           })
         }
       }
     )
+
   }
 
   addAuthor():void{
@@ -78,9 +78,11 @@ export class ArticleEditorUpdateComponent
   }
 
   onCancelClicked() {
-
+    this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
   }
-
+  onSuccessfulUpdate(): void {
+    this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
+  }
   onFileChange($event: Event) {
     const input = $event.target as HTMLInputElement;
     if (!input.files?.length) {
@@ -90,19 +92,17 @@ export class ArticleEditorUpdateComponent
     this.formGroup.wordFile = input.files[0]
   }
 
-  protected onSuccessfulUpdate(): void {
-  }
-
 
   checkFormControl(formControl: FormControl) {
     return genericCheckFormControl(formControl)
   }
 
   onLangChange(lang: string) {
-
+    this.formGroup.onLangChange(lang)
   }
 
   onSubmit() {
+
     if(this.formGroup.valid()){
       let formData = new FormData()
 
@@ -114,7 +114,23 @@ export class ArticleEditorUpdateComponent
           type:this.formGroup.wordFile.type
         }))
       }
-
+      if(this.formGroup.pdfFile!=null){
+        formData.set("pdfFile", new Blob([this.formGroup.pdfFile],{
+          type:this.formGroup.pdfFile.type
+        }))
+      }
+      this.useCaseUpdate.execute(formData).subscribe({
+        complete:()=>{
+          this.dialogsService.openInfoDialog("Обновлено")
+          this.onSuccessfulUpdate()
+        }
+      })
     }
   }
+
+  onCategoryChanged(value: Category | null) {
+    this.formGroup.category = value
+  }
+
+
 }

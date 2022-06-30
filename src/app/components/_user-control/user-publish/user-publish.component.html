@@ -4,7 +4,8 @@
   xmlns="http://www.w3.org/1999/html"/>
 
 <div class="wrapper container mt-5 mb-5">
-  <h2>Публикация статьи</h2>
+  <br>
+  <h2 class="mt-5">Публикация статьи</h2>
   <div class = "col-lg-6 col-md-offset-1">
     <form class="needs-validation" >
 
@@ -18,7 +19,7 @@
         >
           <option value="" disabled selected hidden>Выберите журнал</option>
           <option *ngFor="let journal of journalList"
-                  [value]="journal.id">{{journal.name}}
+                  [value]="journal.id">{{journal.name+" "+journal.version}}
           </option>
         </select>
         <div *ngIf="checkFormControl(formGroup.journalId)"
@@ -156,6 +157,6 @@
       <span>Есть вопросы? <a routerLink="/user/handbook">справочник</a></span>
     </div>
   </div>
-
+<br>
 
 </div>

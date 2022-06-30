@@ -40,4 +40,11 @@ export class ComponentRoutingPaths {
       update:"admin/article/update"
     }
   }
+
+  public static reviewerControl = {
+    article:{
+      main:"reviewer/article/main",
+      update:"reviewer/article/update"
+    }
+  }
 }

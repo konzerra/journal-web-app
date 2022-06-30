@@ -1,12 +1,12 @@
-import {UseCaseGetAllPaginatedAbstract} from "../../../_generic/usecase/get/UseCaseGetAllPaginatedAbstract";
-import {Journal} from "../Journal";
-import {JournalPage} from "../JournalPage";
+import {UseCaseGetAllPaginatedAbstract} from "../../../../_generic/usecase/get/UseCaseGetAllPaginatedAbstract";
+import {Journal} from "../../Journal";
+import {JournalPage} from "../../JournalPage";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {JournalApi} from "../api-path/JournalApi";
-import {ArticlePage} from "../../article/ArticlePage";
-import {Article} from "../../article/Article";
+import {JournalApi} from "../../api-path/JournalApi";
+import {ArticlePage} from "../../../article/ArticlePage";
+import {Article} from "../../../article/Article";
 import {Observable} from "rxjs";
-import {ApiPathUtil} from "../../../_generic/util/ApiPathUtil";
+import {ApiPathUtil} from "../../../../_generic/util/ApiPathUtil";
 import {Injectable} from "@angular/core";
 
 

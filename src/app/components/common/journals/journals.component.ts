@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {JournalPage} from "../../../domain/journal/JournalPage";
 import {Journal} from "../../../domain/journal/Journal";
-import {JournalUseCaseGetAllPaginated} from "../../../domain/journal/usecase/JournalUseCaseGetAllPaginated";
+import {JournalUseCaseGetAllPaginated} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllPaginated";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 

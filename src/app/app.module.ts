@@ -10,7 +10,7 @@ import {AuthInterceptor} from "./_auth/auth.interceptor";
 import {RouterModule} from "@angular/router";
 import { UserLoginComponent } from './components/_user-control/user-login/user-login.component';
 import { UserRegisterComponent } from './components/_user-control/user-register/user-register.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './components/common/home/home.component';
 import { CategoryEditorMainComponent } from './components/_admin-control/category/category-editor-main/category-editor-main.component';
 import { CategoryEditorSaveComponent } from './components/_admin-control/category/category-editor-save/category-editor-save.component';
@@ -70,18 +70,19 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     JournalsComponent,
     ReviewerArticleMainComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule,
-    MatIconModule,
-    NgxPaginationModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        MatIconModule,
+        NgxPaginationModule,
+        FormsModule,
 
-  ],
+    ],
   providers: [
     AuthGuard,
     {

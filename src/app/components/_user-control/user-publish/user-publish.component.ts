@@ -15,6 +15,9 @@ import { UseCaseSaveAbstract } from 'src/app/_generic/usecase/UseCaseSaveAbstrac
 import { DialogsService } from '../../common/dialogs/dialogs.service';
 import {ArticleUseCaseSave} from "../../../domain/article/usecase/ArticleUseCaseSave";
 import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {JournalUseCaseGetAllByStatus} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllByStatus";
+import {JournalStatus} from "../../../domain/journal/JournalStatus";
+import {CategoryUseCaseGetAll} from "../../../domain/category/usecase/CategoryUseCaseGetAll";
 
 @Component({
   selector: 'app-user-publish',
@@ -36,23 +39,22 @@ export class UserPublishComponent
     protected saveUseCase: ArticleUseCaseSave,
     protected dialogsService: DialogsService,
     private userService: UserAuthService,
+    private journalUseCaseGetAllByStatus: JournalUseCaseGetAllByStatus,
+
   ) {
     super()
   }
 
-  journalList = new Array<Journal>(
-    {
-      id: 1,
-      name: "Журнал Известия им. КГТУ",
-      version: "2022",
-      status: "Open",
-      articlesCount: 0
+  journalList = new Array<Journal>()
 
-    }
-  )
 
 
   ngOnInit(): void {
+    this.journalUseCaseGetAllByStatus.execute(JournalStatus.Open).subscribe({
+      next:(journalList)=>{
+        this.journalList = journalList
+      }
+    })
 
   }
 

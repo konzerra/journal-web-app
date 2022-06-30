@@ -10,6 +10,7 @@ export class JournalApi {
 
     makeReport : `${this.protectedPath}/{id}`,
 
+    getAllByStatus: `${this.protectedPath}/all-by-status/{status}`,
     getAllArticlesPaginated : `${this.publicPath}/{id}/articles/{pageNumber}`,
     getAllCategories : `${this.publicPath}/{id}/categories`,
     getByIdFull : `${this.protectedPath}/full/{id}`,
