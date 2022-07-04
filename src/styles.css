@@ -4,11 +4,27 @@
   min-height: 100vh;
 }
 
+.btn-danger{
+  background-color: red !important;
+}
 
 
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.pagination-c ::ng-deep .ngx-pagination .current {
+  border-radius: 5%;
+  background-color: rgb(10, 98, 191,0.5);
+  transition: 1s
+}
+.pagination-c ::ng-deep .ngx-pagination .current:hover {
+  background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
+}
 
 
 

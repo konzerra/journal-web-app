@@ -47,7 +47,7 @@ export class JournalsComponent
     })
   }
 
-  onJournalPanelClicked(id: number) {
+  onJournalPanelClicked(id: Number) {
     this.router.navigate([ComponentRoutingPaths.common.articles])
   }
 }

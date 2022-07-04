@@ -2,11 +2,13 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
 />
-<div class = "wrapper container mt-5">
-  <h2 >Статьи</h2>
+
+<body>
+<div class = "wrapper container pt-5">
+  <h2 class="mt-5">Статьи</h2>
 
   <!-- Search box -->
-  <div class="col-lg-6 col-md-offset-1 pt-5">
+  <div class="col-lg-6 col-md-offset-1 pt-2">
     <div class="input-group w-75 mb-3" >
       <input type="search" class="form-control" placeholder="Search" >
       <button class="btn btn-primary" type="button" id="button-search">
@@ -23,11 +25,18 @@
       <th scope="col">Название</th>
       <th scope="col">Статус</th>
       <th scope="col">Статус оплаты</th>
-      <th scope="col">Управление</th>
+      <th scope="col">
+        <button type="button" class="btn btn-primary btn-sm text-nowrap"
+                (click)="onDistribute()"
+        >
+          <i class="bi bi-send"></i>
+          Рецензентам
+        </button>
+      </th>
     </tr>
     </thead>
     <tbody >
-    <tr *ngFor="let i = index; let model of modelPage.content | paginate :{
+    <tr  *ngFor="let i = index; let model of modelPage.content | paginate :{
     itemsPerPage: 10,
     currentPage : modelPage.number+1,
     totalItems: modelPage.totalElements
@@ -52,9 +61,12 @@
 
   <!-- Pagination box -->
   <pagination-controls
-    class="pagination"
+    class="pagination "
     (pageChange)="onPageChange($event)"
   ></pagination-controls>
+
 </div>
+</body>
+
 
 

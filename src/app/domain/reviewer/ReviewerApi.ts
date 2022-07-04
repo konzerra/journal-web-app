@@ -6,6 +6,8 @@ export class ReviewerApi {
     deleteById: `${AppApi.server.protectedApi}/reviewer/{id}`,
     update: `${AppApi.server.protectedApi}/reviewer`,
 
+    distribute:`${AppApi.server.protectedApi}/reviewer/distribute/journal/{id}`,
+
     getAllArticles: `${AppApi.server.protectedApi}/reviewer/articles/{id}`,
     getById: `${AppApi.server.publicApi}/reviewer/{id}`,
     getAllPaginated: `${AppApi.server.protectedApi}/reviewer/all/{pageNumber}`,

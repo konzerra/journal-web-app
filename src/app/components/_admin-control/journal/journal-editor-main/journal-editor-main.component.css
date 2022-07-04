@@ -1,3 +1,16 @@
 .wrapper{
   min-height: 100vh;
 }
+.link{
+  color: #0A62BF;
+}
+
+.link{
+  color:black;
+  text-decoration: underline;
+  transition: 2s
+}
+.link:hover{
+  color: #8b00d2;
+}
+

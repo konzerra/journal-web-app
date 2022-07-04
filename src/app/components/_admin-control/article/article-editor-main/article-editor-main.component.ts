@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {ArticleUseCaseDeleteById} from "../../../../domain/article/usecase/ArticleUseCaseDeleteById";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {ReviewerUseCaseDistribute} from "../../../../domain/reviewer/usecase/ReviewerUseCaseDistribute";
 
 @Component({
   selector: 'app-article-editor-main',
@@ -40,6 +41,7 @@ export class ArticleEditorMainComponent
   constructor(
     private journalUseCaseGetAllArticlesPaginated: JournalUseCaseGetAllArticlesPaginated,
     private articleUseCaseDeleteById: ArticleUseCaseDeleteById,
+    private reviewerUseCaseDistribute: ReviewerUseCaseDistribute,
     private route:ActivatedRoute,
     private router:Router,
     private dialogsService: DialogsService
@@ -99,5 +101,14 @@ export class ArticleEditorMainComponent
 
         }
       })
+  }
+
+  onDistribute() {
+    console.log(this.journal)
+    this.reviewerUseCaseDistribute.execute(this.journal.id).subscribe({
+      next:(message)=>{
+        this.dialogsService.openInfoDialog(message)
+      }
+    })
   }
 }

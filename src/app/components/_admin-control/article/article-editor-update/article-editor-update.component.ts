@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
-import {Journal} from "../../../../domain/journal/Journal";
+import { saveAs } from 'file-saver';
 import {ArticleUseCaseUpdateByAdmin} from "../../../../domain/article/usecase/ArticleUseCaseUpdateByAdmin";
 import {ArticleUseCaseGetByIdFull} from "../../../../domain/article/usecase/ArticleUseCaseGetByIdFull";
 import {ArticleUpdateFormGroup} from "./form-group/ArticleUpdateFormGroup";
@@ -11,6 +11,7 @@ import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFor
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
 import {Category} from "../../../../domain/category/Category";
+import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
 
 @Component({
   selector: 'app-article-editor-update',
@@ -30,6 +31,7 @@ export class ArticleEditorUpdateComponent
     protected useCaseFindByIdFull: ArticleUseCaseGetByIdFull,
     protected useCaseUpdate: ArticleUseCaseUpdateByAdmin,
     private categoryUseCaseGetAll: CategoryUseCaseGetAll,
+    private docUseCaseDownload: DocUseCaseDownload,
     protected dialogsService: DialogsService,
   ) {}
 
@@ -83,14 +85,7 @@ export class ArticleEditorUpdateComponent
   onSuccessfulUpdate(): void {
     this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
   }
-  onFileChange($event: Event) {
-    const input = $event.target as HTMLInputElement;
-    if (!input.files?.length) {
-      this.formGroup.wordFile = null
-      return;
-    }
-    this.formGroup.wordFile = input.files[0]
-  }
+
 
 
   checkFormControl(formControl: FormControl) {
@@ -133,4 +128,33 @@ export class ArticleEditorUpdateComponent
   }
 
 
+  onDocDownload(id: Number | null) {
+    if(id==null){
+      this.dialogsService.openInfoDialog("Невозможно скачать")
+      return
+    }
+    this.docUseCaseDownload.execute(id).subscribe({
+      next:(file)=>{
+        saveAs(file,"journal-thing")
+      }
+    })
+  }
+
+
+  onFileChange($event: Event) {
+    const input = $event.target as HTMLInputElement;
+    if (!input.files?.length) {
+      this.formGroup.wordFile = null
+      return;
+    }
+    this.formGroup.wordFile = input.files[0]
+  }
+  onPdfFileChange($event: Event) {
+    const input = $event.target as HTMLInputElement;
+    if (!input.files?.length) {
+      this.formGroup.wordFile = null
+      return;
+    }
+    this.formGroup.pdfFile = input.files[0]
+  }
 }

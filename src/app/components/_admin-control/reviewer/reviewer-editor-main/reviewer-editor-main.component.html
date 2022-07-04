@@ -2,8 +2,10 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
 />
-<div class = "wrapper container mt-4">
-  <h2 class="pt-5">Рецензенты</h2>
+
+<body>
+<div class = "wrapper container pt-5">
+  <h2 class="mt-5">Рецензенты</h2>
 
   <!-- Search box -->
   <div class="col-lg-6 col-md-offset-1">
@@ -14,8 +16,6 @@
       </button>
     </div>
   </div>
-
-
   <table class="table " >
     <thead>
     <tr>
@@ -59,9 +59,12 @@
 
   <!-- Pagination box -->
   <pagination-controls
-    class="pagination"
+    class="pagination mb-5"
     (pageChange)="onPageChange($event)"
   ></pagination-controls>
+  <br>
 </div>
+</body>
+
 
 

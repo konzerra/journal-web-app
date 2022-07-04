@@ -8,6 +8,7 @@
   <div class="container">
     <div class="col-lg-6">
       <br>
+      <br class="mt-5">
       <h2 class="mt-5">Журналы</h2>
 
       <div *ngFor="let i = index; let model of modelPage.content | paginate :{
@@ -26,7 +27,7 @@
 
       <!-- Pagination box -->
       <pagination-controls
-        class="pagination mt-3"
+        class="pagination-c mt-3"
         (pageChange)="onPageChange($event)"
       ></pagination-controls>
     </div>

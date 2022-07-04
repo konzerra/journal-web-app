@@ -22,7 +22,11 @@ export class ReviewerArticleMainComponent
   ngOnInit(): void {
     let userId = this.userAuthService.getUser()?.id
     if(userId!=null){
-      this.reviewerUseCaseGetAllArticles.execute(userId)
+      this.reviewerUseCaseGetAllArticles.execute(userId).subscribe({
+        next:(list)=>{
+          this.modelList=list
+        }
+      })
     }
 
   }
