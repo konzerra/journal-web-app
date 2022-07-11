@@ -19,8 +19,8 @@ export class CategoryDataControls
     return {
       id: this.id,
       lang: this.lang,
-      name: this.name.value,
-      overview: this.overview.value
+      name: this.name.value || "",
+      overview: this.overview.value || ""
 
     }
   }

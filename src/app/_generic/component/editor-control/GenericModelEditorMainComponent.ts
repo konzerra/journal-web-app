@@ -29,14 +29,14 @@ export abstract class GenericModelEditorMainComponent
     first: false,
     number: 0,
     numberOfElements: 0,
-    size: 0,
+    size: 10,
     totalElements: 0,
     totalPages: 0
 
   }
 
   abstractOnInit(): void {
-    this.useCaseGetAllPaginated.execute(this.modelPage.number).subscribe(
+    this.useCaseGetAllPaginated.execute(this.modelPage.number, this.modelPage.size).subscribe(
       {
         next:(modelPage)=>{
           this.modelPage = modelPage
@@ -78,7 +78,7 @@ export abstract class GenericModelEditorMainComponent
   }
 
   onPageChange($event: number) {
-    this.useCaseGetAllPaginated.execute($event-1).subscribe(
+    this.useCaseGetAllPaginated.execute($event-1,this.modelPage.size).subscribe(
       {
         next:(modelPage)=>{
 

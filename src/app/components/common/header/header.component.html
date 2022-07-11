@@ -21,9 +21,9 @@
             О журнале
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownAboutJournal">
-            <li><a class="dropdown-item" routerLink = "/admin/journal/main">О журнале</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/category/main">Этика публикации</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">Рабочий состав</a></li>
+            <li><a class="dropdown-item" routerLink = "/about">О журнале</a></li>
+            <li><a class="dropdown-item" routerLink = "/ethics">Этика публикации</a></li>
+            <li><a class="dropdown-item" routerLink = "/board">Рабочий состав</a></li>
           </ul>
         </li>
         <li class="nav-item ms-3">
@@ -40,7 +40,7 @@
             <li><a class="dropdown-item" routerLink = "/admin/category/main">Категории</a></li>
             <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">Рецензенты</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Страницы сайта</a></li>
+            <li><a class="dropdown-item" routerLink="admin/markdown/main">Страницы сайта</a></li>
           </ul>
         </li>
 
@@ -60,7 +60,22 @@
         <li class="nav-item ms-3">
           <a *ngIf="isLoggedIn()" (click)="logout()" class="nav-link active" aria-current="page" routerLink = "/login">выйти</a>
         </li>
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <select class="lang-select"
+                id="category"
+                [formControl]="selectedLang"
+                (change)="onLangChange()"
+                required
+        >
+          <option *ngFor="let lang of langs"
+                  [value]="lang">{{lang}}
+          </option>
+        </select>
       </ul>
     </div>
+
   </div>
 </nav>

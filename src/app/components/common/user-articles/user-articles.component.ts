@@ -21,7 +21,8 @@ export class UserArticlesComponent implements OnInit {
         version: "2022"
       },
       status: "Published",
-      tags: "it, tech, girls"
+      tags: "it, tech, girls",
+      reviewer: true
 
     }
   )

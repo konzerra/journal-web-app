@@ -94,7 +94,7 @@ export class ArticleUpdateFormGroup
       id: this.updateDto.id,
       journalId: this.journal.value,
       pagesInJournal: this.pagesInJournal.value,
-      status: this.status.value,
+      status: this.status.value || this.updateDto.status,
       pdfDocId: this.updateDto.pdfDocId,
       verificationDocId: this.updateDto.verificationDocId,
       wordDocId: this.updateDto.wordDocId,

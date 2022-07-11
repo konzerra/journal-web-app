@@ -1,8 +1,8 @@
 import {UseCaseSaveAbstract} from "../../../_generic/usecase/UseCaseSaveAbstract";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {CategoryApi} from "../../category/api-path/CategoryApi";
-import {ArticleApi} from "../api-path/ArticleApi";
+import {CategoryApi} from "../../category/CategoryApi";
+import {ArticleApi} from "../ArticleApi";
 
 @Injectable({
   providedIn : "root"

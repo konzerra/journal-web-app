@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
-import {CategoryApi} from "../api-path/CategoryApi";
+import {CategoryApi} from "../CategoryApi";
 import {CategoryUpdateDto} from "../dto/CategoryUpdateDto";
 
 import {UseCaseGetByIdFullAbstract} from "../../../_generic/usecase/get/UseCaseGetByIdFullAbstract";

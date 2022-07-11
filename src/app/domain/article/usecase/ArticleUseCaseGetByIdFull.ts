@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {UseCaseGetByIdFullAbstract} from "../../../_generic/usecase/get/UseCaseGetByIdFullAbstract";
 import {ArticleUpdateDtoByAdmin} from "../dto/ArticleUpdateDtoByAdmin";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ArticleApi} from "../api-path/ArticleApi";
+import {ArticleApi} from "../ArticleApi";
 
 @Injectable({
   providedIn:'root'

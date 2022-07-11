@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UseCaseSaveAbstract} from "../../../_generic/usecase/UseCaseSaveAbstract";
 import {JournalSaveDto} from "../dto/JournalSaveDto";
-import {JournalApi} from "../api-path/JournalApi";
+import {JournalApi} from "../JournalApi";
 
 @Injectable({
   providedIn : "root"

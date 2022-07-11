@@ -1,4 +1,4 @@
-import {AppApi} from "../../AppApi";
+import {AppApi} from "../AppApi";
 
 export class UserApi {
   public static paths={

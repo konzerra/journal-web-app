@@ -22,17 +22,7 @@ import {ReviewerUseCaseGetAllPaginated} from "../../../../domain/reviewer/usecas
 export class ReviewerEditorMainComponent
   extends GenericModelEditorMainComponent<Reviewer, ReviewerPage>
   implements OnInit {
-  override modelPage: ReviewerPage = {
-    content: new Array<Reviewer>(),
-    empty: false,
-    first: false,
-    number: 0,
-    numberOfElements: 0,
-    size: 0,
-    totalElements: 0,
-    totalPages: 0
 
-  }
   override  modelSavePath = ComponentRoutingPaths.adminControl.reviewer.save
   override modelUpdatePath = ComponentRoutingPaths.adminControl.reviewer.update
 

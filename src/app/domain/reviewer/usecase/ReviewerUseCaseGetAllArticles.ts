@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {UseCaseDeleteByIdAbstract} from "../../../_generic/usecase/UseCaseDeleteByIdAbstract";
-import {CategoryApi} from "../../category/api-path/CategoryApi";
+import {CategoryApi} from "../../category/CategoryApi";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ReviewerApi} from "../ReviewerApi";
 import {Observable} from "rxjs";

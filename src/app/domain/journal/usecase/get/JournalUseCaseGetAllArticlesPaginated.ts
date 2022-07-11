@@ -2,7 +2,7 @@ import {UseCaseGetAllPaginatedAbstract} from "../../../../_generic/usecase/get/U
 import {Journal} from "../../Journal";
 import {JournalPage} from "../../JournalPage";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {JournalApi} from "../../api-path/JournalApi";
+import {JournalApi} from "../../JournalApi";
 import {ArticlePage} from "../../../article/ArticlePage";
 import {Article} from "../../../article/Article";
 import {Observable} from "rxjs";
@@ -19,8 +19,12 @@ export class JournalUseCaseGetAllArticlesPaginated {
   ) {}
   protected requestHeader: HttpHeaders = new HttpHeaders({'No-Auth':'true'});
 
-  execute(journalId:Number, pageNumber:Number):Observable<ArticlePage>{
-    let apiPath = ApiPathUtil.insertPageNumber(JournalApi.paths.getAllArticlesPaginated,pageNumber.toString())
+  execute(journalId:Number, pageNumber:Number,pageSize:Number):Observable<ArticlePage>{
+    let apiPath = ApiPathUtil.insertPageNumberAndSize(
+      JournalApi.paths.getAllArticlesPaginated,
+      pageNumber.toString(),
+      pageSize.toString()
+    )
     apiPath = ApiPathUtil.insertId(apiPath,journalId.toString())
     console.log(apiPath)
     return this.httpClient.get<ArticlePage>(apiPath,{

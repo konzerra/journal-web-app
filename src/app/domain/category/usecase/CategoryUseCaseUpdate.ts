@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {UseCaseUpdateAbstract} from "../../../_generic/usecase/UseCaseUpdateAbstract";
 import {CategoryUpdateDto} from "../dto/CategoryUpdateDto";
-import {CategoryApi} from "../api-path/CategoryApi";
+import {CategoryApi} from "../CategoryApi";
 
 @Injectable({
   providedIn : "root"

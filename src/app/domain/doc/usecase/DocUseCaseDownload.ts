@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {JournalApi} from "../../journal/api-path/JournalApi";
+import {JournalApi} from "../../journal/JournalApi";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DocApi} from "../DocApi";
 import {ApiPathUtil} from "../../../_generic/util/ApiPathUtil";

@@ -13,8 +13,12 @@ export abstract class UseCaseGetAllPaginatedAbstract <Model,ModelPage extends Mo
 
   protected abstract requestHeader : HttpHeaders //= new HttpHeaders({ 'No-Auth': 'True' })
 
-  public execute(pageNumber:Number):Observable<ModelPage>{
-    return this.httpClient.get<ModelPage>(ApiPathUtil.insertPageNumber(this.apiPath,pageNumber.toString()),{
+  public execute(pageNumber:Number, pageSize: Number):Observable<ModelPage>{
+    return this.httpClient.get<ModelPage>(ApiPathUtil.insertPageNumberAndSize(
+      this.apiPath,
+      pageNumber.toString(),
+      pageSize.toString()
+    ),{
       headers: this.requestHeader,
     })
   }

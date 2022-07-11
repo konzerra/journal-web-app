@@ -1,4 +1,4 @@
-import {AppApi} from "../../AppApi";
+import {AppApi} from "../AppApi";
 
 export class CategoryApi {
   public static paths={
@@ -8,7 +8,7 @@ export class CategoryApi {
 
     getByIdFull: `${AppApi.server.protectedApi}/category/full/{id}`,
     getById: `${AppApi.server.publicApi}/category/`,
-    getAllPaginated: `${AppApi.server.protectedApi}/category/all/{pageNumber}`,
+    getAllPaginated: `${AppApi.server.protectedApi}/category/all/{pageNumber}/{pageSize}`,
     getAll:`${AppApi.server.publicApi}/category/all`
   }
 }

@@ -18,17 +18,7 @@ import {DialogsService} from "../../../common/dialogs/dialogs.service";
 export class CategoryEditorMainComponent
   extends GenericModelEditorMainComponent<Category, CategoryPage>
   implements OnInit {
-  override modelPage: CategoryPage = {
-    content: new Array<Category>(),
-    empty: false,
-    first: false,
-    number: 0,
-    numberOfElements: 0,
-    size: 0,
-    totalElements: 0,
-    totalPages: 0
 
-  }
   override  modelSavePath = ComponentRoutingPaths.adminControl.category.save
   override modelUpdatePath = ComponentRoutingPaths.adminControl.category.update
 

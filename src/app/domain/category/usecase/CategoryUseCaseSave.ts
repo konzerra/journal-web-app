@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UseCaseSaveAbstract} from "../../../_generic/usecase/UseCaseSaveAbstract";
 import {CategorySaveDto} from "../dto/CategorySaveDto";
-import {CategoryApi} from "../api-path/CategoryApi";
+import {CategoryApi} from "../CategoryApi";
 
 @Injectable({
   providedIn : "root"

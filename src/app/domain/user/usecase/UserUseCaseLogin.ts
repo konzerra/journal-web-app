@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserApi} from "../api-path/UserApi";
+import {UserApi} from "../UserApi";
 import {UserLoginDto} from "../dto/UserLoginDto";
 import {JwtDto} from "../../jwt/JwtDto";
 
@@ -14,7 +14,7 @@ export class UserUseCaseLogin {
   ) { }
 
   execute(loginDto:UserLoginDto){
-    return this.httpClient.post<JwtDto>(UserApi.paths.login+"/ru", loginDto, {
+    return this.httpClient.post<JwtDto>(UserApi.paths.login, loginDto, {
       headers: this.requestHeader,
     })
   }

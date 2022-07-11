@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {JournalApi} from "../../api-path/JournalApi";
+import {JournalApi} from "../../JournalApi";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ArticlePage} from "../../../article/ArticlePage";
@@ -11,7 +11,7 @@ import {Journal} from "../../Journal";
 })
 export class JournalUseCaseGetAllByStatus {
   private apiPath: string = JournalApi.paths.getAllByStatus
-  protected requestHeader: HttpHeaders = new HttpHeaders();
+  protected requestHeader: HttpHeaders = new HttpHeaders({'No-Auth':'true'});
   constructor(
     private httpClient:HttpClient
   ) {}

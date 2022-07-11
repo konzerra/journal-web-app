@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {UseCaseDeleteByIdAbstract} from "../../../_generic/usecase/UseCaseDeleteByIdAbstract";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ArticleApi} from "../api-path/ArticleApi";
+import {ArticleApi} from "../ArticleApi";
 
 @Injectable({
   providedIn:"root"

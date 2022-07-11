@@ -1,7 +1,7 @@
 import {Inject, Injectable} from "@angular/core";
 import {UseCaseUpdateAbstract} from "../../../_generic/usecase/UseCaseUpdateAbstract";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ArticleApi} from "../api-path/ArticleApi";
+import {ArticleApi} from "../ArticleApi";
 
 @Injectable({
   providedIn: "root"

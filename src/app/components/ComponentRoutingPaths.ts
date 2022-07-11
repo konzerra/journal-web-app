@@ -11,7 +11,10 @@ export class ComponentRoutingPaths {
   public static common = {
     home : "",
     articles: "articles",
-    journals: "journals"
+    journals: "journals",
+    about: "about",
+    ethics: "ethics",
+    board: "board"
   }
 
   public static adminControl = {
@@ -38,7 +41,12 @@ export class ComponentRoutingPaths {
     article:{
       main:"admin/article/main",
       update:"admin/article/update"
-    }
+    },
+    markdown : {
+      main: "admin/markdown/main",
+      save: "admin/markdown/save",
+      update: "admin/markdown/update"
+    },
   }
 
   public static reviewerControl = {

@@ -1,4 +1,4 @@
-import {AppApi} from "../../AppApi";
+import {AppApi} from "../AppApi";
 
 export class JournalApi {
   private static publicPath = `${AppApi.server.publicApi}/journal`
@@ -11,11 +11,11 @@ export class JournalApi {
     makeReport : `${this.protectedPath}/{id}`,
 
     getAllByStatus: `${this.protectedPath}/all-by-status/{status}`,
-    getAllArticlesPaginated : `${this.publicPath}/{id}/articles/{pageNumber}`,
+    getAllArticlesPaginated : `${this.publicPath}/{id}/articles/{pageNumber}/{pageSize}`,
     getAllCategories : `${this.publicPath}/{id}/categories`,
     getByIdFull : `${this.protectedPath}/full/{id}`,
     getById: `${this.publicPath}/{id}`,
-    getAllPaginated: `${this.publicPath}/all/{pageNumber}`,
+    getAllPaginated: `${this.publicPath}/all/{pageNumber}/{pageSize}`,
 
     save: `${this.protectedPath}`,
     deleteById: `${this.protectedPath}/{id}`,

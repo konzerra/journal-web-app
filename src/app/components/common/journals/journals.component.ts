@@ -21,7 +21,7 @@ export class JournalsComponent
     first: false,
     number: 0,
     numberOfElements: 0,
-    size: 0,
+    size: 5,
     totalElements: 0,
     totalPages: 0
 
@@ -32,7 +32,7 @@ export class JournalsComponent
   ) { }
 
   ngOnInit(): void {
-    this.journalUseCaseGetAllPaginated.execute(this.modelPage.number).subscribe({
+    this.journalUseCaseGetAllPaginated.execute(this.modelPage.number, this.modelPage.size).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
       }
@@ -40,7 +40,7 @@ export class JournalsComponent
   }
 
   onPageChange($event: number) {
-    this.journalUseCaseGetAllPaginated.execute($event).subscribe({
+    this.journalUseCaseGetAllPaginated.execute($event,this.modelPage.size).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
       }

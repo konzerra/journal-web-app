@@ -27,7 +27,7 @@ export class ArticleEditorMainComponent
     first: false,
     number: 0,
     numberOfElements: 0,
-    size: 0,
+    size: 10,
     totalElements: 0,
     totalPages: 0
   }
@@ -53,7 +53,11 @@ export class ArticleEditorMainComponent
     this.route.queryParams.subscribe({
         next:(param) =>{
           this.journal = JSON.parse(param["model"])
-          this.journalUseCaseGetAllArticlesPaginated.execute(this.journal.id, this.modelPage.number ).subscribe(
+          this.journalUseCaseGetAllArticlesPaginated.execute(
+            this.journal.id,
+            this.modelPage.number,
+            10
+          ).subscribe(
             {
               next:(modelPage)=>{
                 this.modelPage = modelPage
@@ -88,7 +92,12 @@ export class ArticleEditorMainComponent
   }
 
   onPageChange($event: number) {
-    this.journalUseCaseGetAllArticlesPaginated.execute($event-1, this.journal.id ).subscribe(
+    this.journalUseCaseGetAllArticlesPaginated.execute(
+      this.journal.id,
+    $event-1,
+      10
+
+    ).subscribe(
       {
         next:(modelPage)=>{
           this.modelPage = modelPage

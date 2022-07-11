@@ -39,6 +39,19 @@ import { ArticleEditorUpdateComponent } from './components/_admin-control/articl
 import { JournalsComponent } from './components/common/journals/journals.component';
 import { ReviewerArticleMainComponent } from './components/_reviewer_control/reviewer-article-main/reviewer-article-main.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {MarkdownModule} from "ngx-markdown";
+import { AboutComponent } from './components/common/about/about.component';
+import {
+  MarkdownEditorMainComponent
+} from "./components/_admin-control/markdown/markdown-editor-main/markdown-editor-main.component";
+import {
+  MarkdownEditorSaveComponent
+} from "./components/_admin-control/markdown/markdown-editor-save/markdown-editor-save.component";
+import {
+  MarkdownEditorUpdateComponent
+} from "./components/_admin-control/markdown/markdown-editor-update/markdown-editor-update.component";
+import { BoardComponent } from './components/common/board/board.component';
+import { EthicsComponent } from './components/common/ethics/ethics.component';
 
 
 @NgModule({
@@ -69,6 +82,12 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     ArticleEditorUpdateComponent,
     JournalsComponent,
     ReviewerArticleMainComponent,
+    AboutComponent,
+    MarkdownEditorMainComponent,
+    MarkdownEditorSaveComponent,
+    MarkdownEditorUpdateComponent,
+    BoardComponent,
+    EthicsComponent
   ],
     imports: [
         BrowserModule,
@@ -81,6 +100,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
         MatIconModule,
         NgxPaginationModule,
         FormsModule,
+      MarkdownModule.forRoot()
 
     ],
   providers: [

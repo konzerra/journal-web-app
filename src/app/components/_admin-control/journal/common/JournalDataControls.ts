@@ -17,8 +17,8 @@ export class JournalDataControls
     return {
       id: this.id,
       lang: this.lang,
-      name: this.name.value,
-      version: this.version.value
+      name: this.name.value || "",
+      version: this.version.value || ""
 
     }
   }

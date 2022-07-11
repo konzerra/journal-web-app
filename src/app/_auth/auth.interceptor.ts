@@ -11,7 +11,7 @@ import {catchError, Observable, throwError} from "rxjs";
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {UserAuthService} from "../domain/user/service/UserAuthService";
-import {AppLanguage} from "../util/AppLanguage";
+import {AppLanguage} from "../AppLanguage";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{

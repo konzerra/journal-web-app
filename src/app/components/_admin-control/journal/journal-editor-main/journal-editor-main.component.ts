@@ -18,17 +18,7 @@ import {
 export class JournalEditorMainComponent
   extends GenericModelEditorMainComponent<Journal, JournalPage>
   implements OnInit {
-  override modelPage : JournalPage = {
-    content: new Array<Journal>(),
-    empty: false,
-    first: false,
-    number: 0,
-    numberOfElements: 0,
-    size: 0,
-    totalElements: 0,
-    totalPages: 0
 
-  }
   override  modelSavePath = ComponentRoutingPaths.adminControl.journal.save
   override modelUpdatePath = ComponentRoutingPaths.adminControl.journal.update
 

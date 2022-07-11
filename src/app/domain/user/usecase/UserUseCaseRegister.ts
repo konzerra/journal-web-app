@@ -1,5 +1,5 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserApi} from "../api-path/UserApi";
+import {UserApi} from "../UserApi";
 import {Injectable} from "@angular/core";
 import {UserRegisterDto} from "../dto/UserRegisterDto";
 

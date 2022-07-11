@@ -9,6 +9,7 @@ export interface Article {
     version:string
   },
   category: string,
-  annotation: string
+  annotation: string,
+  reviewer: boolean
 
 }

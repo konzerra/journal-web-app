@@ -7,6 +7,9 @@ export class AppLanguage{
     Kg : "Kg"
   }
   public static getLocalLanguage():string{
-    return localStorage.getItem("lang") || "Kg"
+    return localStorage.getItem("lang") || this.languages.Ru
+  }
+  public static setLocalLanguage(lang: string){
+    localStorage.setItem("lang",lang)
   }
 }

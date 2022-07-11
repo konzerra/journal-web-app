@@ -9,3 +9,9 @@ a{
 .dropdown-item{
   color: black !important;
 }
+
+.lang-select{
+  border: none;
+  max-width: fit-content;
+  background-color: transparent;
+}

@@ -4,12 +4,12 @@ import {ReviewerSaveDto} from "../../../../../domain/reviewer/dto/ReviewerSaveDt
 export class ReviewerSaveFormGroup {
 
   email = new FormControl("", Validators.required)
-  categoryId = new FormControl(null,Validators.required)
+  categoryId = new FormControl<Number>(0,Validators.required)
 
   getDto():ReviewerSaveDto{
     return {
-      categoryId: this.categoryId.value,
-      email: this.email.value
+      categoryId: this.categoryId.value  || 0,
+      email: this.email.value || ""
     }
   }
   valid():boolean{

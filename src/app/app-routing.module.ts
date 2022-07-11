@@ -47,12 +47,27 @@ import {
 import {
   ReviewerArticleMainComponent
 } from "./components/_reviewer_control/reviewer-article-main/reviewer-article-main.component";
+import {AboutComponent} from "./components/common/about/about.component";
+import {
+  MarkdownEditorMainComponent
+} from "./components/_admin-control/markdown/markdown-editor-main/markdown-editor-main.component";
+import {
+  MarkdownEditorSaveComponent
+} from "./components/_admin-control/markdown/markdown-editor-save/markdown-editor-save.component";
+import {
+  MarkdownEditorUpdateComponent
+} from "./components/_admin-control/markdown/markdown-editor-update/markdown-editor-update.component";
+import {EthicsComponent} from "./components/common/ethics/ethics.component";
+import {BoardComponent} from "./components/common/board/board.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
   {path:ComponentRoutingPaths.common.articles, component: UserArticlesComponent},
   {path:`forbidden`, component: ForbiddenComponent},
   {path:`${ComponentRoutingPaths.common.journals}`, component: JournalsComponent},
+  {path:`${ComponentRoutingPaths.common.about}`, component: AboutComponent},
+  {path:`${ComponentRoutingPaths.common.ethics}`, component: EthicsComponent},
+  {path:`${ComponentRoutingPaths.common.board}`, component: BoardComponent},
 
 
   //User control
@@ -84,6 +99,11 @@ const routes : Routes = [
   {path:`${ComponentRoutingPaths.adminControl.reviewer.main}`, component: ReviewerEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.reviewer.save}`, component: ReviewerEditorSaveComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
   {path:`${ComponentRoutingPaths.adminControl.reviewer.update}`, component: ReviewerEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+
+  //Markdown
+  {path:`${ComponentRoutingPaths.adminControl.markdown.main}`, component: MarkdownEditorMainComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.markdown.save}`, component: MarkdownEditorSaveComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
+  {path:`${ComponentRoutingPaths.adminControl.markdown.update}`, component: MarkdownEditorUpdateComponent, canActivate:[AuthGuard], data:{role:'Admin'}},
 
 
   //Reviewer control

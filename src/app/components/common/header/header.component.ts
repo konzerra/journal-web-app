@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {FormControl} from "@angular/forms";
+import {AppLanguage} from "../../../AppLanguage";
+
 
 @Component({
   selector: 'app-header',
@@ -8,11 +11,15 @@ import {UserAuthService} from "../../../domain/user/service/UserAuthService";
 })
 export class HeaderComponent implements OnInit {
 
+  langs = Object.values(AppLanguage.languages)
+  selectedLang = new FormControl<string>(AppLanguage.languages.Ru)
+
   constructor(
-    private userAuthService:UserAuthService
+    private userAuthService:UserAuthService,
   ) { }
 
   ngOnInit(): void {
+    this.selectedLang.setValue(  AppLanguage.getLocalLanguage())
   }
 
   isLoggedIn() {
@@ -24,5 +31,12 @@ export class HeaderComponent implements OnInit {
   }
   hasRole(role:string): boolean{
     return this.userAuthService.hasRole(role)
+  }
+
+  onLangChange() {
+    if(this.selectedLang.value != null){
+      AppLanguage.setLocalLanguage(this.selectedLang.value)
+      window.location.reload()
+    }
   }
 }

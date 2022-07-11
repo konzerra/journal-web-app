@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {UseCaseGetAllAbstract} from "../../../_generic/usecase/get/UseCaseGetAllAbstract";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Category} from "../Category";
-import {CategoryApi} from "../api-path/CategoryApi";
+import {CategoryApi} from "../CategoryApi";
 import {UseCaseGetAllPaginatedAbstract} from "../../../_generic/usecase/get/UseCaseGetAllPaginatedAbstract";
 import {CategoryPage} from "../CategoryPage";
 
