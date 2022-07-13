@@ -59,6 +59,9 @@ import {
 } from "./components/_admin-control/markdown/markdown-editor-update/markdown-editor-update.component";
 import {EthicsComponent} from "./components/common/ethics/ethics.component";
 import {BoardComponent} from "./components/common/board/board.component";
+import {
+  ReviewerArticleUpdateComponent
+} from "./components/_reviewer_control/reviewer-article-update/reviewer-article-update.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
@@ -108,6 +111,8 @@ const routes : Routes = [
 
   //Reviewer control
   {path:`${ComponentRoutingPaths.reviewerControl.article.main}`, component: ReviewerArticleMainComponent, canActivate:[AuthGuard], data:{role:'Reviewer'}},
+  {path:`${ComponentRoutingPaths.reviewerControl.article.update}`, component: ReviewerArticleUpdateComponent, canActivate:[AuthGuard], data:{role:'Reviewer'}},
+
 ]
 
 @NgModule({

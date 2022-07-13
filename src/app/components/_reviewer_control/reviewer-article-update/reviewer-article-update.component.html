@@ -1,0 +1,78 @@
+<body>
+<div class="wrapper container pt-5">
+  <h2 class="mt-5">Рецензирование</h2>
+  <div class = "col-lg-6 col-md-offset-1 mb-5">
+
+    <form class="needs-validation">
+      <label *ngIf="articleFull?.wordDocId!=null" class="" (click)="onDocDownload(articleFull?.wordDocId || null)">
+        <a class="link">скачать существующий вариант</a>
+      </label>
+      <br>
+
+      <!-- Status select -->
+      <div class="form-group">
+        <label class = "mt-2">Статус</label>
+        <select class="form-control"
+                id="status"
+                [formControl]="formGroup.status"
+                required
+        >
+          <option value="" disabled selected hidden>Выберите статус</option>
+          <option *ngFor="let status of formGroup.articleStatuses"
+                  [value]="status">{{status}}
+          </option>
+        </select>
+        <div *ngIf="checkFormControl(formGroup.status)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.status.errors?.['required']">
+            Выберите статус.
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="name"> Комментарий </label>
+        <textarea type="text"
+               id="name"
+               class="form-control"
+               [formControl]="formGroup.comment"
+               placeholder="Введите комментарий"
+                  rows="5"
+                  required autofocus="autofocus"></textarea>
+        <div *ngIf="checkFormControl(formGroup.comment)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.comment.errors?.['required']">
+            Введите комментарий
+          </div>
+
+        </div>
+      </div>
+
+      <!--  file select -->
+      <label class = "mt-2">Выберите pdf-файл обзора статьи</label>
+      <br>
+      <input
+        class = "form-control"
+        type="file"
+        id="wordFile"
+        accept=".pdf"
+        (change)="onFileChange($event)"
+      />
+
+
+      <div class="form-group">
+        <div class="mt-4">
+          <button type="button" name="login-submit" id="login-submit"
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > Сохранить </button>
+          <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
+                  (click)="onCancelClicked()">Отмена</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br>
+</div>
+</body>
+

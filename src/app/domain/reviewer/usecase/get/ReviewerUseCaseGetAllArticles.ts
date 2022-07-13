@@ -1,11 +1,11 @@
 import {Injectable} from "@angular/core";
-import {UseCaseDeleteByIdAbstract} from "../../../_generic/usecase/UseCaseDeleteByIdAbstract";
-import {CategoryApi} from "../../category/CategoryApi";
+import {UseCaseDeleteByIdAbstract} from "../../../../_generic/usecase/UseCaseDeleteByIdAbstract";
+import {CategoryApi} from "../../../category/CategoryApi";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ReviewerApi} from "../ReviewerApi";
+import {ReviewerApi} from "../../ReviewerApi";
 import {Observable} from "rxjs";
-import {Journal} from "../../journal/Journal";
-import {Article} from "../../article/Article";
+import {Journal} from "../../../journal/Journal";
+import {Article} from "../../../article/Article";
 
 @Injectable({
   providedIn : "root"

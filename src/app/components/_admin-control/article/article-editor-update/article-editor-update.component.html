@@ -71,6 +71,12 @@
         </select>
       </div>
 
+      <label *ngIf="formGroup.updateDto.reviewerBlankDocId != null"
+             class = "link mt-2"
+             (click)="onDocDownload(formGroup.updateDto.reviewerBlankDocId)"
+      >Скачать бланк рецензента</label>
+
+
       <!--  file select -->
       <label class = "mt-2">Выберите word-файл статьи</label>
       <br>

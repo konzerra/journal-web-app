@@ -10,5 +10,5 @@ export interface ArticleUpdateDtoByAdmin {
   dataList: Array<ArticleData>,
   pdfDocId: Number | null,
   wordDocId: Number | null,
-  verificationDocId: Number | null,
+  reviewerBlankDocId: Number | null,
 }

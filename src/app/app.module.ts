@@ -52,6 +52,7 @@ import {
 } from "./components/_admin-control/markdown/markdown-editor-update/markdown-editor-update.component";
 import { BoardComponent } from './components/common/board/board.component';
 import { EthicsComponent } from './components/common/ethics/ethics.component';
+import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/reviewer-article-update/reviewer-article-update.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { EthicsComponent } from './components/common/ethics/ethics.component';
     MarkdownEditorSaveComponent,
     MarkdownEditorUpdateComponent,
     BoardComponent,
-    EthicsComponent
+    EthicsComponent,
+    ReviewerArticleUpdateComponent
   ],
     imports: [
         BrowserModule,

@@ -3,12 +3,13 @@ import {UseCaseGetByIdFullAbstract} from "../../../_generic/usecase/get/UseCaseG
 import {ArticleUpdateDtoByAdmin} from "../dto/ArticleUpdateDtoByAdmin";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ArticleApi} from "../ArticleApi";
+import {ArticleFull} from "../ArticleFull";
 
 @Injectable({
   providedIn:'root'
 })
 export class ArticleUseCaseGetByIdFull
-  extends UseCaseGetByIdFullAbstract<ArticleUpdateDtoByAdmin>
+  extends UseCaseGetByIdFullAbstract<ArticleFull>
 {
   protected apiPath: string = ArticleApi.paths.getByIdFull
 

@@ -4,7 +4,7 @@ import {ReviewerSaveDto} from "../../../../../domain/reviewer/dto/ReviewerSaveDt
 export class ReviewerSaveFormGroup {
 
   email = new FormControl("", Validators.required)
-  categoryId = new FormControl<Number>(0,Validators.required)
+  categoryId = new FormControl<Number | null>(null,Validators.required)
 
   getDto():ReviewerSaveDto{
     return {

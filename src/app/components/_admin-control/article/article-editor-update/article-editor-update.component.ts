@@ -12,6 +12,8 @@ import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
 import {Category} from "../../../../domain/category/Category";
 import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
+import {ArticleUpdateDtoByAdmin} from "../../../../domain/article/dto/ArticleUpdateDtoByAdmin";
+import {ArticleData} from "../../../../domain/article/ArticleData";
 
 @Component({
   selector: 'app-article-editor-update',
@@ -36,12 +38,26 @@ export class ArticleEditorUpdateComponent
   ) {}
 
 
+
   ngOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
           this.useCaseFindByIdFull.execute(JSON.parse(param["id"])).subscribe({
             next:(v)=>{
-              this.formGroup.setDto(v)
+              this.formGroup.setDto({
+                  id: v.id,
+                  status: v.status,
+                  journalId: v.journal.id,
+                  categoryId: v.category?.id || null,
+                  pagesInJournal: v.pagesInJournal,
+                  antiplagiat: v.antiplagiat,
+                  dataList: v.dataList,
+                  pdfDocId: v.pdfDocId,
+                  wordDocId: v.wordDocId,
+                  reviewerBlankDocId: v.reviewerBlankDocId,
+              }
+
+              )
             },
             error:(err) =>{
 

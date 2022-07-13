@@ -14,9 +14,9 @@ export class ReviewerUseCaseDistribute {
   constructor(
     private httpClient:HttpClient
   ) {}
-  execute(id:Number):Observable<string>{
+  execute(id:Number):Observable<{ message: string }>{
     let apiPath= ApiPathUtil.insertId(this.apiPath,id.toString())
-    return this.httpClient.get<string>(apiPath,{
+    return this.httpClient.get<{ message: string }>(apiPath,{
       headers: this.requestHeader,
     })
   }

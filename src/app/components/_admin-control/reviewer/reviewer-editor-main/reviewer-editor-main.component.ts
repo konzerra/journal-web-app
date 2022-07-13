@@ -12,7 +12,7 @@ import {DialogsService} from "../../../common/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ReviewerPage} from "../../../../domain/reviewer/ReviewerPage";
 import {ReviewerUseCaseDeleteById} from "../../../../domain/reviewer/usecase/ReviewerUseCaseDeleteById";
-import {ReviewerUseCaseGetAllPaginated} from "../../../../domain/reviewer/usecase/ReviewerUseCaseGetAllPaginated";
+import {ReviewerUseCaseGetAllPaginated} from "../../../../domain/reviewer/usecase/get/ReviewerUseCaseGetAllPaginated";
 
 @Component({
   selector: 'app-reviewer-editor-main',

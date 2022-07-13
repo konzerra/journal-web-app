@@ -8,8 +8,10 @@ export interface Article {
     name:string,
     version:string
   },
-  category: string,
+  category:{
+    id: Number
+    name: string
+  } | null
   annotation: string,
   reviewer: boolean
-
 }

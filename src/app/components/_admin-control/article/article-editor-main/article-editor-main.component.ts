@@ -51,25 +51,9 @@ export class ArticleEditorMainComponent
 
   ngOnInit(): void {
     this.route.queryParams.subscribe({
-        next:(param) =>{
+        next:(param) => {
           this.journal = JSON.parse(param["model"])
-          this.journalUseCaseGetAllArticlesPaginated.execute(
-            this.journal.id,
-            this.modelPage.number,
-            10
-          ).subscribe(
-            {
-              next:(modelPage)=>{
-                this.modelPage = modelPage
-                console.log(modelPage)
-              },
-              error:()=>{
-
-              },
-              complete:()=>{
-
-              }
-            })
+          this.loadData(this.modelPage.number)
         }
       }
     )
@@ -92,10 +76,22 @@ export class ArticleEditorMainComponent
   }
 
   onPageChange($event: number) {
+    this.loadData($event-1, 10)
+  }
+
+  onDistribute() {
+    console.log(this.journal)
+    this.reviewerUseCaseDistribute.execute(this.journal.id).subscribe({
+      next:(data)=>{
+        this.dialogsService.openInfoDialog(data.message)
+      }
+    })
+  }
+  private loadData(pageNumber: Number, pageSize: Number = 10){
     this.journalUseCaseGetAllArticlesPaginated.execute(
       this.journal.id,
-    $event-1,
-      10
+      pageNumber,
+      pageSize
 
     ).subscribe(
       {
@@ -110,14 +106,5 @@ export class ArticleEditorMainComponent
 
         }
       })
-  }
-
-  onDistribute() {
-    console.log(this.journal)
-    this.reviewerUseCaseDistribute.execute(this.journal.id).subscribe({
-      next:(message)=>{
-        this.dialogsService.openInfoDialog(message)
-      }
-    })
   }
 }

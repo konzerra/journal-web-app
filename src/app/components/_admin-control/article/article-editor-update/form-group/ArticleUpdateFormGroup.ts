@@ -45,7 +45,7 @@ export class ArticleUpdateFormGroup
     pagesInJournal: null,
     status: "",
     pdfDocId: null,
-    verificationDocId: null,
+    reviewerBlankDocId: null,
     wordDocId: null,
   }
 
@@ -96,7 +96,7 @@ export class ArticleUpdateFormGroup
       pagesInJournal: this.pagesInJournal.value,
       status: this.status.value || this.updateDto.status,
       pdfDocId: this.updateDto.pdfDocId,
-      verificationDocId: this.updateDto.verificationDocId,
+      reviewerBlankDocId: this.updateDto.reviewerBlankDocId,
       wordDocId: this.updateDto.wordDocId,
     }
     console.log(articleUpdateDto)

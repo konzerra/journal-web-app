@@ -11,7 +11,7 @@ import {Journal} from "../../Journal";
 })
 export class JournalUseCaseGetAllByStatus {
   private apiPath: string = JournalApi.paths.getAllByStatus
-  protected requestHeader: HttpHeaders = new HttpHeaders({'No-Auth':'true'});
+  protected requestHeader: HttpHeaders = new HttpHeaders();
   constructor(
     private httpClient:HttpClient
   ) {}

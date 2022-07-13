@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UseCaseGetAllPaginatedAbstract} from "../../../_generic/usecase/get/UseCaseGetAllPaginatedAbstract";
-import {ReviewerApi} from "../ReviewerApi";
-import {Reviewer} from "../Reviewer";
-import {ReviewerPage} from "../ReviewerPage";
+import {UseCaseGetAllPaginatedAbstract} from "../../../../_generic/usecase/get/UseCaseGetAllPaginatedAbstract";
+import {ReviewerApi} from "../../ReviewerApi";
+import {Reviewer} from "../../Reviewer";
+import {ReviewerPage} from "../../ReviewerPage";
 
 
 @Injectable({

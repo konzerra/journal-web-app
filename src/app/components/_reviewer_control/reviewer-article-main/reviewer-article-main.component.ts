@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticlePage} from "../../../domain/article/ArticlePage";
 import {Article} from "../../../domain/article/Article";
-import {ReviewerUseCaseGetAllArticles} from "../../../domain/reviewer/usecase/ReviewerUseCaseGetAllArticles";
+import {ReviewerUseCaseGetAllArticles} from "../../../domain/reviewer/usecase/get/ReviewerUseCaseGetAllArticles";
 import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {Router} from "@angular/router";
+import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 
 @Component({
   selector: 'app-reviewer-article-main',
@@ -16,7 +18,8 @@ export class ReviewerArticleMainComponent
 
   constructor(
     private reviewerUseCaseGetAllArticles : ReviewerUseCaseGetAllArticles,
-    private userAuthService:UserAuthService
+    private userAuthService:UserAuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +35,9 @@ export class ReviewerArticleMainComponent
   }
 
   onEdit(model: Article) {
-
+    this.router.navigate([ComponentRoutingPaths.reviewerControl.article.update],{
+      queryParams: {id: JSON.stringify(model.id)}
+    })
   }
 
   onDeleteClicked(model: Article, i: number) {
