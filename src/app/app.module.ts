@@ -112,7 +112,7 @@ import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/r
       useClass: AuthInterceptor,
       multi:true
     },
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+
     DialogsService,
   ],
   bootstrap: [AppComponent],
