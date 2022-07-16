@@ -17,6 +17,8 @@ import {CategoryUseCaseUpdate} from "../../../../domain/category/usecase/Categor
 
 import {CategoryUpdateFormGroup} from "./form-group/CategoryUpdateFormGroup";
 import {CategoryUseCaseGetByIdFull} from "../../../../domain/category/usecase/CategoryUseCaseGetByIdFull";
+import {Reviewer} from "../../../../domain/reviewer/Reviewer";
+import {ReviewerUseCaseGetInQueue} from "../../../../domain/reviewer/usecase/get/ReviewerUseCaseGetInQueue";
 
 @Component({
   selector: 'app-category-editor-update',
@@ -31,6 +33,7 @@ export class CategoryEditorUpdateComponent
     protected route: ActivatedRoute,
     protected useCaseUpdate: CategoryUseCaseUpdate,
     protected useCaseFindByIdFull : CategoryUseCaseGetByIdFull,
+    private reviewerUseCaseGetInQueue : ReviewerUseCaseGetInQueue,
     private router:Router
   ) {
     super()
@@ -38,11 +41,31 @@ export class CategoryEditorUpdateComponent
 
   formGroup = new CategoryUpdateFormGroup()
   selectedRadioButton = this.formGroup.requiredLangs[0]
-
+  queue = Array<Reviewer>()
 
 
   ngOnInit(): void {
-    this.abstractOnInit()
+    this.route.queryParams.subscribe({
+        next:(param) =>{
+          this.useCaseFindByIdFull.execute(param["id"]).subscribe({
+            next:(v)=>{
+              this.formGroup.setDto(v)
+            },
+            error:(err) =>{
+
+            }
+          })
+
+          this.reviewerUseCaseGetInQueue.execute(param["id"]).subscribe({
+            next:(v)=>{
+              this.queue = v
+              console.log(this.queue)
+            }
+          })
+        }
+      }
+    )
+
   }
 
   protected onSuccessfulUpdate(): void {

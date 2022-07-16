@@ -69,6 +69,14 @@
 
     </form>
   </div>
+  <div class = "col-lg-6 col-md-offset-1 mb-5">
+    <h3>Рецензенты</h3>
+    <div  *ngFor="let i = index; let reviewer of queue">
+      <label class="mt-2">{{i+1}}) {{reviewer.name}}</label>
+      <br>
+      <label>{{reviewer.email}}</label>
+    </div>
+  </div>
   <br>
 </div>
 </body>

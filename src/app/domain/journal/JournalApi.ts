@@ -16,6 +16,7 @@ export class JournalApi {
     getByIdFull : `${this.protectedPath}/full/{id}`,
     getById: `${this.publicPath}/{id}`,
     getAllPaginated: `${this.publicPath}/all/{pageNumber}/{pageSize}`,
+    getAllPaginatedByStatus: `${this.publicPath}/all-by-status/{status}/{pageNumber}/{pageSize}`,
 
     save: `${this.protectedPath}`,
     deleteById: `${this.protectedPath}/{id}`,

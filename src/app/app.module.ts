@@ -53,6 +53,11 @@ import {
 import { BoardComponent } from './components/common/board/board.component';
 import { EthicsComponent } from './components/common/ethics/ethics.component';
 import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/reviewer-article-update/reviewer-article-update.component';
+import { FooterPageComponent } from './components/common/home/components/footer-page/footer-page.component';
+import { GatesComponent } from './components/common/home/components/gates/gates.component';
+import { AboutJournalComponent } from './components/common/home/components/about-journal/about-journal.component';
+import { PublishGuideComponent } from './components/common/home/components/publish-guide/publish-guide.component';
+import {NgxTranslateModule} from "../translate/translate.module";
 
 
 @NgModule({
@@ -89,7 +94,11 @@ import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/r
     MarkdownEditorUpdateComponent,
     BoardComponent,
     EthicsComponent,
-    ReviewerArticleUpdateComponent
+    ReviewerArticleUpdateComponent,
+    FooterPageComponent,
+    GatesComponent,
+    AboutJournalComponent,
+    PublishGuideComponent
   ],
     imports: [
         BrowserModule,
@@ -102,6 +111,7 @@ import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/r
         MatIconModule,
         NgxPaginationModule,
         FormsModule,
+      NgxTranslateModule,
       MarkdownModule.forRoot()
 
     ],

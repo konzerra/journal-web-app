@@ -1,0 +1,39 @@
+
+.background{
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(58, 58, 58, 0.6)
+  url("../../../../../../assets/images/magazines-on-table.jpg") no-repeat fixed center center/cover ;
+  background-blend-mode: multiply;
+}
+.panel{
+  width: fit-content;
+  min-width: 250px;
+  position: relative;
+  top: 0;
+  border-radius: 5%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgb(10, 98, 191,0.5);
+  transition: all 0.5s ease;
+}
+
+.panel-icon{
+  font-size: 7em;
+  color: white;
+}
+
+.panel:hover{
+  background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
+  top: -10px;
+}
+.title-center{
+  text-align: center;
+}

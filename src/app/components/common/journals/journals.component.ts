@@ -4,6 +4,9 @@ import {Journal} from "../../../domain/journal/Journal";
 import {JournalUseCaseGetAllPaginated} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllPaginated";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+import {
+  JournalUseCaseGetAllPaginatedByStatus
+} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllPaginatedByStatus";
 
 @Component({
   selector: 'app-journals',
@@ -27,12 +30,12 @@ export class JournalsComponent
 
   }
   constructor(
-    private journalUseCaseGetAllPaginated: JournalUseCaseGetAllPaginated,
+    private journalUseCaseGetAllPaginatedByStatus: JournalUseCaseGetAllPaginatedByStatus,
     private router:Router,
   ) { }
 
   ngOnInit(): void {
-    this.journalUseCaseGetAllPaginated.execute(this.modelPage.number, this.modelPage.size).subscribe({
+    this.journalUseCaseGetAllPaginatedByStatus.execute(this.modelPage.number, this.modelPage.size).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
       }
@@ -40,7 +43,7 @@ export class JournalsComponent
   }
 
   onPageChange($event: number) {
-    this.journalUseCaseGetAllPaginated.execute($event,this.modelPage.size).subscribe({
+    this.journalUseCaseGetAllPaginatedByStatus.execute($event,this.modelPage.size).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
       }

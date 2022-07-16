@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserAuthService} from "../../../domain/user/service/UserAuthService";
 import {FormControl} from "@angular/forms";
 import {AppLanguage} from "../../../AppLanguage";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -16,10 +17,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private userAuthService:UserAuthService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    this.selectedLang.setValue(  AppLanguage.getLocalLanguage())
+    let lang = AppLanguage.getLocalLanguage()
+    this.selectedLang.setValue(  lang)
+    this.translate.use(lang);
   }
 
   isLoggedIn() {
@@ -36,6 +40,7 @@ export class HeaderComponent implements OnInit {
   onLangChange() {
     if(this.selectedLang.value != null){
       AppLanguage.setLocalLanguage(this.selectedLang.value)
+      this.translate.use(this.selectedLang.value);
       window.location.reload()
     }
   }

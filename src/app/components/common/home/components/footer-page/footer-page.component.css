@@ -1,0 +1,40 @@
+
+.background{
+  background: #3e4242;
+  height: 100vh;
+  width: 100%;
+
+}
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+h2#header-text{
+  text-align: center;
+  padding: 0;
+
+}
+.list-items ul li a{
+
+  color: #ffffff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.list-items ul li a:hover{
+  padding-left: 10px;
+}
+.list-items ul li{
+  margin-top: 10px;
+}
+.list-items .col-3{
+  min-width: fit-content;
+}
+.bar{
+  background-color: #0A62BF;
+  box-sizing: border-box;
+  height: 2px;
+  width: 50px;
+}
+
+
+
