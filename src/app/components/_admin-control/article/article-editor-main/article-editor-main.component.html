@@ -5,34 +5,24 @@
 
 <body>
 <div class = "wrapper container pt-5">
-  <h2 class="mt-5">Статьи</h2>
-
-  <!-- Search box -->
-  <div class="col-lg-6 col-md-offset-1 pt-2">
-    <div class="input-group w-75 mb-3" >
-      <input type="search" class="form-control" placeholder="Search" >
-      <button class="btn btn-primary" type="button" id="button-search">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </div>
+  <h2 class="mt-5">{{"articles" | translate}}</h2>
 
 
   <table class="table " >
     <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Название</th>
-      <th scope="col">Категория</th>
-      <th scope="col">Рецензент</th>
-      <th scope="col">Статус</th>
-      <th scope="col">Статус оплаты</th>
+      <th scope="col">{{"name" | translate}}</th>
+      <th scope="col">{{"category" | translate}}</th>
+      <th scope="col">{{"reviewer" | translate}}</th>
+      <th scope="col">{{"status" | translate}}</th>
+      <th scope="col">{{"category" | translate}}</th>
       <th scope="col">
         <button type="button" class="btn btn-primary btn-sm text-nowrap"
                 (click)="onDistribute()"
         >
           <i class="bi bi-send"></i>
-          Рецензентам
+          {{"to_reviewers" | translate}}
         </button>
       </th>
     </tr>

@@ -4,9 +4,10 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MarkdownData} from "../../../../../domain/Markdown/MarkdownData";
 import { MarkdownDataControls } from "../../common/MarkdownDataControls";
 import {MarkdownUpdateDto} from "../../../../../domain/Markdown/dto/MarkdownUpdateDto";
+import {MarkdownFull} from "../../../../../domain/Markdown/MarkdownFull";
 
 export class MarkdownUpdateFormGroup
-  extends GenericUpdateFormGroup<MarkdownData, MarkdownDataControls, MarkdownUpdateDto>
+  extends GenericUpdateFormGroup<MarkdownFull, MarkdownData, MarkdownDataControls, MarkdownUpdateDto>
 {
 
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
@@ -25,9 +26,9 @@ export class MarkdownUpdateFormGroup
     return this.isDataControlsListValid()
   }
 
-  setDto(updateDto:MarkdownUpdateDto){
-    this.updateDto = updateDto
-    this.name.setValue(updateDto.name)
+  setDto(modelFull:MarkdownFull){
+    this.updateDto = modelFull
+    this.name.setValue(modelFull.name)
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((modelData)=>{
       let markdownDataControls = new MarkdownDataControls(modelData.lang, modelData.id)

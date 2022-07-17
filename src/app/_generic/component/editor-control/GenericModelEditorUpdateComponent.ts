@@ -9,6 +9,7 @@ import {DataControlsAbstract} from "../../form-group/DataControlsAbstract";
 
 
 export abstract class GenericModelEditorUpdateComponent<
+  ModelFull extends ModelI,
   ModelData extends ModelI,
   ModelDataControls extends DataControlsAbstract<ModelData>,
   UpdateDto
@@ -16,11 +17,11 @@ export abstract class GenericModelEditorUpdateComponent<
 {
 
   protected abstract useCaseUpdate:UseCaseUpdateAbstract<UpdateDto>
-  protected abstract useCaseFindByIdFull: UseCaseGetByIdFullAbstract<UpdateDto>
+  protected abstract useCaseFindByIdFull: UseCaseGetByIdFullAbstract<ModelFull>
 
   protected abstract route: ActivatedRoute
 
-  abstract formGroup:GenericUpdateFormGroup<ModelData,ModelDataControls,UpdateDto>
+  abstract formGroup:GenericUpdateFormGroup<ModelFull,ModelData,ModelDataControls,UpdateDto>
 
   protected constructor() {}
 
@@ -32,7 +33,6 @@ export abstract class GenericModelEditorUpdateComponent<
               this.formGroup.setDto(v)
             },
             error:(err) =>{
-
             }
           })
         }

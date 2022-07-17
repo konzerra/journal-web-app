@@ -1,20 +1,20 @@
 
 <body>
 <div class="wrapper container pt-5">
-  <h2 class="mt-5">Регистрация страницы</h2>
+  <h2 class="mt-5">{{'page_registration' | translate}}</h2>
   <div class = "col-lg-6 col-md-offset-1 mb-5">
 
     <form class="needs-validation">
 
       <!-- Markdown select -->
       <div class="form-group">
-        <label class = "mt-2">Markdown</label>
+        <label class = "mt-2">{{'page_name' | translate}}</label>
         <select class="form-control"
                 id="category"
                 [formControl]="formGroup.name"
                 required
         >
-          <option value="" disabled selected hidden>Выберите страницу</option>
+          <option value="" disabled selected hidden>{{'select_page' | translate}}</option>
           <option *ngFor="let pageMarkdown of formGroup.pageMarkdowns"
                   [value]="pageMarkdown">{{pageMarkdown}}
           </option>
@@ -23,13 +23,13 @@
              class="alert-danger">
 
           <div *ngIf="formGroup.name.errors?.['required']">
-            Выберите страницу.
+            {{'select_page' | translate}}
           </div>
 
         </div>
       </div>
       <!-- Select input language   radio-buttons -->
-      <label class = "mt-2">Введите данные на языках</label>
+      <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
       <br>
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <div *ngFor="let lang of formGroup.requiredLangs" >
@@ -52,14 +52,14 @@
                id="markdownText"
                class="form-control"
                [formControl]="formGroup.source"
-               placeholder="Введите текст в формате markdown"
+               placeholder="{{'enter_markdown' | translate}}"
                   rows="10"
                   required autofocus="autofocus" ></textarea>
         <div *ngIf="checkFormControl(formGroup.source)"
              class="alert-danger">
 
           <div *ngIf="formGroup.source.errors?.['required']">
-            Введите текст в формате markdown
+            {{'enter_markdown' | translate}}
           </div>
 
         </div>
@@ -69,9 +69,9 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
-                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > Сохранить </button>
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
-                  (click)="onCancelClicked()">Отмена</button>
+                  (click)="onCancelClicked()">{{'cancel' | translate}}</button>
         </div>
       </div>
     </form>

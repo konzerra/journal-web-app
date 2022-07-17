@@ -44,20 +44,7 @@ export class ArticleEditorUpdateComponent
         next:(param) =>{
           this.useCaseFindByIdFull.execute(JSON.parse(param["id"])).subscribe({
             next:(v)=>{
-              this.formGroup.setDto({
-                  id: v.id,
-                  status: v.status,
-                  journalId: v.journal.id,
-                  categoryId: v.category?.id || null,
-                  pagesInJournal: v.pagesInJournal,
-                  antiplagiat: v.antiplagiat,
-                  dataList: v.dataList,
-                  pdfDocId: v.pdfDocId,
-                  wordDocId: v.wordDocId,
-                  reviewerBlankDocId: v.reviewerBlankDocId,
-              }
-
-              )
+              this.formGroup.setDto(v)
             },
             error:(err) =>{
 

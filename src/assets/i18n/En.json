@@ -1,4 +1,82 @@
 
 {
-  "main": "Main"
+  "main": "Main",
+  "registration": "Registration",
+
+  "name": "Name",
+  "title": "Title",
+  "search": "Search",
+
+  "person_name": "Name",
+  "new_user": "New user?",
+
+  "add": "Add",
+  "save": "Save",
+  "cancel": "Cancel",
+  "ok": "Ok",
+  "any_questions": "Any questions?",
+
+  "enter_data_in_languages": "Enter data in languages",
+
+  "status": "Status",
+  "select_status": "Select status",
+
+  "category": "Category",
+  "categories": "Categories",
+  "category_update": "Update category",
+  "category_registration": "Category registration",
+  "enter_category_name": "Enter category name",
+  "select_category": "Select category",
+  "no_category": "No category",
+
+  "journal": "Journal",
+  "journals": "Journals",
+  "journal_registration": "Journal registration",
+  "journal_update": "Journal update",
+  "enter_journal_title": "Enter the title of the journal",
+  "select_journal": "Select journal",
+  "pages_in_journal": "Pages in journal",
+  "enter_pages_journal": "Enter pages in journal in format '5-16'",
+
+  "reviewer": "Reviewer",
+  "reviewers": "Reviewers",
+  "reviewer_registration": "Reviewer registration",
+  "to_reviewers": "To reviewers",
+  "download_existing_reviewer_form": "download existing reviewer form",
+
+  "articles": "Articles",
+  "update_article": "Update Article",
+  "enter_article_title": "Enter the title of the article",
+
+  "markdown_texts": "Markdown texts",
+  "enter_markdown": "Enter markdown",
+
+  "page_name": "Page name",
+  "page_registration": "Page registration",
+  "select_page": "Select page",
+
+  "handbook": "Handbook",
+
+  "select_word_file": "Select word-file",
+  "select_pdf_file": "Select pdf-file",
+  "download_existing_version": "download existing version",
+
+  "author": "Author",
+  "enter_author": "Enter an author",
+  "add_author": "+ Add an author",
+
+  "annotation": "Annotation",
+  "enter_annotation": "Enter annotation",
+
+  "tags": "Tags",
+  "enter_tags": "Enter tags",
+
+  "overview": "Overview",
+  "enter_overview": "Enter overview",
+
+  "version": "Version",
+  "enter_version": "Enter version",
+
+  "email": "Email",
+  "enter_email": "Enter email"
 }

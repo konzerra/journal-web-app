@@ -8,22 +8,24 @@ import {ArticleUpdateDtoByAdmin} from "../../../../../domain/article/dto/Article
 import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
 import {ArticleStatusesAdmin} from "../../../../../domain/article/status/ArticleStatusesAdmin";
 import {Category} from "../../../../../domain/category/Category";
+import {ArticleFull} from "../../../../../domain/article/ArticleFull";
+import {Journal} from "../../../../../domain/journal/Journal";
 
 
 
 
 export class ArticleUpdateFormGroup
-  extends GenericUpdateFormGroup<ArticleData, ArticleDataControls, ArticleUpdateDtoByAdmin>
+  extends GenericUpdateFormGroup<ArticleFull,ArticleData, ArticleDataControls, ArticleUpdateDtoByAdmin>
 {
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
   articleStatuses : Array<string> = Object.values(ArticleStatusesAdmin)
 
-  journal: FormControl = new FormControl(null, Validators.required)
+  journal= new FormControl<Journal | null>(null, Validators.required)
   category : Category | null = null
   wordFile: File | null = null
   pdfFile: File | null = null
   antiplagiat = new FormControl(null)
-  pagesInJournal = new FormControl(null)
+  pagesInJournal = new FormControl<string>("")
   status = new FormControl("",Validators.required)
 
 
@@ -53,14 +55,28 @@ export class ArticleUpdateFormGroup
     super();
   }
 
-  setDto(updateDto: ArticleUpdateDtoByAdmin): void {
-    this.updateDto = updateDto
-    this.status.setValue(updateDto.status)
-    this.journal.setValue(updateDto.journalId)
+  setDto(modelFull: ArticleFull): void {
+    this.updateDto = {
+      id: modelFull.id,
+      antiplagiat: modelFull.antiplagiat,
+      categoryId: modelFull.category?.id || null,
+      dataList: modelFull.dataList,
+      journalId: modelFull.journal.id,
+      pagesInJournal: modelFull.pagesInJournal,
+      status: modelFull.status,
+      pdfDocId: modelFull.pdfDocId,
+      reviewerBlankDocId: modelFull.reviewerBlankDocId,
+      wordDocId: modelFull.wordDocId,
+    }
+    this.status.setValue(modelFull.status)
+    this.journal.setValue(modelFull.journal)
+    this.pagesInJournal.setValue(modelFull.pagesInJournal)
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((modelData)=>{
+      //assign language and id of translatable data
       let articleDataControls = new ArticleDataControls(modelData.lang, modelData.id)
 
+      //assign fields
       articleDataControls.name.setValue(modelData.name)
       articleDataControls.annotation.setValue(modelData.annotation)
       articleDataControls.tags.setValue(modelData.tags)
@@ -68,7 +84,10 @@ export class ArticleUpdateFormGroup
       modelData.authors.split('$').forEach((author)=>{
         articleDataControls.addAuthor(author)
       })
+
       this.dataControlsList.push(articleDataControls)
+
+      //bind view to the first required language
       if(modelData.lang == this.requiredLangs[0]){
         this.setDataControls(articleDataControls)
       }
@@ -92,7 +111,7 @@ export class ArticleUpdateFormGroup
       categoryId: this.category?.id || null,
       dataList: new Array<ArticleData>(),
       id: this.updateDto.id,
-      journalId: this.journal.value,
+      journalId: this.journal.value?.id || 0,
       pagesInJournal: this.pagesInJournal.value,
       status: this.status.value || this.updateDto.status,
       pdfDocId: this.updateDto.pdfDocId,
@@ -105,10 +124,6 @@ export class ArticleUpdateFormGroup
     })
 
     return articleUpdateDto
-  }
-
-  onFileChange(file:File):void{
-
   }
 
   onLangChange(lang: string): void {

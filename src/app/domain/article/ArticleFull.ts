@@ -1,19 +1,14 @@
 import {ArticleData} from "./ArticleData";
+import {Category} from "../category/Category";
+import {Journal} from "../journal/Journal";
 
 export interface ArticleFull {
   id: Number,
 
   status: string,
 
-  journal: {
-    id: Number,
-    name:string,
-    version:string
-  },
-  category:{
-    id: Number
-    name: string
-  } | null
+  journal: Journal,
+  category: Category | null
 
   reviewer: boolean,
 

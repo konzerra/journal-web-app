@@ -1,36 +1,36 @@
 
 <body>
 <div class="wrapper container pt-5">
-  <h2 class="mt-5">Регистрация рецензента</h2>
+  <h2 class="mt-5">{{'reviewer_registration' | translate}}</h2>
   <div class = "col-lg-6 col-md-offset-1 mb-5">
 
     <form class="needs-validation">
       <div class="form-group">
-        <label class="control-label" for="email"> Почта </label>
+        <label class="control-label" for="email"> {{'email' | translate}} </label>
         <input type="text"
                id="email"
                class="form-control"
                [formControl]="formGroup.email"
-               placeholder="Введите почту"
+               placeholder="{{'enter_email' | translate}}"
                required autofocus="autofocus" />
         <div *ngIf="checkFormControl(formGroup.email)"
              class="alert-danger">
 
           <div *ngIf="formGroup.email.errors?.['required']">
-            Введите почту
+            {{'enter_email' | translate}}
           </div>
 
         </div>
       </div>
       <!-- Category select -->
       <div class="form-group">
-        <label class = "mt-2">Категория</label>
+        <label class = "mt-2">{{'category' | translate}}</label>
         <select class="form-control"
                 id="status"
                 [formControl]="formGroup.categoryId"
                 required
         >
-          <option value="" disabled selected hidden>Выберите журнал</option>
+          <option value="" disabled selected hidden>{{'select_category' | translate}}</option>
           <option *ngFor="let category of categoryList"
                   [value]="category.id">{{category.name}}
           </option>
@@ -39,7 +39,7 @@
              class="alert-danger">
 
           <div *ngIf="formGroup.categoryId.errors?.['required']">
-            Выберите категорию.
+            {{'select_category' | translate}}
           </div>
 
         </div>
@@ -47,15 +47,15 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
-                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > Сохранить </button>
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
-                  (click)="onCancelClicked()">Отмена</button>
+                  (click)="onCancelClicked()">{{'cancel' | translate}}</button>
         </div>
       </div>
     </form>
 
     <div class="form-group">
-      <span>Новый пользователь? <a routerLink="/register">Регистрация</a></span>
+      <span>{{'new_user' | translate}} <a routerLink="/register">{{'registration' | translate}}</a></span>
     </div>
   </div>
   <br>

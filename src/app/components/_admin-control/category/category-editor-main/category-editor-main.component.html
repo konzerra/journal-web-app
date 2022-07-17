@@ -4,21 +4,20 @@
 />
 <body>
 <div class = "wrapper container pt-5 " >
-  <h2 class="mt-5">Категории</h2>
+  <h2 class="mt-5">{{'categories' | translate}}</h2>
 
   <table class="table " >
     <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Название</th>
-      <th scope="col">Версия</th>
-      <th scope="col">Описание</th>
+      <th scope="col">{{'name' | translate}}</th>
+      <th scope="col">{{'overview' | translate}}</th>
       <th scope="col">
         <button type="button" class="btn btn-primary btn-sm text-nowrap"
                 (click)="onAddClicked()"
         >
           <i class="bi bi-plus"></i>
-          Добавить
+          {{'add' | translate}}
         </button>
       </th>
     </tr>

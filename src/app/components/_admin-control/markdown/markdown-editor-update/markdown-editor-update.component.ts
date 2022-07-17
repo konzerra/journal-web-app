@@ -11,6 +11,7 @@ import {MarkdownUseCaseUpdate} from "../../../../domain/Markdown/usecase/Markdow
 import {Markdown} from "../../../../domain/Markdown/Markdown";
 import {MarkdownUseCaseGetByIdFull} from "../../../../domain/Markdown/usecase/get/MarkdownUseCaseGetByIdFull";
 import {MarkdownUpdateFormGroup} from "./form-group/MarkdownUpdateFormGroup";
+import {MarkdownFull} from "../../../../domain/Markdown/MarkdownFull";
 
 @Component({
   selector: 'app-markdown-editor-update',
@@ -18,7 +19,7 @@ import {MarkdownUpdateFormGroup} from "./form-group/MarkdownUpdateFormGroup";
   styleUrls: ['./markdown-editor-update.component.css']
 })
 export class MarkdownEditorUpdateComponent
-  extends GenericModelEditorUpdateComponent<MarkdownData, MarkdownDataControls, MarkdownUpdateDto>
+  extends GenericModelEditorUpdateComponent<MarkdownFull, MarkdownData, MarkdownDataControls, MarkdownUpdateDto>
   implements OnInit {
 
   constructor(

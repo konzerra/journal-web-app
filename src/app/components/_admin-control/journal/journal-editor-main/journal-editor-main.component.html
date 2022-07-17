@@ -5,22 +5,22 @@
 
 <body>
 <div class = "wrapper container pt-5">
-  <h2 class="mt-5">Журналы</h2>
+  <h2 class="mt-5">{{'journals' | translate}}</h2>
 
   <table class="table " >
     <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Название</th>
-      <th scope="col">Версия</th>
-      <th scope="col">Статус</th>
-      <th scope="col">Статьи</th>
+      <th scope="col">{{'name' | translate}}</th>
+      <th scope="col">{{'version' | translate}}</th>
+      <th scope="col">{{'status' | translate}}</th>
+      <th scope="col">{{'articles' | translate}}</th>
       <th scope="col">
         <button type="button" class="btn btn-primary btn-sm text-nowrap"
                 (click)="onAddClicked()"
         >
           <i class="bi bi-plus"></i>
-          Добавить
+          {{'add' | translate}}
         </button>
       </th>
     </tr>

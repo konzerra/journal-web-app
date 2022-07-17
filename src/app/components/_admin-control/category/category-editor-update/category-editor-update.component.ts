@@ -19,6 +19,7 @@ import {CategoryUpdateFormGroup} from "./form-group/CategoryUpdateFormGroup";
 import {CategoryUseCaseGetByIdFull} from "../../../../domain/category/usecase/CategoryUseCaseGetByIdFull";
 import {Reviewer} from "../../../../domain/reviewer/Reviewer";
 import {ReviewerUseCaseGetInQueue} from "../../../../domain/reviewer/usecase/get/ReviewerUseCaseGetInQueue";
+import {CategoryFull} from "../../../../domain/category/CategoryFull";
 
 @Component({
   selector: 'app-category-editor-update',
@@ -26,7 +27,7 @@ import {ReviewerUseCaseGetInQueue} from "../../../../domain/reviewer/usecase/get
   styleUrls: ['./category-editor-update.component.css']
 })
 export class CategoryEditorUpdateComponent
-  extends GenericModelEditorUpdateComponent<CategoryData, CategoryDataControls, CategoryUpdateDto>
+  extends GenericModelEditorUpdateComponent<CategoryFull,CategoryData, CategoryDataControls, CategoryUpdateDto>
   implements OnInit {
 
   constructor(

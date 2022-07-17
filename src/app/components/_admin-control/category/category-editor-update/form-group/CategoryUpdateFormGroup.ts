@@ -1,12 +1,13 @@
 import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
 import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl,  Validators} from "@angular/forms";
 import {CategoryData} from "../../../../../domain/category/CategoryData";
 import {CategoryUpdateDto} from "../../../../../domain/category/dto/CategoryUpdateDto";
 import {CategoryDataControls} from "../../_common/CategoryDataControls";
+import {CategoryFull} from "../../../../../domain/category/CategoryFull";
 
 export class CategoryUpdateFormGroup
-  extends GenericUpdateFormGroup<CategoryData, CategoryDataControls, CategoryUpdateDto>
+  extends GenericUpdateFormGroup<CategoryFull,CategoryData, CategoryDataControls, CategoryUpdateDto>
 {
 
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
@@ -25,8 +26,8 @@ export class CategoryUpdateFormGroup
     return this.isDataControlsListValid()
   }
 
-  setDto(updateDto:CategoryUpdateDto){
-    this.updateDto = updateDto
+  setDto(modelFull:CategoryFull){
+    this.updateDto = modelFull
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((modelData)=>{
       let categoryDataControls = new CategoryDataControls(modelData.lang, modelData.id)

@@ -5,6 +5,7 @@ import {ModelI} from "../model/ModelI";
 import {DataControlsAbstract} from "./DataControlsAbstract";
 
 export abstract class GenericUpdateFormGroup<
+  ModelFull extends ModelI,
   ModelData extends ModelI,
   DataControls extends DataControlsAbstract<ModelData>,
   UpdateDto,
@@ -26,6 +27,6 @@ export abstract class GenericUpdateFormGroup<
   }
 
   abstract getDto():UpdateDto
-  abstract setDto(updateDto:UpdateDto):void
+  abstract setDto(modelFull:ModelFull):void
   abstract valid():boolean
 }

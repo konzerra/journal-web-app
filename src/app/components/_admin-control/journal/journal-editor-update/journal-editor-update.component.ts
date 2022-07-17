@@ -11,6 +11,7 @@ import {
 import {JournalData} from "../../../../domain/journal/JournalData";
 import {JournalDataControls} from "../common/JournalDataControls";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
+import {JournalFull} from "../../../../domain/journal/JournalFull";
 
 @Component({
   selector: 'app-journal-editor-update',
@@ -18,7 +19,7 @@ import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
   styleUrls: ['./journal-editor-update.component.css']
 })
 export class JournalEditorUpdateComponent
-  extends GenericModelEditorUpdateComponent<JournalData, JournalDataControls, JournalUpdateDto>
+  extends GenericModelEditorUpdateComponent<JournalFull,JournalData, JournalDataControls, JournalUpdateDto>
   implements OnInit {
 
   constructor(

@@ -5,9 +5,10 @@ import {JournalData} from "../../../../../domain/journal/JournalData";
 import {JournalUpdateDto} from "../../../../../domain/journal/dto/JournalUpdateDto";
 import {JournalStatus} from "../../../../../domain/journal/JournalStatus";
 import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
+import {JournalFull} from "../../../../../domain/journal/JournalFull";
 
 export class JournalUpdateFormGroup
-  extends GenericUpdateFormGroup<JournalData, JournalDataControls, JournalUpdateDto>
+  extends GenericUpdateFormGroup<JournalFull,JournalData, JournalDataControls, JournalUpdateDto>
 {
   valid(): boolean {
       return (
@@ -30,9 +31,9 @@ export class JournalUpdateFormGroup
     super();
   }
 
-  setDto(updateDto:JournalUpdateDto){
-    this.updateDto = updateDto
-    this.status.setValue(updateDto.status)
+  setDto(modelFull:JournalFull){
+    this.updateDto = modelFull
+    this.status.setValue(modelFull.status)
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((data)=>{
       let journalDataControls = new JournalDataControls(data.lang, data.id)

@@ -5,12 +5,12 @@
 
 <body>
 <div class = "wrapper container pt-5">
-  <h2 class="mt-5">Рецензенты</h2>
+  <h2 class="mt-5">{{'reviewers' | translate}}</h2>
 
   <!-- Search box -->
   <div class="col-lg-6 col-md-offset-1">
     <div class="input-group w-75 mb-3" >
-      <input type="search" class="form-control" placeholder="Search" >
+      <input type="search" class="form-control" placeholder="{{'search' | translate}}" >
       <button class="btn btn-primary" type="button" id="button-search">
         <i class="bi bi-search"></i>
       </button>
@@ -20,15 +20,15 @@
     <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">email</th>
-      <th scope="col">Имя</th>
-      <th scope="col">Категория</th>
+      <th scope="col">{{'email' | translate}}</th>
+      <th scope="col">{{'person_name' | translate}}</th>
+      <th scope="col">{{'category' | translate}}</th>
       <th scope="col">
         <button type="button" class="btn btn-primary btn-sm text-nowrap"
                 (click)="onAddClicked()"
         >
           <i class="bi bi-plus"></i>
-          Добавить
+          {{'add' | translate}}
         </button>
       </th>
     </tr>
@@ -42,7 +42,7 @@
       <th>{{model.id}}</th>
       <td>{{model.email}}</td>
       <td>{{model.name}}</td>
-      <td>{{model.category?.name || "Нет категории"}}</td>
+      <td>{{model.category?.name || "no_category" | translate}}</td>
       <td class = "text-nowrap">
         <! –– edit button ––>
         <button type="button" class="btn btn-primary btn-sm me-2" (click)="onEdit(model)">

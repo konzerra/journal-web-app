@@ -4,13 +4,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {UseCaseGetByIdFullAbstract} from "../../../../_generic/usecase/get/UseCaseGetByIdFullAbstract";
 import {MarkdownApi} from "../../MarkdownApi";
-import {MarkdownUpdateDto} from "../../dto/MarkdownUpdateDto";
+import {MarkdownFull} from "../../MarkdownFull";
 
 
 @Injectable({
   providedIn : "root"
 })
-export class MarkdownUseCaseGetByIdFull extends UseCaseGetByIdFullAbstract<MarkdownUpdateDto> {
+export class MarkdownUseCaseGetByIdFull extends UseCaseGetByIdFullAbstract<MarkdownFull> {
 
   protected apiPath: string = MarkdownApi.paths.getByIdFull
   constructor(

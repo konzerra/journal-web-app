@@ -1,13 +1,13 @@
 
 <body>
 <div class="wrapper container pt-5">
-  <h2 class="mt-5">Регистрация категории</h2>
+  <h2 class="mt-5">{{'category_registration' | translate}}</h2>
   <div class = "col-lg-6 col-md-offset-1 mb-5">
 
     <form class="needs-validation">
 
       <!-- Select input language   radio-buttons -->
-      <label class = "mt-2">Введите данные на языках</label>
+      <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
       <br>
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <div *ngFor="let lang of formGroup.requiredLangs" >
@@ -25,35 +25,35 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label" for="name"> Название </label>
+        <label class="control-label" for="name"> {{'name' | translate}} </label>
         <input type="text"
                id="name"
                class="form-control"
                [formControl]="formGroup.name"
-               placeholder="Введите название категории"
+               placeholder="{{'enter_category_name' | translate}}"
                required autofocus="autofocus" />
         <div *ngIf="checkFormControl(formGroup.name)"
              class="alert-danger">
 
           <div *ngIf="formGroup.name.errors?.['required']">
-            Введите название категории
+            {{'enter_category_name' | translate}}
           </div>
 
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label" for="version"> Описание </label>
+        <label class="control-label" for="version"> {{'overview' | translate}} </label>
         <input type="text"
                id="version"
                class="form-control"
                [formControl]="formGroup.overview"
-               placeholder="Введите описание"
+               placeholder="{{'enter_overview' | translate}}"
                required autofocus="autofocus" />
         <div *ngIf="checkFormControl(formGroup.overview)"
              class="alert-danger">
 
           <div *ngIf="formGroup.overview.errors?.['required']">
-            Введите описание
+            {{'enter_overview' | translate}}
           </div>
 
         </div>
@@ -62,9 +62,9 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
-                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > Сохранить </button>
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
-                  (click)="onCancelClicked()">Отмена</button>
+                  (click)="onCancelClicked()">{{'cancel' | translate}}</button>
         </div>
       </div>
     </form>

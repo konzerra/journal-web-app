@@ -4,19 +4,19 @@
 />
 <body>
 <div class = "wrapper container pt-5 " >
-  <h2 class="mt-5">Markdown тексты</h2>
+  <h2 class="mt-5">{{'markdown_texts' | translate}}</h2>
 
   <table class="table " >
     <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Страницы-название</th>
+      <th scope="col">{{'page_name' | translate}}</th>
       <th scope="col">
         <button type="button" class="btn btn-primary btn-sm text-nowrap"
                 (click)="onAddClicked()"
         >
           <i class="bi bi-plus"></i>
-          Добавить
+          {{'add' | translate}}
         </button>
       </th>
     </tr>
