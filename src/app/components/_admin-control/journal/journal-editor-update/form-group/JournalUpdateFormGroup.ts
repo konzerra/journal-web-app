@@ -18,6 +18,7 @@ export class JournalUpdateFormGroup
   }
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
   journalStatuses : Array<string> = Object.values(JournalStatus)
+  journalFile: File | null = null
 
   //changes on lang changed
   name : FormControl = new FormControl("", Validators.required)

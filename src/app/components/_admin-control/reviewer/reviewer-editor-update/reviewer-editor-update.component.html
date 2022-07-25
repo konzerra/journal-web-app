@@ -1,1 +1,88 @@
 
+<body>
+<div class="wrapper container pt-5">
+  <h2 class="mt-5">{{'reviewer_update' | translate}}</h2>
+  <div class = "col-lg-6 col-md-offset-1 mb-5">
+
+    <form class="needs-validation">
+      <div class="form-group">
+        <label class = "mt-2">{{"person_name" | translate}}</label>
+        <input class="form-control"
+               id="reviewer_name"
+               [value]="formGroup.reviewer?.name || 'Не найдено'"
+               disabled
+               required
+        >
+      </div>
+      <div class="form-group">
+        <label class = "mt-2">{{"email" | translate}}</label>
+        <input class="form-control"
+               id="email"
+               [value]="formGroup.reviewer?.email || 'Не найдено'"
+               disabled
+               required
+        >
+      </div>
+
+      <!-- Category select -->
+      <div class="form-group">
+        <label class = "mt-2">{{"category" | translate}}</label>
+        <select class="form-control"
+                [(ngModel)]="formGroup.category"
+                name="category-select"
+                (ngModelChange)="onCategoryChanged($event)"
+                id="category"
+                required
+        >
+          <option [ngValue]="null"
+                  [selected]="formGroup.category == null"
+          >{{"select_category" | translate}}</option>
+          <option *ngFor="let category of categoryList"
+                  [selected]="formGroup.category?.id == category.id"
+                  [ngValue]="category">
+            {{category.name}}
+          </option>
+        </select>
+      </div>
+
+
+      <!-- Active select -->
+      <div class="form-group">
+        <label class = "mt-2">{{'reviewer_status' | translate}}</label>
+        <select class="form-control"
+                id="active"
+                [formControl]="formGroup.active"
+                required
+        >
+          <option [value]="true"  [selected]="formGroup.active.value ">{{'active' | translate}}</option>
+          <option [value]="false" [selected]="!formGroup.active.value ">{{'inactive' | translate}}</option>
+        </select>
+        <div *ngIf="checkFormControl(formGroup.active)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.active.errors?.['required']">
+            {{'select_reviewer_status' | translate}}
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="mt-4">
+          <button type="button" name="login-submit" id="login-submit"
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'update' | translate}} </button>
+          <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
+                  (click)="onCancelClicked()">{{'cancel' | translate}}</button>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+  <br>
+
+</div>
+</body>
+
+
+

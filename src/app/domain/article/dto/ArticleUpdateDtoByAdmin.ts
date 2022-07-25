@@ -8,7 +8,5 @@ export interface ArticleUpdateDtoByAdmin {
   pagesInJournal: string | null,
   antiplagiat: string | null,
   dataList: Array<ArticleData>,
-  pdfDocId: Number | null,
-  wordDocId: Number | null,
-  reviewerBlankDocId: Number | null,
+
 }

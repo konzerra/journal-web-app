@@ -22,6 +22,7 @@
       <th scope="col">id</th>
       <th scope="col">{{'email' | translate}}</th>
       <th scope="col">{{'person_name' | translate}}</th>
+      <th scope="col">{{'status' | translate}}</th>
       <th scope="col">{{'category' | translate}}</th>
       <th scope="col">
         <button type="button" class="btn btn-primary btn-sm text-nowrap"
@@ -42,6 +43,8 @@
       <th>{{model.id}}</th>
       <td>{{model.email}}</td>
       <td>{{model.name}}</td>
+      <td *ngIf="model.active">{{'active' | translate}}</td>
+      <td *ngIf="!model.active">{{'inactive' | translate}}</td>
       <td>{{model.category?.name || "no_category" | translate}}</td>
       <td class = "text-nowrap">
         <! –– edit button ––>

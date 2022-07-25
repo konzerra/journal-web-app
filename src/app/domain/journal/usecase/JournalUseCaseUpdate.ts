@@ -11,7 +11,7 @@ import {JournalApi} from "../JournalApi";
 @Injectable({
   providedIn : "root"
 })
-export class JournalUseCaseUpdate extends UseCaseUpdateAbstract<JournalUpdateDto>{
+export class JournalUseCaseUpdate extends UseCaseUpdateAbstract<FormData>{
   protected apiPath: string = JournalApi.paths.update
   constructor(
     protected httpClient:HttpClient

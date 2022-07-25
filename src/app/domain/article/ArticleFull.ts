@@ -18,4 +18,5 @@ export interface ArticleFull {
   wordDocId: Number | null
   pdfDocId: Number | null
   reviewerBlankDocId: Number | null
+  antiplagiatDocId: Number | null
 }

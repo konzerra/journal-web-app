@@ -7,6 +7,7 @@ import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/Categor
 import {ReviewerUseCaseSave} from "../../../../domain/reviewer/usecase/ReviewerUseCaseSave";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
+import {DialogsService} from "../../../common/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-reviewer-editor-save',
@@ -20,7 +21,8 @@ export class ReviewerEditorSaveComponent implements OnInit {
   constructor(
     private categoryUseCaseGetAll: CategoryUseCaseGetAll,
     private reviewerUseCaseSave: ReviewerUseCaseSave,
-    private router: Router
+    private router: Router,
+    private dialogsService: DialogsService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class ReviewerEditorSaveComponent implements OnInit {
       console.log(this.formGroup.getDto())
       this.reviewerUseCaseSave.execute(this.formGroup.getDto()).subscribe({
         complete:()=>{
+          this.dialogsService.openInfoDialog("Сохранено")
           this.router.navigate([ComponentRoutingPaths.adminControl.reviewer.main])
         }
       })

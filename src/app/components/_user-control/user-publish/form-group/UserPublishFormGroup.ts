@@ -31,6 +31,8 @@ export class UserPublishFormGroup
     super();
     this.requiredLangs.forEach((lang)=>{
       let articleDataControls = new ArticleDataControls(lang,null)
+      //pushing default author
+      articleDataControls.authors.push(new FormControl("", Validators.required))
       this.dataControlsList.push(articleDataControls)
     })
 

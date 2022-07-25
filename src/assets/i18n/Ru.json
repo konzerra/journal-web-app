@@ -1,4 +1,145 @@
 
 {
-  "main": "Главная"
+  "main": "Главная",
+  "header_title": "Известия",
+  "magazine_name": "Журнал \"Известия им. И.Раззакова",
+  "publish": "Опубликовать",
+  "about_magazine": "О журнале",
+  "publication_ethics": "Этика публикаций",
+  "working_stuff": "Рабочий состав",
+
+  "previous": "Предыдущий",
+  "next": "Следующий",
+
+  "registration": "Регистрация",
+  "register": "Зарегистрироваться",
+  "already_registered": "Уже зарегистрированы?",
+  "sign_in": "Войти",
+  "sign_out": "Выйти",
+
+
+  "name": "Название",
+  "title": "Название",
+  "search": "Поиск",
+
+  "person_name": "Имя",
+  "enter_person_name": "Введите ваше имя",
+  "new_user": "Новый пользователь?",
+
+  "add": "Добавить",
+  "save": "Сохранить",
+  "update": "Обновить",
+  "cancel": "Отмена",
+  "control": "Управление",
+
+  "ok": "Ок",
+  "any_questions": "Есть вопросы?",
+
+  "admin": "Админ",
+
+  "enter_data_in_languages": "Введите данные на языках",
+
+  "status": "Статус",
+  "select_status": "Выберите статус",
+
+  "category": "Категория",
+  "categories": "Категории",
+  "category_update": "Обновить категорию",
+  "category_registration": "Регистрация категории",
+  "enter_category_name": "Введите название категории",
+  "select_category": "Выберите категорию",
+  "no_category": "Нет категории",
+
+  "journal": "Журнал",
+  "journals": "Журналы",
+
+  "journal_registration": "Регистрация журнала",
+  "journal_update": "Обновить журнал",
+  "enter_journal_title": "Введите название журнала",
+  "select_journal": "Выберите журнал",
+  "select_journal_pdf_file": "Выберите pdf файл",
+  "pages_in_journal": "Страницы в журнале",
+  "enter_pages_journal": "Введите страницы в журнале '5-16'",
+
+  "reviewer": "Рецензент",
+  "reviewers": "Рецензенты",
+  "reviewer_registration": "Регистрация рецензента",
+  "to_reviewers": "Рецензентам",
+  "reviewing": "Рецензирование",
+  "download_existing_reviewer_form": "скачать существующий бланк рецензента",
+  "select_filled_reviewer_form": "Выберите заполненный бланк рецензента",
+
+  "articles": "Статьи",
+  "article_publish": "Публикация статьи",
+  "update_article": "Обновить статью",
+  "enter_article_title": "Введите название статьи",
+
+  "markdown_texts": "Markdown тексты",
+  "enter_markdown": "Введите markdown",
+
+  "page_name": "Название страницы",
+  "page_registration": "Регистрация страницы",
+  "page_update": "Обновить страницу",
+  "select_page": "Выберите страницу",
+  "pages": "Страницы",
+
+  "handbook": "Справочник",
+
+  "select_word_file": "Выберите word-файл",
+  "select_pdf_file": "Выберите pdf-файл",
+  "download_existing_version": "скачать текущую версию",
+
+  "author": "Автор",
+  "enter_author": "Введите автора",
+  "add_author": "+ Добавить автора",
+
+  "annotation": "Аннотация",
+  "enter_annotation": "Введите аннотацию",
+
+  "tags": "Ключевые слова",
+  "enter_tags": "Введите ключевые слова",
+
+  "overview": "Описание",
+  "enter_overview": "Введите описание",
+
+  "version": "Версия",
+  "enter_version": "Введите версию",
+
+  "email": "Почта",
+  "enter_email": "Введите почту",
+
+  "comment": "Комментарий",
+  "enter_comment": "Введите комментарий",
+
+  "login": "Войти",
+  "successful_registration_message": "Вы успешно зарегистрировались!",
+  "can_login_message": "Теперь вы можете войти",
+
+  "error": "Ошибка!",
+
+  "password": "Пароль",
+  "enter_password": "Введите пароль",
+
+  "profile": "Профиль",
+  "my_articles": "Мои статьи",
+
+  "confirm_action": "Потвердите действие",
+
+  "about_journal_title": "Про журнал \"Известия им. И.Раззакова\"",
+  "about_journal_text": "Научный журнал \"Известия Кыргызского государственного технического университета им. И. Раззакова\" издается 4 раза в год\n\n        Свидетельство о регистрации №925 от 19 января 2004 г.\n\n        Учредитель: Кыргызский государственный технический университет им. И. Раззакова\n\n        Главный редактор: Чыныбаев М.К. ректор КГТУ им. и. Раззакова\n\n        ISSN - 1694-8335 (печатная версия)\n\n        ISSN - 1694-8343 (электронная версия)\n\n        Язык издания: кыргызский, русский, английский\n\n        Територия распространиения: Кыргызская Республика и зарубежные страны\n\n        Журнал включен в перечень изданий утвержденных ВАК Кыргызской Республики для опубликования основных результатов кандидатских и докторских диссертационных исследований по естественно-техническим отраслям науки.\n",
+
+  "how_to_publish": "Как опубликовать",
+  "fill_forms": "Заполните форму",
+  "fill_forms_text": "публикации статьи",
+  "wait_email": "Ожидайте письмо",
+  "wait_email_text": "о принятии статьи",
+  "pay_tariffs": "Оплатите тарифы",
+  "contacts": "Контакты",
+  "address": "Адрес",
+  "address_destination": "66, проспект Манаса",
+  "additional": "Дополнительно",
+
+  "antiplagiat": "Антиплагиат",
+  "enter_antiplagiat": "Введите антиплагиат",
+  "select_antiplagiat_file": "Выберите антиплагиат pdf-файл"
 }

@@ -9,7 +9,7 @@
   <div class = "col-lg-6 col-md-offset-1">
     <form class="needs-validation" >
 
-      <!-- Journal select -->
+      <!-- Journal  -->
       <div class="form-group">
         <label class = "mt-2">{{"journal" | translate}}</label>
         <input class="form-control"
@@ -73,10 +73,38 @@
         </select>
       </div>
 
-      <label *ngIf="formGroup.updateDto.reviewerBlankDocId != null"
+      <label *ngIf="formGroup.articleFull.reviewerBlankDocId != null"
              class = "link mt-0"
-             (click)="onDocDownload(formGroup.updateDto.reviewerBlankDocId)"
+             (click)="onDocDownload(formGroup.articleFull.reviewerBlankDocId)"
       >{{"download_reviewer_form" | translate}}</label>
+
+      <!-- Antiplagiat input -->
+      <div class="form-group">
+        <label class="control-label mt-2" for="antiplagiat"> {{"antiplagiat" | translate}} </label>
+        <input type="text"
+               id="antiplagiat"
+               class="form-control"
+               [formControl]="formGroup.antiplagiat"
+               placeholder="{{'enter_antiplagiat' | translate}}"
+               required autofocus="autofocus"
+        />
+      </div>
+
+      <!-- antiplagiat pdf file select -->
+      <label class = "mt-2">{{"select_antiplagiat_file" | translate}}</label>
+      <br>
+      <input
+        class = "form-control"
+        type="file"
+        id="antiplagiatFile"
+        accept=".pdf"
+        (change)="onAntiplagiatFileChange($event)"
+      />
+
+      <label *ngIf="formGroup.articleFull.antiplagiatDocId!=null" class="" (click)="onDocDownload(formGroup.articleFull.antiplagiatDocId)">
+        <a class="link">{{"download_existing_version" | translate}}</a>
+      </label>
+      <br>
 
       <!-- pages in journal input -->
       <div class="form-group">
@@ -90,8 +118,10 @@
                   />
       </div>
 
+
+
       <br>
-      <!--  file select -->
+      <!-- word file select -->
       <label class = "mt-2">{{"select_word_file" | translate}}</label>
       <br>
       <input
@@ -99,14 +129,14 @@
         type="file"
         id="wordFile"
         accept=".doc, .docx"
-        (change)="onFileChange($event)"
+        (change)="onWordFileChange($event)"
       />
-      <label *ngIf="formGroup.updateDto.wordDocId!=null" class="" (click)="onDocDownload(formGroup.updateDto.wordDocId)">
+      <label *ngIf="formGroup.articleFull.wordDocId!=null" class="" (click)="onDocDownload(formGroup.articleFull.wordDocId)">
         <a class="link">{{"download_existing_version" | translate}}</a>
       </label>
       <br>
 
-      <!--  file select -->
+      <!-- pdf file select -->
       <label class = "mt-2">{{"select_pdf_file" | translate}}</label>
       <br>
       <input
@@ -116,7 +146,7 @@
         accept=".pdf"
         (change)="onPdfFileChange($event)"
       />
-      <label *ngIf="formGroup.updateDto.pdfDocId!=null" class="" (click)="onDocDownload(formGroup.updateDto.pdfDocId)">
+      <label *ngIf="formGroup.articleFull.pdfDocId!=null" class="" (click)="onDocDownload(formGroup.articleFull.pdfDocId)">
         <a class="link">{{"download_existing_version" | translate}}</a>
       </label>
       <br>

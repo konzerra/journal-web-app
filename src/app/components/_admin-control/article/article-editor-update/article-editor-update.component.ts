@@ -26,7 +26,6 @@ export class ArticleEditorUpdateComponent
   formGroup = new ArticleUpdateFormGroup()
   selectedRadioButton: string = this.formGroup.requiredLangs[0]
   categoryList = new Array<Category>()
-  selectedCategory: Category | null = null;
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
@@ -144,7 +143,7 @@ export class ArticleEditorUpdateComponent
   }
 
 
-  onFileChange($event: Event) {
+  onWordFileChange($event: Event) {
     const input = $event.target as HTMLInputElement;
     if (!input.files?.length) {
       this.formGroup.wordFile = null
@@ -156,6 +155,15 @@ export class ArticleEditorUpdateComponent
     const input = $event.target as HTMLInputElement;
     if (!input.files?.length) {
       this.formGroup.wordFile = null
+      return;
+    }
+    this.formGroup.pdfFile = input.files[0]
+  }
+
+  onAntiplagiatFileChange($event: Event) {
+    const input = $event.target as HTMLInputElement;
+    if (!input.files?.length) {
+      this.formGroup.antiplagiatFile = null
       return;
     }
     this.formGroup.pdfFile = input.files[0]

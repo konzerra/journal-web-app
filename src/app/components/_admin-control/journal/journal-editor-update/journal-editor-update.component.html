@@ -29,6 +29,17 @@
         </div>
       </div>
 
+      <!-- journal pdf file select -->
+      <label class = "mt-2">{{"select_journal_pdf_file" | translate}}</label>
+      <br>
+      <input
+        class = "form-control"
+        type="file"
+        id="journalFile"
+        accept=".pdf"
+        (change)="onJournalFileChange($event)"
+      />
+
       <!-- Select input language   radio-buttons -->
       <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
       <br>
@@ -92,6 +103,7 @@
       </div>
 
     </form>
+    <div class="link" (click)="onReportClicked()">Посмотреть отчет</div>
 
 
   </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-color navbar-light ">
   <div class="container-fluid">
-    <a class="navbar-brand ms-3" routerLink = "/">Известия</a>
+    <a class="navbar-brand ms-3" routerLink = "/">{{"header_title" | translate}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,55 +10,55 @@
           <a class="nav-link active" aria-current="page" routerLink = "/">{{"main" | translate}}</a>
         </li>
         <li class="nav-item ms-3">
-          <a class="nav-link active" aria-current="page" routerLink = "/journals">Журналы</a>
+          <a class="nav-link active" aria-current="page" routerLink = "/journals">{{"journals" | translate}}</a>
         </li>
         <li class="nav-item ms-3">
-          <a class="nav-link active" aria-current="page" routerLink = "/user/publish">Опубликовать</a>
+          <a class="nav-link active" aria-current="page" routerLink = "/user/publish">{{"publish" | translate}}</a>
         </li>
         <!-- About journal -->
         <li class="nav-item dropdown ms-3">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAboutJournal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            О журнале
+            {{"about_magazine" | translate}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownAboutJournal">
-            <li><a class="dropdown-item" routerLink = "/about">О журнале</a></li>
-            <li><a class="dropdown-item" routerLink = "/ethics">Этика публикации</a></li>
-            <li><a class="dropdown-item" routerLink = "/board">Рабочий состав</a></li>
+            <li><a class="dropdown-item" routerLink = "/about">{{"about_magazine" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "/ethics">{{"publication_ethics" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "/board">{{"working_stuff" | translate}}</a></li>
           </ul>
         </li>
         <li class="nav-item ms-3">
-          <a class="nav-link active" aria-current="page" routerLink = "/user/handbook">Справочник</a>
+          <a class="nav-link active" aria-current="page" routerLink = "/user/handbook">{{"handbook" | translate}}</a>
         </li>
 
         <!-- Admin control -->
         <li class="nav-item dropdown ms-3" *ngIf="hasRole('Admin')">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Админ
+            {{"admin" | translate}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink = "/admin/journal/main">Журналы</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/category/main">Категории</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">Рецензенты</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/journal/main">{{"journals" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/category/main">{{"categories" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">{{"reviewers" | translate}}</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" routerLink="admin/markdown/main">Страницы сайта</a></li>
+            <li><a class="dropdown-item" routerLink="admin/markdown/main">{{"pages" | translate}}</a></li>
           </ul>
         </li>
 
         <!-- Reviewer control -->
         <li class="nav-item dropdown ms-3" *ngIf="hasRole('Reviewer')">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReviewer" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Рецензент
+            {{"reviewer" | translate}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownReviewer">
-            <li><a class="dropdown-item" routerLink = "/reviewer/article/main">Статьи</a></li>
+            <li><a class="dropdown-item" routerLink = "/reviewer/article/main">{{"articles" | translate}}</a></li>
           </ul>
         </li>
 
         <li class="nav-item ms-3">
-          <a *ngIf="!isLoggedIn()" class="nav-link active" aria-current="page" routerLink = "/login">войти</a>
+          <a *ngIf="!isLoggedIn()" class="nav-link active" aria-current="page" routerLink = "/login">{{"sign_in" | translate}}</a>
         </li>
         <li class="nav-item ms-3">
-          <a *ngIf="isLoggedIn()" (click)="logout()" class="nav-link active" aria-current="page" routerLink = "/login">выйти</a>
+          <a *ngIf="isLoggedIn()" (click)="logout()" class="nav-link active" aria-current="page" routerLink = "/login">{{"sign_out" | translate}}</a>
         </li>
 
 

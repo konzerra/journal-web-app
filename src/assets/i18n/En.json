@@ -1,20 +1,41 @@
 
 {
   "main": "Main",
+  "header_title": "Magazine",
+  "magazine_name": "Magazine \"Izvestia KSTU named after I. Razzakov",
+  "publish": "Publish",
+  "about_magazine": "About magazine",
+  "publication_ethics": "Publication ethics",
+  "working_stuff": "Working stuff",
+
+  "previous": "Previous",
+  "next": "Next",
+
   "registration": "Registration",
+  "register": "Register",
+  "already_registered": "Already registered?",
+  "sign_in": "Sign in",
+  "sign_out": "Sign out",
+
 
   "name": "Name",
   "title": "Title",
   "search": "Search",
 
   "person_name": "Name",
+  "enter_person_name": "Enter your name",
   "new_user": "New user?",
 
   "add": "Add",
   "save": "Save",
+  "update": "Update",
   "cancel": "Cancel",
+  "control": "Control",
+
   "ok": "Ok",
   "any_questions": "Any questions?",
+
+  "admin": "Admin",
 
   "enter_data_in_languages": "Enter data in languages",
 
@@ -31,20 +52,25 @@
 
   "journal": "Journal",
   "journals": "Journals",
+
   "journal_registration": "Journal registration",
   "journal_update": "Journal update",
   "enter_journal_title": "Enter the title of the journal",
   "select_journal": "Select journal",
   "pages_in_journal": "Pages in journal",
+  "select_journal_pdf_file": "Select jounal pdf file",
   "enter_pages_journal": "Enter pages in journal in format '5-16'",
 
   "reviewer": "Reviewer",
   "reviewers": "Reviewers",
   "reviewer_registration": "Reviewer registration",
   "to_reviewers": "To reviewers",
+  "reviewing": "Reviewing",
   "download_existing_reviewer_form": "download existing reviewer form",
+  "select_filled_reviewer_form": "Select filled reviewer form",
 
   "articles": "Articles",
+  "article_publish": "Publish article",
   "update_article": "Update Article",
   "enter_article_title": "Enter the title of the article",
 
@@ -53,7 +79,9 @@
 
   "page_name": "Page name",
   "page_registration": "Page registration",
+  "page_update": "Update page",
   "select_page": "Select page",
+  "pages": "Pages",
 
   "handbook": "Handbook",
 
@@ -78,5 +106,40 @@
   "enter_version": "Enter version",
 
   "email": "Email",
-  "enter_email": "Enter email"
+  "enter_email": "Enter email",
+
+  "comment": "Comment",
+  "enter_comment": "Enter comment",
+
+  "login": "Login",
+  "successful_registration_message": "You successfully registered!",
+  "can_login_message": "You can now login",
+
+  "error": "Error!",
+
+  "password": "Password",
+  "enter_password": "Enter password",
+
+  "profile": "Profile",
+  "my_articles": "My articles",
+
+  "confirm_action": "Confirm action",
+
+  "about_journal_title": "About the journal \"The magazine named after Iskhak Razzakov\"",
+  "about_journal_text": "Научный журнал \"Известия Кыргызского государственного технического университета им. И. Раззакова\" издается 4 раза в год\n\n        Свидетельство о регистрации №925 от 19 января 2004 г.\n\n        Учредитель: Кыргызский государственный технический университет им. И. Раззакова\n\n        Главный редактор: Чыныбаев М.К. ректор КГТУ им. и. Раззакова\n\n        ISSN - 1694-8335 (печатная версия)\n\n        ISSN - 1694-8343 (электронная версия)\n\n        Язык издания: кыргызский, русский, английский\n\n        Територия распространиения: Кыргызская Республика и зарубежные страны\n\n        Журнал включен в перечень изданий утвержденных ВАК Кыргызской Республики для опубликования основных результатов кандидатских и докторских диссертационных исследований по естественно-техническим отраслям науки.\n",
+
+  "how_to_publish": "How to publish",
+  "fill_forms": "Fill forms",
+  "fill_forms_text": "of article publication",
+  "wait_email": "Wait for an email",
+  "wait_email_text": "about article acceptation",
+  "pay_tariffs": "Pay the tariffs",
+  "contacts": "Contacts",
+  "address": "Address",
+  "address_destination": "66 Mir Avenue",
+  "additional": "Additional",
+
+  "antiplagiat": "Antiplagiat",
+  "enter_antiplagiat": "Enter antiplagiat",
+  "select_antiplagiat_file": "Select antiplagiat pdf-file"
 }

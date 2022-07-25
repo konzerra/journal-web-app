@@ -1,25 +1,25 @@
 
 <body>
 <div class="wrapper container pt-5">
-  <h2 class="mt-5">Личный кабинет</h2>
+  <h2 class="mt-5">{{'profile' | translate}}</h2>
 
 
   <!-- Form to change name  -->
   <div class = "col-lg-6 col-md-offset-1">
     <form class="needs-validation" novalidate [formGroup]="formGroup.formGroup" (ngSubmit)="onSubmit()" >
       <div class="form-group">
-        <label class="control-label" for="email"> Имя </label>
+        <label class="control-label" for="email"> {{'person_name' | translate}} </label>
         <input type="text"
                id="email"
                class="form-control"
                [formControl]="formGroup.name"
-               placeholder="Введите ваше имя"
+               placeholder="{{'enter_person_name' | translate}}"
                required autofocus="autofocus" />
         <div *ngIf="checkFormControl(formGroup.name)"
              class="alert-danger">
 
           <div *ngIf="formGroup.name.errors?.['required']">
-            Введите имя
+            {{'enter_person_name' | translate}}
           </div>
 
         </div>
@@ -28,24 +28,24 @@
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3 mt-3">
             <input type="submit" name="login-submit" id="login-submit"
-                   class="form-control btn btn-primary" value="Обновить" />
+                   class="form-control btn btn-primary" value="{{'update' | translate}}" />
           </div>
         </div>
       </div>
     </form>
   </div>
 
-  <h4 class ="mt-5">Мои статьи</h4>
+  <h4 class ="mt-5">{{'my_articles' | translate}}</h4>
 
   <!-- Table of user articles  -->
   <table class="table " >
     <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Название</th>
-      <th scope="col">Журнал</th>
-      <th scope="col">Категория</th>
-      <th scope="col">статус</th>
+      <th scope="col">{{'name' | translate}}</th>
+      <th scope="col">{{'journal' | translate}}</th>
+      <th scope="col">{{'category' | translate}}</th>
+      <th scope="col">{{'status' | translate}}</th>
     </tr>
     </thead>
 

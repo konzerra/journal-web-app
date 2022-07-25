@@ -5,19 +5,19 @@
 
 <body>
 <div class="wrapper container pt-5">
-  <h2 class="mt-5">Публикация статьи</h2>
+  <h2 class="mt-5">{{'article_publish' | translate}}</h2>
   <div class = "col-lg-6 col-md-offset-1 mb-5">
     <form class="needs-validation" >
 
       <!-- Journal select -->
       <div class="form-group">
-        <label class = "mt-2">Журнал</label>
+        <label class = "mt-2">{{'journal' | translate}}</label>
         <select class="form-control"
                 id="status"
                 [formControl]="formGroup.journalId"
                 required
         >
-          <option value="" disabled selected hidden>Выберите журнал</option>
+          <option value="" disabled selected hidden>{{'select_journal' | translate}}</option>
           <option *ngFor="let journal of journalList"
                   [value]="journal.id">{{journal.name+" "+journal.version}}
           </option>
@@ -26,14 +26,14 @@
              class="alert-danger">
 
           <div *ngIf="formGroup.journalId.errors?.['required']">
-            Выберите журнал.
+            {{'select_journal' | translate}}
           </div>
 
         </div>
       </div>
 
       <!--  file select -->
-      <label class = "mt-2">Выберите файл</label>
+      <label class = "mt-2">{{'select_word_file' | translate}}</label>
       <br>
       <input
         class = "form-control"
@@ -44,7 +44,7 @@
       />
 
       <!-- Select input language   radio-buttons -->
-      <label class = "mt-2">Введите данные на языках</label>
+      <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
       <br>
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <div *ngFor="let lang of formGroup.requiredLangs" >
@@ -64,31 +64,31 @@
 
       <!-- Article name input -->
       <div class="form-group">
-        <label class="control-label mt-2" for="name"> Название </label>
+        <label class="control-label mt-2" for="name"> {{"title" | translate}} </label>
         <textarea type="text"
                   id="name"
                   class="form-control"
                   [formControl]="formGroup.name"
-                  placeholder="Введите название статьи"
+                  placeholder="{{'enter_article_title' | translate}}"
                   required autofocus="autofocus"
                   rows="3"></textarea>
         <div *ngIf="checkFormControl(formGroup.name)"
              class="alert-danger">
           <div *ngIf="formGroup.name.errors?.['required']">
-            Введите название
+            {{'enter_article_title' | translate}}
           </div>
         </div>
       </div>
 
       <!-- Authors input -->
       <div *ngFor="let author of formGroup.authors; let i = index">
-        <label class="mt-2">Автор {{i}}</label>
+        <label class="mt-2">{{"author" | translate}} {{i}}</label>
         <div class="input-group" >
           <input type="text"
                  id="author{{i+selectedRadioButton}}"
                  class="form-control"
                  [formControl]="author"
-                 placeholder="Введите автора"
+                 placeholder="{{'enter_author' | translate}}"
                  required autofocus="autofocus"
           >
           <button class="btn btn-danger btn-sm ms-2" type="button" id="button-delete-author" (click)="onAuthorRemove(i)">
@@ -99,46 +99,46 @@
         <div *ngIf="checkFormControl(formGroup.name)"
              class="alert-danger">
           <div *ngIf="author.errors?.['required']">
-            Введите автора
+            {{'enter_author' | translate}}
           </div>
         </div>
       </div>
       <button class="btn btn-primary btn-sm mt-2" type="button" id="button-add-author" (click)="addAuthor()">
-        + Добавить автора
+        {{'add_author' | translate}}
       </button>
 
       <!-- Article annotation input -->
       <div class="form-group">
-        <label class="control-label mt-2" for="name"> Аннотация </label>
+        <label class="control-label mt-2" for="name"> {{'annotation' | translate}} </label>
         <textarea type="text"
                   id="annotation"
                   class="form-control"
                   [formControl]="formGroup.annotation"
-                  placeholder="Введите аннотацию статьи"
+                  placeholder="{{'enter_annotation' | translate}}"
                   required autofocus="autofocus"
                   rows="3"></textarea>
         <div *ngIf="checkFormControl(formGroup.annotation)"
              class="alert-danger">
           <div *ngIf="formGroup.annotation.errors?.['required']">
-            Введите аннотацию
+            {{'enter_annotation' | translate}}
           </div>
         </div>
       </div>
 
       <!-- Article tags input -->
       <div class="form-group">
-        <label class="control-label mt-2" for="name"> Ключевые слова </label>
+        <label class="control-label mt-2" for="name"> {{'tags' | translate}} </label>
         <textarea type="text"
                   id="tags"
                   class="form-control"
                   [formControl]="formGroup.tags"
-                  placeholder="Введите ключевые слова"
+                  placeholder="{{'enter_tags' | translate}}"
                   required autofocus="autofocus"
                   rows="2"></textarea>
         <div *ngIf="checkFormControl(formGroup.tags)"
              class="alert-danger">
           <div *ngIf="formGroup.tags.errors?.['required']">
-            Введите название
+            {{'enter_tags' | translate}}
           </div>
         </div>
       </div>
@@ -146,15 +146,15 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
-                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > Сохранить </button>
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
-                  (click)="onCancelClicked()">Отмена</button>
+                  (click)="onCancelClicked()">{{'cancel' | translate}}</button>
         </div>
       </div>
     </form>
 
     <div class="form-group mb-5 mt-2">
-      <span>Есть вопросы? <a routerLink="/user/handbook">справочник</a></span>
+      <span>{{'any_questions' | translate}} <a routerLink="/user/handbook">{{'handbook' | translate}}</a></span>
     </div>
   </div>
   <br>

@@ -24,7 +24,8 @@ export class ArticleUpdateFormGroup
   category : Category | null = null
   wordFile: File | null = null
   pdfFile: File | null = null
-  antiplagiat = new FormControl(null)
+  antiplagiatFile: File | null = null
+  antiplagiat = new FormControl<string | null>(null)
   pagesInJournal = new FormControl<string>("")
   status = new FormControl("",Validators.required)
 
@@ -46,16 +47,16 @@ export class ArticleUpdateFormGroup
     journalId: null,
     pagesInJournal: null,
     status: "",
-    pdfDocId: null,
-    reviewerBlankDocId: null,
-    wordDocId: null,
   }
+  articleFull!: ArticleFull
 
   constructor() {
     super();
   }
 
+
   setDto(modelFull: ArticleFull): void {
+    this.articleFull = modelFull
     this.updateDto = {
       id: modelFull.id,
       antiplagiat: modelFull.antiplagiat,
@@ -64,9 +65,6 @@ export class ArticleUpdateFormGroup
       journalId: modelFull.journal.id,
       pagesInJournal: modelFull.pagesInJournal,
       status: modelFull.status,
-      pdfDocId: modelFull.pdfDocId,
-      reviewerBlankDocId: modelFull.reviewerBlankDocId,
-      wordDocId: modelFull.wordDocId,
     }
     this.status.setValue(modelFull.status)
     this.journal.setValue(modelFull.journal)
@@ -114,9 +112,6 @@ export class ArticleUpdateFormGroup
       journalId: this.journal.value?.id || 0,
       pagesInJournal: this.pagesInJournal.value,
       status: this.status.value || this.updateDto.status,
-      pdfDocId: this.updateDto.pdfDocId,
-      reviewerBlankDocId: this.updateDto.reviewerBlankDocId,
-      wordDocId: this.updateDto.wordDocId,
     }
     console.log(articleUpdateDto)
     this.dataControlsList.forEach((data)=>{

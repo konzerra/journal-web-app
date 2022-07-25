@@ -1,60 +1,56 @@
 <body>
 <div class="container pt-5">
-  <h2 class="mt-5">Регистрация</h2>
+  <h2 class="mt-5">{{'registration' | translate}}</h2>
   <div class = "col-lg-6 col-md-offset-1 mb-5">
-    <div class="alert alert-danger" role="alert"
-         *ngIf="errorParam.includes('error')">
-      <h4 class="alert-heading">Ошибка!</h4>
-      <p>{{errorParam}}</p>
-    </div>
+
     <form class="needs-validation" novalidate [formGroup]="formGroup.formGroup" (ngSubmit)="onSubmit()" >
       <div class="form-group">
-        <label class="control-label" for="name"> Имя пользователя </label>
+        <label class="control-label" for="name">{{'person_name' | translate}} </label>
         <input type="text"
                id="name"
                class="form-control"
                [formControl]="formGroup.name"
-               placeholder="Введите имя"
+               placeholder="{{'enter_person_name' | translate}}"
                required autofocus="autofocus" />
         <div *ngIf="checkFormControl(formGroup.name)"
              class="alert-danger">
 
           <div *ngIf="formGroup.name.errors?.['required']">
-            Введите почту
+            {{'enter_person_name' | translate}}
           </div>
 
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label" for="email"> Почта </label>
+        <label class="control-label" for="email"> {{'email' | translate}} </label>
         <input type="text"
                id="email"
                class="form-control"
                [formControl]="formGroup.email"
-               placeholder="Введите почту"
+               placeholder="{{'enter_email' | translate}}"
                required autofocus="autofocus" />
         <div *ngIf="checkFormControl(formGroup.email)"
              class="alert-danger">
 
           <div *ngIf="formGroup.email.errors?.['required']">
-            Введите почту
+            {{'enter_email' | translate}}
           </div>
 
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label" for="password"> Пароль </label>
+        <label class="control-label" for="password"> {{'password' | translate}} </label>
         <input type="password"
                id="password"
                class="form-control"
                [formControl]="formGroup.password"
-               placeholder="Введите пароль"
+               placeholder="{{'enter_password' | translate}}"
                required autofocus="autofocus" />
         <div *ngIf="checkFormControl(formGroup.password)"
              class="alert-danger">
 
           <div *ngIf="formGroup.password.errors?.['required']">
-            Введите пароль
+            {{'enter_password' | translate}}
           </div>
 
         </div>
@@ -63,13 +59,13 @@
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3 mt-3">
             <input type="submit" name="register-submit" id="register-submit"
-                   class="form-control btn btn-primary" value="Зарегистрироваться" />
+                   class="form-control btn btn-primary" value="{{'register' | translate}}" />
           </div>
         </div>
       </div>
     </form>
     <div class="form-group">
-      <span>Уже зарегистрированы? <a routerLink="/login">Войти</a></span>
+      <span>{{'already_registered' | translate}} <a routerLink="/login">{{'sing_in' | translate}}</a></span>
     </div>
   </div>
   <br>

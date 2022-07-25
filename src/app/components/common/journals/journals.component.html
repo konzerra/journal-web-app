@@ -9,7 +9,7 @@
     <div class="col-lg-6">
       <br>
       <br class="mt-5">
-      <h2 class="mt-5">Журналы</h2>
+      <h2 class="mt-5">{{'journals' | translate}}</h2>
 
       <div *ngFor="let i = index; let model of modelPage.content | paginate :{
       itemsPerPage: 10,
@@ -29,6 +29,8 @@
       <pagination-controls
         class="pagination-c mt-3"
         (pageChange)="onPageChange($event)"
+        previousLabel="{{'previous' | translate}}"
+        nextLabel="{{'next' | translate}}"
       ></pagination-controls>
     </div>
   </div>

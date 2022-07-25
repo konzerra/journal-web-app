@@ -14,4 +14,13 @@ a{
   border: none;
   max-width: fit-content;
   background-color: transparent;
+
 }
+select{
+  color: white;
+}
+option{
+  color: black;
+}
+
+
