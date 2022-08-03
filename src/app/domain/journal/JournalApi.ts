@@ -11,7 +11,8 @@ export class JournalApi {
     makeReport : `${this.protectedPath}/{id}`,
 
     getReport: `${this.protectedPath}/report/{id}`,
-    getAllByStatus: `${this.protectedPath}/all-by-status/{status}`,
+    getAllByStatus: `${this.publicPath}/all-by-status/{status}`,
+    getAllPublishedArticlesPaginated : `${this.publicPath}/published/{id}/articles/{pageNumber}/{pageSize}`,
     getAllArticlesPaginated : `${this.publicPath}/{id}/articles/{pageNumber}/{pageSize}`,
     getAllCategories : `${this.publicPath}/{id}/categories`,
     getByIdFull : `${this.protectedPath}/full/{id}`,
@@ -22,6 +23,7 @@ export class JournalApi {
     save: `${this.protectedPath}`,
     deleteById: `${this.protectedPath}/{id}`,
     update: `${this.protectedPath}`,
+
 
 
 

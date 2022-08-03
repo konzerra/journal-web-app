@@ -6,9 +6,10 @@ import {Category} from "../../../../domain/category/Category";
 import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
 import {CategoryUseCaseGetByIdFull} from "../../../../domain/category/usecase/CategoryUseCaseGetByIdFull";
 import {ReviewerUseCaseGetByIdFull} from "../../../../domain/reviewer/usecase/get/ReviewerUseCaseGetByIdFull";
-import {ActivatedRoute, Route} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
 import {ReviewerUseCaseUpdate} from "../../../../domain/reviewer/usecase/ReviewerUseCaseUpdate";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 
 @Component({
   selector: 'app-reviewr-editor-update',
@@ -25,6 +26,7 @@ export class ReviewerEditorUpdateComponent implements OnInit {
     private categoryUseCaseGetAll: CategoryUseCaseGetAll,
     private reviewerUseCaseGetByIdFull: ReviewerUseCaseGetByIdFull,
     private reviewerUseCaseUpdate: ReviewerUseCaseUpdate,
+    private router:Router,
     private route:ActivatedRoute,
     private dialogsService: DialogsService
   ) { }
@@ -80,11 +82,13 @@ export class ReviewerEditorUpdateComponent implements OnInit {
       },
       complete:()=>{
         this.dialogsService.openInfoDialog("Обновлено")
+        this.router.navigate([ComponentRoutingPaths.adminControl.reviewer.main])
       }
     })
   }
 
   onCancelClicked() {
+    this.router.navigate([ComponentRoutingPaths.adminControl.reviewer.main])
 
   }
 

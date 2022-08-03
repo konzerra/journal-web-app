@@ -22,7 +22,7 @@ import { JournalEditorSaveComponent } from './components/_admin-control/journal/
 import { ForbiddenComponent } from './components/common/forbidden/forbidden.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { UserHandbookComponent } from './components/_user-control/user-handbook/user-handbook.component';
-import { UserArticlesComponent } from './components/common/user-articles/user-articles.component';
+
 import { UserPublishComponent } from './components/_user-control/user-publish/user-publish.component';
 import { ReviewerEditorMainComponent } from './components/_admin-control/reviewer/reviewer-editor-main/reviewer-editor-main.component';
 import { ReviewerEditorSaveComponent } from './components/_admin-control/reviewer/reviewer-editor-save/reviewer-editor-save.component';
@@ -58,6 +58,10 @@ import { GatesComponent } from './components/common/home/components/gates/gates.
 import { AboutJournalComponent } from './components/common/home/components/about-journal/about-journal.component';
 import { PublishGuideComponent } from './components/common/home/components/publish-guide/publish-guide.component';
 import {NgxTranslateModule} from "../translate/translate.module";
+import { ArticlesComponent } from './components/common/articles/articles.component';
+import { TipEditorMainComponent } from './components/_admin-control/tip/tip-editor-main/tip-editor-main.component';
+import { TipEditorSaveComponent } from './components/_admin-control/tip/tip-editor-save/tip-editor-save.component';
+import { TipEditorUpdateComponent } from './components/_admin-control/tip/tip-editor-update/tip-editor-update.component';
 
 
 @NgModule({
@@ -77,7 +81,7 @@ import {NgxTranslateModule} from "../translate/translate.module";
     ForbiddenComponent,
     FooterComponent,
     UserHandbookComponent,
-    UserArticlesComponent,
+
     UserPublishComponent,
     ReviewerEditorMainComponent,
     ReviewerEditorSaveComponent,
@@ -98,7 +102,11 @@ import {NgxTranslateModule} from "../translate/translate.module";
     FooterPageComponent,
     GatesComponent,
     AboutJournalComponent,
-    PublishGuideComponent
+    PublishGuideComponent,
+    ArticlesComponent,
+    TipEditorMainComponent,
+    TipEditorSaveComponent,
+    TipEditorUpdateComponent
   ],
     imports: [
         BrowserModule,

@@ -44,6 +44,9 @@ export class ReviewerEditorSaveComponent implements OnInit {
         complete:()=>{
           this.dialogsService.openInfoDialog("Сохранено")
           this.router.navigate([ComponentRoutingPaths.adminControl.reviewer.main])
+        },
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
         }
       })
     }

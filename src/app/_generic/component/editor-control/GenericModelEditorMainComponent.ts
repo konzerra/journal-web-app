@@ -63,6 +63,9 @@ export abstract class GenericModelEditorMainComponent
             complete:()=>{
               this.dialogsService.openInfoDialog("Успешно удалено")
               this.modelPage.content.splice(index,1)
+            },
+            error:(err)=>{
+              this.dialogsService.openInfoDialog(err)
             }
           })
         }

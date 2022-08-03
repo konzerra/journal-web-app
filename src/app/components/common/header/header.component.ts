@@ -3,6 +3,8 @@ import {UserAuthService} from "../../../domain/user/service/UserAuthService";
 import {FormControl} from "@angular/forms";
 import {AppLanguage} from "../../../AppLanguage";
 import {TranslateService} from "@ngx-translate/core";
+import {Router} from "@angular/router";
+import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 
 
 @Component({
@@ -17,7 +19,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private userAuthService:UserAuthService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,12 +29,12 @@ export class HeaderComponent implements OnInit {
     this.translate.use(lang);
   }
 
-  isLoggedIn() {
-    return this.userAuthService.isLoggedIn()
-  }
-
-  logout() {
-    this.userAuthService.clear()
+  onProfileClicked(){
+    if(this.userAuthService.isLoggedIn()){
+      this.router.navigate([ComponentRoutingPaths.userControl.profile])
+      return
+    }
+    this.router.navigate([ComponentRoutingPaths.userControl.login])
   }
   hasRole(role:string): boolean{
     return this.userAuthService.hasRole(role)

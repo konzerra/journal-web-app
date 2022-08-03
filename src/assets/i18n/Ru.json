@@ -21,6 +21,8 @@
   "name": "Название",
   "title": "Название",
   "search": "Поиск",
+  "articles_search_options": "Введите название, ключевые слова, авторов",
+
 
   "person_name": "Имя",
   "enter_person_name": "Введите ваше имя",
@@ -60,6 +62,7 @@
   "select_journal_pdf_file": "Выберите pdf файл",
   "pages_in_journal": "Страницы в журнале",
   "enter_pages_journal": "Введите страницы в журнале '5-16'",
+  "in_all_journals": "во всех журналах",
 
   "reviewer": "Рецензент",
   "reviewers": "Рецензенты",
@@ -68,6 +71,7 @@
   "reviewing": "Рецензирование",
   "download_existing_reviewer_form": "скачать существующий бланк рецензента",
   "select_filled_reviewer_form": "Выберите заполненный бланк рецензента",
+  "reviewer_update": "Обновить рецензента",
 
   "articles": "Статьи",
   "article_publish": "Публикация статьи",
@@ -141,5 +145,11 @@
 
   "antiplagiat": "Антиплагиат",
   "enter_antiplagiat": "Введите антиплагиат",
-  "select_antiplagiat_file": "Выберите антиплагиат pdf-файл"
+  "select_antiplagiat_file": "Выберите антиплагиат pdf-файл",
+
+  "not_found": "Не найдено",
+  "download_pdf": "скачать pdf",
+  "archive": "Архив",
+  "logout": "Выйти",
+  "updated": "Обновлено"
 }

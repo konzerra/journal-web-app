@@ -18,6 +18,7 @@ import {UserAuthService} from "../../../domain/user/service/UserAuthService";
 import {JournalUseCaseGetAllByStatus} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllByStatus";
 import {JournalStatus} from "../../../domain/journal/JournalStatus";
 import {CategoryUseCaseGetAll} from "../../../domain/category/usecase/CategoryUseCaseGetAll";
+import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 
 @Component({
   selector: 'app-user-publish',
@@ -30,9 +31,7 @@ export class UserPublishComponent
 
   formGroup = new UserPublishFormGroup()
   selectedRadioButton: string = this.formGroup.requiredLangs[0]
-  onSuccessfulSave(): void {
-      throw new Error('Method not implemented.');
-  }
+
 
   constructor(
     protected router: Router,
@@ -89,7 +88,10 @@ export class UserPublishComponent
 
 
   onCancelClicked() {
-
+    this.router.navigate([ComponentRoutingPaths.common.home])
+  }
+  onSuccessfulSave(): void {
+    this.router.navigate([ComponentRoutingPaths.userControl.profile])
   }
 
   onFileChange($event: Event) {

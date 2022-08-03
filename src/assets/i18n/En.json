@@ -21,6 +21,7 @@
   "name": "Name",
   "title": "Title",
   "search": "Search",
+  "articles_search_options": "Enter name,tags,authors",
 
   "person_name": "Name",
   "enter_person_name": "Enter your name",
@@ -60,6 +61,7 @@
   "pages_in_journal": "Pages in journal",
   "select_journal_pdf_file": "Select jounal pdf file",
   "enter_pages_journal": "Enter pages in journal in format '5-16'",
+  "in_all_journals": "во всех журналах",
 
   "reviewer": "Reviewer",
   "reviewers": "Reviewers",
@@ -68,6 +70,7 @@
   "reviewing": "Reviewing",
   "download_existing_reviewer_form": "download existing reviewer form",
   "select_filled_reviewer_form": "Select filled reviewer form",
+  "reviewer_update": "Update reviewer",
 
   "articles": "Articles",
   "article_publish": "Publish article",
@@ -141,5 +144,11 @@
 
   "antiplagiat": "Antiplagiat",
   "enter_antiplagiat": "Enter antiplagiat",
-  "select_antiplagiat_file": "Select antiplagiat pdf-file"
+  "select_antiplagiat_file": "Select antiplagiat pdf-file",
+
+  "not_found": "Not found",
+  "download_pdf": "download pdf",
+  "archive": "Archive",
+  "logout": "Logout",
+  "updated": "Updated"
 }

@@ -5,5 +5,6 @@ export class UserApi {
     login: `${AppApi.server.publicApi}/authenticate`,
     register: `${AppApi.server.publicApi}/user/register`,
     getAll: `${AppApi.server.publicApi}/user/all`,
+    update: `${AppApi.server.protectedApi}/user`
   }
 }

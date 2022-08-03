@@ -43,7 +43,7 @@ export class JournalsComponent
   }
 
   onPageChange($event: number) {
-    this.journalUseCaseGetAllPaginatedByStatus.execute($event,this.modelPage.size).subscribe({
+    this.journalUseCaseGetAllPaginatedByStatus.execute($event-1,this.modelPage.size).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
       }
@@ -51,6 +51,10 @@ export class JournalsComponent
   }
 
   onJournalPanelClicked(id: Number) {
-    this.router.navigate([ComponentRoutingPaths.common.articles])
+    this.router.navigate([ComponentRoutingPaths.common.articles],{
+      queryParams:{
+        id:id
+      }
+    })
   }
 }

@@ -22,5 +22,15 @@ select{
 option{
   color: black;
 }
+.navbar-icon{
+  font-size: xx-large;
+}
+.account-icon{
+  color:white;
+  font-size: 24px;
+}
+
+
+
 
 

@@ -10,8 +10,30 @@
 }
 .title-center{
   text-align: center;
-  padding-top: 40vh;
+  padding-top: 45vh;
 }
 h1{
   color: white;
 }
+img {
+  max-width: 150px;
+  height: auto;
+}
+.panel{
+
+  top: 0;
+  background-color: rgb(10, 98, 191,0.5);
+  transition: all 0.5s ease;
+}
+
+
+
+.panel:hover{
+  background: linear-gradient(
+    45deg,
+    rgba(29, 236, 197, 0.5),
+    rgba(91, 14, 214, 0.5) 100%
+  );
+  top: -10px;
+}
+

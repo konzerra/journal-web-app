@@ -5,6 +5,7 @@ export interface Article {
   status: string,
   tags: string,
   journal: {
+    id: Number
     name:string,
     version:string
   },
@@ -14,4 +15,11 @@ export interface Article {
   } | null
   annotation: string,
   reviewer: boolean
+
+
+  authors: Array<String>,
+
+
+
+
 }

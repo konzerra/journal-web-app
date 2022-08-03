@@ -8,7 +8,9 @@ export class ArticleApi {
     updateByReviewer: `${AppApi.server.protectedApi}/article/reviewer`,
 
     getByIdFull: `${AppApi.server.protectedApi}/article/full/{id}`,
-    getById: `${AppApi.server.publicApi}/article/`,
+
     getAllPaginated: `${AppApi.server.publicApi}/article/all/{pageNumber}/{pageSize}`,
+
+    search: `${AppApi.server.publicApi}/article/search/{pageNumber}`,
   }
 }

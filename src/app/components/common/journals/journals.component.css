@@ -7,9 +7,9 @@
 
 .panel{
   width: 100%;
-  border-radius: 5%;
   background-color: rgb(10, 98, 191,0.5);
-  transition: 2s
+  transition: 2s;
+  border-radius: 3%;
 }
 
 .panel:hover{
@@ -50,6 +50,14 @@ label{
     rgba(29, 236, 197, 0.5),
     rgba(91, 14, 214, 0.5) 100%
   );
+}
+
+img {
+  max-width: 150px;
+  height: auto;
+}
+.fit-content{
+  width: fit-content;
 }
 
 

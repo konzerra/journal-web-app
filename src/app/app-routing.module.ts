@@ -7,7 +7,7 @@ import {HomeComponent} from "./components/common/home/home.component";
 import {ForbiddenComponent} from "./components/common/forbidden/forbidden.component";
 import {UserProfileComponent} from "./components/_user-control/user-profile/user-profile.component";
 import {UserHandbookComponent} from "./components/_user-control/user-handbook/user-handbook.component";
-import {UserArticlesComponent} from "./components/common/user-articles/user-articles.component";
+
 import {UserPublishComponent} from "./components/_user-control/user-publish/user-publish.component";
 import {
   JournalEditorMainComponent
@@ -62,10 +62,11 @@ import {BoardComponent} from "./components/common/board/board.component";
 import {
   ReviewerArticleUpdateComponent
 } from "./components/_reviewer_control/reviewer-article-update/reviewer-article-update.component";
+import {ArticlesComponent} from "./components/common/articles/articles.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
-  {path:ComponentRoutingPaths.common.articles, component: UserArticlesComponent},
+  {path:ComponentRoutingPaths.common.articles, component: ArticlesComponent},
   {path:`forbidden`, component: ForbiddenComponent},
   {path:`${ComponentRoutingPaths.common.journals}`, component: JournalsComponent},
   {path:`${ComponentRoutingPaths.common.about}`, component: AboutComponent},

@@ -67,10 +67,10 @@ export class UserAuthService {
     return localStorage.getItem("jwtToken")
   }
 
-
-
-  public clear(){
-    localStorage.clear()
+  logout(){
+    localStorage.removeItem('user')
+    localStorage.removeItem('jwtToken')
+    localStorage.removeItem('roles')
   }
 
 

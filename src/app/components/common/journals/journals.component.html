@@ -17,13 +17,30 @@
       totalItems: modelPage.totalElements
       }">
         <div class="panel mb-3" (click)="onJournalPanelClicked(model.id)">
-          <h4 class=" ms-3 pt-2">{{model.name}}</h4>
-          <h6 class=" ms-3  mt-1">{{model.version}}</h6>
-          <label class="link ms-3 pb-2">скачать pdf</label>
+          <div class="row">
+            <div class="col-3 fit-content" >
+
+              <img src="../../../../assets/images/magazine.jpg"
+                   class=""
+                   alt="...">
+
+            </div>
+
+            <div class="col mt-4 ms-3" >
+              <h4 class="pb-2">{{model.name}}</h4>
+              <h6 class="pb-2">{{model.version}}</h6>
+              <label class="link pb-2">{{'download_pdf' | translate}}</label>
+            </div>
+          </div>
+
+
+
+
+
         </div>
       </div>
 
-
+      <div class="w-100 mt-4"></div>
 
       <!-- Pagination box -->
       <pagination-controls
