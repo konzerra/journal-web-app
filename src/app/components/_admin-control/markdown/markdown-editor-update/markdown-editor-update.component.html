@@ -5,25 +5,7 @@
   <div class = "col-lg-6 col-md-offset-1 mb-5">
 
     <form class="needs-validation">
-
-      <!-- Markdown page -->
-      <div class="form-group">
-        <label class = "mt-2">{{'page_name' | translate}}</label>
-        <input class="form-control"
-               id="journal"
-               [value]="formGroup.name.value"
-               disabled
-               required
-        >
-        <div *ngIf="checkFormControl(formGroup.name)"
-             class="alert-danger">
-
-          <div *ngIf="formGroup.name.errors?.['required']">
-            {{'select_page' | translate}}
-          </div>
-
-        </div>
-      </div>
+      
       <!-- Select input language   radio-buttons -->
       <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
       <br>
@@ -42,6 +24,28 @@
           <label class="btn btn-outline-primary" for="btnradio{{lang}}">&emsp;{{lang}}&emsp;</label>
         </div>
       </div>
+
+      <!-- Markdown input -->
+      <div class="form-group">
+        <label class = "mt-2">{{'page_name' | translate}}</label>
+        <input class="form-control"
+               id="category"
+               [formControl]="formGroup.name"
+               placeholder="{{'enter_page_name' | translate}}"
+               required
+        />
+
+
+        <div *ngIf="checkFormControl(formGroup.name)"
+             class="alert-danger">
+
+          <div *ngIf="formGroup.name.errors?.['required']">
+            {{'enter_page_name' | translate}}
+          </div>
+
+        </div>
+      </div>
+
       <div class="form-group">
         <label class="control-label" for="markdownText"> Markdown </label>
         <textarea type="text"

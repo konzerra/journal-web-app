@@ -12,8 +12,8 @@ import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
 import {Category} from "../../../../domain/category/Category";
 import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
-import {ArticleUpdateDtoByAdmin} from "../../../../domain/article/dto/ArticleUpdateDtoByAdmin";
-import {ArticleData} from "../../../../domain/article/ArticleData";
+import {Location} from "@angular/common";
+
 
 @Component({
   selector: 'app-article-editor-update',
@@ -34,6 +34,7 @@ export class ArticleEditorUpdateComponent
     private categoryUseCaseGetAll: CategoryUseCaseGetAll,
     private docUseCaseDownload: DocUseCaseDownload,
     protected dialogsService: DialogsService,
+    private location: Location
   ) {}
 
 
@@ -82,10 +83,10 @@ export class ArticleEditorUpdateComponent
   }
 
   onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
+    this.location.back()
   }
   onSuccessfulUpdate(): void {
-    this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
+    this.location.back()
   }
 
 
@@ -117,6 +118,9 @@ export class ArticleEditorUpdateComponent
         }))
       }
       this.useCaseUpdate.execute(formData).subscribe({
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
+        },
         complete:()=>{
           this.dialogsService.openInfoDialog("Обновлено")
           this.onSuccessfulUpdate()

@@ -28,6 +28,19 @@
         </div>
       </div>
 
+      <!-- Preferred category input -->
+      <div class="form-group">
+        <label class="control-label mt-2" for="preferredCategory"> {{"preferred_category" | translate}} </label>
+        <textarea type="text"
+                  id="preferredCategory"
+                  class="form-control"
+                  disabled
+                  placeholder="{{'enter_preferred_category' | translate}}"
+                  [value]="formGroup.articleFull.preferredCategory"
+                  required autofocus="autofocus"
+                  rows="2"></textarea>
+      </div>
+
       <!-- Status select -->
       <div class="form-group">
         <label class = "mt-2">{{"status" | translate}}</label>

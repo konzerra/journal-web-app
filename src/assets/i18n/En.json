@@ -150,5 +150,19 @@
   "download_pdf": "download pdf",
   "archive": "Archive",
   "logout": "Logout",
-  "updated": "Updated"
+  "updated": "Updated",
+  "questions": "Questions",
+  "question": "Question",
+  "answer": "Answer",
+
+  "enter_question": "Enter question",
+  "enter_answer": "Enter answer",
+  "question_update": "Update question",
+  "question_registration": "Register question",
+
+  "enter_page_name": "Enter page name",
+  "web-site_name": "Magazine KSTU",
+
+  "preferred_category": "Preferred category",
+  "enter_preferred_category": "Enter preferred category"
 }

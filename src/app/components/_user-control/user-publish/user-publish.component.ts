@@ -31,7 +31,8 @@ export class UserPublishComponent
 
   formGroup = new UserPublishFormGroup()
   selectedRadioButton: string = this.formGroup.requiredLangs[0]
-
+  journalList = new Array<Journal>()
+  publishDisabled: Boolean = false;
 
   constructor(
     protected router: Router,
@@ -44,7 +45,7 @@ export class UserPublishComponent
     super()
   }
 
-  journalList = new Array<Journal>()
+
 
 
 
@@ -65,6 +66,7 @@ export class UserPublishComponent
   }
 
   override onSubmit() {
+    this.publishDisabled = true
     let userId = this.userService.getUser()?.id
     if (this.formGroup.valid() && userId!=undefined) {
       this.formGroup.userId = userId
@@ -75,6 +77,7 @@ export class UserPublishComponent
         },
         error:(error)=>{
           this.dialogsService.openInfoDialog(error)
+          this.publishDisabled = false
         },
         complete:()=>{
           this.dialogsService.openInfoDialog("сохранено")

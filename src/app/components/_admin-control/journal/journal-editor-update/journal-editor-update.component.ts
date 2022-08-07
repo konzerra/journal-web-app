@@ -83,7 +83,6 @@ export class JournalEditorUpdateComponent
 
   onSubmit() {
     let formData = new FormData()
-
     formData.set("updateDto", new Blob([JSON.stringify(this.formGroup.getDto())],{
       type:"application/json"
     }))

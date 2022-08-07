@@ -19,6 +19,8 @@ export class JournalUpdateFormGroup
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
   journalStatuses : Array<string> = Object.values(JournalStatus)
   journalFile: File | null = null
+  journalImage:File | null = null
+  journalImageBase64:string = ''
 
   //changes on lang changed
   name : FormControl = new FormControl("", Validators.required)
@@ -35,6 +37,8 @@ export class JournalUpdateFormGroup
   setDto(modelFull:JournalFull){
     this.updateDto = modelFull
     this.status.setValue(modelFull.status)
+
+    this.journalImageBase64 = modelFull.image
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((data)=>{
       let journalDataControls = new JournalDataControls(data.lang, data.id)
@@ -53,6 +57,7 @@ export class JournalUpdateFormGroup
   getDto():JournalUpdateDto{
     let journalUpdateDto:JournalUpdateDto = {
       id: this.updateDto.id,
+      image: null,
       status: this.status.value,
       dataList: new Array<JournalData>()
     }

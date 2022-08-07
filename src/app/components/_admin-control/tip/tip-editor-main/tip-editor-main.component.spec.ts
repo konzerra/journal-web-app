@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AboutComponent } from './about.component';
+import { TipEditorMainComponent } from './tip-editor-main.component';
 
-describe('AboutComponent', () => {
-  let component: AboutComponent;
-  let fixture: ComponentFixture<AboutComponent>;
+describe('TipEditorMainComponent', () => {
+  let component: TipEditorMainComponent;
+  let fixture: ComponentFixture<TipEditorMainComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutComponent ]
+      declarations: [ TipEditorMainComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AboutComponent);
+    fixture = TestBed.createComponent(TipEditorMainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

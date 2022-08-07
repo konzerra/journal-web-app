@@ -10,12 +10,14 @@ export class MarkdownDataControls
 
   }
 
+  name = new FormControl("",Validators.required)
   source = new FormControl("",Validators.required)
 
   getData():MarkdownData{
     return {
       id: this.id,
       lang: this.lang,
+      name: this.name.value || "",
       source: this.source.value || ""
 
     }
@@ -23,7 +25,7 @@ export class MarkdownDataControls
 
   valid(): boolean {
     return (
-      this.source.valid
+      this.source.valid && this.name.valid
     )
   }
 }

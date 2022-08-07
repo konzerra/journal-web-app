@@ -32,6 +32,24 @@
         </div>
       </div>
 
+      <!-- Preferred category input -->
+      <div class="form-group">
+        <label class="control-label mt-2" for="preferredCategory"> {{"preferred_category" | translate}} </label>
+        <textarea type="text"
+                  id="preferredCategory"
+                  class="form-control"
+                  [formControl]="formGroup.preferredCategory"
+                  placeholder="{{'enter_preferred_category' | translate}}"
+                  required autofocus="autofocus"
+                  rows="2"></textarea>
+        <div *ngIf="checkFormControl(formGroup.preferredCategory)"
+             class="alert-danger">
+          <div *ngIf="formGroup.preferredCategory.errors?.['required']">
+            {{'enter_preferred_category' | translate}}
+          </div>
+        </div>
+      </div>
+
       <!--  file select -->
       <label class = "mt-2">{{'select_word_file' | translate}}</label>
       <br>
@@ -146,6 +164,7 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
+                  [disabled]="publishDisabled"
                   class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
                   (click)="onCancelClicked()">{{'cancel' | translate}}</button>

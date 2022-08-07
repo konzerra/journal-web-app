@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {ComponentRoutingPaths} from "../../../../ComponentRoutingPaths";
 
 @Component({
   selector: 'app-publish-guide',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublishGuideComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  onPublishClicked() {
+    this.router.navigate([ComponentRoutingPaths.userControl.publish])
+  }
 }

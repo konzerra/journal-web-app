@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Sanitizer, SecurityContext} from '@angular/core';
 import {JournalPage} from "../../../domain/journal/JournalPage";
 import {Journal} from "../../../domain/journal/Journal";
-import {JournalUseCaseGetAllPaginated} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllPaginated";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {
@@ -32,12 +31,14 @@ export class JournalsComponent
   constructor(
     private journalUseCaseGetAllPaginatedByStatus: JournalUseCaseGetAllPaginatedByStatus,
     private router:Router,
+    private sanitizer:Sanitizer
   ) { }
 
   ngOnInit(): void {
     this.journalUseCaseGetAllPaginatedByStatus.execute(this.modelPage.number, this.modelPage.size).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
+        console.log(this.modelPage)
       }
     })
   }
@@ -46,6 +47,7 @@ export class JournalsComponent
     this.journalUseCaseGetAllPaginatedByStatus.execute($event-1,this.modelPage.size).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
+
       }
     })
   }

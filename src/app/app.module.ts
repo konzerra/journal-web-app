@@ -38,9 +38,8 @@ import { ArticleEditorMainComponent } from './components/_admin-control/article/
 import { ArticleEditorUpdateComponent } from './components/_admin-control/article/article-editor-update/article-editor-update.component';
 import { JournalsComponent } from './components/common/journals/journals.component';
 import { ReviewerArticleMainComponent } from './components/_reviewer_control/reviewer-article-main/reviewer-article-main.component';
-import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {MarkdownModule} from "ngx-markdown";
-import { AboutComponent } from './components/common/about/about.component';
+
 import {
   MarkdownEditorMainComponent
 } from "./components/_admin-control/markdown/markdown-editor-main/markdown-editor-main.component";
@@ -50,8 +49,6 @@ import {
 import {
   MarkdownEditorUpdateComponent
 } from "./components/_admin-control/markdown/markdown-editor-update/markdown-editor-update.component";
-import { BoardComponent } from './components/common/board/board.component';
-import { EthicsComponent } from './components/common/ethics/ethics.component';
 import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/reviewer-article-update/reviewer-article-update.component';
 import { FooterPageComponent } from './components/common/home/components/footer-page/footer-page.component';
 import { GatesComponent } from './components/common/home/components/gates/gates.component';
@@ -62,6 +59,7 @@ import { ArticlesComponent } from './components/common/articles/articles.compone
 import { TipEditorMainComponent } from './components/_admin-control/tip/tip-editor-main/tip-editor-main.component';
 import { TipEditorSaveComponent } from './components/_admin-control/tip/tip-editor-save/tip-editor-save.component';
 import { TipEditorUpdateComponent } from './components/_admin-control/tip/tip-editor-update/tip-editor-update.component';
+import { MarkdownComponent } from './components/common/markdown/markdown.component';
 
 
 @NgModule({
@@ -92,12 +90,9 @@ import { TipEditorUpdateComponent } from './components/_admin-control/tip/tip-ed
     ArticleEditorUpdateComponent,
     JournalsComponent,
     ReviewerArticleMainComponent,
-    AboutComponent,
     MarkdownEditorMainComponent,
     MarkdownEditorSaveComponent,
     MarkdownEditorUpdateComponent,
-    BoardComponent,
-    EthicsComponent,
     ReviewerArticleUpdateComponent,
     FooterPageComponent,
     GatesComponent,
@@ -106,7 +101,8 @@ import { TipEditorUpdateComponent } from './components/_admin-control/tip/tip-ed
     ArticlesComponent,
     TipEditorMainComponent,
     TipEditorSaveComponent,
-    TipEditorUpdateComponent
+    TipEditorUpdateComponent,
+    MarkdownComponent
   ],
     imports: [
         BrowserModule,

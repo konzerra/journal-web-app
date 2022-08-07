@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Tip} from "../../../domain/tip/Tip";
+import {TipUseCaseGetAll} from "../../../domain/tip/usecase/TipUseCaseGetAll";
 
 @Component({
   selector: 'app-user-handbook',
@@ -8,26 +9,16 @@ import {Tip} from "../../../domain/tip/Tip";
 })
 export class UserHandbookComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private tipUseCaseGetAll: TipUseCaseGetAll
+  ) { }
 
   ngOnInit(): void {
-
+    this.tipUseCaseGetAll.execute().subscribe({
+      next:(v)=>{
+        this.tips = v
+      }
+    })
   }
-  tips = new Array<Tip>(
-    {
-      id:0,
-      question:"How to do that?",
-      answer:"That's how we do that"
-    },
-    {
-      id:2,
-      question:"How to do that?",
-      answer:"That's how we do that"
-    },
-    {
-      id:3,
-      question:"How to do that?",
-      answer:"That's how we do that"
-    },
-  );
+  tips = new Array<Tip>()
 }

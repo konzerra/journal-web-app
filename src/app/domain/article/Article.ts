@@ -4,6 +4,7 @@ export interface Article {
   name: string,
   status: string,
   tags: string,
+  preferredCategory: string,
   journal: {
     id: Number
     name:string,

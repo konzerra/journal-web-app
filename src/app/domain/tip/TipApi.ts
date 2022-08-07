@@ -7,6 +7,7 @@ export class TipApi {
     update: `${AppApi.server.protectedApi}/tip`,
 
     getByIdFull: `${AppApi.server.protectedApi}/tip/full/{id}`,
-    getAll:`${AppApi.server.publicApi}/tip/all`
+    getAll:`${AppApi.server.publicApi}/tip/all`,
+    getAllPaginated: `${AppApi.server.protectedApi}/tip/all/{pageNumber}/{pageSize}`,
   }
 }

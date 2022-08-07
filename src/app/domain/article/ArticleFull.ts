@@ -5,6 +5,7 @@ import {Journal} from "../journal/Journal";
 export interface ArticleFull {
   id: Number,
 
+  preferredCategory: string,
   status: string,
 
   journal: Journal,

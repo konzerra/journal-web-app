@@ -23,23 +23,24 @@
       <h3>{{'additional' | translate}}</h3>
       <div class="bar"></div>
       <ul class="mt-4">
-        <li><a>{{'about_magazine' | translate}}</a></li>
-        <li><a>{{'publication_ethics' | translate}}</a></li>
-        <li><a>{{'working_stuff' | translate}}</a></li>
+        <li><a routerLink = "/user/handbook">{{'handbook' | translate}}</a></li>
+        <div *ngFor="let name of pagesName">
+          <li (click)="onMarkdownPageClicked(name)"><a>{{name}}</a></li>
+        </div>
       </ul>
     </div>
     <div class="w-100"></div>
 
-    <div class="col-3 pe-3 pt-5">
+    <div class="col-2 pe-3 pt-5">
       <img src="../../../../../../assets/images/logoKSTU.png" alt="ВАК КР">
     </div>
-    <div class="col-3 pe-3 pt-5">
+    <div class="col-2 pe-3 pt-5">
       <img src="../../../../../../assets/images/edu.jpg" alt="ВАК КР">
     </div>
-    <div class="col-3 pe-3 pt-5">
+    <div class="col-2 pe-3 pt-5">
       <img src="../../../../../../assets/images/atom.png" alt="ВАК КР">
     </div>
-    <div class="col-3 pe-3 pt-5">
+    <div class="col-2 pe-3 pt-5">
       <img src="../../../../../../assets/images/vak.webp" alt="ВАК КР">
     </div>
 

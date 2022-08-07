@@ -1,11 +1,9 @@
 
 <body>
 <div class="wrapper container pt-5">
-  <h2 class="mt-5">{{'page_registration' | translate}}</h2>
+  <h2 class="mt-5">{{'category_update' | translate}}</h2>
   <div class = "col-lg-6 col-md-offset-1 mb-5">
-
     <form class="needs-validation">
-
 
       <!-- Select input language   radio-buttons -->
       <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
@@ -25,58 +23,52 @@
           <label class="btn btn-outline-primary" for="btnradio{{lang}}">&emsp;{{lang}}&emsp;</label>
         </div>
       </div>
-
-      <!-- Markdown input -->
       <div class="form-group">
-        <label class = "mt-2">{{'page_name' | translate}}</label>
-        <input class="form-control"
-                id="category"
-                [formControl]="formGroup.name"
-                placeholder="{{'enter_page_name' | translate}}"
-                required
-        />
-
-
-        <div *ngIf="checkFormControl(formGroup.name)"
-             class="alert-danger">
-
-          <div *ngIf="formGroup.name.errors?.['required']">
-            {{'enter_page_name' | translate}}
-          </div>
-
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="markdownText"> Markdown </label>
+        <label class="control-label" for="name"> {{'question' | translate}} </label>
         <textarea type="text"
-               id="markdownText"
+               id="name"
                class="form-control"
-               [formControl]="formGroup.source"
-               placeholder="{{'enter_markdown' | translate}}"
-                  rows="10"
-                  required autofocus="autofocus" ></textarea>
-        <div *ngIf="checkFormControl(formGroup.source)"
+               [formControl]="formGroup.question"
+               placeholder="{{'enter_question' | translate}}"
+               required autofocus="autofocus"></textarea>
+        <div *ngIf="checkFormControl(formGroup.question)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.source.errors?.['required']">
-            {{'enter_markdown' | translate}}
+          <div *ngIf="formGroup.question.errors?.['required']">
+            {{'enter_question' | translate}}
           </div>
 
         </div>
       </div>
+      <div class="form-group">
+        <label class="control-label" for="version"> {{'answer' | translate}}</label>
+        <textarea type="text"
+               id="version"
+               class="form-control"
+               [formControl]="formGroup.answer"
+               placeholder="{{'enter_answer' | translate}}"
+               required autofocus="autofocus" ></textarea>
+        <div *ngIf="checkFormControl(formGroup.answer)"
+             class="alert-danger">
 
+          <div *ngIf="formGroup.answer.errors?.['required']">
+            {{'enter_answer' | translate}}
+          </div>
+
+        </div>
+      </div>
 
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
-                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'update' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
                   (click)="onCancelClicked()">{{'cancel' | translate}}</button>
         </div>
       </div>
+
     </form>
   </div>
   <br>
 </div>
 </body>
-

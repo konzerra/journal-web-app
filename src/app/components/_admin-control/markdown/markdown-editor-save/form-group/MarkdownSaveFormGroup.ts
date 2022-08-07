@@ -4,8 +4,6 @@ import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
 import {MarkdownData} from "../../../../../domain/Markdown/MarkdownData";
 import {MarkdownSaveDto} from "../../../../../domain/Markdown/dto/MarkdownSaveDto";
 import {MarkdownDataControls} from "../../common/MarkdownDataControls";
-import {Markdown} from "../../../../../domain/Markdown/Markdown";
-import {AppMarkdownPages} from "../../../../../AppMarkdownPages";
 
 export class MarkdownSaveFormGroup
   extends GenericSaveFormGroup<MarkdownData, MarkdownDataControls, MarkdownSaveDto> {
@@ -14,16 +12,17 @@ export class MarkdownSaveFormGroup
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
 
   //changes on lang changes
-  name : FormControl = new FormControl("", Validators.required)
+  name : FormControl
   source : FormControl
 
-  pageMarkdowns = Object.values(AppMarkdownPages)
+
   constructor() {
     super();
     this.requiredLangs.forEach((lang)=>{
       this.dataControlsList.push(new MarkdownDataControls(lang))
     })
     this.source = this.dataControlsList[0].source
+    this.name = this.dataControlsList[0].name
   }
 
   onLangChange(lang:string){
@@ -33,13 +32,13 @@ export class MarkdownSaveFormGroup
     )
     console.log(data)
     if(data!=undefined){
+      this.name = data.name
       this.source = data.source
     }
   }
 
   getDto():MarkdownSaveDto{
     let markdownSaveDto:MarkdownSaveDto = {
-      name: this.name.value,
       dataList: new Array<MarkdownData>()
     }
     this.dataControlsList.forEach((data)=>{

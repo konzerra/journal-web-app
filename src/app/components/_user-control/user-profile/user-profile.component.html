@@ -53,6 +53,10 @@
     </thead>
 
     <tbody >
+    <div *ngIf="modelList.length ==0" class="text-center">
+      <i class="bi bi-search icon-not-found"></i>
+      <h3>{{'not_found' | translate}}</h3>
+    </div>
     <tr *ngFor="let model of modelList;">
       <th>{{model.id}}</th>
       <td>{{model.name}}</td>

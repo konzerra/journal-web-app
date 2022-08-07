@@ -34,6 +34,7 @@ export class ArticleEditorMainComponent
   journal : Journal = {
     id:0,
     name: "",
+    image:"",
     version: "",
     status: "",
     articlesCount:0

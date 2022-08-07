@@ -17,6 +17,7 @@ export class UserPublishFormGroup
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
 
   journalId: FormControl = new FormControl(null, Validators.required)
+  preferredCategory: FormControl<string | null> = new FormControl(null, Validators.required)
   wordFile: File | null = null
   userId : Number  = 0
 
@@ -57,6 +58,7 @@ export class UserPublishFormGroup
   getDto(): FormData {
 
     let articleSaveDto:ArticleSaveDto = {
+      preferredCategory: this.preferredCategory.value || "",
       ownerId: this.userId,
       journalId: this.journalId.value,
       dataList: new Array<ArticleData>()
@@ -76,10 +78,6 @@ export class UserPublishFormGroup
     return formData
   }
 
-  onFileChange(file:File):void{
-
-  }
-
   onLangChange(lang: string): void {
     let modelDataControls = this.dataControlsList.find(data=>
       data.lang == lang
@@ -96,6 +94,7 @@ export class UserPublishFormGroup
     return (
       this.journalId.valid &&
         this.wordFile != null &&
+        this.preferredCategory.valid &&
         this.isDataControlsListValid()
     )
   }

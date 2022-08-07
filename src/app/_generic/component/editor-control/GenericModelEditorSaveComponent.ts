@@ -27,9 +27,11 @@ export abstract class GenericModelEditorSaveComponent<
     >
   abstract selectedRadioButton : string
 
+  saveDisabled: boolean = false;
   protected constructor() {}
 
   onSubmit() {
+    this.saveDisabled = true
     if (this.formGroup.valid()) {
       const saveDto:SaveDto = this.formGroup.getDto()
       this.saveUseCase.execute(saveDto).subscribe({
@@ -37,14 +39,17 @@ export abstract class GenericModelEditorSaveComponent<
 
         },
         error:(error)=>{
+          this.saveDisabled = false
           alert(error)
         },
         complete:()=>{
           this.dialogsService.openInfoDialog("сохранено")
+          this.saveDisabled = false
           this.onSuccessfulSave()
         }
       })
     }else{
+      this.saveDisabled = false
       this.dialogsService.openInfoDialog("Не все данные введены")
     }
   }

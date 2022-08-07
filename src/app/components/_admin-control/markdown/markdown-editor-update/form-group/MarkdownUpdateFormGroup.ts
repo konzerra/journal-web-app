@@ -28,15 +28,16 @@ export class MarkdownUpdateFormGroup
 
   setDto(modelFull:MarkdownFull){
     this.updateDto = modelFull
-    this.name.setValue(modelFull.name)
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((modelData)=>{
       let markdownDataControls = new MarkdownDataControls(modelData.lang, modelData.id)
 
+      markdownDataControls.name.setValue(modelData.name)
       markdownDataControls.source.setValue(modelData.source)
       this.dataControlsList.push(markdownDataControls)
 
       if(modelData.lang == this.requiredLangs[0]){
+        this.name = markdownDataControls.name
         this.source =  markdownDataControls.source
       }
     })
@@ -46,7 +47,6 @@ export class MarkdownUpdateFormGroup
   getDto():MarkdownUpdateDto{
     let markdownUpdateDto:MarkdownUpdateDto = {
       id: this.updateDto.id,
-      name: this.updateDto.name,
       dataList: new Array<MarkdownData>()
     }
     this.dataControlsList.forEach((data)=>{
@@ -61,6 +61,7 @@ export class MarkdownUpdateFormGroup
       data.lang == lang
     )
     if(data!=undefined){
+      this.name = data.name
       this.source = data.source
     }
   }

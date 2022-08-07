@@ -10,6 +10,7 @@ export class JournalSaveFormGroup extends GenericSaveFormGroup<JournalData, Jour
 
   name : FormControl
   version:FormControl
+  image:File | null = null
 
   constructor() {
     super();
@@ -21,7 +22,8 @@ export class JournalSaveFormGroup extends GenericSaveFormGroup<JournalData, Jour
   }
 
   valid(): boolean {
-   return this.isDataControlsListValid()
+   return this.isDataControlsListValid() &&
+     this.image != null
   }
 
   onLangChange(lang:string){
@@ -36,7 +38,11 @@ export class JournalSaveFormGroup extends GenericSaveFormGroup<JournalData, Jour
   }
 
   getDto():JournalSaveDto{
+    if(this.image == null){
+      throw("Фото не прикреплено")
+    }
     let journalSaveDto:JournalSaveDto = {
+      image: "",
       dataList: new Array<JournalData>()
     }
     this.dataControlsList.forEach((data)=>{

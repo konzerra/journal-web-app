@@ -9,6 +9,7 @@ import {UserUpdateDto} from "../../../domain/user/dto/UserUpdateDto";
 import {DialogsService} from "../../common/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+import {ArticleUseCaseGetMyArticles} from "../../../domain/article/usecase/ArticleUseCaseGetMyArticles";
 
 @Component({
   selector: 'app-user-profile',
@@ -23,6 +24,7 @@ export class UserProfileComponent implements OnInit {
     private userAuthService: UserAuthService,
     private userUseCaseUpdate: UserUseCaseUpdate,
     private dialogsService: DialogsService,
+    private articleUseCaseGetMyArticles: ArticleUseCaseGetMyArticles,
     private router: Router
   ) { }
 
@@ -30,6 +32,14 @@ export class UserProfileComponent implements OnInit {
     let user = this.userAuthService.getUser()
     if(user!=null){
       this.formGroup.name.setValue(user.name)
+      this.articleUseCaseGetMyArticles.execute(user.id).subscribe({
+        next:(v)=>{
+          this.modelList = v
+        },
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
+        }
+      })
     }
   }
 
