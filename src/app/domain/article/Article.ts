@@ -3,8 +3,11 @@ export interface Article {
   id: Number,
   name: string,
   status: string,
+  pages: Number,
   tags: string,
   preferredCategory: string,
+  pdfDocId:Number | null
+  wordDocId:Number | null
   journal: {
     id: Number
     name:string,
@@ -15,7 +18,7 @@ export interface Article {
     name: string
   } | null
   annotation: string,
-  reviewer: boolean
+  reviewer:string | null
 
 
   authors: Array<String>,

@@ -41,9 +41,28 @@
                   rows="2"></textarea>
       </div>
 
+      <!-- Total pages -->
+      <div class="form-group">
+        <label class="control-label mt-2" for="preferredCategory"> {{"pages_count" | translate}} </label>
+        <input type="text"
+                  id="pages"
+                  class="form-control"
+                  disabled
+                  placeholder="{{'enter_pages_count' | translate}}"
+                  [value]="formGroup.articleFull.pages"
+                  required autofocus="autofocus"
+        >
+        <div *ngIf="checkFormControl(formGroup.pages)"
+             class="alert-danger">
+          <div *ngIf="formGroup.pages.errors?.['required']">
+            {{'enter_pages_count' | translate}}
+          </div>
+        </div>
+      </div>
+
       <!-- Status select -->
       <div class="form-group">
-        <label class = "mt-2">{{"status" | translate}}</label>
+        <label class = "mt-2">{{"article_status" | translate}}</label>
         <select class="form-control"
                 id="status"
                 [formControl]="formGroup.status"
@@ -101,6 +120,12 @@
                placeholder="{{'enter_antiplagiat' | translate}}"
                required autofocus="autofocus"
         />
+        <div *ngIf="checkFormControl(formGroup.antiplagiat)"
+             class="alert-danger">
+          <div *ngIf="formGroup.antiplagiat.errors?.['required']">
+            {{'enter_tags' | translate}}
+          </div>
+        </div>
       </div>
 
       <!-- antiplagiat pdf file select -->
@@ -129,13 +154,19 @@
                   placeholder="{{'enter_pages_journal' | translate}}"
                   required autofocus="autofocus"
                   />
+        <div *ngIf="checkFormControl(formGroup.pagesInJournal)"
+             class="alert-danger">
+          <div *ngIf="formGroup.pagesInJournal.errors?.['required']">
+            {{'enter_article_title' | translate}}
+          </div>
+        </div>
       </div>
 
 
 
       <br>
       <!-- word file select -->
-      <label class = "mt-2">{{"select_word_file" | translate}}</label>
+      <label class = "mt-2">{{"select_article_word_file" | translate}}</label>
       <br>
       <input
         class = "form-control"
@@ -203,9 +234,9 @@
       </div>
 
       <!-- Authors enter -->
+      <label class="mt-2">{{"author(s)" | translate}}</label>
       <div *ngFor="let author of formGroup.authors; let i = index">
-        <label class="mt-2">{{"author" | translate}} {{i}}</label>
-        <div class="input-group" >
+        <div class="input-group mt-2" >
           <input type="text"
                  id="author{{i+selectedRadioButton}}"
                  class="form-control"
@@ -231,14 +262,14 @@
 
       <!-- Article annotation input -->
       <div class="form-group">
-        <label class="control-label mt-2" for="name"> {{'annotation' | translate}} </label>
+        <label class="control-label mt-2" for="name"> {{'annotation_min_max' | translate}} </label>
         <textarea type="text"
                   id="annotation"
                   class="form-control"
                   [formControl]="formGroup.annotation"
                   placeholder="{{'enter_annotation' | translate}}"
                   required autofocus="autofocus"
-                  rows="3"></textarea>
+                  rows="6"></textarea>
         <div *ngIf="checkFormControl(formGroup.annotation)"
              class="alert-danger">
           <div *ngIf="formGroup.annotation.errors?.['required']">
@@ -249,7 +280,7 @@
 
       <!-- Article tags input -->
       <div class="form-group">
-        <label class="control-label mt-2" for="name"> {{'tags' | translate}} </label>
+        <label class="control-label mt-2" for="name"> {{'tags_min' | translate}} </label>
         <textarea type="text"
                   id="tags"
                   class="form-control"
@@ -268,6 +299,7 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
+                  [disabled]="updateDisabled"
                   class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'update' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
                   (click)="onCancelClicked()">{{'cancel' | translate}}</button>

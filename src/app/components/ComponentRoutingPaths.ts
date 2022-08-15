@@ -1,5 +1,3 @@
-import {Category} from "../domain/category/Category";
-
 export class ComponentRoutingPaths {
   public static userControl = {
     login : "login",

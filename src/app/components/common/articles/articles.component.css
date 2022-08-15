@@ -1,3 +1,12 @@
 .icon-not-found {
   font-size: 45px;
 }
+
+.authors-label{
+  font-style: italic;
+  font-weight: normal;
+}
+
+.annotation-text{
+  text-align: justify
+}

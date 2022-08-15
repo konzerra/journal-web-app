@@ -4,10 +4,67 @@
   <div class = "col-lg-6 col-md-offset-1 mb-5">
 
     <form class="needs-validation">
-      <label *ngIf="articleFull?.wordDocId!=null" class="" (click)="onDocDownload(articleFull?.wordDocId || null)">
-        <a class="link">{{'download_existing_version' | translate}}</a>
+
+
+      <!-- Journal  -->
+      <div class="form-group">
+        <label class = "mt-2">{{"journal" | translate}}</label>
+        <input class="form-control"
+               id="journal"
+               [value]="article.journal.name || 'не найдено'+' '+article.journal.version || ''"
+               disabled
+               required
+        >
+      </div>
+      <!-- Article name  -->
+      <div class="form-group">
+        <label class = "mt-2">{{"title" | translate}}</label>
+        <textarea class="form-control"
+               id="article-name"
+               [value]="article.name || 'не найдено'+' '+article.journal.version || ''"
+               disabled
+               required
+                  rows="4"
+        ></textarea>
+      </div>
+      <!-- Article authors  -->
+      <div class="form-group">
+        <label class = "mt-2">{{"authors" | translate}}</label>
+        <textarea class="form-control"
+                  id="article-authors"
+                  [value]="formatAuthors(article.authors)"
+                  disabled
+                  required
+                  rows="3"
+        ></textarea>
+      </div>
+      <!-- Article annotation  -->
+      <div class="form-group">
+        <label class = "mt-2">{{"annotation" | translate}}</label>
+        <textarea class="form-control"
+                  id="article-annotation"
+                  [value]="article?.annotation || 'не найдено'+' '+article?.annotation || ''"
+                  disabled
+                  required
+                  rows="4"
+        ></textarea>
+      </div>
+      <!-- Article tags  -->
+      <div class="form-group">
+        <label class = "mt-2">{{"tags" | translate}}</label>
+        <textarea class="form-control"
+                  id="article-tags"
+                  [value]="article?.tags || 'не найдено'+' '+article?.tags || ''"
+                  disabled
+                  required
+                  rows="2"
+        ></textarea>
+      </div>
+      <label *ngIf="article.wordDocId!=null" class="" (click)="onDocDownload(article.wordDocId || null)">
+        <a class="link mt-2">{{'download_existing_version_of_article' | translate}}</a>
       </label>
       <br>
+
 
       <!-- Status select -->
       <div class="form-group">
@@ -65,6 +122,7 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
+                  [disabled]="updateDisabled"
                   class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
                   (click)="onCancelClicked()">{{'cancel' | translate}}</button>

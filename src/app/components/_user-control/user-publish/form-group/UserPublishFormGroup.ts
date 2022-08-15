@@ -18,6 +18,7 @@ export class UserPublishFormGroup
 
   journalId: FormControl = new FormControl(null, Validators.required)
   preferredCategory: FormControl<string | null> = new FormControl(null, Validators.required)
+  pages: FormControl<Number | null> = new FormControl(null, Validators.required)
   wordFile: File | null = null
   userId : Number  = 0
 
@@ -58,6 +59,7 @@ export class UserPublishFormGroup
   getDto(): FormData {
 
     let articleSaveDto:ArticleSaveDto = {
+      pages: this.pages.value || 0,
       preferredCategory: this.preferredCategory.value || "",
       ownerId: this.userId,
       journalId: this.journalId.value,
@@ -95,6 +97,7 @@ export class UserPublishFormGroup
       this.journalId.valid &&
         this.wordFile != null &&
         this.preferredCategory.valid &&
+        this.pages.valid &&
         this.isDataControlsListValid()
     )
   }

@@ -39,6 +39,27 @@
         accept=".pdf"
         (change)="onJournalFileChange($event)"
       />
+      <label *ngIf="formGroup.journalFull.pdf!=null" class="" (click)="onDocDownload(formGroup.journalFull.pdf)">
+        <a class="link">{{"download_existing_version" | translate}}</a>
+      </label>
+      <br>
+
+      <!-- picture file select -->
+      <label class = "mt-2">{{"select_journal_image" | translate}}</label>
+      <br>
+      <input
+        class = "form-control"
+        type="file"
+        id="journalImage"
+        (change)="onImageChange($event)"
+        accept=".jpeg"
+
+      />
+      <br>
+      <img src="{{'data:image/jpeg;base64,'+formGroup.journalImageBase64}}"
+           class=""
+           alt="...">
+      <br>
 
       <!-- Select input language   radio-buttons -->
       <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
@@ -58,6 +79,8 @@
           <label class="btn btn-outline-primary" for="btnradio{{lang}}">&emsp;{{lang}}&emsp;</label>
         </div>
       </div>
+
+      <!--Journal name input -->
       <div class="form-group">
         <label class="control-label" for="name"> {{'name' | translate}} </label>
         <input type="text"
@@ -75,6 +98,8 @@
 
         </div>
       </div>
+
+      <!--Journal version -->
       <div class="form-group">
         <label class="control-label" for="version"> {{'version' | translate}} </label>
         <input type="text"
@@ -96,6 +121,7 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="journal-submit-update" id="journal-submit-update"
+                  [disabled]="updateDisabled"
                   class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()">{{'update' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
                   (click)="onCancelClicked()">{{'cancel' | translate}}</button>
@@ -103,7 +129,10 @@
       </div>
 
     </form>
-    <div class="link" (click)="onReportClicked()">Посмотреть отчет</div>
+
+    <div class="link"
+         (click)="onReportClicked()"
+    >Посмотреть отчет</div>
 
 
   </div>

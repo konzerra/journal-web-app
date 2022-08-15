@@ -86,6 +86,7 @@ export class UserPublishComponent
       })
     }else{
       this.dialogsService.openInfoDialog("Не все данные введены")
+      this.publishDisabled = false
     }
   }
 

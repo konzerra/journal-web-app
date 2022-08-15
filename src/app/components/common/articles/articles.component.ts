@@ -11,6 +11,9 @@ import {JournalStatus} from "../../../domain/journal/JournalStatus";
 import {FormControl} from "@angular/forms";
 import {ArticleUseCaseSearch} from "../../../domain/article/usecase/ArticleUseCaseSearch";
 import {ArticleSearchDto} from "../../../domain/article/ArticleSearchDto";
+import {saveAs} from "file-saver";
+import {DialogsService} from "../dialogs/dialogs.service";
+import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
 
 @Component({
   selector: 'app-articles',
@@ -27,7 +30,9 @@ export class ArticlesComponent implements OnInit {
     private route:ActivatedRoute,
     private journalUseCaseGetAllByStatus: JournalUseCaseGetAllByStatus,
     private journalUseCaseGetAllPublishedArticles: JournalUseCaseGetAllPublishedArticlesPaginated,
-    private articleUseCaseSearch: ArticleUseCaseSearch
+    private articleUseCaseSearch: ArticleUseCaseSearch,
+    private dialogsService:DialogsService,
+    private docUseCaseDownload:DocUseCaseDownload
   ) { }
   modelPage:ArticlePage={
     content: [],
@@ -120,5 +125,26 @@ export class ArticlesComponent implements OnInit {
       })
     }
 
+  }
+
+  onDocDownload(id: Number | null) {
+    if(id==null){
+      this.dialogsService.openInfoDialog('can_not_download')
+      return
+    }
+    this.docUseCaseDownload.execute(id).subscribe({
+      next:(file)=>{
+        saveAs(file,"journal-thing")
+      }
+    })
+  }
+
+  formatAuthors(authors: Array<String>) {
+    let formatted =""
+    authors.forEach((author)=>{
+      formatted+=author+', '
+    })
+
+    return formatted.slice(0,formatted.length-2)
   }
 }

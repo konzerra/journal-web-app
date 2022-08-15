@@ -14,6 +14,7 @@ import {CategoryUseCaseGetByIdFull} from "../../../../domain/category/usecase/Ca
 import {Reviewer} from "../../../../domain/reviewer/Reviewer";
 import {ReviewerUseCaseGetInQueue} from "../../../../domain/reviewer/usecase/get/ReviewerUseCaseGetInQueue";
 import {CategoryFull} from "../../../../domain/category/CategoryFull";
+import {DialogsService} from "../../../common/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-category-editor-update',
@@ -29,7 +30,8 @@ export class CategoryEditorUpdateComponent
     protected useCaseUpdate: CategoryUseCaseUpdate,
     protected useCaseFindByIdFull : CategoryUseCaseGetByIdFull,
     private reviewerUseCaseGetInQueue : ReviewerUseCaseGetInQueue,
-    private router:Router
+    private router:Router,
+    protected dialogsService: DialogsService
   ) {
     super()
   }

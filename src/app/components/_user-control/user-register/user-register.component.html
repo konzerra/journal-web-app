@@ -18,6 +18,10 @@
           <div *ngIf="formGroup.name.errors?.['required']">
             {{'enter_person_name' | translate}}
           </div>
+          <div *ngIf="formGroup.name.errors?.['minword']">
+            {{'min_word_count' | translate}}2
+          </div>
+
 
         </div>
       </div>
@@ -32,7 +36,7 @@
         <div *ngIf="checkFormControl(formGroup.email)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.email.errors?.['required']">
+          <div *ngIf="formGroup.email.errors?.['email']">
             {{'enter_email' | translate}}
           </div>
 
@@ -52,6 +56,9 @@
           <div *ngIf="formGroup.password.errors?.['required']">
             {{'enter_password' | translate}}
           </div>
+          <div *ngIf="formGroup.password.errors?.['minlength']">
+            {{'password_min_length_error' | translate}}
+          </div>
 
         </div>
       </div>
@@ -65,7 +72,7 @@
       </div>
     </form>
     <div class="form-group">
-      <span>{{'already_registered' | translate}} <a routerLink="/login">{{'sing_in' | translate}}</a></span>
+      <span>{{'already_registered' | translate}} <a routerLink="/login">{{'sign_in' | translate}}</a></span>
     </div>
   </div>
   <br>

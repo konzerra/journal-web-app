@@ -24,7 +24,7 @@ export class ArticleDataControls
   getData(): ArticleData {
     let authorsLine = ""
     this.authors.forEach((author)=>{
-      authorsLine += author.value + "$"
+      authorsLine += author.value + "$$"
     })
     authorsLine = authorsLine.slice(0,authorsLine.length-1)
     return {

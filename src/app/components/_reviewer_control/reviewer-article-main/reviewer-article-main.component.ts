@@ -36,11 +36,9 @@ export class ReviewerArticleMainComponent
 
   onEdit(model: Article) {
     this.router.navigate([ComponentRoutingPaths.reviewerControl.article.update],{
-      queryParams: {id: JSON.stringify(model.id)}
+      queryParams: {model: JSON.stringify(model)}
     })
   }
 
-  onDeleteClicked(model: Article, i: number) {
 
-  }
 }

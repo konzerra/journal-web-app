@@ -34,9 +34,10 @@ export class ArticleEditorMainComponent
   journal : Journal = {
     id:0,
     name: "",
-    image:"",
+    imageId:null,
     version: "",
     status: "",
+    pdf: null,
     articlesCount:0
   }
   constructor(

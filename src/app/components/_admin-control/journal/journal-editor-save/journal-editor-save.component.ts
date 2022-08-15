@@ -56,7 +56,6 @@ export class JournalEditorSaveComponent
       reader.readAsDataURL(this.formGroup.image)
       reader.onloadend =()=>{
         saveDto.image =reader.result as string
-        console.log(saveDto.image)
         this.saveUseCase.execute(saveDto).subscribe({
           next:(value) =>{
 

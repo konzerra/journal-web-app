@@ -6,6 +6,7 @@ import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {UserUseCaseRegister} from "../../../domain/user/usecase/UserUseCaseRegister";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {DialogsService} from "../../common/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-user-register',
@@ -17,7 +18,8 @@ export class UserRegisterComponent implements OnInit {
   constructor(
     private router:Router,
     private route: ActivatedRoute,
-    private userUseCaseRegister:UserUseCaseRegister
+    private userUseCaseRegister:UserUseCaseRegister,
+    private dialogsService: DialogsService
   ) { }
   public infoParam : string = ''
   public errorParam: string = ''
@@ -26,22 +28,27 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    let userRegisterDto:UserRegisterDto = {
-      name : this.formGroup.name.value,
-      email : this.formGroup.email.value,
-      password : this.formGroup.password.value
-    }
-    this.userUseCaseRegister.execute(userRegisterDto).subscribe({
-      next:(response)=>{
-
-      },
-      complete:()=>{
-        this.router.navigate(
-          [ComponentRoutingPaths.userControl.login],
-          { queryParams: { info: "registered" } })
-
+    if(this.formGroup.formGroup.valid){
+      let userRegisterDto:UserRegisterDto = {
+        name : this.formGroup.name.value,
+        email : this.formGroup.email.value,
+        password : this.formGroup.password.value || ""
       }
-    })
+      this.userUseCaseRegister.execute(userRegisterDto).subscribe({
+        next:(response)=>{
+
+        },
+        complete:()=>{
+          this.router.navigate(
+            [ComponentRoutingPaths.userControl.login],
+            { queryParams: { info: "registered" } })
+
+        }
+      })
+    }else{
+      this.dialogsService.openInfoDialog('enter_all_correctly')
+    }
+
   }
   checkFormControl(modelName: FormControl):boolean {
     return genericCheckFormControl(modelName)

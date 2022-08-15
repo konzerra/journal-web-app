@@ -10,12 +10,9 @@ import {JournalFull} from "../../../../../domain/journal/JournalFull";
 export class JournalUpdateFormGroup
   extends GenericUpdateFormGroup<JournalFull,JournalData, JournalDataControls, JournalUpdateDto>
 {
-  valid(): boolean {
-      return (
-        this.status.valid &&
-          this.isDataControlsListValid()
-      )
-  }
+
+  journalFull!:JournalFull
+
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
   journalStatuses : Array<string> = Object.values(JournalStatus)
   journalFile: File | null = null
@@ -34,11 +31,19 @@ export class JournalUpdateFormGroup
     super();
   }
 
-  setDto(modelFull:JournalFull){
-    this.updateDto = modelFull
-    this.status.setValue(modelFull.status)
 
-    this.journalImageBase64 = modelFull.image
+  setDto(modelFull:JournalFull){
+    this.journalFull = modelFull
+    this.updateDto = {
+      dataList: modelFull.dataList,
+      id: modelFull.id,
+      image: "",
+      status: modelFull.status
+    }
+    this.status.setValue(modelFull.status)
+    this.journalImageBase64 = ""//modelFull.image
+
+    this.journalImageBase64 = ""//modelFull.image
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((data)=>{
       let journalDataControls = new JournalDataControls(data.lang, data.id)
@@ -76,6 +81,12 @@ export class JournalUpdateFormGroup
       this.version = data.version
       console.log(this.name.value)
     }
+  }
+  valid(): boolean {
+    return (
+      this.status.valid &&
+      this.isDataControlsListValid()
+    )
   }
 
 

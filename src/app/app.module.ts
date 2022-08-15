@@ -51,7 +51,7 @@ import {
 } from "./components/_admin-control/markdown/markdown-editor-update/markdown-editor-update.component";
 import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/reviewer-article-update/reviewer-article-update.component';
 import { FooterPageComponent } from './components/common/home/components/footer-page/footer-page.component';
-import { GatesComponent } from './components/common/home/components/gates/gates.component';
+
 import { AboutJournalComponent } from './components/common/home/components/about-journal/about-journal.component';
 import { PublishGuideComponent } from './components/common/home/components/publish-guide/publish-guide.component';
 import {NgxTranslateModule} from "../translate/translate.module";
@@ -95,7 +95,6 @@ import { MarkdownComponent } from './components/common/markdown/markdown.compone
     MarkdownEditorUpdateComponent,
     ReviewerArticleUpdateComponent,
     FooterPageComponent,
-    GatesComponent,
     AboutJournalComponent,
     PublishGuideComponent,
     ArticlesComponent,

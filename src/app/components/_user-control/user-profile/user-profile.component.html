@@ -32,13 +32,13 @@
 
         </div>
         <hr class="w-100">
-        <label class="ms-3" (click)="onLogout()">{{'logout' | translate}}</label>
+        <label class="ms-3" style="color: red" (click)="onLogout()">{{'logout' | translate}}</label>
         <hr class="w-100">
       </div>
     </form>
   </div>
 
-  <h4 class ="mt-5">{{'my_articles' | translate}}</h4>
+  <h4 class ="mt-5">{{'info_for_authors' | translate}}</h4>
 
   <!-- Table of user articles  -->
   <table class="table " >
@@ -48,7 +48,7 @@
       <th scope="col">{{'name' | translate}}</th>
       <th scope="col">{{'journal' | translate}}</th>
       <th scope="col">{{'category' | translate}}</th>
-      <th scope="col">{{'status' | translate}}</th>
+      <th scope="col">{{'article_status' | translate}}</th>
     </tr>
     </thead>
 
@@ -61,7 +61,7 @@
       <th>{{model.id}}</th>
       <td>{{model.name}}</td>
       <td>{{model.journal.name +" "+ model.journal.version}}</td>
-      <td>{{model.category}}</td>
+      <td>{{model.category?.name || ""}}</td>
       <td>{{model.status}}</td>
     </tr>
 

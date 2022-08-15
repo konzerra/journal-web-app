@@ -1,9 +1,16 @@
 .background{
-  background-color: #3e4242;
+  background-color: #ffffff;
 }
 h4{
-  color: white;
+  color: black;
 }
 label{
-  color:white;
+  color:black;
+}
+
+.journal-image{
+  border: 1px solid #555;
+}
+.overview-text{
+  text-align: justify
 }

@@ -21,6 +21,7 @@ export class ArticleUpdateFormGroup
   articleStatuses : Array<string> = Object.values(ArticleStatusesAdmin)
 
   journal= new FormControl<Journal | null>(null, Validators.required)
+  pages = new FormControl<Number | null>(null, Validators.required)
   category : Category | null = null
   wordFile: File | null = null
   pdfFile: File | null = null
@@ -42,6 +43,7 @@ export class ArticleUpdateFormGroup
   updateDto: ArticleUpdateDtoByAdmin = {
     id: null,
     antiplagiat: null,
+    pages:0,
     categoryId: null,
     dataList: new Array<ArticleData>(),
     journalId: null,
@@ -57,8 +59,10 @@ export class ArticleUpdateFormGroup
 
   setDto(modelFull: ArticleFull): void {
     this.articleFull = modelFull
+    console.log(this.articleFull)
     this.updateDto = {
       id: modelFull.id,
+      pages: modelFull.pages,
       antiplagiat: modelFull.antiplagiat,
       categoryId: modelFull.category?.id || null,
       dataList: modelFull.dataList,
@@ -69,6 +73,7 @@ export class ArticleUpdateFormGroup
     this.status.setValue(modelFull.status)
     this.journal.setValue(modelFull.journal)
     this.pagesInJournal.setValue(modelFull.pagesInJournal)
+    this.antiplagiat.setValue(modelFull.antiplagiat)
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((modelData)=>{
       //assign language and id of translatable data
@@ -79,7 +84,7 @@ export class ArticleUpdateFormGroup
       articleDataControls.annotation.setValue(modelData.annotation)
       articleDataControls.tags.setValue(modelData.tags)
 
-      modelData.authors.split('$').forEach((author)=>{
+      modelData.authors.split('$$').forEach((author)=>{
         articleDataControls.addAuthor(author)
       })
 
@@ -105,6 +110,7 @@ export class ArticleUpdateFormGroup
   //call if formGroup valid
   getDto(): ArticleUpdateDtoByAdmin {
     let articleUpdateDto:ArticleUpdateDtoByAdmin = {
+      pages: this.pages.value || 0,
       antiplagiat: this.antiplagiat.value,
       categoryId: this.category?.id || null,
       dataList: new Array<ArticleData>(),
@@ -135,6 +141,7 @@ export class ArticleUpdateFormGroup
   valid(): boolean {
     return (
       this.journal.valid &&
+        this.pages.valid &&
         this.isDataControlsListValid()
     )
   }

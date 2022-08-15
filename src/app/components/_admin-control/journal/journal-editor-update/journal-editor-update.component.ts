@@ -9,6 +9,8 @@ import {JournalUseCaseGetReport} from "../../../../domain/journal/usecase/get/Jo
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
+import {saveAs} from "file-saver";
+import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
 
 @Component({
   selector: 'app-journal-editor-update',
@@ -24,7 +26,8 @@ export class JournalEditorUpdateComponent
     protected useCaseFindByIdFull : JournalUseCaseGetByIdFull,
     private journalUseCaseGetReport: JournalUseCaseGetReport,
     private dialogsService: DialogsService,
-    private router:Router
+    private router:Router,
+    private docUseCaseDownload: DocUseCaseDownload,
   ) {
 
   }
@@ -32,6 +35,7 @@ export class JournalEditorUpdateComponent
   formGroup = new JournalUpdateFormGroup()
   selectedRadioButton = this.formGroup.requiredLangs[0]
 
+  updateDisabled = false
 
 
   ngOnInit(): void {
@@ -42,6 +46,7 @@ export class JournalEditorUpdateComponent
               this.formGroup.setDto(v)
             },
             error:(err) =>{
+              this.dialogsService.openInfoDialog(err)
             }
           })
         }
@@ -70,9 +75,7 @@ export class JournalEditorUpdateComponent
           Статьи на публикацию: ${v.articles}\n
           Рецензенты:\n
           ${reviewersMessage}
-          Статьи на публикацию: ${v.articles}\n
           `
-
         )
       },
       error:(err)=>{
@@ -82,24 +85,48 @@ export class JournalEditorUpdateComponent
   }
 
   onSubmit() {
-    let formData = new FormData()
-    formData.set("updateDto", new Blob([JSON.stringify(this.formGroup.getDto())],{
-      type:"application/json"
-    }))
-
-    if(this.formGroup.journalFile!=null){
-      formData.set("pdfFile", new Blob([this.formGroup.journalFile],{
-        type:this.formGroup.journalFile.type
+    this.updateDisabled = true
+    if (this.formGroup.valid()) {
+      let formData = new FormData()
+      let updateDto = this.formGroup.getDto()
+      if (this.formGroup.journalFile != null) {
+        formData.set("pdfFile", new Blob([this.formGroup.journalFile], {
+          type: this.formGroup.journalFile.type
+        }))
+      }
+      if (this.formGroup.journalImage != null) {
+        let reader = new FileReader()
+        reader.readAsDataURL(this.formGroup.journalImage)
+        reader.onloadend = () => {
+          updateDto.image = reader.result as string
+          formData.set("updateDto", new Blob([JSON.stringify(updateDto)], {
+            type: "application/json"
+          }))
+          this.runUpdate(formData)
+        }
+        return
+      }
+      formData.set("updateDto", new Blob([JSON.stringify(updateDto)], {
+        type: "application/json"
       }))
+      this.runUpdate(formData)
+    }else{
+      this.dialogsService.openInfoDialog("Не все данные введены")
+      this.updateDisabled = false
     }
+  }
+
+  private runUpdate(formData:FormData){
     this.useCaseUpdate.execute(formData).subscribe({
       complete:()=>{
         this.dialogsService.openInfoDialog("Обновлено")
+        this.updateDisabled = false
         this.onSuccessfulUpdate()
       },
-      error:(err)=>[
+      error:(err)=> {
         this.dialogsService.openInfoDialog(err)
-      ]
+        this.updateDisabled = false
+      }
     })
   }
 
@@ -118,5 +145,33 @@ export class JournalEditorUpdateComponent
 
   onLangChange(lang: string) {
     this.formGroup.onLangChange(lang)
+  }
+
+  onImageChange($event: Event) {
+    const input = $event.target as HTMLInputElement;
+    if (!input.files?.length) {
+      this.formGroup.journalImage = null
+      this.formGroup.journalImageBase64 = ""
+      return;
+    }
+    this.formGroup.journalImage = input.files[0]
+    let reader = new FileReader()
+    reader.readAsDataURL(this.formGroup.journalImage)
+    reader.onloadend =()=> {
+      this.formGroup.journalImageBase64 = (reader.result as string).replace('data:image/jpeg;base64,','')
+    }
+
+  }
+
+  onDocDownload(pdf: Number | null) {
+    if(pdf==null){
+      this.dialogsService.openInfoDialog("Невозможно скачать")
+      return
+    }
+    this.docUseCaseDownload.execute(pdf).subscribe({
+      next:(file)=>{
+        saveAs(file,"journal-thing")
+      }
+    })
   }
 }

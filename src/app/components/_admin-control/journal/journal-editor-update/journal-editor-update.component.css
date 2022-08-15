@@ -7,3 +7,7 @@
 .link:hover{
   color: #8b00d2;
 }
+img {
+  max-width: 150px;
+  height: auto;
+}

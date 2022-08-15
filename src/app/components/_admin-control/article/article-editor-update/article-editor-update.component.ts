@@ -13,6 +13,8 @@ import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/Categor
 import {Category} from "../../../../domain/category/Category";
 import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
 import {Location} from "@angular/common";
+import {ApiPathUtil} from "../../../../_generic/util/ApiPathUtil";
+import {ImageApi} from "../../../../domain/image/ImageApi";
 
 
 @Component({
@@ -26,6 +28,7 @@ export class ArticleEditorUpdateComponent
   formGroup = new ArticleUpdateFormGroup()
   selectedRadioButton: string = this.formGroup.requiredLangs[0]
   categoryList = new Array<Category>()
+  updateDisabled = false
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
@@ -86,7 +89,12 @@ export class ArticleEditorUpdateComponent
     this.location.back()
   }
   onSuccessfulUpdate(): void {
-    this.location.back()
+
+    this.dialogsService.openInfoDialog("Обновлено").afterClosed().subscribe({
+      complete:()=>{
+        this.location.back()
+      }
+    })
   }
 
 
@@ -100,7 +108,7 @@ export class ArticleEditorUpdateComponent
   }
 
   onSubmit() {
-
+    this.updateDisabled = true
     if(this.formGroup.valid()){
       let formData = new FormData()
 
@@ -117,15 +125,25 @@ export class ArticleEditorUpdateComponent
           type:this.formGroup.pdfFile.type
         }))
       }
+      if(this.formGroup.antiplagiatFile!=null){
+        formData.set("antiplagiatFile", new Blob([this.formGroup.antiplagiatFile],{
+          type:this.formGroup.antiplagiatFile.type
+        }))
+      }
       this.useCaseUpdate.execute(formData).subscribe({
         error:(err)=>{
+          this.updateDisabled = false
           this.dialogsService.openInfoDialog(err)
         },
         complete:()=>{
-          this.dialogsService.openInfoDialog("Обновлено")
+          this.updateDisabled = false
           this.onSuccessfulUpdate()
+
         }
       })
+    }else{
+      this.updateDisabled = false
+      this.dialogsService.openInfoDialog("Не все данные заполнены")
     }
   }
 
@@ -141,7 +159,7 @@ export class ArticleEditorUpdateComponent
     }
     this.docUseCaseDownload.execute(id).subscribe({
       next:(file)=>{
-        saveAs(file,"journal-thing")
+        saveAs(file,"kstu-bulletin")
       }
     })
   }
@@ -170,6 +188,7 @@ export class ArticleEditorUpdateComponent
       this.formGroup.antiplagiatFile = null
       return;
     }
-    this.formGroup.pdfFile = input.files[0]
+    this.formGroup.antiplagiatFile = input.files[0]
   }
+
 }

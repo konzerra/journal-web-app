@@ -30,6 +30,9 @@
           <div *ngIf="formGroup.email.errors?.['required']">
             {{'enter_email' | translate}}
           </div>
+          <div *ngIf="formGroup.email.errors?.['email']">
+            {{'enter_email' | translate}}
+          </div>
 
         </div>
       </div>

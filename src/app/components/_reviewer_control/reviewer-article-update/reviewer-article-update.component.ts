@@ -10,6 +10,9 @@ import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {ArticleFull} from "../../../domain/article/ArticleFull";
 import {saveAs} from "file-saver";
 import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
+import {Article} from "../../../domain/article/Article";
+import {ArticleData} from "../../../domain/article/ArticleData";
+import {AppLanguage} from "../../../AppLanguage";
 
 @Component({
   selector: 'app-reviewer-article-update',
@@ -21,7 +24,7 @@ export class ReviewerArticleUpdateComponent implements OnInit {
 
   constructor(
     private articleUseCaseUpdateByReviewer : ArticleUseCaseUpdateByReviewer,
-    private articleUseCaseGetByIdFull : ArticleUseCaseGetByIdFull,
+
     private docUseCaseDownload : DocUseCaseDownload,
     private route : ActivatedRoute,
     private dialogsService: DialogsService,
@@ -30,24 +33,13 @@ export class ReviewerArticleUpdateComponent implements OnInit {
 
   formGroup = new ArticleUpdateFormGroupByReviewer()
 
-  articleFull : ArticleFull | null = null
+  article! : Article
+  updateDisabled = false
 
   ngOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          this.articleUseCaseGetByIdFull.execute(param["id"]).subscribe({
-            next:(articleFull)=>{
-              this.articleFull = articleFull
-              this.formGroup.setDto({
-                id: articleFull.id,
-                status: articleFull.status,
-                comment: ""
-              })
-            },
-            error:(err) =>{
-
-            }
-          })
+          this.article = JSON.parse(param['model'])
         }
       }
     )
@@ -68,15 +60,23 @@ export class ReviewerArticleUpdateComponent implements OnInit {
       }
       this.articleUseCaseUpdateByReviewer.execute(formData).subscribe({
         complete:()=>{
+          this.updateDisabled = false
           this.dialogsService.openInfoDialog("Обновлено")
           this.onSuccessfulUpdate()
+        },
+        error:(err)=>{
+          this.updateDisabled = false
+          this.dialogsService.openInfoDialog(err)
         }
       })
+    }else{
+      this.updateDisabled = false
+      this.dialogsService.openInfoDialog("Не все данные заполнены")
     }
   }
 
   onCancelClicked() {
-
+    this.router.navigate([ComponentRoutingPaths.reviewerControl.article])
   }
 
   checkFormControl(formControl: FormControl) {
@@ -106,5 +106,13 @@ export class ReviewerArticleUpdateComponent implements OnInit {
         saveAs(file,"journal-thing")
       }
     })
+  }
+  formatAuthors(authors: Array<String>) {
+    let formatted =""
+    authors.forEach((author)=>{
+      formatted+=author+', '
+    })
+
+    return formatted.slice(0,formatted.length-2)
   }
 }

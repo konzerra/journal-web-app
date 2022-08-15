@@ -4,7 +4,7 @@
   xmlns="http://www.w3.org/1999/html"/>
 
 <body>
-<div class="container pt-5">
+<div class="container pt-5 pb-5">
   <div class = "col-lg-6 col-md-offset-1 pt-5">
 
     <h1>{{'articles' | translate}}</h1>
@@ -47,6 +47,7 @@
       <h3>{{'not_found' | translate}}</h3>
     </div>
     <!-- articles -->
+    <br>
     <div *ngFor="let i = index; let model of modelPage.content | paginate :{
       itemsPerPage: 10,
       currentPage : modelPage.number+1,
@@ -55,27 +56,34 @@
 
 
       <div class="" id="h{{model.id}}" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+model.id" aria-expanded="false">
-        <h6 class="">
+        <h5 class="">
           {{model.name}}
-        </h6>
-        <label>Tags: {{model.tags}}</label>
+        </h5>
+        <label><strong>{{'authors' | translate}}:&nbsp;</strong></label>
+        <label class="authors-label">{{formatAuthors(model.authors)}}</label>
         <br>
-        <label class="mt-2">Category: {{model.category}}</label>
+
+        <div></div>
       </div>
 
       <!-- article body -->
-      <div [attr.id]="'collapse'+model.id" class="collapse mt-3">
-        <label >Annotation: <br></label>
-        <label class="ms-2">{{model.annotation}}</label>
+      <div [attr.id]="'collapse'+model.id" class="collapse mt-3" >
+        <label class="mt-2"><strong>{{'category' | translate}}:&nbsp;</strong>{{model.category?.name || "no_category"}}</label>
+        <br>
+        <label><strong>{{'annotation' | translate}}:</strong></label>
+        <label class="ms-2 annotation-text">{{model.annotation}}</label>
+        <label class="mt-2"><strong>{{'tags' | translate}}:&nbsp;</strong>
+          <label style="text-align: justify">{{model.tags}}</label>
+        </label>
+        <br>
+
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary">Download</button>
+          <button class="btn btn-primary btn-sm" (click)="onDocDownload(model.pdfDocId)">{{'download' | translate}}</button>
         </div>
       </div>
       <!-- end of article body -->
       <hr>
     </div>
-
-
     <div class="w-100 mt-4"></div>
     <!-- Pagination box -->
     <pagination-controls
@@ -84,10 +92,7 @@
       previousLabel="{{'previous' | translate}}"
       nextLabel="{{'next' | translate}}"
     ></pagination-controls>
-
   </div>
-
-
 </div>
 </body>
 

@@ -36,7 +36,7 @@ export class TipEditorUpdateComponent
     protected useCaseUpdate: TipUseCaseUpdate,
     protected useCaseFindByIdFull : TipUseCaseGetByIdFull,
     private router:Router,
-    private dialogsService: DialogsService
+    protected dialogsService: DialogsService
   ) {
     super()
   }

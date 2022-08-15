@@ -6,12 +6,13 @@ export interface ArticleFull {
   id: Number,
 
   preferredCategory: string,
+  pages:Number,
   status: string,
 
   journal: Journal,
   category: Category | null
 
-  reviewer: boolean,
+  reviewer: string | null,
 
   pagesInJournal: string | null
   antiplagiat: string | null

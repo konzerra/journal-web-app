@@ -12,6 +12,7 @@ import {Markdown} from "../../../../domain/Markdown/Markdown";
 import {MarkdownUseCaseGetByIdFull} from "../../../../domain/Markdown/usecase/get/MarkdownUseCaseGetByIdFull";
 import {MarkdownUpdateFormGroup} from "./form-group/MarkdownUpdateFormGroup";
 import {MarkdownFull} from "../../../../domain/Markdown/MarkdownFull";
+import {DialogsService} from "../../../common/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-markdown-editor-update',
@@ -26,7 +27,8 @@ export class MarkdownEditorUpdateComponent
     protected route: ActivatedRoute,
     protected useCaseUpdate: MarkdownUseCaseUpdate,
     protected useCaseFindByIdFull : MarkdownUseCaseGetByIdFull,
-    private router:Router
+    private router:Router,
+    protected dialogsService: DialogsService
   ) {
     super()
   }

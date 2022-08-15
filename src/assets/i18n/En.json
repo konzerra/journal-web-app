@@ -43,13 +43,13 @@
   "status": "Status",
   "select_status": "Select status",
 
-  "category": "Category",
-  "categories": "Categories",
-  "category_update": "Update category",
-  "category_registration": "Category registration",
-  "enter_category_name": "Enter category name",
-  "select_category": "Select category",
-  "no_category": "No category",
+  "category": "Section",
+  "categories": "Sections",
+  "category_update": "Edit section",
+  "category_registration": "Section registration",
+  "enter_category_name": "Enter section name",
+  "select_category": "Select section",
+  "no_category": "No section",
 
   "journal": "Journal",
   "journals": "Journals",
@@ -74,7 +74,7 @@
 
   "articles": "Articles",
   "article_publish": "Publish article",
-  "update_article": "Update Article",
+  "update_article": "Edit Article",
   "enter_article_title": "Enter the title of the article",
 
   "markdown_texts": "Markdown texts",
@@ -93,14 +93,14 @@
   "download_existing_version": "download existing version",
 
   "author": "Author",
-  "enter_author": "Enter an author",
-  "add_author": "+ Add an author",
+  "enter_author": "Enter name",
+  "add_author": "+ Add co-author",
 
   "annotation": "Annotation",
   "enter_annotation": "Enter annotation",
 
-  "tags": "Tags",
-  "enter_tags": "Enter tags",
+  "tags": "Keywords",
+  "enter_tags": "Enter keywords",
 
   "overview": "Overview",
   "enter_overview": "Enter overview",
@@ -163,6 +163,31 @@
   "enter_page_name": "Enter page name",
   "web-site_name": "Magazine KSTU",
 
-  "preferred_category": "Preferred category",
-  "enter_preferred_category": "Enter preferred category"
+  "preferred_category": "Area, direction and section of science on the subject of the article",
+  "enter_preferred_category": "For example: Mechanical engineering technologies",
+
+  "can_not_download": "Can not download",
+  "authors": "Authors",
+  "download": "Download",
+  "select_journal_image": "Choose journal image",
+
+  "annotation_min_max": "Annotation (min 500 characters)",
+
+  "author(s)": "Author(s)",
+  "send_to_editor": "Send to the editor",
+  "article_status": "Stage of review",
+  "info_for_authors": "Info for authors",
+  "article_main_title": "Edit articles",
+  "download_existing_version_of_article": "Download existing version of the article",
+  "tags_min":"Keywords (10-15 words)",
+  "pages_count":"Number of article pages",
+  "enter_pages_count": "Enter number of article pages",
+
+  "select_article_word_file": "Select article word file",
+
+  "requirements": "Requirements",
+  "password_min_length_error": "Password must be at least 6 characters long",
+  "enter_all_correctly": "Enter all fields correctly",
+  "min_word_count": "Minimum number of words: ",
+  "max_word_count": "Maximum number of words: "
 }
