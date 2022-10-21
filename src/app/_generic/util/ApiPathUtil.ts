@@ -13,6 +13,9 @@ export class ApiPathUtil {
   public static insertPageSize(path:string, pageSize: string): string{
     return path.replace("{pageSize}", pageSize)
   }
+  public static insertEmail(path:string, email: string): string{
+    return path.replace("{email}", email)
+  }
   public static insertPageNumberAndSize(path:string, pageNumber: string,pageSize:string):string{
     path = this.insertPageNumber(path, pageNumber)
     path= this.insertPageSize(path,pageSize)

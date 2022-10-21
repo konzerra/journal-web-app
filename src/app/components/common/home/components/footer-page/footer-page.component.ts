@@ -3,6 +3,7 @@ import {MarkdownUseCaseGetAllNames} from "../../../../../domain/Markdown/usecase
 import {DialogsService} from "../../../dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../../ComponentRoutingPaths";
+import {AppLanguage} from "../../../../../AppLanguage";
 
 @Component({
   selector: 'app-footer-page',
@@ -12,13 +13,18 @@ import {ComponentRoutingPaths} from "../../../../ComponentRoutingPaths";
 export class FooterPageComponent implements OnInit {
 
   pagesName = new Array<string>()
+  locale:string
   constructor(
     private markdownUseCaseGetAllNames: MarkdownUseCaseGetAllNames,
     private dialogsService: DialogsService,
-    private router: Router
-  ) { }
+    private router: Router,
+
+  ) {
+    this.locale = AppLanguage.getLocalLanguage().toLowerCase()
+  }
 
   ngOnInit(): void {
+
     this.markdownUseCaseGetAllNames.execute().subscribe({
       next:(v)=>{
         console.log(v)

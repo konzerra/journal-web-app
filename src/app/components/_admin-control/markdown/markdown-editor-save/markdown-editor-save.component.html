@@ -5,7 +5,23 @@
   <div class = "col-lg-6 col-md-offset-1 mb-5">
 
     <form class="needs-validation">
+      <!-- Id input -->
+      <div class="form-group">
+        <label class = "mt-2">Id</label>
+        <input class="form-control"
+               id="markdownId"
+               [formControl]="formGroup.id"
+               placeholder="{{'enter_markdown_id' | translate}}"
+               required
+        />
+        <div *ngIf="checkFormControl(formGroup.id)"
+             class="alert-danger">
 
+          <div *ngIf="formGroup.id.errors?.['required']">
+            {{'enter_markdown_id' | translate}}
+          </div>
+        </div>
+      </div>
 
       <!-- Select input language   radio-buttons -->
       <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>

@@ -11,6 +11,8 @@ export class MarkdownSaveFormGroup
 
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
 
+  id:FormControl<string | null> = new FormControl<string | null>(null,Validators.required)
+
   //changes on lang changes
   name : FormControl
   source : FormControl
@@ -39,6 +41,7 @@ export class MarkdownSaveFormGroup
 
   getDto():MarkdownSaveDto{
     let markdownSaveDto:MarkdownSaveDto = {
+      id: this.id.value || "",
       dataList: new Array<MarkdownData>()
     }
     this.dataControlsList.forEach((data)=>{
@@ -49,7 +52,7 @@ export class MarkdownSaveFormGroup
   }
 
   valid(): boolean {
-    return this.isDataControlsListValid()
+    return this.isDataControlsListValid() && this.id.valid
   }
 
 

@@ -139,9 +139,9 @@ export class ArticleUpdateFormGroup
 
 
   valid(): boolean {
+    console.log(this.pages.valid)
     return (
       this.journal.valid &&
-        this.pages.valid &&
         this.isDataControlsListValid()
     )
   }

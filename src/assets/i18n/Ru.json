@@ -190,5 +190,25 @@
   "password_min_length_error": "Пароль должен состоять минимум из 6 символов",
   "enter_all_correctly": "Введите все поля корректно",
   "min_word_count": "Минимальное количество слов: ",
-  "max_word_count": "Максимальное количество слов: "
+  "max_word_count": "Максимальное количество слов: ",
+
+  "forgot_password": "Забыли пароль?",
+  "reset_password": "Сбросить пароль",
+  "password_reset": "Сброс пароля",
+
+  "enter_markdown_id": "Введите id markdown",
+
+  "ethics": "Публикационная этика",
+  "price": "Стоимость",
+  "regulations": "НПА",
+  "stuff": "Редколлегия",
+  "for_authors": "Авторам",
+
+  "pin": "Пин",
+  "enter_pin": "Введите пин",
+  "new_password": "Новый пароль",
+  "enter_new_password": "Введите новый пароль",
+  "send_pin": "Отправить пин",
+
+  "payment_status": "Статус оплаты"
 }

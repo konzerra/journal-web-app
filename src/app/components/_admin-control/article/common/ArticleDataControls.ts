@@ -26,7 +26,7 @@ export class ArticleDataControls
     this.authors.forEach((author)=>{
       authorsLine += author.value + "$$"
     })
-    authorsLine = authorsLine.slice(0,authorsLine.length-1)
+    authorsLine = authorsLine.slice(0,authorsLine.length-2)
     return {
       id:this.id,
       lang:this.lang,
@@ -39,6 +39,7 @@ export class ArticleDataControls
 
   valid(): boolean {
     //minimum one author required
+
     if(this.authors.length<1) return false
     for(const author of this.authors){
       if(!author.valid) return false

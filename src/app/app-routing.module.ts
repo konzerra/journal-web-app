@@ -64,6 +64,7 @@ import {TipEditorMainComponent} from "./components/_admin-control/tip/tip-editor
 import {TipEditorSaveComponent} from "./components/_admin-control/tip/tip-editor-save/tip-editor-save.component";
 import {TipEditorUpdateComponent} from "./components/_admin-control/tip/tip-editor-update/tip-editor-update.component";
 import {MarkdownComponent} from "./components/common/markdown/markdown.component";
+import {UserResetPasswordComponent} from "./components/_user-control/user-reser-password/user-reset-password.component";
 
 const routes : Routes = [
   {path:``, component: HomeComponent},
@@ -79,6 +80,7 @@ const routes : Routes = [
   {path:`${ComponentRoutingPaths.userControl.profile}`, component: UserProfileComponent, canActivate:[AuthGuard],  data:{role:'User'} },
   {path:`${ComponentRoutingPaths.userControl.handbook}`, component: UserHandbookComponent, },
   {path:`${ComponentRoutingPaths.userControl.publish}`, component: UserPublishComponent, canActivate:[AuthGuard], data:{role:'User'} },
+  {path:`${ComponentRoutingPaths.userControl.reset_password}`, component: UserResetPasswordComponent },
 
   //Admin control
 

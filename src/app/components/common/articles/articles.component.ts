@@ -103,6 +103,7 @@ export class ArticlesComponent implements OnInit {
     this.articleUseCaseSearch.execute(this.modelPage.number,searchDto).subscribe({
       next:(v)=>{
         this.modelPage = v
+        console.log(v)
       }
     })
 

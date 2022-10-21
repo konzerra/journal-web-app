@@ -9,15 +9,15 @@ import {Markdown} from "../../Markdown";
 @Injectable({
   providedIn : "root"
 })
-export class MarkdownUseCaseGetByName {
-  private apiPath: string = MarkdownApi.paths.getByName
+export class MarkdownUseCaseGetById {
+  private apiPath: string = MarkdownApi.paths.getById
   private requestHeader: HttpHeaders = new HttpHeaders({'No-Auth':'true'});
   constructor(
     private httpClient:HttpClient
   ) {}
-  execute(name: string):Observable<Markdown>{
+  execute(id: string):Observable<Markdown>{
     return this.httpClient.get<Markdown>(
-      ApiPathUtil.insertName(this.apiPath,name),
+      ApiPathUtil.insertId(this.apiPath,id),
       {
       headers: this.requestHeader,
     })

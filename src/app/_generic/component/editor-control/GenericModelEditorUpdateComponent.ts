@@ -33,11 +33,12 @@ export abstract class GenericModelEditorUpdateComponent<
   abstractOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          this.useCaseFindByIdFull.execute(param["id"]).subscribe({
+          this.useCaseFindByIdFull.execute(JSON.parse(param["id"])).subscribe({
             next:(v)=>{
               this.formGroup.setDto(v)
             },
             error:(err) =>{
+
             }
           })
         }

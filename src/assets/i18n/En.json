@@ -189,5 +189,25 @@
   "password_min_length_error": "Password must be at least 6 characters long",
   "enter_all_correctly": "Enter all fields correctly",
   "min_word_count": "Minimum number of words: ",
-  "max_word_count": "Maximum number of words: "
+  "max_word_count": "Maximum number of words: ",
+
+  "forgot_password": "Forgot password?",
+  "reset_password": "Reset password",
+  "password_reset": "Resetting password",
+
+  "enter_markdown_id": "Enter markdown id",
+
+  "ethics": "Publication ethics",
+  "price": "Price",
+  "regulations": "Regulations",
+  "stuff": "Stuff",
+  "for_authors": "For authors",
+
+  "pin": "Pin",
+  "enter_pin": "Enter pin",
+  "new_password": "New password",
+  "enter_new_password": "Enter new password",
+  "send_pin": "Send pin",
+
+  "payment_status": "Payment status"
 }

@@ -28,6 +28,7 @@ export class MarkdownUpdateFormGroup
 
   setDto(modelFull:MarkdownFull){
     this.updateDto = modelFull
+    console.log(modelFull)
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((modelData)=>{
       let markdownDataControls = new MarkdownDataControls(modelData.lang, modelData.id)

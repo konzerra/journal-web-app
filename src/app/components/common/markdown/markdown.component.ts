@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MarkdownService} from "ngx-markdown";
-import {MarkdownUseCaseGetByName} from "../../../domain/Markdown/usecase/get/MarkdownUseCaseGetByName";
+import {MarkdownUseCaseGetById} from "../../../domain/Markdown/usecase/get/MarkdownUseCaseGetById";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {DialogsService} from "../dialogs/dialogs.service";
@@ -15,7 +15,7 @@ export class MarkdownComponent implements OnInit {
   markdown =''
   constructor(
     private mdService: MarkdownService,
-    private markdownUseCaseGetByName: MarkdownUseCaseGetByName,
+    private markdownUseCaseGetById: MarkdownUseCaseGetById,
     private route:ActivatedRoute,
     private router:Router,
     private dialogsService:DialogsService
@@ -24,10 +24,10 @@ export class MarkdownComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          if(param['name'] == undefined){
+          if(param['id'] == undefined){
             this.router.navigate([ComponentRoutingPaths.common.home])
           }
-          this.markdownUseCaseGetByName.execute(param['name']).subscribe({
+          this.markdownUseCaseGetById.execute(param['id']).subscribe({
             next:(markdown)=>{
               this.markdown = markdown.source
             },

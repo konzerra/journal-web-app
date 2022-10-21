@@ -1,6 +1,6 @@
 import {MarkdownData} from "../MarkdownData";
 
 export interface MarkdownUpdateDto {
-  id: Number,
+  id: string,
   dataList:Array<MarkdownData>
 }

@@ -48,6 +48,18 @@ h2{
   color:white;
 }
 
+.footer-carousel{
+  height: 235px;
+}
+
+.carousel-inner-img {
+  display: block;
+  height: auto;
+  line-height: 1;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
 
 
 

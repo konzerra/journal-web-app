@@ -5,6 +5,8 @@ export class UserApi {
     login: `${AppApi.server.publicApi}/authenticate`,
     register: `${AppApi.server.publicApi}/user/register`,
     getAll: `${AppApi.server.publicApi}/user/all`,
-    update: `${AppApi.server.protectedApi}/user`
+    update: `${AppApi.server.protectedApi}/user`,
+    resetPassword: `${AppApi.server.publicApi}/user/resetPassword`,
+    generatePin: `${AppApi.server.publicApi}/generatePasswordPin/{email}`
   }
 }

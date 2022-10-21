@@ -4,7 +4,8 @@ export class ComponentRoutingPaths {
     register : "register",
     profile : "user/profile",
     handbook: "user/handbook",
-    publish: "user/publish"
+    publish: "user/publish",
+    reset_password: "user/reset_password"
   }
   public static common = {
     home : "",
