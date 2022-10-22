@@ -85,6 +85,7 @@ export class JournalsComponent
       if(journal.imageId != null){
         this.imageUseCaseGetById.execute(journal.imageId).subscribe({
           next:(v)=>{
+            console.log(v)
             this.images[index] = v
           }
         })

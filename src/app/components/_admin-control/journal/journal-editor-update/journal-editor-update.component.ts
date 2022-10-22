@@ -11,6 +11,7 @@ import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
 import {saveAs} from "file-saver";
 import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
+import {ImageUseCaseGetById} from "../../../../domain/image/usecase/ImageUseCaseGetById";
 
 @Component({
   selector: 'app-journal-editor-update',
@@ -25,6 +26,7 @@ export class JournalEditorUpdateComponent
     protected useCaseUpdate: JournalUseCaseUpdate,
     protected useCaseFindByIdFull : JournalUseCaseGetByIdFull,
     private journalUseCaseGetReport: JournalUseCaseGetReport,
+    private useCaseGetImageById: ImageUseCaseGetById,
     private dialogsService: DialogsService,
     private router:Router,
     private docUseCaseDownload: DocUseCaseDownload,
@@ -44,6 +46,14 @@ export class JournalEditorUpdateComponent
           this.useCaseFindByIdFull.execute(param["id"]).subscribe({
             next:(v)=>{
               this.formGroup.setDto(v)
+              if(v.imageId != null){
+                this.useCaseGetImageById.execute(v.imageId).subscribe({
+                  next:(v)=>{
+                    this.formGroup.journalImageBase64 = v
+                  }
+                })
+              }
+
             },
             error:(err) =>{
               this.dialogsService.openInfoDialog(err)
@@ -158,7 +168,7 @@ export class JournalEditorUpdateComponent
     let reader = new FileReader()
     reader.readAsDataURL(this.formGroup.journalImage)
     reader.onloadend =()=> {
-      this.formGroup.journalImageBase64 = (reader.result as string).replace('data:image/jpeg;base64,','')
+      this.formGroup.journalImageBase64 = (reader.result as string)
     }
 
   }

@@ -41,9 +41,6 @@ export class JournalUpdateFormGroup
       status: modelFull.status
     }
     this.status.setValue(modelFull.status)
-    this.journalImageBase64 = ""//modelFull.image
-
-    this.journalImageBase64 = ""//modelFull.image
     //for each data in updateDto create its own controls
     this.updateDto.dataList.forEach((data)=>{
       let journalDataControls = new JournalDataControls(data.lang, data.id)

@@ -210,5 +210,7 @@
   "enter_new_password": "Введите новый пароль",
   "send_pin": "Отправить пин",
 
-  "payment_status": "Статус оплаты"
+  "payment_status": "Статус оплаты",
+
+  "pin_sent_to_email": "Пин-код был отправлен на почту"
 }

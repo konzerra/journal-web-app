@@ -30,12 +30,13 @@ export class UserResetPasswordComponent implements OnInit {
 
   sendPin() {
     if(this.formGroup.email.valid){
+      console.log(this.formGroup.email.value)
       this.generatePasswordPinUseCase.execute(this.formGroup.email.value || "").subscribe({
         error:(err)=>{
           this.dialogsService.openInfoDialog(err)
         },
         complete:()=>{
-
+          this.dialogsService.openInfoDialog('pin_sent_to_email')
         }
       })
     }else{

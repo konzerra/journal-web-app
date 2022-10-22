@@ -2,7 +2,7 @@
 {
   "main": "Main",
   "header_title": "Magazine",
-  "magazine_name": "Magazine \"Izvestia KSTU named after I. Razzakov",
+  "magazine_name": "Magazine \"Izvestia KSTU named after I. Razzakov\"",
   "publish": "Publish",
   "about_magazine": "About magazine",
   "publication_ethics": "Publication ethics",
@@ -61,7 +61,7 @@
   "pages_in_journal": "Pages in journal",
   "select_journal_pdf_file": "Select jounal pdf file",
   "enter_pages_journal": "Enter pages in journal in format '5-16'",
-  "in_all_journals": "во всех журналах",
+  "in_all_journals": "In all journals",
 
   "reviewer": "Reviewer",
   "reviewers": "Reviewers",
@@ -209,5 +209,7 @@
   "enter_new_password": "Enter new password",
   "send_pin": "Send pin",
 
-  "payment_status": "Payment status"
+  "payment_status": "Payment status",
+
+  "pin_sent_to_email": "Pin was sent to your email"
 }
