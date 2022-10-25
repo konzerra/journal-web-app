@@ -83,7 +83,11 @@
               "browserTarget": "academic-journal-kstu-client:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig":"proxy.config.json"
+          }
+
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
