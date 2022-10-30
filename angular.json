@@ -83,10 +83,8 @@
               "browserTarget": "academic-journal-kstu-client:build:development"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "proxyConfig":"proxy.config.json"
-          }
+          "defaultConfiguration": "development"
+
 
         },
         "extract-i18n": {

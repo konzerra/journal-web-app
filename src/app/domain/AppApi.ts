@@ -2,8 +2,8 @@
 export class AppApi {
   public static server = {
 
-    publicApi : "http://localhost:8080/api/v1/public",
-    protectedApi: "http://localhost:8080/api/v1/protected",
+    publicApi : "http://api.journal.kstu.kg/api/v1/public",
+    protectedApi: "http://api.journal.kstu.kg/api/v1/protected",
 
   }
 
