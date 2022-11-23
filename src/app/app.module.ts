@@ -61,6 +61,7 @@ import { TipEditorSaveComponent } from './components/_admin-control/tip/tip-edit
 import { TipEditorUpdateComponent } from './components/_admin-control/tip/tip-editor-update/tip-editor-update.component';
 import { MarkdownComponent } from './components/common/markdown/markdown.component';
 import { UserResetPasswordComponent } from './components/_user-control/user-reser-password/user-reset-password.component';
+import { GreetingComponent } from './components/common/home/components/greeting/greeting.component';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { UserResetPasswordComponent } from './components/_user-control/user-rese
     TipEditorSaveComponent,
     TipEditorUpdateComponent,
     MarkdownComponent,
-    UserResetPasswordComponent
+    UserResetPasswordComponent,
+    GreetingComponent
   ],
     imports: [
         BrowserModule,

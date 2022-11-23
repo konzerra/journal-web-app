@@ -33,7 +33,14 @@ section{
   scroll-snap-align: start;
 }
 
-
+section#\#greeting{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(58, 58, 58, 0.6)
+  url("../../../../assets/images/kstu.jpg") no-repeat center center/cover;
+  background-blend-mode: multiply;
+}
 
 
 section#\#journal{
