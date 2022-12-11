@@ -40,6 +40,7 @@ export class ReviewerArticleUpdateComponent implements OnInit {
     this.route.queryParams.subscribe({
         next:(param) =>{
           this.article = JSON.parse(param['model'])
+          this.formGroup.updateDto.id = this.article.id
         }
       }
     )
