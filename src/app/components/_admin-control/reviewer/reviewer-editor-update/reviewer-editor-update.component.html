@@ -9,7 +9,7 @@
         <label class = "mt-2">{{"person_name" | translate}}</label>
         <input class="form-control"
                id="reviewer_name"
-               [value]="formGroup.reviewer?.name || 'Не найдено'"
+               [value]="formGroup.reviewer.name || 'Не найдено'"
                disabled
                required
         >
@@ -18,7 +18,7 @@
         <label class = "mt-2">{{"email" | translate}}</label>
         <input class="form-control"
                id="email"
-               [value]="formGroup.reviewer?.email || 'Не найдено'"
+               [value]="formGroup.reviewer.email || 'Не найдено'"
                disabled
                required
         >

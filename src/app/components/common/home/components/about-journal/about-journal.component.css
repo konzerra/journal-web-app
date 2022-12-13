@@ -15,5 +15,6 @@ label{
   border: 1px solid #555;
 }
 .overview-text{
-  text-align: justify
+  text-align: justify;
+  font-size: 22px;
 }

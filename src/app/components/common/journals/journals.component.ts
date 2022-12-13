@@ -46,7 +46,6 @@ export class JournalsComponent
       next:(modelPage)=>{
         this.modelPage=modelPage
         this.runImageSearch()
-        console.log(this.modelPage)
       }
     })
   }
@@ -83,9 +82,9 @@ export class JournalsComponent
   private runImageSearch() {
     this.modelPage.content.forEach((journal,index)=>{
       if(journal.imageId != null){
+        console.log("searching image")
         this.imageUseCaseGetById.execute(journal.imageId).subscribe({
           next:(v)=>{
-            console.log(v)
             this.images[index] = v
           }
         })

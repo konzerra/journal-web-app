@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppLanguage} from "../../../../../AppLanguage";
 
 @Component({
   selector: 'app-about-journal',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-journal.component.css']
 })
 export class AboutJournalComponent implements OnInit {
-
-  constructor() { }
+  locale:string
+  constructor() {
+    this.locale = AppLanguage.getLocalLanguage().toLowerCase()
+  }
 
   ngOnInit(): void {
   }

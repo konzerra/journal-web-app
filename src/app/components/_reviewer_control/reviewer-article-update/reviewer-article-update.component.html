@@ -43,7 +43,7 @@
         <label class = "mt-2">{{"annotation" | translate}}</label>
         <textarea class="form-control"
                   id="article-annotation"
-                  [value]="article?.annotation || 'не найдено'+' '+article?.annotation || ''"
+                  [value]="article.annotation || 'не найдено'+' '+article.annotation || ''"
                   disabled
                   required
                   rows="4"
@@ -54,7 +54,7 @@
         <label class = "mt-2">{{"tags" | translate}}</label>
         <textarea class="form-control"
                   id="article-tags"
-                  [value]="article?.tags || 'не найдено'+' '+article?.tags || ''"
+                  [value]="article.tags || 'не найдено'+' '+article.tags || ''"
                   disabled
                   required
                   rows="2"
