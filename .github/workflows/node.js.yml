@@ -19,6 +19,6 @@ jobs:
     - run: |
         npm i
         npm run build
-        pm2 stop webapp
+        pm2 stop webapp || true
         pm2 start /home/runner/webapp/actions-runner/_work/journal-web-app/journal-web-app/server.js --name=webapp
         pm2 save
