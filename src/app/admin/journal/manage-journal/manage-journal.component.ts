@@ -5,6 +5,7 @@ import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {JournalPage} from "../../../shared/models/journal/JournalPage";
 import {Journal} from "../../../shared/models/journal/Journal";
+import {AdminJournalService} from "../admin-journal.service";
 
 @Component({
   selector: 'app-manage-journal',
@@ -14,7 +15,7 @@ import {Journal} from "../../../shared/models/journal/Journal";
 export class ManageJournalComponent implements OnInit {
 
   constructor(
-    private journalService: JournalService,
+    private journalService: AdminJournalService,
     protected dialogsService: DialogsService,
     protected router: Router,
   ) {

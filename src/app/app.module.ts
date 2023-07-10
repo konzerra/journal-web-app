@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './components/common/header/header.component';
 import {AuthGuard} from "./_auth/auth.guard";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./_auth/auth.interceptor";
@@ -67,7 +66,6 @@ import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     UserLoginComponent,
     UserRegisterComponent,
     HomeComponent,

@@ -7,7 +7,7 @@ import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {JournalService} from "../../../domain/journal/journal.service";
 import {JournalStatus} from "../../../shared/models/journal/JournalStatus";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
-import {FileApi} from "../../../domain/file/FileApi";
+import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
   selector: 'app-journals',

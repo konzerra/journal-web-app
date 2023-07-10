@@ -11,18 +11,18 @@
         <label class = "mt-2">{{'status' | translate}}</label>
         <select class="form-control"
                 id="category"
-                [formControl]="formGroup.status"
+                [formControl]="form.status"
                 required
         >
           <option value="" disabled selected hidden>{{'select_status' | translate}}</option>
-          <option *ngFor="let status of formGroup.journalStatuses"
+          <option *ngFor="let status of form.journalStatuses"
                   [value]="status">{{status}}
           </option>
         </select>
-        <div *ngIf="checkFormControl(formGroup.status)"
+        <div *ngIf="checkFormControl(form.status)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.status.errors?.['required']">
+          <div *ngIf="form.status.errors?.['required']">
             {{'select_status' | translate}}
           </div>
 
@@ -39,8 +39,8 @@
         accept=".pdf"
         (change)="onJournalFileChange($event)"
       />
-      <label *ngIf="formGroup.journalFull.pdf!=null" class="">
-        <a class="link" href="{{FileApi.paths.download + formGroup.journalFull.pdf }}">
+      <label *ngIf="form.journalFull.pdf!=null" class="">
+        <a class="link" href="{{FileApi.paths.download + form.journalFull.pdf }}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
@@ -58,7 +58,7 @@
 
       />
       <br>
-      <img src="{{FileApi.paths.download + formGroup.journalImage}}"
+      <img src="{{FileApi.paths.download + form.journalImage}}"
            class=""
            alt="...">
       <br>
@@ -67,7 +67,7 @@
       <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
       <br>
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <div *ngFor="let lang of formGroup.requiredLangs" >
+        <div *ngFor="let lang of form.requiredLangs" >
           <input
             [value]="lang"
             type="radio"
@@ -88,13 +88,13 @@
         <input type="text"
                id="name"
                class="form-control"
-               [formControl]="formGroup.name"
+               [formControl]="form.name"
                placeholder="{{'enter_journal_title' | translate}}"
                required autofocus="autofocus" />
-        <div *ngIf="checkFormControl(formGroup.name)"
+        <div *ngIf="checkFormControl(form.name)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.name.errors?.['required']">
+          <div *ngIf="form.name.errors?.['required']">
             {{'enter_journal_title' | translate}}
           </div>
 
@@ -107,13 +107,13 @@
         <input type="text"
                id="version"
                class="form-control"
-               [formControl]="formGroup.version"
+               [formControl]="form.version"
                placeholder="{{'enter_version' | translate}}"
                required autofocus="autofocus" />
-        <div *ngIf="checkFormControl(formGroup.version)"
+        <div *ngIf="checkFormControl(form.version)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.version.errors?.['required']">
+          <div *ngIf="form.version.errors?.['required']">
             {{'enter_version' | translate}}
           </div>
 

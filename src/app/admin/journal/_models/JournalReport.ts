@@ -1,4 +1,4 @@
-import {ModelI} from "../../_generic/model/ModelI";
+import {ModelI} from "../../../_generic/model/ModelI";
 
 export interface JournalReport extends ModelI{
   id:Number,

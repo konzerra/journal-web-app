@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../../domain/auth/auth.service";
-import {FormControl} from "@angular/forms";
-import {AppLanguage} from "../../../AppLanguage";
+
+
+
 import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+import {AppLanguage} from "../../AppLanguage";
+import {AuthService} from "../../auth/auth.service";
+import {ComponentRoutingPaths} from "../../components/ComponentRoutingPaths";
+import {FormControl} from "@angular/forms";
+
 
 
 @Component({
@@ -16,7 +20,6 @@ export class HeaderComponent implements OnInit {
 
   langs = Object.values(AppLanguage.languages)
   selectedLang = new FormControl<string>(AppLanguage.languages.Ru)
-
   constructor(
     private userAuthService:AuthService,
     private translate: TranslateService,
@@ -41,10 +44,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onLangChange() {
-    if(this.selectedLang.value != null){
-      AppLanguage.setLocalLanguage(this.selectedLang.value)
-      this.translate.use(this.selectedLang.value);
-      window.location.reload()
-    }
+    const lang = this.selectedLang.value ?? AppLanguage.languages.Default
+    AppLanguage.setLocalLanguage(lang)
+    this.translate.use(lang);
+    window.location.reload()
   }
 }

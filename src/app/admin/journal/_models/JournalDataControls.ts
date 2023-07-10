@@ -1,6 +1,6 @@
 import {FormControl, Validators} from "@angular/forms";
-import {JournalData} from "../../../../shared/models/journal/JournalData";
-import {DataControlsAbstract} from "../../../../_generic/form-group/DataControlsAbstract";
+import {JournalData} from "../../../shared/models/journal/JournalData";
+import {DataControlsAbstract} from "../../../_generic/form-group/DataControlsAbstract";
 
 export class JournalDataControls
   extends DataControlsAbstract<JournalData>

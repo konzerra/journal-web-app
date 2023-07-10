@@ -1,32 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {JournalUpdateFormGroup} from "./form-group/JournalUpdateFormGroup";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
+import {
+  JournalUpdateForm
+} from "./journal.update.form";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
-import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
-import {JournalService} from "../../../../domain/journal/journal.service";
-import {FileApi} from "../../../../domain/file/FileApi";
+import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {AdminJournalService} from "../admin-journal.service";
+import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
-  selector: 'app-journal-editor-update',
-  templateUrl: './journal-editor-update.component.html',
-  styleUrls: ['./journal-editor-update.component.css']
+  selector: 'app-update-journal',
+  templateUrl: './update-journal.component.html',
+  styleUrls: ['./update-journal.component.css']
 })
-export class JournalEditorUpdateComponent
+export class UpdateJournalComponent
   implements OnInit {
 
   constructor(
     protected route: ActivatedRoute,
-    private journalService: JournalService,
+    private journalService: AdminJournalService,
     private dialogsService: DialogsService,
     private router:Router
   ) {
 
   }
 
-  formGroup = new JournalUpdateFormGroup()
-  selectedRadioButton = this.formGroup.requiredLangs[0]
+  form = new JournalUpdateForm()
+  selectedRadioButton = this.form.requiredLangs[0]
 
   updateDisabled = false
 
@@ -36,7 +38,7 @@ export class JournalEditorUpdateComponent
         next:(param) =>{
           this.journalService.getByIdFull(param["id"]).subscribe({
             next:(v)=>{
-              this.formGroup.setDto(v)
+              this.form.setDto(v)
             },
             error:(err) =>{
               this.dialogsService.openInfoDialog(err)
@@ -57,7 +59,7 @@ export class JournalEditorUpdateComponent
   }
 
   onReportClicked() {
-    this.journalService.makeReport(this.formGroup.updateDto.id.toString()).subscribe({
+    this.journalService.makeReport(this.form.updateDto.id.toString()).subscribe({
       next:(v)=>{
         let reviewersMessage =''
         v.reviewers.forEach((v)=>{
@@ -79,11 +81,11 @@ export class JournalEditorUpdateComponent
 
   onSubmit() {
     this.updateDisabled = true
-    if (this.formGroup.valid()) {
+    if (this.form.valid()) {
       this.journalService.update(
-        this.formGroup.getDto(),
-        this.formGroup.journalImage,
-        this.formGroup.journalFile
+        this.form.getDto(),
+        this.form.journalImage,
+        this.form.journalFile
       ).subscribe({
         complete:()=>{
           this.dialogsService.openInfoDialog("Обновлено")
@@ -104,12 +106,7 @@ export class JournalEditorUpdateComponent
 
 
   onJournalFileChange($event: Event) {
-    const input = $event.target as HTMLInputElement;
-    if (!input.files?.length) {
-      this.formGroup.journalFile = null
-      return;
-    }
-    this.formGroup.journalFile = input.files[0]
+    this.form.journalFile = ($event.target as HTMLInputElement).files?.[0] ?? null
   }
 
   checkFormControl(formControl: FormControl):boolean {
@@ -117,16 +114,11 @@ export class JournalEditorUpdateComponent
   }
 
   onLangChange(lang: string) {
-    this.formGroup.onLangChange(lang)
+    this.form.onLangChange(lang)
   }
 
   onImageChange($event: Event) {
-    const input = $event.target as HTMLInputElement;
-    if (!input.files?.length) {
-      this.formGroup.journalImage = null
-      return;
-    }
-    this.formGroup.journalImage = input.files[0]
+    this.form.journalImage = ($event.target as HTMLInputElement).files?.[0] ?? null
 
   }
 

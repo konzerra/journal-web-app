@@ -2,7 +2,7 @@ import {AppApi} from "../../../domain/AppApi";
 
 const publicPath = `${AppApi.server.publicApi}/journal`
 const protectedPath = `${AppApi.server.protectedApi}/journal`
-export const JournalApi =  {
+export const AdminJournalApi =  {
   makeReport : `${this.protectedPath}/report/{id}`,
   getAllByStatus: `${this.publicPath}/all-by-status/{status}`,
   getAllPublishedArticlesPaginated : `${this.publicPath}/published/{id}/articles/{pageNumber}/{pageSize}`,
@@ -16,3 +16,4 @@ export const JournalApi =  {
   deleteById: `${this.protectedPath}/{id}`,
   update: `${this.protectedPath}`,
 }
+

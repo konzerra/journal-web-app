@@ -11,7 +11,7 @@ import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {JournalService} from "../../../domain/journal/journal.service";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {ArticleService} from "../../../domain/article/article.service";
-import {FileApi} from "../../../domain/file/FileApi";
+import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
   selector: 'app-articles',

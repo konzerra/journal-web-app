@@ -1,13 +1,13 @@
-import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
-import {JournalDataControls} from "../../common/JournalDataControls";
+import {RequiredLanguages} from "../../../domain/RequiredLanguages";
+import {JournalDataControls} from "../_models/JournalDataControls";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {JournalData} from "../../../../../shared/models/journal/JournalData";
-import {JournalUpdateDto} from "../../../../../domain/journal/dto/JournalUpdateDto";
-import {JournalStatus} from "../../../../../shared/models/journal/JournalStatus";
-import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
-import {JournalFull} from "../../../../../shared/models/journal/JournalFull";
+import {JournalData} from "../../../shared/models/journal/JournalData";
+import {JournalUpdateDto} from "../_models/JournalUpdateDto";
+import {JournalStatus} from "../../../shared/models/journal/JournalStatus";
+import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
+import {JournalFull} from "../../../shared/models/journal/JournalFull";
 
-export class JournalUpdateFormGroup
+export class JournalUpdateForm
   extends GenericUpdateFormGroup<JournalFull,JournalData, JournalDataControls, JournalUpdateDto>
 {
 

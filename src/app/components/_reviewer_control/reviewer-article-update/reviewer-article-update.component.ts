@@ -10,7 +10,7 @@ import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload
 import {Article} from "../../../shared/models/article/Article";
 import {ArticleService} from "../../../domain/article/article.service";
 import {isNotBlanc} from "../../../shared/validators";
-import {FileApi} from "../../../domain/file/FileApi";
+import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
   selector: 'app-reviewer-article-update',

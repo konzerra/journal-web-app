@@ -1,11 +1,11 @@
-import {GenericSaveFormGroup} from "../../../../../_generic/form-group/GenricSaveFormGroup";
+import {GenericSaveFormGroup} from "../../../_generic/form-group/GenricSaveFormGroup";
 import {FormControl, Validators} from "@angular/forms";
-import {JournalSaveDto} from "../../../../../domain/journal/dto/JournalSaveDto";
-import {JournalData} from "../../../../../shared/models/journal/JournalData";
-import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
-import {JournalDataControls} from "../../common/JournalDataControls";
+import {JournalSaveDto} from "../_models/JournalSaveDto";
+import {JournalData} from "../../../shared/models/journal/JournalData";
+import {RequiredLanguages} from "../../../domain/RequiredLanguages";
+import {JournalDataControls} from "../_models/JournalDataControls";
 
-export class JournalSaveFormGroup extends GenericSaveFormGroup<JournalData, JournalDataControls, JournalSaveDto> {
+export class JournalSaveForm extends GenericSaveFormGroup<JournalData, JournalDataControls, JournalSaveDto> {
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
 
   name : FormControl

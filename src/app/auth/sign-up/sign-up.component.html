@@ -1,1 +1,82 @@
-<p>sign-up works!</p>
+<body>
+<div class="container pt-5">
+  <h2 class="mt-5">{{'registration' | translate}}</h2>
+  <div class = "col-lg-6 col-md-offset-1 mb-5">
+
+    <form class="needs-validation" novalidate [formGroup]="form.group" (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label class="control-label" for="name">{{'person_name' | translate}} </label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               [formControl]="form.name"
+               placeholder="{{'enter_person_name' | translate}}"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(form.name)"
+             class="alert-danger">
+
+          <div *ngIf="form.name.errors?.['required']">
+            {{'enter_person_name' | translate}}
+          </div>
+          <div *ngIf="form.name.errors?.['minword']">
+            {{'min_word_count' | translate}}2
+          </div>
+
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="email"> {{'email' | translate}} </label>
+        <input type="text"
+               id="email"
+               class="form-control"
+               [formControl]="form.email"
+               placeholder="{{'enter_email' | translate}}"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(form.email)"
+             class="alert-danger">
+
+          <div *ngIf="form.email.errors?.['email']">
+            {{'enter_email' | translate}}
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="password"> {{'password' | translate}} </label>
+        <input type="password"
+               id="password"
+               class="form-control"
+               [formControl]="form.password"
+               placeholder="{{'enter_password' | translate}}"
+               required autofocus="autofocus" />
+        <div *ngIf="checkFormControl(form.password)"
+             class="alert-danger">
+
+          <div *ngIf="form.password.errors?.['required']">
+            {{'enter_password' | translate}}
+          </div>
+          <div *ngIf="form.password.errors?.['minlength']">
+            {{'password_min_length_error' | translate}}
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 mt-3">
+            <input type="submit" name="register-submit" id="register-submit"
+                   class="form-control btn btn-primary" value="{{'register' | translate}}" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="form-group">
+      <span>{{'already_registered' | translate}} <a routerLink="/login">{{'sign_in' | translate}}</a></span>
+    </div>
+  </div>
+  <br>
+</div>
+
+</body>
+

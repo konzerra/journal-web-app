@@ -11,7 +11,7 @@ import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownl
 import {Location} from "@angular/common";
 import {CategoryService} from "../../../../domain/category/category.service";
 import {ArticleService} from "../../../../domain/article/article.service";
-import {FileApi} from "../../../../domain/file/FileApi";
+import {FileApi} from "../../../../shared/models/file/FileApi";
 
 
 @Component({
