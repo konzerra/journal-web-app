@@ -10,13 +10,13 @@
         <input type="text"
                id="email"
                class="form-control"
-               [formControl]="formGroup.email"
+               [formControl]="form.email"
                placeholder="{{'enter_email' | translate}}"
                required autofocus="autofocus" />
-        <div *ngIf="checkFormControl(formGroup.email)"
+        <div *ngIf="checkFormControl(form.email)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.email.errors?.['required']">
+          <div *ngIf="form.email.errors?.['required']">
             {{'enter_email' | translate}}
           </div>
 
@@ -27,7 +27,7 @@
         <label class = "mt-2">{{'category' | translate}}</label>
         <select class="form-control"
                 id="status"
-                [formControl]="formGroup.categoryId"
+                [formControl]="form.categoryId"
                 required
         >
           <option value="" disabled selected hidden>{{'select_category' | translate}}</option>
@@ -35,10 +35,10 @@
                   [value]="category.id">{{category.name}}
           </option>
         </select>
-        <div *ngIf="checkFormControl(formGroup.categoryId)"
+        <div *ngIf="checkFormControl(form.categoryId)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.categoryId.errors?.['required']">
+          <div *ngIf="form.categoryId.errors?.['required']">
             {{'select_category' | translate}}
           </div>
 
