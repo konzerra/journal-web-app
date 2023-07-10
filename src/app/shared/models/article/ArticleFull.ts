@@ -1,5 +1,5 @@
 import {ArticleData} from "./ArticleData";
-import {Category} from "../category/Category";
+import {Category} from "../../../domain/category/Category";
 import {Journal} from "../journal/Journal";
 
 export interface ArticleFull {

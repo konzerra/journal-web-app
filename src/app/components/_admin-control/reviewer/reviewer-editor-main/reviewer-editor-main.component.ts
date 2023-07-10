@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ReviewerPage} from "../../../../domain/reviewer/ReviewerPage";
-import {PageRequestDto} from "../../../../domain/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
 import {Tip} from "../../../../domain/tip/Tip";
 import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
 import {Reviewer} from "../../../../domain/reviewer/Reviewer";

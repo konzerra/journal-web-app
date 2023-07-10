@@ -3,7 +3,7 @@ import {FormControl, Validators} from "@angular/forms";
 import {GenericSaveFormGroup} from "../../../../_generic/form-group/GenricSaveFormGroup";
 
 import {ArticleDataControls} from "../../../_admin-control/article/common/ArticleDataControls";
-import {ArticleData} from "../../../../domain/article/ArticleData";
+import {ArticleData} from "../../../../shared/models/article/ArticleData";
 import {ArticleSaveDto} from "../../../../domain/article/dto/ArticleSaveDto";
 import {RequiredLanguages} from "../../../../domain/RequiredLanguages";
 

@@ -4,9 +4,7 @@ import {MatConfirmDialogComponent} from "./mat-confirm-dialog/mat-confirm-dialog
 import {MatDialog} from "@angular/material/dialog";
 import {MatInfoDialogComponent} from "./mat-info-dialog/mat-info-dialog.component";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DialogsService {
 
   constructor(

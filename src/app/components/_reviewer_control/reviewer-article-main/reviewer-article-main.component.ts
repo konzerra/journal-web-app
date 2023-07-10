@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Article} from "../../../domain/article/Article";
+import {Article} from "../../../shared/models/article/Article";
 import {AuthService} from "../../../domain/auth/auth.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";

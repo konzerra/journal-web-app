@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Markdown} from "../../../../domain/markdown/Markdown";
 import {MarkdownPage} from "../../../../domain/markdown/MarkdownPage";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {MarkdownService} from "../../../../domain/markdown/markdown.service";
-import {PageRequestDto} from "../../../../domain/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
 
 @Component({
   selector: 'app-markdown-editor-main',

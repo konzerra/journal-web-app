@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {PageRequestDto} from "../pagination/PageRequestDto";
+import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {MarkdownSaveDto} from "./dto/MarkdownSaveDto";
 import {MarkdownUpdateDto} from "./dto/MarkdownUpdateDto";
 import {MarkdownFull} from "./MarkdownFull";

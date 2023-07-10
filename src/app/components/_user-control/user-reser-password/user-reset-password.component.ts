@@ -4,7 +4,7 @@ import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {UserUseCaseResetPassword} from "../../../domain/user/usecase/UserUseCaseResetPassword";
 import {UserUseCaseGeneratePasswordPin} from "../../../domain/user/usecase/UserUseCaseGeneratePasswordPin";
-import {DialogsService} from "../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-user-reset-password',

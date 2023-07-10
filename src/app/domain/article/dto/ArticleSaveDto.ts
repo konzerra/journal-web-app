@@ -1,5 +1,5 @@
 import {SaveDtoI} from "../../../_generic/model/SaveDtoI";
-import {ArticleData} from "../ArticleData";
+import {ArticleData} from "../../../shared/models/article/ArticleData";
 
 export interface ArticleSaveDto extends SaveDtoI{
   ownerId: Number,

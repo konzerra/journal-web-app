@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {JournalUpdateFormGroup} from "./form-group/JournalUpdateFormGroup";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
 import {JournalService} from "../../../../domain/journal/journal.service";

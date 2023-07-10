@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import { MarkdownSaveFormGroup } from './form-group/MarkdownSaveFormGroup';

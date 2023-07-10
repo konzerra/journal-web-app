@@ -1,4 +1,4 @@
-import {AppApi} from "../AppApi";
+import {AppApi} from "../../../domain/AppApi";
 
 export class JournalApi {
   private static publicPath = `${AppApi.server.publicApi}/journal`

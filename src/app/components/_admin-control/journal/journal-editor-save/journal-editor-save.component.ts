@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {JournalSaveFormGroup} from "./form-group/JournalSaveFormGroup";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import { DialogsService } from 'src/app/components/common/dialogs/dialogs.service';
+import { DialogsService } from '../../../../shared/dialogs/dialogs.service';
 import {JournalService} from "../../../../domain/journal/journal.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {Tip} from "../../../../domain/tip/Tip";
 import {TipPage} from "../../../../domain/tip/TipPage";
 import {TipService} from "../../../../domain/tip/tip.service";
-import {PageRequestDto} from "../../../../domain/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
 
 @Component({
   selector: 'app-tip-editor-main',

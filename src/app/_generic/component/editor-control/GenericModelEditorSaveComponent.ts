@@ -7,7 +7,7 @@ import {genericCheckFormControl} from "../../util/genericCheckFormControl";
 import {DataControlsAbstract} from "../../form-group/DataControlsAbstract";
 import {Router} from "@angular/router";
 import {JournalSaveDto} from "../../../domain/journal/dto/JournalSaveDto";
-import {DialogsService} from "../../../components/common/dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 
 
 export abstract class GenericModelEditorSaveComponent<

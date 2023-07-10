@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
-import {DialogsService} from "../dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {MarkdownService as MdService} from "ngx-markdown" ;
 import {MarkdownService} from "../../../domain/markdown/markdown.service";
 

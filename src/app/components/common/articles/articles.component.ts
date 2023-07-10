@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Journal} from "../../../domain/journal/Journal";
-import {ArticlePage} from "../../../domain/article/ArticlePage";
+import {Journal} from "../../../shared/models/journal/Journal";
+import {ArticlePage} from "../../../shared/models/article/ArticlePage";
 import {ActivatedRoute} from "@angular/router";
-import {JournalStatus} from "../../../domain/journal/JournalStatus";
+import {JournalStatus} from "../../../shared/models/journal/JournalStatus";
 import {FormControl} from "@angular/forms";
 
 import {ArticleSearchDto} from "../../../domain/article/ArticleSearchDto";
-import {DialogsService} from "../dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {JournalService} from "../../../domain/journal/journal.service";
-import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {ArticleService} from "../../../domain/article/article.service";
 import {FileApi} from "../../../domain/file/FileApi";
 

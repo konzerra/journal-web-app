@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MarkdownUpdateFormGroup} from "./form-group/MarkdownUpdateFormGroup";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
 import {MarkdownService} from "../../../../domain/markdown/markdown.service";

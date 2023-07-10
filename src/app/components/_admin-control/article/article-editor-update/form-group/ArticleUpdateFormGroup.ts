@@ -1,15 +1,15 @@
 
 import {FormControl, Validators} from "@angular/forms";
 
-import {ArticleData} from "../../../../../domain/article/ArticleData";
+import {ArticleData} from "../../../../../shared/models/article/ArticleData";
 import {ArticleDataControls} from "../../common/ArticleDataControls";
 import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
 import {ArticleUpdateDtoByAdmin} from "../../../../../domain/article/dto/ArticleUpdateDtoByAdmin";
 import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
 import {ArticleStatusesAdmin} from "../../../../../domain/article/status/ArticleStatusesAdmin";
 import {Category} from "../../../../../domain/category/Category";
-import {ArticleFull} from "../../../../../domain/article/ArticleFull";
-import {Journal} from "../../../../../domain/journal/Journal";
+import {ArticleFull} from "../../../../../shared/models/article/ArticleFull";
+import {Journal} from "../../../../../shared/models/journal/Journal";
 
 
 

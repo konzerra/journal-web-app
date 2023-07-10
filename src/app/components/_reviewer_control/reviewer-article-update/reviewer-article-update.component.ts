@@ -3,13 +3,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleUpdateFormGroupByReviewer} from "./form-group/ArticleUpdateFormGroupByReviewer";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {DialogsService} from "../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {saveAs} from "file-saver";
 import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
-import {Article} from "../../../domain/article/Article";
+import {Article} from "../../../shared/models/article/Article";
 import {ArticleService} from "../../../domain/article/article.service";
-import {isNotBlanc} from "../../../domain/_common/validators";
+import {isNotBlanc} from "../../../shared/validators";
 import {FileApi} from "../../../domain/file/FileApi";
 
 @Component({

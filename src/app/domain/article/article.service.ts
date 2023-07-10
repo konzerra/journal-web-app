@@ -3,14 +3,14 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {PageRequestDto} from "../pagination/PageRequestDto";
+import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {ArticleSaveDto} from "./dto/ArticleSaveDto";
-import {ArticleApi} from "./ArticleApi";
+import {ArticleApi} from "../../shared/models/article/ArticleApi";
 import {ArticleUpdateDtoByAdmin} from "./dto/ArticleUpdateDtoByAdmin";
-import {ArticleFull} from "./ArticleFull";
-import {Article} from "./Article";
+import {ArticleFull} from "../../shared/models/article/ArticleFull";
+import {Article} from "../../shared/models/article/Article";
 import {ArticleSearchDto} from "./ArticleSearchDto";
-import {ArticlePage} from "./ArticlePage";
+import {ArticlePage} from "../../shared/models/article/ArticlePage";
 import {ArticleUpdateDtoByReviewer} from "./dto/ArticleUpdateDtoByReviewer";
 
 @Injectable({

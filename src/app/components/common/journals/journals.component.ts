@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {JournalPage} from "../../../domain/journal/JournalPage";
-import {Journal} from "../../../domain/journal/Journal";
+import {JournalPage} from "../../../shared/models/journal/JournalPage";
+import {Journal} from "../../../shared/models/journal/Journal";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
-import {DialogsService} from "../dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {JournalService} from "../../../domain/journal/journal.service";
-import {JournalStatus} from "../../../domain/journal/JournalStatus";
-import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
+import {JournalStatus} from "../../../shared/models/journal/JournalStatus";
+import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {FileApi} from "../../../domain/file/FileApi";
 
 @Component({

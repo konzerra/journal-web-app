@@ -6,7 +6,7 @@ import {ModelI} from "../../model/ModelI";
 import {genericCheckFormControl} from "../../util/genericCheckFormControl";
 import {UseCaseGetByIdFullAbstract} from "../../usecase/get/UseCaseGetByIdFullAbstract";
 import {DataControlsAbstract} from "../../form-group/DataControlsAbstract";
-import {DialogsService} from "../../../components/common/dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 
 
 export abstract class GenericModelEditorUpdateComponent<

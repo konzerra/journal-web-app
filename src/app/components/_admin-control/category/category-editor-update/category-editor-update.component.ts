@@ -5,7 +5,7 @@ import {CategoryUpdateDto} from "../../../../domain/category/dto/CategoryUpdateD
 import {CategoryUpdateFormGroup} from "./form-group/CategoryUpdateFormGroup";
 import {Reviewer} from "../../../../domain/reviewer/Reviewer";
 
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
 import {CategoryService} from "../../../../domain/category/category.service";

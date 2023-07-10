@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ActivatedRoute, Router} from "@angular/router";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import { saveAs } from 'file-saver';
 import {ArticleUpdateFormGroup} from "./form-group/ArticleUpdateFormGroup";
 import {FormControl} from "@angular/forms";

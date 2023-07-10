@@ -3,8 +3,8 @@ import {Category} from "../../../../domain/category/Category";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategoryPage} from "../../../../domain/category/CategoryPage";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
-import {PageRequestDto} from "../../../../domain/pagination/PageRequestDto";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
+import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
 import {CategoryService} from "../../../../domain/category/category.service";
 
 @Component({

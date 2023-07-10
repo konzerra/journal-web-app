@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Journal} from "../../../../domain/journal/Journal";
-import {ArticlePage} from "../../../../domain/article/ArticlePage";
-import {Article} from "../../../../domain/article/Article";
+import {Journal} from "../../../../shared/models/journal/Journal";
+import {ArticlePage} from "../../../../shared/models/article/ArticlePage";
+import {Article} from "../../../../shared/models/article/Article";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
 import {JournalService} from "../../../../domain/journal/journal.service";
-import {PageRequestDto} from "../../../../domain/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
 import {ArticleService} from "../../../../domain/article/article.service";
 
 @Component({

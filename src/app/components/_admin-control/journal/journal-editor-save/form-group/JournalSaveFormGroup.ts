@@ -1,7 +1,7 @@
 import {GenericSaveFormGroup} from "../../../../../_generic/form-group/GenricSaveFormGroup";
 import {FormControl, Validators} from "@angular/forms";
 import {JournalSaveDto} from "../../../../../domain/journal/dto/JournalSaveDto";
-import {JournalData} from "../../../../../domain/journal/JournalData";
+import {JournalData} from "../../../../../shared/models/journal/JournalData";
 import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
 import {JournalDataControls} from "../../common/JournalDataControls";
 

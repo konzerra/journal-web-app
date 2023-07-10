@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserUseCaseLogin} from "../../../domain/user/usecase/UserUseCaseLogin";
 import {UserLoginFormGroup} from "./form-group/UserLoginFormGroup";
 import {AuthService} from "../../../domain/auth/auth.service";
-import {DialogsService} from "../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-user-login',

@@ -6,7 +6,7 @@ import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {UserUseCaseRegister} from "../../../domain/user/usecase/UserUseCaseRegister";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {DialogsService} from "../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 
 @Component({
   selector: 'app-user-register',

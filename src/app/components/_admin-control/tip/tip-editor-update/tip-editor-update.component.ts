@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {TipUpdateDto} from "../../../../domain/tip/dto/TipUpdateDto";
 import {TipUpdateFormGroup} from "./form-group/TipUpdateFormGroup";
-import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
 import {TipService} from "../../../../domain/tip/tip.service";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Article} from "../article/Article";
+import {Article} from "../../shared/models/article/Article";
 import {ReviewerApi} from "./ReviewerApi";
-import {PageRequestDto} from "../pagination/PageRequestDto";
+import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {TipPage} from "../tip/TipPage";
 import {TipApi} from "../tip/TipApi";
 import {ReviewerPage} from "./ReviewerPage";

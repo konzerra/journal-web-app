@@ -7,7 +7,7 @@ import {TipUpdateDto} from "./dto/TipUpdateDto";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
 import {TipFull} from "./TipFull";
 import {TipPage} from "./TipPage";
-import {PageRequestDto} from "../pagination/PageRequestDto";
+import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {Tip} from "./Tip";
 
 @Injectable({

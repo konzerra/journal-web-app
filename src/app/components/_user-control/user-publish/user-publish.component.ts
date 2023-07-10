@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserPublishFormGroup} from "./form-group/UserPublishFormGroup";
-import {Journal} from "../../../domain/journal/Journal";
+import {Journal} from "../../../shared/models/journal/Journal";
 import { Router } from '@angular/router';
-import { DialogsService } from '../../common/dialogs/dialogs.service';
+import { DialogsService } from '../../../shared/dialogs/dialogs.service';
 import {AuthService} from "../../../domain/auth/auth.service";
-import {JournalStatus} from "../../../domain/journal/JournalStatus";
+import {JournalStatus} from "../../../shared/models/journal/JournalStatus";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {JournalService} from "../../../domain/journal/journal.service";
 import {ArticleService} from "../../../domain/article/article.service";

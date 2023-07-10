@@ -27,13 +27,11 @@ import { UserPublishComponent } from './components/_user-control/user-publish/us
 import { ReviewerEditorMainComponent } from './components/_admin-control/reviewer/reviewer-editor-main/reviewer-editor-main.component';
 import { ReviewerEditorSaveComponent } from './components/_admin-control/reviewer/reviewer-editor-save/reviewer-editor-save.component';
 import { ReviewerEditorUpdateComponent } from './components/_admin-control/reviewer/reviewer-editor-update/reviewer-editor-update.component';
-import { MatConfirmDialogComponent } from './components/common/dialogs/mat-confirm-dialog/mat-confirm-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DialogsService} from "./components/common/dialogs/dialogs.service";
+import {DialogsService} from "./shared/dialogs/dialogs.service";
 import {AngularMaterialModule} from "./angular-material/angular-material.module";
 import {MatIconModule} from "@angular/material/icon";
 import {NgxPaginationModule} from "ngx-pagination";
-import { MatInfoDialogComponent } from './components/common/dialogs/mat-info-dialog/mat-info-dialog.component';
 import { ArticleEditorMainComponent } from './components/_admin-control/article/article-editor-main/article-editor-main.component';
 import { ArticleEditorUpdateComponent } from './components/_admin-control/article/article-editor-update/article-editor-update.component';
 import { JournalsComponent } from './components/common/journals/journals.component';
@@ -62,6 +60,8 @@ import { TipEditorUpdateComponent } from './components/_admin-control/tip/tip-ed
 import { MarkdownComponent } from './components/common/markdown/markdown.component';
 import { UserResetPasswordComponent } from './components/_user-control/user-reser-password/user-reset-password.component';
 import { GreetingComponent } from './components/common/home/components/greeting/greeting.component';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -86,8 +86,6 @@ import { GreetingComponent } from './components/common/home/components/greeting/
     ReviewerEditorMainComponent,
     ReviewerEditorSaveComponent,
     ReviewerEditorUpdateComponent,
-    MatConfirmDialogComponent,
-    MatInfoDialogComponent,
     ArticleEditorMainComponent,
     ArticleEditorUpdateComponent,
     JournalsComponent,
@@ -119,7 +117,9 @@ import { GreetingComponent } from './components/common/home/components/greeting/
         NgxPaginationModule,
         FormsModule,
       NgxTranslateModule,
-      MarkdownModule.forRoot()
+      MarkdownModule.forRoot(),
+      SharedModule,
+      CoreModule
 
     ],
   providers: [
@@ -133,8 +133,6 @@ import { GreetingComponent } from './components/common/home/components/greeting/
     DialogsService,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [
-    MatConfirmDialogComponent,
-    MatInfoDialogComponent,]
+
 })
 export class AppModule { }

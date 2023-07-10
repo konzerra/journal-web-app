@@ -1,4 +1,4 @@
-import {AppApi} from "../AppApi";
+import {AppApi} from "../../../domain/AppApi";
 
 export class ArticleApi {
   public static paths={
