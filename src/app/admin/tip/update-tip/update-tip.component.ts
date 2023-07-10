@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TipUpdateForm} from "./tip.update.form";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TipService} from "../../../domain/tip/tip.service";
+import {AdminTipService} from "../admin.tip.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
 import {TipUpdateDto} from "../../../domain/tip/dto/TipUpdateDto";
@@ -20,7 +20,7 @@ export class UpdateTipComponent implements OnInit {
 
   constructor(
     protected route: ActivatedRoute,
-    private tipService: TipService,
+    private tipService: AdminTipService,
     private router:Router,
     protected dialogsService: DialogsService
   ) {

@@ -2,23 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Article} from "../../shared/models/article/Article";
-import {ReviewerApi} from "./ReviewerApi";
+import {ReviewerApi} from "../../domain/reviewer/ReviewerApi";
 import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {TipPage} from "../tip/TipPage";
-import {TipApi} from "../tip/TipApi";
-import {ReviewerPage} from "./ReviewerPage";
-import {TipFull} from "../tip/TipFull";
+import {ReviewerPage} from "../../domain/reviewer/ReviewerPage";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {Reviewer} from "./Reviewer";
-import {TipSaveDto} from "../tip/dto/TipSaveDto";
-import {TipUpdateDto} from "../tip/dto/TipUpdateDto";
-import {ReviewerSaveDto} from "./dto/ReviewerSaveDto";
-import {ReviewerUpdateDto} from "./dto/ReviewerUpdateDto";
+import {Reviewer} from "../../domain/reviewer/Reviewer";
+import {ReviewerSaveDto} from "../../domain/reviewer/dto/ReviewerSaveDto";
+import {ReviewerUpdateDto} from "../../domain/reviewer/dto/ReviewerUpdateDto";
+import {ReviewerModule} from "./reviewer.module";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: ReviewerModule
 })
-export class ReviewerService {
+export class AdminReviewerService {
 
   constructor(
     private httpClient:HttpClient

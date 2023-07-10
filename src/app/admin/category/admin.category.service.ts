@@ -3,17 +3,18 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
 import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {CategorySaveDto} from "./dto/CategorySaveDto";
-import {CategoryApi} from "./CategoryApi";
-import {CategoryUpdateDto} from "./dto/CategoryUpdateDto";
-import {CategoryFull} from "./CategoryFull";
-import {Category} from "./Category";
-import {CategoryPage} from "./CategoryPage";
+import {CategorySaveDto} from "../../domain/category/dto/CategorySaveDto";
+import {CategoryApi} from "../../domain/category/CategoryApi";
+import {CategoryUpdateDto} from "../../domain/category/dto/CategoryUpdateDto";
+import {CategoryFull} from "../../domain/category/CategoryFull";
+import {Category} from "../../domain/category/Category";
+import {CategoryPage} from "../../domain/category/CategoryPage";
+import {CategoryModule} from "./category.module";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: CategoryModule
 })
-export class CategoryService {
+export class AdminCategoryService {
   constructor(
     private httpClient:HttpClient
   ) {

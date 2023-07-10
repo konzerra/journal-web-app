@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryService} from "../../../domain/category/category.service";
+import {AdminCategoryService} from "../admin.category.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
@@ -14,7 +14,7 @@ import {Category} from "../../../domain/category/Category";
 })
 export class ManageCategoryComponent implements OnInit {
   constructor(
-    private categoryService: CategoryService,
+    private categoryService: AdminCategoryService,
     protected dialogsService: DialogsService,
     protected router: Router,
   ) {

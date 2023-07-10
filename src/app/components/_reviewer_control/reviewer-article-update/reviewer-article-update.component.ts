@@ -8,7 +8,7 @@ import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {saveAs} from "file-saver";
 import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
 import {Article} from "../../../shared/models/article/Article";
-import {ArticleService} from "../../../domain/article/article.service";
+import {AdminArticleService} from "../../../admin/article/admin.article.service";
 import {isNotBlanc} from "../../../shared/validators";
 import {FileApi} from "../../../shared/models/file/FileApi";
 
@@ -21,7 +21,7 @@ export class ReviewerArticleUpdateComponent implements OnInit {
 
 
   constructor(
-    private articleService: ArticleService,
+    private articleService: AdminArticleService,
 
     private docUseCaseDownload : DocUseCaseDownload,
     private route : ActivatedRoute,

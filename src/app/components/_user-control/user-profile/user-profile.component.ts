@@ -9,7 +9,7 @@ import {UserUpdateDto} from "../../../domain/user/dto/UserUpdateDto";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
-import {ArticleService} from "../../../domain/article/article.service";
+import {AdminArticleService} from "../../../admin/article/admin.article.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit {
     private userAuthService: AuthService,
     private userUseCaseUpdate: UserUseCaseUpdate,
     private dialogsService: DialogsService,
-    private articleService: ArticleService,
+    private articleService: AdminArticleService,
     private router: Router
   ) { }
 

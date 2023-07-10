@@ -10,6 +10,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
 import {SaveReviewerComponent} from "./save-reviewer/save-reviewer.component";
 import {CoreModule} from "../../core/core.module";
+import {AdminReviewerService} from "./admin.reviewer.service";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {CoreModule} from "../../core/core.module";
     TranslateModule,
     CoreModule,
     FormsModule
-  ]
+  ],
+  providers:[AdminReviewerService]
 })
 export class ReviewerModule { }

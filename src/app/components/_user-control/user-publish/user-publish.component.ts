@@ -7,7 +7,7 @@ import {AuthService} from "../../../domain/auth/auth.service";
 import {JournalStatus} from "../../../shared/models/journal/JournalStatus";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {JournalService} from "../../../domain/journal/journal.service";
-import {ArticleService} from "../../../domain/article/article.service";
+import {AdminArticleService} from "../../../admin/article/admin.article.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 
@@ -27,7 +27,7 @@ export class UserPublishComponent
 
   constructor(
     protected router: Router,
-    private articleService: ArticleService,
+    private articleService: AdminArticleService,
     protected dialogsService: DialogsService,
     private userService: AuthService,
     private journalService: JournalService

@@ -12,8 +12,11 @@ import {JournalPage} from "../../shared/models/journal/JournalPage";
 import {JournalReport} from "./_models/JournalReport";
 import {ArticlePage} from "../../shared/models/article/ArticlePage";
 import {JournalStatus} from "../../shared/models/journal/JournalStatus";
+import {JournalModule} from "./journal.module";
 
-@Injectable()
+@Injectable({
+  providedIn: JournalModule
+})
 export class AdminJournalService {
 
   constructor(

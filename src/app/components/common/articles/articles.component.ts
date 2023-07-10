@@ -10,7 +10,7 @@ import {ArticleSearchDto} from "../../../domain/article/ArticleSearchDto";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {JournalService} from "../../../domain/journal/journal.service";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
-import {ArticleService} from "../../../domain/article/article.service";
+import {AdminArticleService} from "../../../admin/article/admin.article.service";
 import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
@@ -27,7 +27,7 @@ export class ArticlesComponent implements OnInit {
   constructor(
     private route:ActivatedRoute,
     private journalService: JournalService,
-    private articleService: ArticleService,
+    private articleService: AdminArticleService,
     private dialogsService:DialogsService,
   ) { }
 

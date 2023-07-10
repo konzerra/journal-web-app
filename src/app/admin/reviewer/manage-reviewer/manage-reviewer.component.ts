@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
+import {AdminReviewerService} from "../admin.reviewer.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
@@ -15,7 +15,7 @@ import {Reviewer} from "../../../domain/reviewer/Reviewer";
 export class ManageReviewerComponent implements OnInit {
 
   constructor(
-    private reviewerService: ReviewerService,
+    private reviewerService: AdminReviewerService,
     protected dialogsService: DialogsService,
     protected router: Router,
   ) {

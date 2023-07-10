@@ -3,20 +3,20 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {ArticleSaveDto} from "./dto/ArticleSaveDto";
+import {ArticleSaveDto} from "./_models/ArticleSaveDto";
 import {ArticleApi} from "../../shared/models/article/ArticleApi";
-import {ArticleUpdateDtoByAdmin} from "./dto/ArticleUpdateDtoByAdmin";
+import {ArticleUpdateDtoByAdmin} from "./_models/ArticleUpdateDtoByAdmin";
 import {ArticleFull} from "../../shared/models/article/ArticleFull";
 import {Article} from "../../shared/models/article/Article";
-import {ArticleSearchDto} from "./ArticleSearchDto";
+import {ArticleSearchDto} from "../../domain/article/ArticleSearchDto";
 import {ArticlePage} from "../../shared/models/article/ArticlePage";
-import {ArticleUpdateDtoByReviewer} from "./dto/ArticleUpdateDtoByReviewer";
+import {ArticleUpdateDtoByReviewer} from "../../domain/article/dto/ArticleUpdateDtoByReviewer";
+import {ArticleModule} from "./article.module";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: ArticleModule
 })
-export class ArticleService {
+export class AdminArticleService {
 
   constructor(
     private httpClient: HttpClient

@@ -4,7 +4,7 @@ import {GenericSaveFormGroup} from "../../../../_generic/form-group/GenricSaveFo
 
 import {ArticleDataControls} from "../../../../admin/article/_models/ArticleDataControls";
 import {ArticleData} from "../../../../shared/models/article/ArticleData";
-import {ArticleSaveDto} from "../../../../domain/article/dto/ArticleSaveDto";
+import {ArticleSaveDto} from "../../../../admin/article/_models/ArticleSaveDto";
 import {RequiredLanguages} from "../../../../domain/RequiredLanguages";
 
 

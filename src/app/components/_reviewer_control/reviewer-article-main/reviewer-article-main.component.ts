@@ -3,7 +3,7 @@ import {Article} from "../../../shared/models/article/Article";
 import {AuthService} from "../../../domain/auth/auth.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
-import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
+import {AdminReviewerService} from "../../../admin/reviewer/admin.reviewer.service";
 
 @Component({
   selector: 'app-reviewer-article-main',
@@ -16,7 +16,7 @@ export class ReviewerArticleMainComponent
   modelList = new Array<Article>()
 
   constructor(
-    private reviewerService : ReviewerService,
+    private reviewerService : AdminReviewerService,
     private userAuthService:AuthService,
     private router: Router
   ) { }

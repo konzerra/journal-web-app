@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TipSaveFormGroup} from "./category.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {TipService} from "../../../domain/tip/tip.service";
+import {AdminTipService} from "../admin.tip.service";
 import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
 import {TipSaveDto} from "../../../domain/tip/dto/TipSaveDto";
 import {FormControl} from "@angular/forms";
@@ -22,7 +22,7 @@ export class SaveTipComponent implements OnInit {
   constructor(
     protected dialogsService: DialogsService,
     protected router:Router,
-    private tipService:TipService
+    private tipService:AdminTipService
   ) {
   }
 

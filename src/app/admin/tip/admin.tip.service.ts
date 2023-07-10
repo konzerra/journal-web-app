@@ -1,19 +1,20 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {TipSaveDto} from "./dto/TipSaveDto";
-import {TipApi} from "./TipApi";
-import {TipUpdateDto} from "./dto/TipUpdateDto";
+import {TipSaveDto} from "../../domain/tip/dto/TipSaveDto";
+import {TipApi} from "../../domain/tip/TipApi";
+import {TipUpdateDto} from "../../domain/tip/dto/TipUpdateDto";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {TipFull} from "./TipFull";
-import {TipPage} from "./TipPage";
+import {TipFull} from "../../domain/tip/TipFull";
+import {TipPage} from "../../domain/tip/TipPage";
 import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {Tip} from "./Tip";
+import {Tip} from "../../domain/tip/Tip";
+import {AdminModule} from "../admin.module";
 
 @Injectable({
-  providedIn:"root"
+  providedIn:AdminModule
 })
-export class TipService {
+export class AdminTipService {
   constructor(
     protected httpClient:HttpClient
   ){

@@ -3,8 +3,8 @@ import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {ArticlePage} from "../../../shared/models/article/ArticlePage";
 import {Article} from "../../../shared/models/article/Article";
 import {Journal} from "../../../shared/models/journal/Journal";
-import {ArticleService} from "../../../domain/article/article.service";
-import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
+import {AdminArticleService} from "../admin.article.service";
+import {AdminReviewerService} from "../../reviewer/admin.reviewer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
@@ -48,9 +48,9 @@ export class ManageArticleComponent implements OnInit {
     articlesCount:0
   }
   constructor(
-    private articleService: ArticleService,
+    private articleService: AdminArticleService,
     private journalService: AdminJournalService,
-    private reviewerService: ReviewerService,
+    private reviewerService: AdminReviewerService,
     private route:ActivatedRoute,
     private router:Router,
     private dialogsService: DialogsService
