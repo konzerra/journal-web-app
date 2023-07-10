@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TipUpdateForm} from "./tip.update.form";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {TipUpdateDto} from "../../../../domain/tip/dto/TipUpdateDto";
-import {TipUpdateFormGroup} from "./form-group/TipUpdateFormGroup";
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
+import {TipService} from "../../../domain/tip/tip.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {TipUpdateDto} from "../../../domain/tip/dto/TipUpdateDto";
 import {FormControl} from "@angular/forms";
-import {TipService} from "../../../../domain/tip/tip.service";
-import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
+import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 
 @Component({
-  selector: 'app-tip-editor-update',
-  templateUrl: './tip-editor-update.component.html',
-  styleUrls: ['./tip-editor-update.component.css']
+  selector: 'app-update-tip',
+  templateUrl: './update-tip.component.html',
+  styleUrls: ['./update-tip.component.css']
 })
-export class TipEditorUpdateComponent
-  implements OnInit {
-  formGroup = new TipUpdateFormGroup()
-  selectedRadioButton = this.formGroup.requiredLangs[0]
+export class UpdateTipComponent implements OnInit {
+  form = new TipUpdateForm()
+  selectedRadioButton = this.form.requiredLangs[0]
   updateDisabled: boolean = false;
 
   constructor(
@@ -36,7 +35,7 @@ export class TipEditorUpdateComponent
         next:(param) =>{
           this.tipService.getByIdFull(param["id"]).subscribe({
             next:(v)=>{
-              this.formGroup.setDto(v)
+              this.form.setDto(v)
             },
             error:(err) =>{
               this.router.navigate([ComponentRoutingPaths.adminControl.tip.main])
@@ -51,8 +50,8 @@ export class TipEditorUpdateComponent
 
   onSubmit() {
     this.updateDisabled = true
-    if (this.formGroup.valid()) {
-      const updateDto:TipUpdateDto = this.formGroup.getDto()
+    if (this.form.valid()) {
+      const updateDto:TipUpdateDto = this.form.getDto()
       this.tipService.update(updateDto).subscribe({
         next:(value) =>{
 
@@ -74,7 +73,7 @@ export class TipEditorUpdateComponent
   }
 
   onLangChange(lang: string) {
-    this.formGroup.onLangChange(lang)
+    this.form.onLangChange(lang)
   }
 
   checkFormControl(name: FormControl): boolean {
@@ -84,5 +83,4 @@ export class TipEditorUpdateComponent
   onCancelClicked() {
     this.router.navigate([ComponentRoutingPaths.adminControl.tip.main])
   }
-
 }

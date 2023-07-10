@@ -1,12 +1,12 @@
-import {GenericSaveFormGroup} from "../../../../../_generic/form-group/GenricSaveFormGroup";
+import {GenericSaveFormGroup} from "../../../_generic/form-group/GenricSaveFormGroup";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
-import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
-import {CategoryData} from "../../../../../domain/category/CategoryData";
-import {TipDataControls} from "../../_common/TipDataControls";
-import {TipData} from "../../../../../domain/tip/TipData";
-import {TipSaveDto} from "../../../../../domain/tip/dto/TipSaveDto";
-import {CategorySaveDto} from "../../../../../domain/category/dto/CategorySaveDto";
+import {RequiredLanguages} from "../../../domain/RequiredLanguages";
+import {CategoryData} from "../../../domain/category/CategoryData";
+import {TipDataControls} from "../_models/TipDataControls";
+import {TipData} from "../../../domain/tip/TipData";
+import {TipSaveDto} from "../../../domain/tip/dto/TipSaveDto";
+import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
 
 export class TipSaveFormGroup
   extends GenericSaveFormGroup<TipData, TipDataControls, TipSaveDto> {

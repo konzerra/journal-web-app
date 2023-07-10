@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
+import {Component, OnInit} from '@angular/core';
+import {TipSaveFormGroup} from "./category.save.form";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {TipSaveDto} from "../../../../domain/tip/dto/TipSaveDto";
-import {TipSaveFormGroup} from "./form-group/CategorySaveFormGroup";
-import {TipService} from "../../../../domain/tip/tip.service";
+import {TipService} from "../../../domain/tip/tip.service";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {TipSaveDto} from "../../../domain/tip/dto/TipSaveDto";
 import {FormControl} from "@angular/forms";
-import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
+import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 
 @Component({
-  selector: 'app-tip-editor-save',
-  templateUrl: './tip-editor-save.component.html',
-  styleUrls: ['./tip-editor-save.component.css']
+  selector: 'app-save-tip',
+  templateUrl: './save-tip.component.html',
+  styleUrls: ['./save-tip.component.css']
 })
-export class TipEditorSaveComponent
-  implements OnInit {
+export class SaveTipComponent implements OnInit {
 
   formGroup = new TipSaveFormGroup();
   selectedRadioButton = this.formGroup.requiredLangs[0]

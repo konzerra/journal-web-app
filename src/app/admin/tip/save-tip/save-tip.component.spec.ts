@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TipEditorSaveComponent } from './tip-editor-save.component';
+import { SaveTipComponent } from './save-tip.component';
 
-describe('TipEditorSaveComponent', () => {
-  let component: TipEditorSaveComponent;
-  let fixture: ComponentFixture<TipEditorSaveComponent>;
+describe('SaveTipComponent', () => {
+  let component: SaveTipComponent;
+  let fixture: ComponentFixture<SaveTipComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TipEditorSaveComponent ]
+      declarations: [ SaveTipComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TipEditorSaveComponent);
+    fixture = TestBed.createComponent(SaveTipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

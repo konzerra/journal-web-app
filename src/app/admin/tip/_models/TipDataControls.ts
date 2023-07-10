@@ -1,6 +1,6 @@
-import {DataControlsAbstract} from "../../../../_generic/form-group/DataControlsAbstract";
+import {DataControlsAbstract} from "../../../_generic/form-group/DataControlsAbstract";
 import {FormControl, Validators} from "@angular/forms";
-import {TipData} from "../../../../domain/tip/TipData";
+import {TipData} from "../../../domain/tip/TipData";
 
 
 export class TipDataControls

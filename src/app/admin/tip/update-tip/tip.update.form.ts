@@ -1,12 +1,12 @@
-import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
-import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
+import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
+import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {FormControl,  Validators} from "@angular/forms";
-import {TipFull} from "../../../../../domain/tip/TipFull";
-import {TipData} from "../../../../../domain/tip/TipData";
-import {TipDataControls} from "../../_common/TipDataControls";
-import {TipUpdateDto} from "../../../../../domain/tip/dto/TipUpdateDto";
+import {TipFull} from "../../../domain/tip/TipFull";
+import {TipData} from "../../../domain/tip/TipData";
+import {TipDataControls} from "../_models/TipDataControls";
+import {TipUpdateDto} from "../../../domain/tip/dto/TipUpdateDto";
 
-export class TipUpdateFormGroup
+export class TipUpdateForm
   extends GenericUpdateFormGroup<TipFull, TipData, TipDataControls, TipUpdateDto>
 {
 

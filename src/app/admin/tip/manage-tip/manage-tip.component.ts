@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
+import {Component, OnInit} from '@angular/core';
+import {TipService} from "../../../domain/tip/tip.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {Tip} from "../../../../domain/tip/Tip";
-import {TipPage} from "../../../../domain/tip/TipPage";
-import {TipService} from "../../../../domain/tip/tip.service";
-import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
+import {TipPage} from "../../../domain/tip/TipPage";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {Tip} from "../../../domain/tip/Tip";
 
 @Component({
-  selector: 'app-tip-editor-main',
-  templateUrl: './tip-editor-main.component.html',
-  styleUrls: ['./tip-editor-main.component.css']
+  selector: 'app-manage-tip',
+  templateUrl: './manage-tip.component.html',
+  styleUrls: ['./manage-tip.component.css']
 })
-export class TipEditorMainComponent
-  implements OnInit {
+export class ManageTipComponent implements OnInit {
 
   constructor(
     private tipService: TipService,
@@ -28,8 +27,8 @@ export class TipEditorMainComponent
     size: 10,
     sort: [
       {
-       property : "id",
-       direction: "desc"
+        property : "id",
+        direction: "desc"
       }
     ]
   }
@@ -82,10 +81,10 @@ export class TipEditorMainComponent
     })
   }
   onEdit(model: Tip) {
-   this.router.navigate(
-     [ComponentRoutingPaths.adminControl.tip.update],
-     {queryParams: {id: JSON.stringify(model.id)}}
-   )
+    this.router.navigate(
+      [ComponentRoutingPaths.adminControl.tip.update],
+      {queryParams: {id: JSON.stringify(model.id)}}
+    )
   }
   onPageChange($event: number) {
     this.pageRequestDto.page = $event-1
@@ -102,5 +101,4 @@ export class TipEditorMainComponent
         }
       })
   }
-
 }

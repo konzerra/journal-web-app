@@ -1,8 +1,9 @@
 
 <body>
 <div class="wrapper container pt-5">
-  <h2 class="mt-5">{{'category_update' | translate}}</h2>
+  <h2 class="mt-5">{{'question_registration' | translate}}</h2>
   <div class = "col-lg-6 col-md-offset-1 mb-5">
+
     <form class="needs-validation">
 
       <!-- Select input language   radio-buttons -->
@@ -24,13 +25,13 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label" for="name"> {{'question' | translate}} </label>
+        <label class="control-label" for="question"> {{'question' | translate}} </label>
         <textarea type="text"
-               id="name"
-               class="form-control"
-               [formControl]="formGroup.question"
-               placeholder="{{'enter_question' | translate}}"
-               required autofocus="autofocus"></textarea>
+                  id="question"
+                  class="form-control"
+                  [formControl]="formGroup.question"
+                  placeholder="{{'enter_question' | translate}}"
+                  required autofocus="autofocus"></textarea>
         <div *ngIf="checkFormControl(formGroup.question)"
              class="alert-danger">
 
@@ -41,13 +42,13 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label" for="version"> {{'answer' | translate}}</label>
+        <label class="control-label" for="answer"> {{'answer' | translate}} </label>
         <textarea type="text"
-               id="version"
-               class="form-control"
-               [formControl]="formGroup.answer"
-               placeholder="{{'enter_answer' | translate}}"
-               required autofocus="autofocus" ></textarea>
+                  id="answer"
+                  class="form-control"
+                  [formControl]="formGroup.answer"
+                  placeholder="{{'enter_answer' | translate}}"
+                  required autofocus="autofocus" ></textarea>
         <div *ngIf="checkFormControl(formGroup.answer)"
              class="alert-danger">
 
@@ -61,14 +62,14 @@
       <div class="form-group">
         <div class="mt-4">
           <button type="button" name="login-submit" id="login-submit"
-                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'update' | translate}} </button>
+                  class="form-control btn btn-primary btn-sm w-25" (click)="onSubmit()" > {{'save' | translate}} </button>
           <button type = "button" class= "btn btn-outline-primary btn-sm w-25 ms-3"
                   (click)="onCancelClicked()">{{'cancel' | translate}}</button>
         </div>
       </div>
-
     </form>
   </div>
   <br>
 </div>
 </body>
+
