@@ -23,7 +23,8 @@ import {CoreModule} from "../../core/core.module";
     ReviewerRoutingModule,
     NgxPaginationModule,
     TranslateModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ]
 })
 export class ReviewerModule { }
