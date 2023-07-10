@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
+import {Component, OnInit} from '@angular/core';
+import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {ReviewerPage} from "../../../../domain/reviewer/ReviewerPage";
-import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
-import {Tip} from "../../../../domain/tip/Tip";
-import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
-import {Reviewer} from "../../../../domain/reviewer/Reviewer";
+import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
+import {ReviewerPage} from "../../../domain/reviewer/ReviewerPage";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {Reviewer} from "../../../domain/reviewer/Reviewer";
 
 @Component({
-  selector: 'app-reviewer-editor-main',
-  templateUrl: './reviewer-editor-main.component.html',
-  styleUrls: ['./reviewer-editor-main.component.css']
+  selector: 'app-manage-reviewer',
+  templateUrl: './manage-reviewer.component.html',
+  styleUrls: ['./manage-reviewer.component.css']
 })
-export class ReviewerEditorMainComponent
-  implements OnInit {
+export class ManageReviewerComponent implements OnInit {
 
   constructor(
     private reviewerService: ReviewerService,

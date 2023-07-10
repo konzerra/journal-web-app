@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import {ReviewerUpdateFormGroup} from "./form-group/ReviewerUpdateFormGroup";
-import {FormControl} from "@angular/forms";
-import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
-import {Category} from "../../../../domain/category/Category";
+import {Component, OnInit} from '@angular/core';
+import {ReviewerUpdateForm} from "./reviewer.update.form";
+import {Category} from "../../../domain/category/Category";
+import {CategoryService} from "../../../domain/category/category.service";
+import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {CategoryService} from "../../../../domain/category/category.service";
-import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
+import {FormControl} from "@angular/forms";
+import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
 
 @Component({
-  selector: 'app-reviewr-editor-update',
-  templateUrl: './reviewer-editor-update.component.html',
-  styleUrls: ['./reviewer-editor-update.component.css']
+  selector: 'app-update-reviewer',
+  templateUrl: './update-reviewer.component.html',
+  styleUrls: ['./update-reviewer.component.css']
 })
-export class ReviewerEditorUpdateComponent implements OnInit {
+export class UpdateReviewerComponent implements OnInit {
 
-  formGroup = new ReviewerUpdateFormGroup()
+  formGroup = new ReviewerUpdateForm()
 
   categoryList = new Array<Category>()
 
@@ -92,4 +92,5 @@ export class ReviewerEditorUpdateComponent implements OnInit {
   onCategoryChanged($event: Category | null) {
     this.formGroup.category = $event
   }
+
 }

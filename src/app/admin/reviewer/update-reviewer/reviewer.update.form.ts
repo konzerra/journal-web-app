@@ -1,10 +1,9 @@
 import {FormControl, Validators} from "@angular/forms";
-import {ReviewerSaveDto} from "../../../../../domain/reviewer/dto/ReviewerSaveDto";
-import {Reviewer} from "../../../../../domain/reviewer/Reviewer";
-import {ReviewerUpdateDto} from "../../../../../domain/reviewer/dto/ReviewerUpdateDto";
-import {Category} from "../../../../../domain/category/Category";
+import {Reviewer} from "../../../domain/reviewer/Reviewer";
+import {ReviewerUpdateDto} from "../../../domain/reviewer/dto/ReviewerUpdateDto";
+import {Category} from "../../../domain/category/Category";
 
-export class ReviewerUpdateFormGroup {
+export class ReviewerUpdateForm {
 
   category : Category | null = null
   active = new FormControl<boolean>(false, Validators.required)

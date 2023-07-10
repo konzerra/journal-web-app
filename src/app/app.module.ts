@@ -17,9 +17,6 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { UserHandbookComponent } from './components/_user-control/user-handbook/user-handbook.component';
 
 import { UserPublishComponent } from './components/_user-control/user-publish/user-publish.component';
-import { ReviewerEditorMainComponent } from './components/_admin-control/reviewer/reviewer-editor-main/reviewer-editor-main.component';
-import { ReviewerEditorSaveComponent } from './components/_admin-control/reviewer/reviewer-editor-save/reviewer-editor-save.component';
-import { ReviewerEditorUpdateComponent } from './components/_admin-control/reviewer/reviewer-editor-update/reviewer-editor-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DialogsService} from "./shared/dialogs/dialogs.service";
 import {AngularMaterialModule} from "./angular-material/angular-material.module";
@@ -57,9 +54,6 @@ import { CoreModule } from './core/core.module';
     FooterComponent,
     UserHandbookComponent,
     UserPublishComponent,
-    ReviewerEditorMainComponent,
-    ReviewerEditorSaveComponent,
-    ReviewerEditorUpdateComponent,
     ArticleEditorMainComponent,
     ArticleEditorUpdateComponent,
     JournalsComponent,
