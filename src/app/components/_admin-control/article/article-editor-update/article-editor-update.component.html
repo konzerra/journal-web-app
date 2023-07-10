@@ -105,10 +105,11 @@
         </select>
       </div>
 
-      <label *ngIf="formGroup.articleFull.reviewerBlankDocId != null"
+      <label *ngIf="formGroup.articleFull.reviewerBlankDoc != null"
              class = "link mt-0"
-             (click)="onDocDownload(formGroup.articleFull.reviewerBlankDocId)"
-      >{{"download_reviewer_form" | translate}}</label>
+      ><a href="{{FileApi.paths.download+formGroup.articleFull.reviewerBlankDoc}}">
+        {{"download_reviewer_form" | translate}}
+      </a></label>
 
       <!-- Antiplagiat input -->
       <div class="form-group">
@@ -139,8 +140,11 @@
         (change)="onAntiplagiatFileChange($event)"
       />
 
-      <label *ngIf="formGroup.articleFull.antiplagiatDocId!=null" class="" (click)="onDocDownload(formGroup.articleFull.antiplagiatDocId)">
-        <a class="link">{{"download_existing_version" | translate}}</a>
+      <label *ngIf="formGroup.articleFull.antiplagiatDoc!=null"
+             class="">
+        <a class="link" href="{{FileApi.paths.download+formGroup.articleFull.antiplagiatDoc}}">
+          {{"download_existing_version" | translate}}
+        </a>
       </label>
       <br>
 
@@ -175,8 +179,11 @@
         accept=".doc, .docx"
         (change)="onWordFileChange($event)"
       />
-      <label *ngIf="formGroup.articleFull.wordDocId!=null" class="" (click)="onDocDownload(formGroup.articleFull.wordDocId)">
-        <a class="link">{{"download_existing_version" | translate}}</a>
+      <label *ngIf="formGroup.articleFull.wordDoc!=null"
+             class="">
+        <a class="link" href="{{FileApi.paths.download+formGroup.articleFull.wordDoc}}">
+          {{"download_existing_version" | translate}}
+        </a>
       </label>
       <br>
 
@@ -190,8 +197,12 @@
         accept=".pdf"
         (change)="onPdfFileChange($event)"
       />
-      <label *ngIf="formGroup.articleFull.pdfDocId!=null" class="" (click)="onDocDownload(formGroup.articleFull.pdfDocId)">
-        <a class="link">{{"download_existing_version" | translate}}</a>
+      <label *ngIf="formGroup.articleFull.pdfDoc!=null"
+             class=""
+             >
+        <a class="link" href="{{FileApi.paths.download+formGroup.articleFull.pdfDoc}}">
+          {{"download_existing_version" | translate}}
+        </a>
       </label>
       <br>
 

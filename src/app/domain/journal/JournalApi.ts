@@ -8,17 +8,16 @@ export class JournalApi {
 
   public static paths={
 
-    makeReport : `${this.protectedPath}/{id}`,
+    makeReport : `${this.protectedPath}/report/{id}`,
 
-    getReport: `${this.protectedPath}/report/{id}`,
     getAllByStatus: `${this.publicPath}/all-by-status/{status}`,
     getAllPublishedArticlesPaginated : `${this.publicPath}/published/{id}/articles/{pageNumber}/{pageSize}`,
-    getAllArticlesPaginated : `${this.publicPath}/{id}/articles/{pageNumber}/{pageSize}`,
+    getPaginatedJournalArticles : `${this.publicPath}/{id}/articles`,
     getAllCategories : `${this.publicPath}/{id}/categories`,
     getByIdFull : `${this.protectedPath}/full/{id}`,
     getById: `${this.publicPath}/{id}`,
-    getAllPaginated: `${this.publicPath}/all/{pageNumber}/{pageSize}`,
-    getAllPaginatedByStatus: `${this.publicPath}/all-by-status/{status}/{pageNumber}/{pageSize}`,
+    getPaginated: `${this.publicPath}/all/{pageNumber}/{pageSize}`,
+    getPaginatedByStatus: `${this.publicPath}/paginated/by_status/{status}`,
 
     save: `${this.protectedPath}`,
     deleteById: `${this.protectedPath}/{id}`,

@@ -156,8 +156,8 @@
                   rows="6"></textarea>
         <div *ngIf="checkFormControl(formGroup.annotation)"
              class="alert-danger">
-          <div *ngIf="formGroup.annotation.errors?.['required']">
-            {{'enter_annotation' | translate}}
+          <div *ngIf="formGroup.annotation.errors?.['not_enough_words']">
+            {{'must_be_200_words' | translate}}
           </div>
         </div>
       </div>
@@ -174,8 +174,8 @@
                   rows="2"></textarea>
         <div *ngIf="checkFormControl(formGroup.tags)"
              class="alert-danger">
-          <div *ngIf="formGroup.tags.errors?.['required']">
-            {{'enter_tags' | translate}}
+          <div *ngIf="formGroup.annotation.errors?.['not_enough_words']">
+            {{'must_be_10_words' | translate}}
           </div>
         </div>
       </div>

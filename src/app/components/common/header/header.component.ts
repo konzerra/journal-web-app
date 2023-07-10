@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {AuthService} from "../../../domain/auth/auth.service";
 import {FormControl} from "@angular/forms";
 import {AppLanguage} from "../../../AppLanguage";
 import {TranslateService} from "@ngx-translate/core";
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   selectedLang = new FormControl<string>(AppLanguage.languages.Ru)
 
   constructor(
-    private userAuthService:UserAuthService,
+    private userAuthService:AuthService,
     private translate: TranslateService,
     private router: Router
   ) { }

@@ -17,8 +17,8 @@ export interface ArticleFull {
   pagesInJournal: string | null
   antiplagiat: string | null
   dataList: Array<ArticleData>
-  wordDocId: Number | null
-  pdfDocId: Number | null
-  reviewerBlankDocId: Number | null
-  antiplagiatDocId: Number | null
+  wordDoc: string
+  pdfDoc: string
+  reviewerBlankDoc: string
+  antiplagiatDoc: string
 }

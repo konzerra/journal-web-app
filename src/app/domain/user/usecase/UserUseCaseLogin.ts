@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserApi} from "../UserApi";
 import {UserLoginDto} from "../dto/UserLoginDto";
-import {JwtDto} from "../../jwt/JwtDto";
+import {JwtDto} from "../../auth/JwtDto";
 
 @Injectable({
   providedIn: 'root'

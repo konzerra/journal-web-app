@@ -3,18 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
 import { saveAs } from 'file-saver';
-import {ArticleUseCaseUpdateByAdmin} from "../../../../domain/article/usecase/ArticleUseCaseUpdateByAdmin";
-import {ArticleUseCaseGetByIdFull} from "../../../../domain/article/usecase/ArticleUseCaseGetByIdFull";
 import {ArticleUpdateFormGroup} from "./form-group/ArticleUpdateFormGroup";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
 import {Category} from "../../../../domain/category/Category";
 import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
 import {Location} from "@angular/common";
-import {ApiPathUtil} from "../../../../_generic/util/ApiPathUtil";
-import {ImageApi} from "../../../../domain/image/ImageApi";
+import {CategoryService} from "../../../../domain/category/category.service";
+import {ArticleService} from "../../../../domain/article/article.service";
+import {FileApi} from "../../../../domain/file/FileApi";
 
 
 @Component({
@@ -32,9 +29,8 @@ export class ArticleEditorUpdateComponent
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
-    protected useCaseFindByIdFull: ArticleUseCaseGetByIdFull,
-    protected useCaseUpdate: ArticleUseCaseUpdateByAdmin,
-    private categoryUseCaseGetAll: CategoryUseCaseGetAll,
+    private articleService: ArticleService,
+    private categoryService: CategoryService,
     private docUseCaseDownload: DocUseCaseDownload,
     protected dialogsService: DialogsService,
     private location: Location
@@ -45,16 +41,15 @@ export class ArticleEditorUpdateComponent
   ngOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          this.useCaseFindByIdFull.execute(JSON.parse(param["id"])).subscribe({
+          this.articleService.getByIdFull(JSON.parse(param["id"])).subscribe({
             next:(v)=>{
               this.formGroup.setDto(v)
             },
             error:(err) =>{
-
+              this.dialogsService.openInfoDialog(err)
             },
             complete:()=>{
-
-              this.categoryUseCaseGetAll.execute().subscribe({
+              this.categoryService.getAll().subscribe({
                 next:(categoryList)=>{
                   this.categoryList = categoryList
                 },
@@ -110,27 +105,12 @@ export class ArticleEditorUpdateComponent
   onSubmit() {
     this.updateDisabled = true
     if(this.formGroup.valid()){
-      let formData = new FormData()
-
-      formData.set("updateDto", new Blob([JSON.stringify(this.formGroup.getDto())],{
-        type:"application/json"
-      }))
-      if(this.formGroup.wordFile!=null){
-        formData.set("wordFile", new Blob([this.formGroup.wordFile],{
-          type:this.formGroup.wordFile.type
-        }))
-      }
-      if(this.formGroup.pdfFile!=null){
-        formData.set("pdfFile", new Blob([this.formGroup.pdfFile],{
-          type:this.formGroup.pdfFile.type
-        }))
-      }
-      if(this.formGroup.antiplagiatFile!=null){
-        formData.set("antiplagiatFile", new Blob([this.formGroup.antiplagiatFile],{
-          type:this.formGroup.antiplagiatFile.type
-        }))
-      }
-      this.useCaseUpdate.execute(formData).subscribe({
+      this.articleService.updateByAdmin(
+        this.formGroup.getDto(),
+        this.formGroup.wordFile,
+        this.formGroup.pdfFile,
+        this.formGroup.antiplagiatFile
+      ).subscribe({
         error:(err)=>{
           this.updateDisabled = false
           this.dialogsService.openInfoDialog(err)
@@ -150,20 +130,6 @@ export class ArticleEditorUpdateComponent
   onCategoryChanged(value: Category | null) {
     this.formGroup.category = value
   }
-
-
-  onDocDownload(id: Number | null) {
-    if(id==null){
-      this.dialogsService.openInfoDialog("Невозможно скачать")
-      return
-    }
-    this.docUseCaseDownload.execute(id).subscribe({
-      next:(file)=>{
-        saveAs(file,"kstu-bulletin")
-      }
-    })
-  }
-
 
   onWordFileChange($event: Event) {
     const input = $event.target as HTMLInputElement;
@@ -191,4 +157,5 @@ export class ArticleEditorUpdateComponent
     this.formGroup.antiplagiatFile = input.files[0]
   }
 
+  protected readonly FileApi = FileApi;
 }

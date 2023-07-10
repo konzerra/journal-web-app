@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {JournalPage} from "../../../../domain/journal/JournalPage";
 import {Journal} from "../../../../domain/journal/Journal";
 import {ArticlePage} from "../../../../domain/article/ArticlePage";
 import {Article} from "../../../../domain/article/Article";
-import {
-  JournalUseCaseGetAllArticlesPaginated
-} from "../../../../domain/journal/usecase/get/JournalUseCaseGetAllArticlesPaginated";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {ArticleUseCaseDeleteById} from "../../../../domain/article/usecase/ArticleUseCaseDeleteById";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
-import {ReviewerUseCaseDistribute} from "../../../../domain/reviewer/usecase/ReviewerUseCaseDistribute";
+import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
+import {JournalService} from "../../../../domain/journal/journal.service";
+import {PageRequestDto} from "../../../../domain/pagination/PageRequestDto";
+import {ArticleService} from "../../../../domain/article/article.service";
 
 @Component({
   selector: 'app-article-editor-main',
@@ -20,6 +18,17 @@ import {ReviewerUseCaseDistribute} from "../../../../domain/reviewer/usecase/Rev
 export class ArticleEditorMainComponent
 
   implements OnInit {
+
+  pageRequestDto: PageRequestDto = {
+    page: 0,
+    size: 10,
+    sort: [
+      {
+        property : "id",
+        direction: "desc"
+      }
+    ]
+  }
 
   modelPage : ArticlePage = {
     content: new Array<Article>(),
@@ -34,16 +43,16 @@ export class ArticleEditorMainComponent
   journal : Journal = {
     id:0,
     name: "",
-    imageId:null,
+    image:"",
     version: "",
     status: "",
-    pdf: null,
+    pdf: "",
     articlesCount:0
   }
   constructor(
-    private journalUseCaseGetAllArticlesPaginated: JournalUseCaseGetAllArticlesPaginated,
-    private articleUseCaseDeleteById: ArticleUseCaseDeleteById,
-    private reviewerUseCaseDistribute: ReviewerUseCaseDistribute,
+    private articleService: ArticleService,
+    private journalService: JournalService,
+    private reviewerService: ReviewerService,
     private route:ActivatedRoute,
     private router:Router,
     private dialogsService: DialogsService
@@ -55,7 +64,7 @@ export class ArticleEditorMainComponent
     this.route.queryParams.subscribe({
         next:(param) => {
           this.journal = JSON.parse(param["model"])
-          this.loadData(this.modelPage.number)
+          this.loadData()
         }
       }
     )
@@ -70,42 +79,39 @@ export class ArticleEditorMainComponent
   }
 
   onDeleteClicked(model: Article, i: number) {
-    this.articleUseCaseDeleteById.execute(model.id.toString()).subscribe({
+    this.articleService.deleteById(model.id.toString()).subscribe({
       complete:()=>{
         this.dialogsService.openInfoDialog("Удалено")
+      },
+      error:(err)=>{
+        this.dialogsService.openInfoDialog(err)
       }
     })
   }
 
   onPageChange($event: number) {
-    this.loadData($event-1, 10)
+    this.pageRequestDto.page = $event-1
   }
 
   onDistribute() {
-    console.log(this.journal)
-    this.reviewerUseCaseDistribute.execute(this.journal.id).subscribe({
+    this.reviewerService.distribute(this.journal.id).subscribe({
       next:(data)=>{
         this.dialogsService.openInfoDialog(data.message)
       }
     })
   }
-  private loadData(pageNumber: Number, pageSize: Number = 10){
-    this.journalUseCaseGetAllArticlesPaginated.execute(
+  private loadData(){
+    this.journalService.getPaginatedJournalArticles(
       this.journal.id,
-      pageNumber,
-      pageSize
-
+      this.pageRequestDto
     ).subscribe(
       {
         next:(modelPage)=>{
           this.modelPage = modelPage
           console.log(this.modelPage)
         },
-        error:()=>{
-
-        },
-        complete:()=>{
-
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
         }
       })
   }

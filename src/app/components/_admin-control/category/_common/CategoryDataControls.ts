@@ -1,5 +1,4 @@
 import {DataControlsAbstract} from "../../../../_generic/form-group/DataControlsAbstract";
-import {JournalData} from "../../../../domain/journal/JournalData";
 import {FormControl, Validators} from "@angular/forms";
 import {CategoryData} from "../../../../domain/category/CategoryData";
 

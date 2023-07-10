@@ -3,13 +3,13 @@ import {UserProfileFormGroup} from "./form-group/UserProfileFormGroup";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {Article} from "../../../domain/article/Article";
-import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {AuthService} from "../../../domain/auth/auth.service";
 import {UserUseCaseUpdate} from "../../../domain/user/usecase/UserUseCaseUpdate";
 import {UserUpdateDto} from "../../../domain/user/dto/UserUpdateDto";
 import {DialogsService} from "../../common/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
-import {ArticleUseCaseGetMyArticles} from "../../../domain/article/usecase/ArticleUseCaseGetMyArticles";
+import {ArticleService} from "../../../domain/article/article.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -21,10 +21,10 @@ export class UserProfileComponent implements OnInit {
   formGroup = new UserProfileFormGroup()
   modelList = new Array<Article>()
   constructor(
-    private userAuthService: UserAuthService,
+    private userAuthService: AuthService,
     private userUseCaseUpdate: UserUseCaseUpdate,
     private dialogsService: DialogsService,
-    private articleUseCaseGetMyArticles: ArticleUseCaseGetMyArticles,
+    private articleService: ArticleService,
     private router: Router
   ) { }
 
@@ -32,7 +32,7 @@ export class UserProfileComponent implements OnInit {
     let user = this.userAuthService.getUser()
     if(user!=null){
       this.formGroup.name.setValue(user.name)
-      this.articleUseCaseGetMyArticles.execute(user.id).subscribe({
+      this.articleService.getMyArticles(user.id).subscribe({
         next:(v)=>{
           this.modelList = v
         },

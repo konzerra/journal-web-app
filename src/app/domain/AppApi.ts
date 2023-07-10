@@ -2,8 +2,10 @@
 export class AppApi {
   public static server = {
 
-    publicApi : "https://www.api.journal.kstu.kg/api/v1/public",
-    protectedApi: "https://www.api.journal.kstu.kg/api/v1/protected",
+    publicApi : "https://api.journal.kstu.kg/api/v1/public",
+    protectedApi: "https://api.journal.kstu.kg/api/v1/protected",
+
+    fileDownload: "https://api.journal.kstu.kg/api/v1/public/file/download"
 
   }
 

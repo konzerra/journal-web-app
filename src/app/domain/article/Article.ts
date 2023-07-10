@@ -6,8 +6,8 @@ export interface Article {
   pages: Number,
   tags: string,
   preferredCategory: string,
-  pdfDocId:Number | null
-  wordDocId:Number | null
+  pdfDoc:string,
+  wordDoc:string,
   journal: {
     id: Number
     name:string,

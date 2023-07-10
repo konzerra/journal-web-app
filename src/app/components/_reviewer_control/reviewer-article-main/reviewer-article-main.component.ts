@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ArticlePage} from "../../../domain/article/ArticlePage";
 import {Article} from "../../../domain/article/Article";
-import {ReviewerUseCaseGetAllArticles} from "../../../domain/reviewer/usecase/get/ReviewerUseCaseGetAllArticles";
-import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {AuthService} from "../../../domain/auth/auth.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
 
 @Component({
   selector: 'app-reviewer-article-main',
@@ -17,15 +16,15 @@ export class ReviewerArticleMainComponent
   modelList = new Array<Article>()
 
   constructor(
-    private reviewerUseCaseGetAllArticles : ReviewerUseCaseGetAllArticles,
-    private userAuthService:UserAuthService,
+    private reviewerService : ReviewerService,
+    private userAuthService:AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     let userId = this.userAuthService.getUser()?.id
     if(userId!=null){
-      this.reviewerUseCaseGetAllArticles.execute(userId).subscribe({
+      this.reviewerService.getAllArticles(userId).subscribe({
         next:(list)=>{
           this.modelList=list
         }

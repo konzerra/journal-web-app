@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserLoginDto} from "../dto/UserLoginDto";
-import {JwtDto} from "../../jwt/JwtDto";
+import {JwtDto} from "../../auth/JwtDto";
 import {UserApi} from "../UserApi";
 import {PasswordResetDto} from "../dto/PasswordResetDto";
 import {Injectable} from "@angular/core";

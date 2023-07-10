@@ -2,18 +2,16 @@ import { Component, OnInit } from '@angular/core';
 
 import {Journal} from "../../../domain/journal/Journal";
 import {ArticlePage} from "../../../domain/article/ArticlePage";
-import {
-  JournalUseCaseGetAllPublishedArticlesPaginated
-} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllPublishedArticlesPaginated";
-import {JournalUseCaseGetAllByStatus} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllByStatus";
 import {ActivatedRoute} from "@angular/router";
 import {JournalStatus} from "../../../domain/journal/JournalStatus";
 import {FormControl} from "@angular/forms";
-import {ArticleUseCaseSearch} from "../../../domain/article/usecase/ArticleUseCaseSearch";
+
 import {ArticleSearchDto} from "../../../domain/article/ArticleSearchDto";
-import {saveAs} from "file-saver";
 import {DialogsService} from "../dialogs/dialogs.service";
-import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
+import {JournalService} from "../../../domain/journal/journal.service";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
+import {ArticleService} from "../../../domain/article/article.service";
+import {FileApi} from "../../../domain/file/FileApi";
 
 @Component({
   selector: 'app-articles',
@@ -28,12 +26,21 @@ export class ArticlesComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute,
-    private journalUseCaseGetAllByStatus: JournalUseCaseGetAllByStatus,
-    private journalUseCaseGetAllPublishedArticles: JournalUseCaseGetAllPublishedArticlesPaginated,
-    private articleUseCaseSearch: ArticleUseCaseSearch,
+    private journalService: JournalService,
+    private articleService: ArticleService,
     private dialogsService:DialogsService,
-    private docUseCaseDownload:DocUseCaseDownload
   ) { }
+
+  pageRequestDto: PageRequestDto = {
+    page: 0,
+    size: 10,
+    sort: [
+      {
+        property : "id",
+        direction: "desc"
+      }
+    ]
+  }
   modelPage:ArticlePage={
     content: [],
     empty: false,
@@ -50,7 +57,7 @@ export class ArticlesComponent implements OnInit {
       next:(param)=>{
         let id = param['id']
 
-        this.journalUseCaseGetAllByStatus.execute(JournalStatus.Published).subscribe({
+        this.journalService.getAllByStatus(JournalStatus.Published).subscribe({
           next:(v)=>{
             this.journalList = v
           },
@@ -73,12 +80,11 @@ export class ArticlesComponent implements OnInit {
 
   onJournalChanged($event: Journal | null) {
     this.currentJournal = $event
-    this.modelPage.number = 0
     this.runSearch()
   }
 
   onPageChange($event: number) {
-    this.modelPage.number = $event-1
+    this.pageRequestDto.page = $event-1
     this.runSearch()
   }
 
@@ -100,10 +106,9 @@ export class ArticlesComponent implements OnInit {
     }
 
 
-    this.articleUseCaseSearch.execute(this.modelPage.number,searchDto).subscribe({
+    this.articleService.search(this.pageRequestDto.page,searchDto).subscribe({
       next:(v)=>{
         this.modelPage = v
-        console.log(v)
       }
     })
 
@@ -112,32 +117,19 @@ export class ArticlesComponent implements OnInit {
 
   private runGetJournalArticles(){
     if(this.currentJournal!=null){
-      this.journalUseCaseGetAllPublishedArticles.execute(
+      this.journalService.getPaginatedJournalArticles(
         this.currentJournal.id,
-        this.modelPage.number,
-        this.modelPage.size
+        this.pageRequestDto
       ).subscribe({
         next:(v)=>{
           this.modelPage = v
         },
         error:(err)=>{
-
+          this.dialogsService.openInfoDialog(err)
         }
       })
     }
 
-  }
-
-  onDocDownload(id: Number | null) {
-    if(id==null){
-      this.dialogsService.openInfoDialog('can_not_download')
-      return
-    }
-    this.docUseCaseDownload.execute(id).subscribe({
-      next:(file)=>{
-        saveAs(file,"journal-thing")
-      }
-    })
   }
 
   formatAuthors(authors: Array<String>) {
@@ -148,4 +140,6 @@ export class ArticlesComponent implements OnInit {
 
     return formatted.slice(0,formatted.length-2)
   }
+
+  protected readonly FileApi = FileApi;
 }

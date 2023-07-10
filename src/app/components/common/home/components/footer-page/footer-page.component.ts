@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MarkdownUseCaseGetAllNames} from "../../../../../domain/Markdown/usecase/get/MarkdownUseCaseGetAllNames";
 import {DialogsService} from "../../../dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../../ComponentRoutingPaths";
 import {AppLanguage} from "../../../../../AppLanguage";
+import {MarkdownService} from "../../../../../domain/markdown/markdown.service";
 
 @Component({
   selector: 'app-footer-page',
@@ -15,7 +15,7 @@ export class FooterPageComponent implements OnInit {
   pagesName = new Array<string>()
   locale:string
   constructor(
-    private markdownUseCaseGetAllNames: MarkdownUseCaseGetAllNames,
+    private markdownService: MarkdownService,
     private dialogsService: DialogsService,
     private router: Router,
 
@@ -25,7 +25,7 @@ export class FooterPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.markdownUseCaseGetAllNames.execute().subscribe({
+    this.markdownService.getAllNames().subscribe({
       next:(v)=>{
         console.log(v)
         this.pagesName = v

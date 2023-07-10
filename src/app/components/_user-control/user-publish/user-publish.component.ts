@@ -1,24 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {UserPublishFormGroup} from "./form-group/UserPublishFormGroup";
 import {Journal} from "../../../domain/journal/Journal";
-import {Category} from "../../../domain/category/Category";
+import { Router } from '@angular/router';
+import { DialogsService } from '../../common/dialogs/dialogs.service';
+import {AuthService} from "../../../domain/auth/auth.service";
+import {JournalStatus} from "../../../domain/journal/JournalStatus";
+import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+import {JournalService} from "../../../domain/journal/journal.service";
+import {ArticleService} from "../../../domain/article/article.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {
-  GenericModelEditorSaveComponent
-} from "../../../_generic/component/editor-control/GenericModelEditorSaveComponent";
-import {ArticleData} from "../../../domain/article/ArticleData";
-import {ArticleDataControls} from "../../_admin-control/article/common/ArticleDataControls";
-import {ArticleSaveDto} from "../../../domain/article/dto/ArticleSaveDto";
-import { Router } from '@angular/router';
-import { UseCaseSaveAbstract } from 'src/app/_generic/usecase/UseCaseSaveAbstract';
-import { DialogsService } from '../../common/dialogs/dialogs.service';
-import {ArticleUseCaseSave} from "../../../domain/article/usecase/ArticleUseCaseSave";
-import {UserAuthService} from "../../../domain/user/service/UserAuthService";
-import {JournalUseCaseGetAllByStatus} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllByStatus";
-import {JournalStatus} from "../../../domain/journal/JournalStatus";
-import {CategoryUseCaseGetAll} from "../../../domain/category/usecase/CategoryUseCaseGetAll";
-import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+
 
 @Component({
   selector: 'app-user-publish',
@@ -26,7 +18,6 @@ import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
   styleUrls: ['./user-publish.component.css']
 })
 export class UserPublishComponent
-  extends GenericModelEditorSaveComponent<ArticleData, ArticleDataControls, FormData>
   implements OnInit {
 
   formGroup = new UserPublishFormGroup()
@@ -36,13 +27,13 @@ export class UserPublishComponent
 
   constructor(
     protected router: Router,
-    protected saveUseCase: ArticleUseCaseSave,
+    private articleService: ArticleService,
     protected dialogsService: DialogsService,
-    private userService: UserAuthService,
-    private journalUseCaseGetAllByStatus: JournalUseCaseGetAllByStatus,
+    private userService: AuthService,
+    private journalService: JournalService
 
   ) {
-    super()
+
   }
 
 
@@ -50,7 +41,7 @@ export class UserPublishComponent
 
 
   ngOnInit(): void {
-    this.journalUseCaseGetAllByStatus.execute(JournalStatus.Open).subscribe({
+    this.journalService.getAllByStatus(JournalStatus.Open).subscribe({
       next:(journalList)=>{
         this.journalList = journalList
       }
@@ -65,23 +56,22 @@ export class UserPublishComponent
     this.formGroup.removeAuthor(i)
   }
 
-  override onSubmit() {
+  onSubmit() {
     this.publishDisabled = true
     let userId = this.userService.getUser()?.id
-    if (this.formGroup.valid() && userId!=undefined) {
+    if (this.formGroup.valid() && userId!=undefined && this.formGroup.wordFile != null) {
       this.formGroup.userId = userId
-      const formData:FormData = this.formGroup.getDto()
-      this.saveUseCase.execute(formData).subscribe({
-        next:(value) =>{
-
-        },
+      this.articleService.save(
+        this.formGroup.getDto(),
+        this.formGroup.wordFile,
+      ).subscribe({
         error:(error)=>{
           this.dialogsService.openInfoDialog(error)
           this.publishDisabled = false
         },
         complete:()=>{
           this.dialogsService.openInfoDialog("сохранено")
-          this.onSuccessfulSave()
+          this.router.navigate([ComponentRoutingPaths.userControl.profile])
         }
       })
     }else{
@@ -94,9 +84,7 @@ export class UserPublishComponent
   onCancelClicked() {
     this.router.navigate([ComponentRoutingPaths.common.home])
   }
-  onSuccessfulSave(): void {
-    this.router.navigate([ComponentRoutingPaths.userControl.profile])
-  }
+
 
   onFileChange($event: Event) {
     const input = $event.target as HTMLInputElement;
@@ -105,5 +93,16 @@ export class UserPublishComponent
       return;
     }
     this.formGroup.wordFile = input.files[0]
+  }
+
+
+
+  onLangChange(lang: string) {
+    this.selectedRadioButton = lang
+    this.formGroup.onLangChange(lang)
+  }
+
+  checkFormControl(formControl: FormControl): boolean {
+    return genericCheckFormControl(formControl)
   }
 }

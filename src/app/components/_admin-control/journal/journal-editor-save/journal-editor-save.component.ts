@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  GenericModelEditorSaveComponent
-} from "../../../../_generic/component/editor-control/GenericModelEditorSaveComponent";
-import {JournalSaveDto} from "../../../../domain/journal/dto/JournalSaveDto";
+
 import {JournalSaveFormGroup} from "./form-group/JournalSaveFormGroup";
-import {JournalUseCaseSave} from "../../../../domain/journal/usecase/JournalUseCaseSave";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {JournalData} from "../../../../domain/journal/JournalData";
-import {JournalDataControls} from "../common/JournalDataControls";
 import { DialogsService } from 'src/app/components/common/dialogs/dialogs.service';
-import {DomSanitizer} from "@angular/platform-browser";
+import {JournalService} from "../../../../domain/journal/journal.service";
+import {FormControl} from "@angular/forms";
+import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
 
 @Component({
   selector: 'app-journal-editor-save',
@@ -18,22 +14,17 @@ import {DomSanitizer} from "@angular/platform-browser";
   styleUrls: ['./journal-editor-save.component.css']
 })
 export class JournalEditorSaveComponent
-  extends GenericModelEditorSaveComponent<
-    JournalData,
-    JournalDataControls,
-    JournalSaveDto>
   implements OnInit {
 
   formGroup = new JournalSaveFormGroup();
   selectedRadioButton = this.formGroup.requiredLangs[0]
+  saveDisabled: boolean = false
 
   constructor(
     protected dialogsService: DialogsService,
     protected router:Router,
-    override saveUseCase: JournalUseCaseSave,
-    private sanitizer:DomSanitizer
+    private journalService: JournalService,
   ) {
-    super();
   }
 
   ngOnInit(): void {
@@ -47,35 +38,22 @@ export class JournalEditorSaveComponent
   onCancelClicked() {
     this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
   }
-  override onSubmit() {
-    console.log(this.formGroup.image)
+  onSubmit() {
     this.saveDisabled = true
     if (this.formGroup.valid() && this.formGroup.image!=null) {
-      const saveDto:JournalSaveDto = this.formGroup.getDto()
-      let reader = new FileReader()
-      reader.readAsDataURL(this.formGroup.image)
-      reader.onloadend =()=>{
-        saveDto.image =reader.result as string
-        this.saveUseCase.execute(saveDto).subscribe({
-          next:(value) =>{
-
-          },
-          error:(error)=>{
-            this.saveDisabled = false
-            alert(error)
-          },
-          complete:()=>{
-            this.dialogsService.openInfoDialog("сохранено")
-            this.saveDisabled = false
-            this.onSuccessfulSave()
-          }
-        })
-      }
-
-
-
-
-    }else{
+      this.journalService.save(this.formGroup.getDto(), this.formGroup.image).subscribe({
+        error:(error)=>{
+          this.saveDisabled = false
+          alert(error)
+        },
+        complete:()=>{
+          this.dialogsService.openInfoDialog("сохранено")
+          this.saveDisabled = false
+          this.onSuccessfulSave()
+        }
+      })
+    }
+    else{
       this.saveDisabled = false
       this.dialogsService.openInfoDialog("Не все данные введены")
     }
@@ -88,5 +66,16 @@ export class JournalEditorSaveComponent
       return;
     }
     this.formGroup.image = input.files[0]
+  }
+
+
+
+  onLangChange(lang: string) {
+    this.selectedRadioButton = lang
+    this.formGroup.onLangChange(lang)
+  }
+
+  checkFormControl(formControl: FormControl): boolean {
+    return genericCheckFormControl(formControl)
   }
 }

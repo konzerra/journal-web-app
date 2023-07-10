@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Tip} from "../../../domain/tip/Tip";
-import {TipUseCaseGetAll} from "../../../domain/tip/usecase/TipUseCaseGetAll";
+
+import {TipService} from "../../../domain/tip/tip.service";
 
 @Component({
   selector: 'app-user-handbook',
@@ -10,11 +11,11 @@ import {TipUseCaseGetAll} from "../../../domain/tip/usecase/TipUseCaseGetAll";
 export class UserHandbookComponent implements OnInit {
 
   constructor(
-    private tipUseCaseGetAll: TipUseCaseGetAll
+    private tipService: TipService
   ) { }
 
   ngOnInit(): void {
-    this.tipUseCaseGetAll.execute().subscribe({
+    this.tipService.getAll().subscribe({
       next:(v)=>{
         this.tips = v
       }

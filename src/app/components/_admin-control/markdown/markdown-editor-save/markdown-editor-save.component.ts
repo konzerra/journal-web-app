@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  GenericModelEditorSaveComponent
-} from "../../../../_generic/component/editor-control/GenericModelEditorSaveComponent";
-import {MarkdownData} from "../../../../domain/Markdown/MarkdownData";
-import {MarkdownSaveDto} from "../../../../domain/Markdown/dto/MarkdownSaveDto";
+
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {MarkdownUseCaseSave} from "../../../../domain/Markdown/usecase/MarkdownUseCaseSave";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {MarkdownDataControls} from "../common/MarkdownDataControls";
 import { MarkdownSaveFormGroup } from './form-group/MarkdownSaveFormGroup';
+import {FormControl} from "@angular/forms";
+import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
+import {MarkdownService} from "../../../../domain/markdown/markdown.service";
+import {MarkdownSaveDto} from "../../../../domain/markdown/dto/MarkdownSaveDto";
 
 @Component({
   selector: 'app-markdown-editor-save',
@@ -17,32 +15,57 @@ import { MarkdownSaveFormGroup } from './form-group/MarkdownSaveFormGroup';
   styleUrls: ['./markdown-editor-save.component.css']
 })
 export class MarkdownEditorSaveComponent
-  extends GenericModelEditorSaveComponent<
-    MarkdownData,
-    MarkdownDataControls,
-    MarkdownSaveDto>
   implements OnInit {
 
   formGroup = new MarkdownSaveFormGroup();
   selectedRadioButton = this.formGroup.requiredLangs[0]
+  saveDisabled =  false;
 
   constructor(
     protected dialogsService: DialogsService,
-    protected router: Router,
-    override saveUseCase: MarkdownUseCaseSave
+    protected router:Router,
+    private markdownService:MarkdownService
   ) {
-    super();
   }
 
   ngOnInit(): void {
 
   }
 
-  onSuccessfulSave(): void {
-    this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+  onCancelClicked() {
+    this.router.navigate([ComponentRoutingPaths.adminControl.tip.main])
   }
 
-  onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+  onSubmit() {
+    this.saveDisabled = true
+    if (this.formGroup.valid()) {
+      const saveDto:MarkdownSaveDto = this.formGroup.getDto()
+      this.markdownService.save(saveDto).subscribe({
+        next:(value) =>{
+
+        },
+        error:(error)=>{
+          this.saveDisabled = false
+          alert(error)
+        },
+        complete:()=>{
+          this.dialogsService.openInfoDialog("сохранено")
+          this.saveDisabled = false
+          this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+        }
+      })
+    }else{
+      this.saveDisabled = false
+      this.dialogsService.openInfoDialog("Не все данные введены")
+    }
+  }
+
+  onLangChange(lang: string) {
+    this.selectedRadioButton = lang
+    this.formGroup.onLangChange(lang)
+  }
+
+  checkFormControl(formControl: FormControl): boolean {
+    return genericCheckFormControl(formControl)
   }
 }

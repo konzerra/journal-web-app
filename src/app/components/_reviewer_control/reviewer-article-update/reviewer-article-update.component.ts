@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {ArticleUseCaseUpdateByReviewer} from "../../../domain/article/usecase/ArticleUseCaseUpdateByReviewer";
-import {ArticleUseCaseGetByIdFull} from "../../../domain/article/usecase/ArticleUseCaseGetByIdFull";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleUpdateFormGroupByReviewer} from "./form-group/ArticleUpdateFormGroupByReviewer";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {DialogsService} from "../../common/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
-import {ArticleFull} from "../../../domain/article/ArticleFull";
 import {saveAs} from "file-saver";
 import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
 import {Article} from "../../../domain/article/Article";
-import {ArticleData} from "../../../domain/article/ArticleData";
-import {AppLanguage} from "../../../AppLanguage";
+import {ArticleService} from "../../../domain/article/article.service";
+import {isNotBlanc} from "../../../domain/_common/validators";
+import {FileApi} from "../../../domain/file/FileApi";
 
 @Component({
   selector: 'app-reviewer-article-update',
@@ -23,7 +21,7 @@ export class ReviewerArticleUpdateComponent implements OnInit {
 
 
   constructor(
-    private articleUseCaseUpdateByReviewer : ArticleUseCaseUpdateByReviewer,
+    private articleService: ArticleService,
 
     private docUseCaseDownload : DocUseCaseDownload,
     private route : ActivatedRoute,
@@ -48,18 +46,10 @@ export class ReviewerArticleUpdateComponent implements OnInit {
 
   onSubmit() {
     if(this.formGroup.valid()){
-      let formData = new FormData()
-
-      formData.set("updateDto", new Blob([JSON.stringify(this.formGroup.getDto())],{
-        type:"application/json"
-      }))
-
-      if(this.formGroup.pdfFile!=null){
-        formData.set("reviewerBlankFile", new Blob([this.formGroup.pdfFile],{
-          type:this.formGroup.pdfFile.type
-        }))
-      }
-      this.articleUseCaseUpdateByReviewer.execute(formData).subscribe({
+      this.articleService.updateByReviewer(
+        this.formGroup.getDto(),
+        this.formGroup.pdfFile
+      ).subscribe({
         complete:()=>{
           this.updateDisabled = false
           this.dialogsService.openInfoDialog("Обновлено")
@@ -116,4 +106,7 @@ export class ReviewerArticleUpdateComponent implements OnInit {
 
     return formatted.slice(0,formatted.length-2)
   }
+
+  protected readonly isNotBlanc = isNotBlanc;
+  protected readonly FileApi = FileApi;
 }

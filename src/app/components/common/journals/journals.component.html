@@ -19,14 +19,14 @@
         <div class="panel mb-3" (click)="onJournalPanelClicked(model.id)">
           <div class="row">
             <div class="col-3 fit-content" >
-              <img [src]="images[i]"
+              <img src="{{FileApi.paths.download + model.image}}"
                    class=""
                    alt="...">
             </div>
             <div class="col mt-4 ms-3" >
               <h4 class="pb-2">{{model.name}}</h4>
               <h6 class="pb-2">{{model.version}}</h6>
-              <label class="link pb-2" (click)="onDocDownload(model?.pdf || null)">{{'download_pdf' | translate}}</label>
+              <a class="link pb-2" href="{{FileApi.paths.download+model.pdf}}">{{'download_pdf' | translate}}</a>
             </div>
           </div>
         </div>

@@ -60,8 +60,10 @@
                   rows="2"
         ></textarea>
       </div>
-      <label *ngIf="article.wordDocId!=null" class="" (click)="onDocDownload(article.wordDocId || null)">
-        <a class="link mt-2">{{'download_existing_version_of_article' | translate}}</a>
+      <label *ngIf="isNotBlanc(article.wordDoc)">
+        <a class="link mt-2" href="{{FileApi.paths.download + article.wordDoc}}">
+          {{'download_existing_version_of_article' | translate}}
+        </a>
       </label>
       <br>
 

@@ -1,20 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  GenericModelEditorUpdateComponent
-} from "../../../../_generic/component/editor-control/GenericModelEditorUpdateComponent";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {CategoryData} from "../../../../domain/category/CategoryData";
 import {CategoryUpdateDto} from "../../../../domain/category/dto/CategoryUpdateDto";
-import {CategoryDataControls} from "../_common/CategoryDataControls";
-import {CategoryUseCaseUpdate} from "../../../../domain/category/usecase/CategoryUseCaseUpdate";
-
 import {CategoryUpdateFormGroup} from "./form-group/CategoryUpdateFormGroup";
-import {CategoryUseCaseGetByIdFull} from "../../../../domain/category/usecase/CategoryUseCaseGetByIdFull";
 import {Reviewer} from "../../../../domain/reviewer/Reviewer";
-import {ReviewerUseCaseGetInQueue} from "../../../../domain/reviewer/usecase/get/ReviewerUseCaseGetInQueue";
-import {CategoryFull} from "../../../../domain/category/CategoryFull";
+
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {FormControl} from "@angular/forms";
+import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
+import {CategoryService} from "../../../../domain/category/category.service";
+import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
 
 @Component({
   selector: 'app-category-editor-update',
@@ -22,38 +17,38 @@ import {DialogsService} from "../../../common/dialogs/dialogs.service";
   styleUrls: ['./category-editor-update.component.css']
 })
 export class CategoryEditorUpdateComponent
-  extends GenericModelEditorUpdateComponent<CategoryFull,CategoryData, CategoryDataControls, CategoryUpdateDto>
   implements OnInit {
+  formGroup = new CategoryUpdateFormGroup()
+  selectedRadioButton = this.formGroup.requiredLangs[0]
+  updateDisabled: boolean = false;
+  queue = Array<Reviewer>()
 
   constructor(
     protected route: ActivatedRoute,
-    protected useCaseUpdate: CategoryUseCaseUpdate,
-    protected useCaseFindByIdFull : CategoryUseCaseGetByIdFull,
-    private reviewerUseCaseGetInQueue : ReviewerUseCaseGetInQueue,
+    private categoryService: CategoryService,
+    private reviewerService : ReviewerService,
     private router:Router,
     protected dialogsService: DialogsService
   ) {
-    super()
+
   }
 
-  formGroup = new CategoryUpdateFormGroup()
-  selectedRadioButton = this.formGroup.requiredLangs[0]
-  queue = Array<Reviewer>()
+
 
 
   ngOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          this.useCaseFindByIdFull.execute(param["id"]).subscribe({
+          this.categoryService.getByIdFull(param["id"]).subscribe({
             next:(v)=>{
               this.formGroup.setDto(v)
             },
             error:(err) =>{
-
+              this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+              this.dialogsService.openInfoDialog(err)
             }
           })
-
-          this.reviewerUseCaseGetInQueue.execute(param["id"]).subscribe({
+          this.reviewerService.getQueueByCategory(param["id"]).subscribe({
             next:(v)=>{
               this.queue = v
               console.log(this.queue)
@@ -65,12 +60,38 @@ export class CategoryEditorUpdateComponent
 
   }
 
-  protected onSuccessfulUpdate(): void {
-    this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+  onSubmit() {
+    this.updateDisabled = true
+    if (this.formGroup.valid()) {
+      const updateDto:CategoryUpdateDto = this.formGroup.getDto()
+      this.categoryService.update(updateDto).subscribe({
+        error:(error)=>{
+          this.dialogsService.openInfoDialog(error)
+          this.updateDisabled = false
+        },
+        complete:()=>{
+          this.dialogsService.openInfoDialog('Обновлено')
+          this.updateDisabled = false
+          this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+        }
+      })
+    }else{
+      this.updateDisabled = false
+      this.dialogsService.openInfoDialog("Не все данные введены")
+    }
+  }
+
+  onLangChange(lang: string) {
+    this.formGroup.onLangChange(lang)
+  }
+
+  checkFormControl(name: FormControl): boolean {
+    return genericCheckFormControl(name)
   }
 
   onCancelClicked() {
     this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
   }
+
 
 }

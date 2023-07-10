@@ -26,6 +26,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   );
 }
 
+.alert-danger {
+  background-color: #f8d7da;
+  color: #b22631;
+  border-color: #f5c6cb;
+}
+
 
 
 

@@ -10,14 +10,14 @@ import {catchError, Observable, throwError} from "rxjs";
 
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
-import {UserAuthService} from "../domain/user/service/UserAuthService";
+import {AuthService} from "../domain/auth/auth.service";
 import {AppLanguage} from "../AppLanguage";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
 
   constructor(
-    private userAuthService:UserAuthService,
+    private userAuthService:AuthService,
     private router:Router
   ) {
   }
@@ -29,12 +29,10 @@ export class AuthInterceptor implements HttpInterceptor{
         'Accept-Language': AppLanguage.getLocalLanguage()
       }
     })
-    console.log(req.headers.get('Accept-Language'))
     if(req.headers.get('No-Auth')==='true'){
       return next.handle(req.clone()).pipe(
         catchError(
           (error:HttpErrorResponse ) =>{
-            console.log(error)
             if(error.status === 0 ){
               return throwError(()=>"Сервер сейчас не работает");
             }

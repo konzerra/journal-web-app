@@ -1,5 +1,5 @@
 import {GenericSaveFormGroup} from "../../../../../_generic/form-group/GenricSaveFormGroup";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 import {JournalSaveDto} from "../../../../../domain/journal/dto/JournalSaveDto";
 import {JournalData} from "../../../../../domain/journal/JournalData";
 import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
@@ -42,7 +42,6 @@ export class JournalSaveFormGroup extends GenericSaveFormGroup<JournalData, Jour
       throw("Фото не прикреплено")
     }
     let journalSaveDto:JournalSaveDto = {
-      image: "",
       dataList: new Array<JournalData>()
     }
     this.dataControlsList.forEach((data)=>{

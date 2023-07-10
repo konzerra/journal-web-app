@@ -5,7 +5,7 @@ import {UserLoginDto} from "../../../domain/user/dto/UserLoginDto";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserUseCaseLogin} from "../../../domain/user/usecase/UserUseCaseLogin";
 import {UserLoginFormGroup} from "./form-group/UserLoginFormGroup";
-import {UserAuthService} from "../../../domain/user/service/UserAuthService";
+import {AuthService} from "../../../domain/auth/auth.service";
 import {DialogsService} from "../../common/dialogs/dialogs.service";
 
 @Component({
@@ -20,7 +20,7 @@ export class UserLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private dialogsService:DialogsService,
     private userUseCaseLogin:UserUseCaseLogin,
-    private userAuthService:UserAuthService
+    private userAuthService:AuthService
   ) { }
 
   public infoParam : string = ''

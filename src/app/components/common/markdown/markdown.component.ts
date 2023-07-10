@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {MarkdownService} from "ngx-markdown";
-import {MarkdownUseCaseGetById} from "../../../domain/Markdown/usecase/get/MarkdownUseCaseGetById";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {DialogsService} from "../dialogs/dialogs.service";
+import {MarkdownService as MdService} from "ngx-markdown" ;
+import {MarkdownService} from "../../../domain/markdown/markdown.service";
+
 
 @Component({
   selector: 'app-markdown',
@@ -14,8 +16,8 @@ export class MarkdownComponent implements OnInit {
 
   markdown =''
   constructor(
-    private mdService: MarkdownService,
-    private markdownUseCaseGetById: MarkdownUseCaseGetById,
+    private mdService: MdService,
+    private markdownService: MarkdownService,
     private route:ActivatedRoute,
     private router:Router,
     private dialogsService:DialogsService
@@ -27,7 +29,7 @@ export class MarkdownComponent implements OnInit {
           if(param['id'] == undefined){
             this.router.navigate([ComponentRoutingPaths.common.home])
           }
-          this.markdownUseCaseGetById.execute(param['id']).subscribe({
+          this.markdownService.getById(param['id']).subscribe({
             next:(markdown)=>{
               this.markdown = markdown.source
             },

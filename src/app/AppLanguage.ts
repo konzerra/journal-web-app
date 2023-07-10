@@ -2,9 +2,9 @@
 export class AppLanguage{
 
   public static languages = {
-    Ru : "Ru",
-    En : "En",
-    Kg : "Kg"
+    Ru : "ru",
+    En : "en",
+    Kg : "kg"
   }
   public static getLocalLanguage():string{
     return localStorage.getItem("lang") || this.languages.Ru

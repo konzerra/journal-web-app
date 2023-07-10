@@ -37,7 +37,7 @@ export class JournalUpdateFormGroup
     this.updateDto = {
       dataList: modelFull.dataList,
       id: modelFull.id,
-      image: "",
+
       status: modelFull.status
     }
     this.status.setValue(modelFull.status)
@@ -59,7 +59,6 @@ export class JournalUpdateFormGroup
   getDto():JournalUpdateDto{
     let journalUpdateDto:JournalUpdateDto = {
       id: this.updateDto.id,
-      image: null,
       status: this.status.value,
       dataList: new Array<JournalData>()
     }

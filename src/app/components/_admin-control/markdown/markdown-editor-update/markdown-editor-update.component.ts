@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {
-  GenericModelEditorUpdateComponent
-} from "../../../../_generic/component/editor-control/GenericModelEditorUpdateComponent";
-import {MarkdownData} from "../../../../domain/Markdown/MarkdownData";
-import {MarkdownDataControls} from "../common/MarkdownDataControls";
-import {MarkdownUpdateDto} from "../../../../domain/Markdown/dto/MarkdownUpdateDto";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MarkdownUseCaseUpdate} from "../../../../domain/Markdown/usecase/MarkdownUseCaseUpdate";
-import {Markdown} from "../../../../domain/Markdown/Markdown";
-import {MarkdownUseCaseGetByIdFull} from "../../../../domain/Markdown/usecase/get/MarkdownUseCaseGetByIdFull";
 import {MarkdownUpdateFormGroup} from "./form-group/MarkdownUpdateFormGroup";
-import {MarkdownFull} from "../../../../domain/Markdown/MarkdownFull";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
+import {FormControl} from "@angular/forms";
+import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
+import {MarkdownService} from "../../../../domain/markdown/markdown.service";
+import {MarkdownUpdateDto} from "../../../../domain/markdown/dto/MarkdownUpdateDto";
+
 
 @Component({
   selector: 'app-markdown-editor-update',
@@ -20,30 +15,72 @@ import {DialogsService} from "../../../common/dialogs/dialogs.service";
   styleUrls: ['./markdown-editor-update.component.css']
 })
 export class MarkdownEditorUpdateComponent
-  extends GenericModelEditorUpdateComponent<MarkdownFull, MarkdownData, MarkdownDataControls, MarkdownUpdateDto>
   implements OnInit {
-
-  constructor(
-    protected route: ActivatedRoute,
-    protected useCaseUpdate: MarkdownUseCaseUpdate,
-    protected useCaseFindByIdFull : MarkdownUseCaseGetByIdFull,
-    private router:Router,
-    protected dialogsService: DialogsService
-  ) {
-    super()
-  }
 
   formGroup = new MarkdownUpdateFormGroup()
   selectedRadioButton = this.formGroup.requiredLangs[0]
+  updateDisabled: boolean = false;
+
+  constructor(
+    protected route: ActivatedRoute,
+    private markdownService: MarkdownService,
+    private router:Router,
+    protected dialogsService: DialogsService
+  ) {
+
+  }
+
 
 
 
   ngOnInit(): void {
-    this.abstractOnInit()
+    this.route.queryParams.subscribe({
+        next:(param) =>{
+          this.markdownService.getByIdFull(param["id"]).subscribe({
+            next:(v)=>{
+              this.formGroup.setDto(v)
+            },
+            error:(err) =>{
+              this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+              this.dialogsService.openInfoDialog(err)
+            }
+          })
+        }
+      }
+    )
+
   }
 
-  protected onSuccessfulUpdate(): void {
-    this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+  onSubmit() {
+    this.updateDisabled = true
+    if (this.formGroup.valid()) {
+      const updateDto: MarkdownUpdateDto = this.formGroup.getDto()
+      this.markdownService.update(updateDto).subscribe({
+        next:(value) =>{
+
+        },
+        error:(error)=>{
+          this.dialogsService.openInfoDialog(error)
+          this.updateDisabled = false
+        },
+        complete:()=>{
+          this.dialogsService.openInfoDialog('Обновлено')
+          this.updateDisabled = false
+          this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+        }
+      })
+    }else{
+      this.updateDisabled = false
+      this.dialogsService.openInfoDialog("Не все данные введены")
+    }
+  }
+
+  onLangChange(lang: string) {
+    this.formGroup.onLangChange(lang)
+  }
+
+  checkFormControl(name: FormControl): boolean {
+    return genericCheckFormControl(name)
   }
 
   onCancelClicked() {

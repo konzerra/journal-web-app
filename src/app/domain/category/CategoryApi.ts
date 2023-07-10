@@ -7,8 +7,8 @@ export class CategoryApi {
     update: `${AppApi.server.protectedApi}/category`,
 
     getByIdFull: `${AppApi.server.protectedApi}/category/full/{id}`,
-    getById: `${AppApi.server.publicApi}/category/`,
-    getAllPaginated: `${AppApi.server.protectedApi}/category/all/{pageNumber}/{pageSize}`,
+    getById: `${AppApi.server.publicApi}/category/{id}`,
+    getPaginated: `${AppApi.server.protectedApi}/category/paginated`,
     getAll:`${AppApi.server.publicApi}/category/all`
   }
 }

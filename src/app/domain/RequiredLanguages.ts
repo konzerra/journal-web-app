@@ -1,6 +1,6 @@
 
 export enum RequiredLanguages {
-  Ru = "Ru",
-  Kg = "Kg",
-  En = "En"
+  Ru = "ru",
+  Kg = "kg",
+  En = "en"
 }

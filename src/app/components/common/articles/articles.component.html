@@ -78,7 +78,8 @@
         <br>
 
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary btn-sm" (click)="onDocDownload(model.pdfDocId)">{{'download' | translate}}</button>
+          <a class="btn btn-primary btn-sm" href="{{FileApi.paths.download+model.pdfDoc}}" download>{{ 'download' | translate }}</a>
+
         </div>
       </div>
       <!-- end of article body -->

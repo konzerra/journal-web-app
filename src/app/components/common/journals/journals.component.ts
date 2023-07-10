@@ -3,13 +3,11 @@ import {JournalPage} from "../../../domain/journal/JournalPage";
 import {Journal} from "../../../domain/journal/Journal";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
-import {
-  JournalUseCaseGetAllPaginatedByStatus
-} from "../../../domain/journal/usecase/get/JournalUseCaseGetAllPaginatedByStatus";
-import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
-import {saveAs} from "file-saver";
 import {DialogsService} from "../dialogs/dialogs.service";
-import {ImageUseCaseGetById} from "../../../domain/image/usecase/ImageUseCaseGetById";
+import {JournalService} from "../../../domain/journal/journal.service";
+import {JournalStatus} from "../../../domain/journal/JournalStatus";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
+import {FileApi} from "../../../domain/file/FileApi";
 
 @Component({
   selector: 'app-journals',
@@ -19,8 +17,20 @@ import {ImageUseCaseGetById} from "../../../domain/image/usecase/ImageUseCaseGet
 export class JournalsComponent
 
   implements OnInit {
-
   private modelPageSize = 5
+
+  pageRequestDto: PageRequestDto = {
+    page: 0,
+    size: this.modelPageSize,
+    sort: [
+      {
+        property : "id",
+        direction: "desc"
+      }
+    ]
+  }
+
+
   modelPage : JournalPage = {
     content: new Array<Journal>(),
     empty: false,
@@ -32,29 +42,26 @@ export class JournalsComponent
     totalPages: 0
 
   }
-  images = new Array<string | null>(this.modelPageSize)
+
   constructor(
-    private journalUseCaseGetAllPaginatedByStatus: JournalUseCaseGetAllPaginatedByStatus,
+    private journalService: JournalService,
     private router:Router,
-    private docUseCaseDownload:DocUseCaseDownload,
     private dialogsService: DialogsService,
-    private imageUseCaseGetById: ImageUseCaseGetById
   ) { }
 
   ngOnInit(): void {
-    this.journalUseCaseGetAllPaginatedByStatus.execute(this.modelPage.number, this.modelPage.size).subscribe({
+    this.journalService.getPaginatedByStatus(JournalStatus.Published,this.pageRequestDto).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
-        this.runImageSearch()
       }
     })
   }
 
   onPageChange($event: number) {
-    this.journalUseCaseGetAllPaginatedByStatus.execute($event-1,this.modelPage.size).subscribe({
+    this.pageRequestDto.page = $event-1
+    this.journalService.getPaginatedByStatus(JournalStatus.Published,this.pageRequestDto).subscribe({
       next:(modelPage)=>{
         this.modelPage=modelPage
-        this.runImageSearch()
       }
     })
   }
@@ -67,28 +74,6 @@ export class JournalsComponent
     })
   }
 
-  onDocDownload(id: Number | null) {
-    if(id==null){
-      this.dialogsService.openInfoDialog('can_not_download')
-      return
-    }
-    this.docUseCaseDownload.execute(id).subscribe({
-      next:(file)=>{
-        saveAs(file,"journal-thing")
-      }
-    })
-  }
 
-  private runImageSearch() {
-    this.modelPage.content.forEach((journal,index)=>{
-      if(journal.imageId != null){
-        console.log("searching image")
-        this.imageUseCaseGetById.execute(journal.imageId).subscribe({
-          next:(v)=>{
-            this.images[index] = v
-          }
-        })
-      }
-    })
-  }
+  protected readonly FileApi = FileApi;
 }

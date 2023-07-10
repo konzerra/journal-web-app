@@ -1,6 +1,7 @@
 import {DataControlsAbstract} from "../../../../_generic/form-group/DataControlsAbstract";
 import {ArticleData} from "../../../../domain/article/ArticleData";
 import {FormArray, FormControl, Validators} from "@angular/forms";
+import {wordCountValidator} from "../../../../domain/_common/validators";
 
 export class ArticleDataControls
   extends DataControlsAbstract<ArticleData>
@@ -12,8 +13,8 @@ export class ArticleDataControls
 
   name : FormControl = new FormControl("", Validators.required)
   authors: Array<FormControl> = new Array<FormControl>()
-  annotation: FormControl = new FormControl("", Validators.required)
-  tags: FormControl = new FormControl("", Validators.required)
+  annotation: FormControl = new FormControl("", [Validators.required, wordCountValidator(200)])
+  tags: FormControl = new FormControl("", [Validators.required, wordCountValidator(10)])
 
   addAuthor(author:string = ''){
     this.authors.push(new FormControl(author,Validators.required))

@@ -3,13 +3,11 @@ import {ReviewerUpdateFormGroup} from "./form-group/ReviewerUpdateFormGroup";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
 import {Category} from "../../../../domain/category/Category";
-import {CategoryUseCaseGetAll} from "../../../../domain/category/usecase/CategoryUseCaseGetAll";
-import {CategoryUseCaseGetByIdFull} from "../../../../domain/category/usecase/CategoryUseCaseGetByIdFull";
-import {ReviewerUseCaseGetByIdFull} from "../../../../domain/reviewer/usecase/get/ReviewerUseCaseGetByIdFull";
-import {ActivatedRoute, Route, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../common/dialogs/dialogs.service";
-import {ReviewerUseCaseUpdate} from "../../../../domain/reviewer/usecase/ReviewerUseCaseUpdate";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
+import {CategoryService} from "../../../../domain/category/category.service";
+import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
 
 @Component({
   selector: 'app-reviewr-editor-update',
@@ -23,9 +21,8 @@ export class ReviewerEditorUpdateComponent implements OnInit {
   categoryList = new Array<Category>()
 
   constructor(
-    private categoryUseCaseGetAll: CategoryUseCaseGetAll,
-    private reviewerUseCaseGetByIdFull: ReviewerUseCaseGetByIdFull,
-    private reviewerUseCaseUpdate: ReviewerUseCaseUpdate,
+    private categoryService: CategoryService,
+    private reviewerService: ReviewerService,
     private router:Router,
     private route:ActivatedRoute,
     private dialogsService: DialogsService
@@ -34,7 +31,7 @@ export class ReviewerEditorUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          this.reviewerUseCaseGetByIdFull.execute(param["id"]).subscribe({
+          this.reviewerService.getById(param["id"]).subscribe({
             next:(v)=>{
               this.formGroup.setDto(v)
             },
@@ -43,7 +40,7 @@ export class ReviewerEditorUpdateComponent implements OnInit {
             },
             complete:()=>{
 
-              this.categoryUseCaseGetAll.execute().subscribe({
+              this.categoryService.getAll().subscribe({
                 next:(categoryList)=>{
                   this.categoryList = categoryList
                 },
@@ -76,7 +73,7 @@ export class ReviewerEditorUpdateComponent implements OnInit {
       this.dialogsService.openInfoDialog("Формы заполнены некорректно")
       return
     }
-    this.reviewerUseCaseUpdate.execute(this.formGroup.getDto()).subscribe({
+    this.reviewerService.update(this.formGroup.getDto()).subscribe({
       error:(err)=>{
         this.dialogsService.openInfoDialog(err)
       },

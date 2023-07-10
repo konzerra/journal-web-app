@@ -1,18 +1,16 @@
 
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 import {GenericSaveFormGroup} from "../../../../_generic/form-group/GenricSaveFormGroup";
-import {Category} from "../../../../domain/category/Category";
+
 import {ArticleDataControls} from "../../../_admin-control/article/common/ArticleDataControls";
 import {ArticleData} from "../../../../domain/article/ArticleData";
 import {ArticleSaveDto} from "../../../../domain/article/dto/ArticleSaveDto";
 import {RequiredLanguages} from "../../../../domain/RequiredLanguages";
-import {CategoryDataControls} from "../../../_admin-control/category/_common/CategoryDataControls";
-import {CategorySaveDto} from "../../../../domain/category/dto/CategorySaveDto";
-import {CategoryData} from "../../../../domain/category/CategoryData";
+
 
 
 export class UserPublishFormGroup
-  extends GenericSaveFormGroup<ArticleData, ArticleDataControls, FormData>
+  extends GenericSaveFormGroup<ArticleData, ArticleDataControls, ArticleSaveDto>
 {
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
 
@@ -56,7 +54,7 @@ export class UserPublishFormGroup
   }
 
   //call if formGroup valid
-  getDto(): FormData {
+  getDto(): ArticleSaveDto {
 
     let articleSaveDto:ArticleSaveDto = {
       pages: this.pages.value || 0,
@@ -68,16 +66,8 @@ export class UserPublishFormGroup
     this.dataControlsList.forEach((data)=>{
       articleSaveDto.dataList.push(data.getData())
     })
-    let formData = new FormData()
-    formData.set('saveDto' , new Blob([JSON.stringify(articleSaveDto)],{
-      type: "application/json"
-    }))
-    if(this.wordFile!=null){
-      formData.append("file", new Blob([this.wordFile],{
-        type: this.wordFile.type
-      }))
-    }
-    return formData
+
+    return articleSaveDto
   }
 
   onLangChange(lang: string): void {
@@ -98,6 +88,7 @@ export class UserPublishFormGroup
         this.wordFile != null &&
         this.preferredCategory.valid &&
         this.pages.valid &&
+        this.userId != 0 &&
         this.isDataControlsListValid()
     )
   }

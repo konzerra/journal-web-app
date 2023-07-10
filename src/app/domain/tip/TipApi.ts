@@ -8,6 +8,6 @@ export class TipApi {
 
     getByIdFull: `${AppApi.server.protectedApi}/tip/full/{id}`,
     getAll:`${AppApi.server.publicApi}/tip/all`,
-    getAllPaginated: `${AppApi.server.protectedApi}/tip/all/{pageNumber}/{pageSize}`,
+    getPaginated: `${AppApi.server.publicApi}/tip/paginated`,
   }
 }

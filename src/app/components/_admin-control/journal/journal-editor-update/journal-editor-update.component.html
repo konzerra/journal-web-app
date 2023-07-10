@@ -39,8 +39,10 @@
         accept=".pdf"
         (change)="onJournalFileChange($event)"
       />
-      <label *ngIf="formGroup.journalFull.pdf!=null" class="" (click)="onDocDownload(formGroup.journalFull.pdf)">
-        <a class="link">{{"download_existing_version" | translate}}</a>
+      <label *ngIf="formGroup.journalFull.pdf!=null" class="">
+        <a class="link" href="{{FileApi.paths.download + formGroup.journalFull.pdf }}">
+          {{"download_existing_version" | translate}}
+        </a>
       </label>
       <br>
 
@@ -56,7 +58,7 @@
 
       />
       <br>
-      <img [src]="formGroup.journalImageBase64"
+      <img src="{{FileApi.paths.download + formGroup.journalImage}}"
            class=""
            alt="...">
       <br>
