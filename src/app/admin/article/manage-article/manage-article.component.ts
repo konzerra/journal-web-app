@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import {Journal} from "../../../../shared/models/journal/Journal";
-import {ArticlePage} from "../../../../shared/models/article/ArticlePage";
-import {Article} from "../../../../shared/models/article/Article";
+import {Component, OnInit} from '@angular/core';
+import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
+import {ArticlePage} from "../../../shared/models/article/ArticlePage";
+import {Article} from "../../../shared/models/article/Article";
+import {Journal} from "../../../shared/models/journal/Journal";
+import {ArticleService} from "../../../domain/article/article.service";
+import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
-import {ReviewerService} from "../../../../domain/reviewer/reviewer.service";
-import {JournalService} from "../../../../domain/journal/journal.service";
-import {PageRequestDto} from "../../../../shared/models/pagination/PageRequestDto";
-import {ArticleService} from "../../../../domain/article/article.service";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
+import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {AdminJournalService} from "../../journal/admin-journal.service";
 
 @Component({
-  selector: 'app-article-editor-main',
-  templateUrl: './article-editor-main.component.html',
-  styleUrls: ['./article-editor-main.component.css']
+  selector: 'app-manage-article',
+  templateUrl: './manage-article.component.html',
+  styleUrls: ['./manage-article.component.css']
 })
-export class ArticleEditorMainComponent
-
-  implements OnInit {
+export class ManageArticleComponent implements OnInit {
 
   pageRequestDto: PageRequestDto = {
     page: 0,
@@ -51,7 +49,7 @@ export class ArticleEditorMainComponent
   }
   constructor(
     private articleService: ArticleService,
-    private journalService: JournalService,
+    private journalService: AdminJournalService,
     private reviewerService: ReviewerService,
     private route:ActivatedRoute,
     private router:Router,
@@ -115,4 +113,5 @@ export class ArticleEditorMainComponent
         }
       })
   }
+
 }

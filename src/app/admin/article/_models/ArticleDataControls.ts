@@ -1,7 +1,7 @@
-import {DataControlsAbstract} from "../../../../_generic/form-group/DataControlsAbstract";
-import {ArticleData} from "../../../../shared/models/article/ArticleData";
+import {DataControlsAbstract} from "../../../_generic/form-group/DataControlsAbstract";
+import {ArticleData} from "../../../shared/models/article/ArticleData";
 import {FormArray, FormControl, Validators} from "@angular/forms";
-import {wordCountValidator} from "../../../../shared/validators";
+import {wordCountValidator} from "../../../shared/validators";
 
 export class ArticleDataControls
   extends DataControlsAbstract<ArticleData>

@@ -1,20 +1,20 @@
 
 import {FormControl, Validators} from "@angular/forms";
 
-import {ArticleData} from "../../../../../shared/models/article/ArticleData";
-import {ArticleDataControls} from "../../common/ArticleDataControls";
-import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
-import {ArticleUpdateDtoByAdmin} from "../../../../../domain/article/dto/ArticleUpdateDtoByAdmin";
-import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
-import {ArticleStatusesAdmin} from "../../../../../domain/article/status/ArticleStatusesAdmin";
-import {Category} from "../../../../../domain/category/Category";
-import {ArticleFull} from "../../../../../shared/models/article/ArticleFull";
-import {Journal} from "../../../../../shared/models/journal/Journal";
+import {ArticleData} from "../../../shared/models/article/ArticleData";
+import {ArticleDataControls} from "../_models/ArticleDataControls";
+import {RequiredLanguages} from "../../../domain/RequiredLanguages";
+import {ArticleUpdateDtoByAdmin} from "../../../domain/article/dto/ArticleUpdateDtoByAdmin";
+import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
+import {ArticleStatusesAdmin} from "../../../domain/article/status/ArticleStatusesAdmin";
+import {Category} from "../../../domain/category/Category";
+import {ArticleFull} from "../../../shared/models/article/ArticleFull";
+import {Journal} from "../../../shared/models/journal/Journal";
 
 
 
 
-export class ArticleUpdateFormGroup
+export class ArticleUpdateForm
   extends GenericUpdateFormGroup<ArticleFull,ArticleData, ArticleDataControls, ArticleUpdateDtoByAdmin>
 {
   requiredLangs: Array<string> = Object.values(RequiredLanguages)

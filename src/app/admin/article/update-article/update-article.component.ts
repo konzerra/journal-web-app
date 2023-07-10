@@ -1,28 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
+import {ArticleUpdateForm} from "./article.update.form";
+import {Category} from "../../../domain/category/Category";
 import {ActivatedRoute, Router} from "@angular/router";
-import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
-import { saveAs } from 'file-saver';
-import {ArticleUpdateFormGroup} from "./form-group/ArticleUpdateFormGroup";
-import {FormControl} from "@angular/forms";
-import {genericCheckFormControl} from "../../../../_generic/util/genericCheckFormControl";
-import {Category} from "../../../../domain/category/Category";
-import {DocUseCaseDownload} from "../../../../domain/doc/usecase/DocUseCaseDownload";
+import {ArticleService} from "../../../domain/article/article.service";
+import {CategoryService} from "../../../domain/category/category.service";
+import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
+import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Location} from "@angular/common";
-import {CategoryService} from "../../../../domain/category/category.service";
-import {ArticleService} from "../../../../domain/article/article.service";
-import {FileApi} from "../../../../shared/models/file/FileApi";
-
+import {FormControl} from "@angular/forms";
+import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
-  selector: 'app-article-editor-update',
-  templateUrl: './article-editor-update.component.html',
-  styleUrls: ['./article-editor-update.component.css']
+  selector: 'app-update-article',
+  templateUrl: './update-article.component.html',
+  styleUrls: ['./update-article.component.css']
 })
-export class ArticleEditorUpdateComponent
-  implements OnInit {
+export class UpdateArticleComponent implements OnInit {
 
-  formGroup = new ArticleUpdateFormGroup()
+  formGroup = new ArticleUpdateForm()
   selectedRadioButton: string = this.formGroup.requiredLangs[0]
   categoryList = new Array<Category>()
   updateDisabled = false
@@ -132,29 +128,14 @@ export class ArticleEditorUpdateComponent
   }
 
   onWordFileChange($event: Event) {
-    const input = $event.target as HTMLInputElement;
-    if (!input.files?.length) {
-      this.formGroup.wordFile = null
-      return;
-    }
-    this.formGroup.wordFile = input.files[0]
+    this.formGroup.wordFile = ($event.target as HTMLInputElement).files?.[0] ?? null
   }
   onPdfFileChange($event: Event) {
-    const input = $event.target as HTMLInputElement;
-    if (!input.files?.length) {
-      this.formGroup.wordFile = null
-      return;
-    }
-    this.formGroup.pdfFile = input.files[0]
+    this.formGroup.pdfFile = ($event.target as HTMLInputElement).files?.[0] ?? null
   }
 
   onAntiplagiatFileChange($event: Event) {
-    const input = $event.target as HTMLInputElement;
-    if (!input.files?.length) {
-      this.formGroup.antiplagiatFile = null
-      return;
-    }
-    this.formGroup.antiplagiatFile = input.files[0]
+    this.formGroup.antiplagiatFile = ($event.target as HTMLInputElement).files?.[0] ?? null
   }
 
   protected readonly FileApi = FileApi;

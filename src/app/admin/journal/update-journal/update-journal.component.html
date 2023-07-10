@@ -40,7 +40,7 @@
         (change)="onJournalFileChange($event)"
       />
       <label *ngIf="form.journalFull.pdf!=null" class="">
-        <a class="link" href="{{FileApi.paths.download + form.journalFull.pdf }}">
+        <a class="link" href="{{FileApi.download + form.journalFull.pdf }}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
@@ -58,7 +58,7 @@
 
       />
       <br>
-      <img src="{{FileApi.paths.download + form.journalImage}}"
+      <img src="{{FileApi.download + form.journalImage}}"
            class=""
            alt="...">
       <br>

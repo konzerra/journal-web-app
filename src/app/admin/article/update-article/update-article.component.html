@@ -31,26 +31,26 @@
       <!-- Preferred category input -->
       <div class="form-group">
         <label class="control-label mt-2" for="preferredCategory"> {{"preferred_category" | translate}} </label>
-        <textarea type="text"
-                  id="preferredCategory"
-                  class="form-control"
-                  disabled
-                  placeholder="{{'enter_preferred_category' | translate}}"
-                  [value]="formGroup.articleFull.preferredCategory"
-                  required autofocus="autofocus"
-                  rows="2"></textarea>
+        <textarea
+          id="preferredCategory"
+          class="form-control"
+          disabled
+          placeholder="{{'enter_preferred_category' | translate}}"
+          [value]="formGroup.articleFull.preferredCategory"
+          required autofocus="autofocus"
+          rows="2"></textarea>
       </div>
 
       <!-- Total pages -->
       <div class="form-group">
         <label class="control-label mt-2" for="preferredCategory"> {{"pages_count" | translate}} </label>
         <input type="text"
-                  id="pages"
-                  class="form-control"
-                  disabled
-                  placeholder="{{'enter_pages_count' | translate}}"
-                  [value]="formGroup.articleFull.pages"
-                  required autofocus="autofocus"
+               id="pages"
+               class="form-control"
+               disabled
+               placeholder="{{'enter_pages_count' | translate}}"
+               [value]="formGroup.articleFull.pages"
+               required autofocus="autofocus"
         >
         <div *ngIf="checkFormControl(formGroup.pages)"
              class="alert-danger">
@@ -107,7 +107,7 @@
 
       <label *ngIf="formGroup.articleFull.reviewerBlankDoc != null"
              class = "link mt-0"
-      ><a href="{{FileApi.paths.download+formGroup.articleFull.reviewerBlankDoc}}">
+      ><a href="{{FileApi.download+formGroup.articleFull.reviewerBlankDoc}}">
         {{"download_reviewer_form" | translate}}
       </a></label>
 
@@ -142,7 +142,7 @@
 
       <label *ngIf="formGroup.articleFull.antiplagiatDoc!=null"
              class="">
-        <a class="link" href="{{FileApi.paths.download+formGroup.articleFull.antiplagiatDoc}}">
+        <a class="link" href="{{FileApi.download+formGroup.articleFull.antiplagiatDoc}}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
@@ -152,12 +152,12 @@
       <div class="form-group">
         <label class="control-label mt-2" for="pages_in_journal"> {{"pages_in_journal" | translate}} </label>
         <input type="text"
-                  id="pages_in_journal"
-                  class="form-control"
-                  [formControl]="formGroup.pagesInJournal"
-                  placeholder="{{'enter_pages_journal' | translate}}"
-                  required autofocus="autofocus"
-                  />
+               id="pages_in_journal"
+               class="form-control"
+               [formControl]="formGroup.pagesInJournal"
+               placeholder="{{'enter_pages_journal' | translate}}"
+               required autofocus="autofocus"
+        />
         <div *ngIf="checkFormControl(formGroup.pagesInJournal)"
              class="alert-danger">
           <div *ngIf="formGroup.pagesInJournal.errors?.['required']">
@@ -181,7 +181,7 @@
       />
       <label *ngIf="formGroup.articleFull.wordDoc!=null"
              class="">
-        <a class="link" href="{{FileApi.paths.download+formGroup.articleFull.wordDoc}}">
+        <a class="link" href="{{FileApi.download+formGroup.articleFull.wordDoc}}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
@@ -199,8 +199,8 @@
       />
       <label *ngIf="formGroup.articleFull.pdfDoc!=null"
              class=""
-             >
-        <a class="link" href="{{FileApi.paths.download+formGroup.articleFull.pdfDoc}}">
+      >
+        <a class="link" href="{{FileApi.download+formGroup.articleFull.pdfDoc}}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
