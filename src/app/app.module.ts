@@ -11,13 +11,7 @@ import { UserLoginComponent } from './components/_user-control/user-login/user-l
 import { UserRegisterComponent } from './components/_user-control/user-register/user-register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './components/common/home/home.component';
-import { CategoryEditorMainComponent } from './components/_admin-control/category/category-editor-main/category-editor-main.component';
-import { CategoryEditorSaveComponent } from './components/_admin-control/category/category-editor-save/category-editor-save.component';
-import { CategoryEditorUpdateComponent } from './components/_admin-control/category/category-editor-update/category-editor-update.component';
 import { UserProfileComponent } from './components/_user-control/user-profile/user-profile.component';
-import { JournalEditorMainComponent } from './components/_admin-control/journal/journal-editor-main/journal-editor-main.component';
-import { JournalEditorUpdateComponent } from './components/_admin-control/journal/journal-editor-update/journal-editor-update.component';
-import { JournalEditorSaveComponent } from './components/_admin-control/journal/journal-editor-save/journal-editor-save.component';
 import { ForbiddenComponent } from './components/common/forbidden/forbidden.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { UserHandbookComponent } from './components/_user-control/user-handbook/user-handbook.component';
@@ -37,15 +31,7 @@ import { JournalsComponent } from './components/common/journals/journals.compone
 import { ReviewerArticleMainComponent } from './components/_reviewer_control/reviewer-article-main/reviewer-article-main.component';
 import {MarkdownModule} from "ngx-markdown";
 
-import {
-  MarkdownEditorMainComponent
-} from "./components/_admin-control/markdown/markdown-editor-main/markdown-editor-main.component";
-import {
-  MarkdownEditorSaveComponent
-} from "./components/_admin-control/markdown/markdown-editor-save/markdown-editor-save.component";
-import {
-  MarkdownEditorUpdateComponent
-} from "./components/_admin-control/markdown/markdown-editor-update/markdown-editor-update.component";
+
 import { ReviewerArticleUpdateComponent } from './components/_reviewer_control/reviewer-article-update/reviewer-article-update.component';
 import { FooterPageComponent } from './components/common/home/components/footer-page/footer-page.component';
 
@@ -53,9 +39,6 @@ import { AboutJournalComponent } from './components/common/home/components/about
 import { PublishGuideComponent } from './components/common/home/components/publish-guide/publish-guide.component';
 import {NgxTranslateModule} from "../translate/translate.module";
 import { ArticlesComponent } from './components/common/articles/articles.component';
-import { TipEditorMainComponent } from './components/_admin-control/tip/tip-editor-main/tip-editor-main.component';
-import { TipEditorSaveComponent } from './components/_admin-control/tip/tip-editor-save/tip-editor-save.component';
-import { TipEditorUpdateComponent } from './components/_admin-control/tip/tip-editor-update/tip-editor-update.component';
 import { MarkdownComponent } from './components/common/markdown/markdown.component';
 import { UserResetPasswordComponent } from './components/_user-control/user-reser-password/user-reset-password.component';
 import { GreetingComponent } from './components/common/home/components/greeting/greeting.component';
@@ -69,17 +52,10 @@ import { CoreModule } from './core/core.module';
     UserLoginComponent,
     UserRegisterComponent,
     HomeComponent,
-    CategoryEditorMainComponent,
-    CategoryEditorSaveComponent,
-    CategoryEditorUpdateComponent,
     UserProfileComponent,
-    JournalEditorMainComponent,
-    JournalEditorUpdateComponent,
-    JournalEditorSaveComponent,
     ForbiddenComponent,
     FooterComponent,
     UserHandbookComponent,
-
     UserPublishComponent,
     ReviewerEditorMainComponent,
     ReviewerEditorSaveComponent,
@@ -88,17 +64,11 @@ import { CoreModule } from './core/core.module';
     ArticleEditorUpdateComponent,
     JournalsComponent,
     ReviewerArticleMainComponent,
-    MarkdownEditorMainComponent,
-    MarkdownEditorSaveComponent,
-    MarkdownEditorUpdateComponent,
     ReviewerArticleUpdateComponent,
     FooterPageComponent,
     AboutJournalComponent,
     PublishGuideComponent,
     ArticlesComponent,
-    TipEditorMainComponent,
-    TipEditorSaveComponent,
-    TipEditorUpdateComponent,
     MarkdownComponent,
     UserResetPasswordComponent,
     GreetingComponent
