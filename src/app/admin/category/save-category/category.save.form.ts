@@ -1,11 +1,11 @@
-import {GenericSaveFormGroup} from "../../../../../_generic/form-group/GenricSaveFormGroup";
+import {GenericSaveFormGroup} from "../../../_generic/form-group/GenricSaveFormGroup";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CategoryDataControls} from "../../_common/CategoryDataControls";
-import {CategorySaveDto} from "../../../../../domain/category/dto/CategorySaveDto";
-import {CategoryData} from "../../../../../domain/category/CategoryData";
-import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
+import {CategoryDataControls} from "../_models/CategoryDataControls";
+import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
+import {CategoryData} from "../../../domain/category/CategoryData";
+import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 
-export class CategorySaveFormGroup
+export class CategorySaveForm
   extends GenericSaveFormGroup<CategoryData, CategoryDataControls, CategorySaveDto> {
 
 

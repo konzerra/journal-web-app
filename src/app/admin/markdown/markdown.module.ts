@@ -6,17 +6,25 @@ import {AdminMarkdownService} from "./admin-markdown.service";
 import { ManageMarkdownComponent } from './manage-markdown/manage-markdown.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {TranslateModule} from "@ngx-translate/core";
+import { UpdateMarkdownComponent } from './update-markdown/update-markdown.component';
+import { SaveMarkdownComponent } from './save-markdown/save-markdown.component';
+import {CoreModule} from "../../core/core.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
-    ManageMarkdownComponent
+    ManageMarkdownComponent,
+    UpdateMarkdownComponent,
+    SaveMarkdownComponent
   ],
   imports: [
     CommonModule,
     MarkdownRoutingModule,
     NgxPaginationModule,
-    TranslateModule
+    TranslateModule,
+    CoreModule,
+    FormsModule
   ],
   providers:[AdminMarkdownService]
 })

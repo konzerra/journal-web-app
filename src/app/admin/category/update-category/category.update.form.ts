@@ -1,12 +1,12 @@
-import {GenericUpdateFormGroup} from "../../../../../_generic/form-group/GenericUpdateFormGroup";
-import {RequiredLanguages} from "../../../../../domain/RequiredLanguages";
+import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
+import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {FormControl,  Validators} from "@angular/forms";
-import {CategoryData} from "../../../../../domain/category/CategoryData";
-import {CategoryUpdateDto} from "../../../../../domain/category/dto/CategoryUpdateDto";
-import {CategoryDataControls} from "../../_common/CategoryDataControls";
-import {CategoryFull} from "../../../../../domain/category/CategoryFull";
+import {CategoryData} from "../../../domain/category/CategoryData";
+import {CategoryUpdateDto} from "../../../domain/category/dto/CategoryUpdateDto";
+import {CategoryDataControls} from "../_models/CategoryDataControls";
+import {CategoryFull} from "../../../domain/category/CategoryFull";
 
-export class CategoryUpdateFormGroup
+export class CategoryUpdateForm
   extends GenericUpdateFormGroup<CategoryFull,CategoryData, CategoryDataControls, CategoryUpdateDto>
 {
 

@@ -1,6 +1,6 @@
-import {DataControlsAbstract} from "../../../../_generic/form-group/DataControlsAbstract";
+import {DataControlsAbstract} from "../../../_generic/form-group/DataControlsAbstract";
 import {FormControl, Validators} from "@angular/forms";
-import {CategoryData} from "../../../../domain/category/CategoryData";
+import {CategoryData} from "../../../domain/category/CategoryData";
 
 
 export class CategoryDataControls

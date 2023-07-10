@@ -5,17 +5,27 @@ import { CategoryRoutingModule } from './category-routing.module';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { AdminCategoryService } from './admin-category.service';
 import { SaveCategoryComponent } from './save-category/save-category.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {TranslateModule} from "@ngx-translate/core";
+import {CoreModule} from "../../core/core.module";
+import {FormsModule} from "@angular/forms";
+import { UpdateCategoryComponent } from './update-category/update-category.component';
 
 
 
 @NgModule({
   declarations: [
     ManageCategoryComponent,
-    SaveCategoryComponent
+    SaveCategoryComponent,
+    UpdateCategoryComponent
   ],
   imports: [
     CommonModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    NgxPaginationModule,
+    TranslateModule,
+    CoreModule,
+    FormsModule
   ],
   providers: [
     AdminCategoryService

@@ -50,9 +50,6 @@ export class UpdateJournalComponent
 
   }
 
-  protected onSuccessfulUpdate(): void {
-    this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
-  }
 
   onCancelClicked() {
     this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
@@ -90,7 +87,7 @@ export class UpdateJournalComponent
         complete:()=>{
           this.dialogsService.openInfoDialog("Обновлено")
           this.updateDisabled = false
-          this.onSuccessfulUpdate()
+          this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
         },
         error:(err)=> {
           this.dialogsService.openInfoDialog(err)
