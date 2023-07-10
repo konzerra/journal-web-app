@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  // fallback route
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
   { path: 'article', loadChildren: () => import('./article/article.module').then(m => m.ArticleModule) },
   { path: 'category', loadChildren: () => import('./category/category.module').then(m => m.CategoryModule) },
   { path: 'journal', loadChildren: () => import('./journal/journal.module').then(m => m.JournalModule) },
