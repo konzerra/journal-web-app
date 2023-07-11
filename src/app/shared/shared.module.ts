@@ -4,6 +4,7 @@ import {MatConfirmDialogComponent} from "./dialogs/mat-confirm-dialog/mat-confir
 import {MatInfoDialogComponent} from "./dialogs/mat-info-dialog/mat-info-dialog.component";
 import {CoreModule} from "../core/core.module";
 import {AngularMaterialModule} from "../angular-material/angular-material.module";
+import {DialogsService} from "./dialogs/dialogs.service";
 
 
 
@@ -18,11 +19,12 @@ import {AngularMaterialModule} from "../angular-material/angular-material.module
     CoreModule,
     AngularMaterialModule
   ],
-  exports:[
-
+  providers:[
+    DialogsService
   ],
-  entryComponents: [
+  exports:[
     MatConfirmDialogComponent,
-    MatInfoDialogComponent,]
+    MatInfoDialogComponent,
+  ],
 })
 export class SharedModule { }

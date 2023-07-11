@@ -15,7 +15,7 @@ import {JournalStatus} from "../../shared/models/journal/JournalStatus";
 import {JournalModule} from "./journal.module";
 
 @Injectable({
-  providedIn: JournalModule
+  providedIn: 'root'
 })
 export class AdminJournalService {
 

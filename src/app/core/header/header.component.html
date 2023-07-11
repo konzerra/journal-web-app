@@ -14,7 +14,7 @@
           <a class="nav-link active" aria-current="page" routerLink = "/">{{"main" | translate}}</a>
         </li>
         <li class="nav-item ms-3">
-          <a class="nav-link active" aria-current="page" routerLink = "/journals">{{"archive" | translate}}</a>
+          <a class="nav-link active" aria-current="page" routerLink = "journals">{{"archive" | translate}}</a>
         </li>
 
         <!-- for authors -->
@@ -45,7 +45,7 @@
             {{"admin" | translate}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink = "/admin/journal/main">{{"journals" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "/admin/journal/manage">{{"journals" | translate}}</a></li>
             <li><a class="dropdown-item" routerLink = "/admin/category/main">{{"categories" | translate}}</a></li>
             <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">{{"reviewers" | translate}}</a></li>
             <li><a class="dropdown-item" routerLink = "/admin/tip/main">{{"handbook" | translate}}</a></li>
@@ -60,7 +60,7 @@
             {{"reviewer" | translate}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownReviewer">
-            <li><a class="dropdown-item" routerLink = "/reviewer/article/main">{{"articles" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "/reviewer/articles/manage">{{"articles" | translate}}</a></li>
           </ul>
         </li>
 

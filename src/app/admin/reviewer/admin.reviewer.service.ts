@@ -12,7 +12,7 @@ import {ReviewerUpdateDto} from "../../domain/reviewer/dto/ReviewerUpdateDto";
 import {ReviewerModule} from "./reviewer.module";
 
 @Injectable({
-  providedIn: ReviewerModule
+  providedIn: 'root'
 })
 export class AdminReviewerService {
 

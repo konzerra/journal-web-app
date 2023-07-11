@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MarkdownService as MdService} from "ngx-markdown/src/markdown.service";
+import {MarkdownService as MdService} from 'ngx-markdown';
 import {MarkdownService} from "../../domain/markdown/markdown.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";

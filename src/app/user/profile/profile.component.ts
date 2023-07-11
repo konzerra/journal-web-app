@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileForm} from "./profile.form";
 import {Article} from "../../shared/models/article/Article";
-import {AuthService} from "../../domain/auth/auth.service";
 import {UserUseCaseUpdate} from "../../domain/user/usecase/UserUseCaseUpdate";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {AdminArticleService} from "../../admin/article/admin.article.service";
@@ -10,6 +9,7 @@ import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
 import {UserUpdateDto} from "../../domain/user/dto/UserUpdateDto";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-profile',

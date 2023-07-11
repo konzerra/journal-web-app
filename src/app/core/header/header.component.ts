@@ -37,10 +37,11 @@ export class HeaderComponent implements OnInit {
       this.router.navigate([ComponentRoutingPaths.userControl.profile])
       return
     }
-    this.router.navigate([ComponentRoutingPaths.userControl.login])
+    this.router.navigate([ComponentRoutingPaths.userControl.signin])
   }
   hasRole(role:string): boolean{
-    return this.userAuthService.hasRole(role)
+    return true
+    //return this.userAuthService.hasRole(role)
   }
 
   onLangChange() {

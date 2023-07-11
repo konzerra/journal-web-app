@@ -16,6 +16,7 @@ import {FooterPageComponent} from "./home/components/footer-page/footer-page.com
 import {GreetingComponent} from "./home/components/greeting/greeting.component";
 import {PublishGuideComponent} from "./home/components/publish-guide/publish-guide.component";
 import {FormsModule} from "@angular/forms";
+import {MarkdownService} from "../domain/markdown/markdown.service";
 
 
 @NgModule({
@@ -35,10 +36,11 @@ import {FormsModule} from "@angular/forms";
     PublicRoutingModule,
     CoreModule,
     NgxPaginationModule,
-    TranslateModule,
+
     NgOptimizedImage,
-    MarkdownModule.forRoot(),
+    MarkdownModule.forChild(),
     FormsModule
-  ]
+  ],
+  providers:[MarkdownService]
 })
 export class PublicModule { }

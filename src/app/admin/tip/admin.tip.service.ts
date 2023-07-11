@@ -12,7 +12,7 @@ import {Tip} from "../../domain/tip/Tip";
 import {AdminModule} from "../admin.module";
 
 @Injectable({
-  providedIn:AdminModule
+  providedIn:'root'
 })
 export class AdminTipService {
   constructor(

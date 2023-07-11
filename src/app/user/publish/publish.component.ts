@@ -4,12 +4,12 @@ import {Journal} from "../../shared/models/journal/Journal";
 import {Router} from "@angular/router";
 import {AdminArticleService} from "../../admin/article/admin.article.service";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {AuthService} from "../../domain/auth/auth.service";
 import {JournalStatus} from "../../shared/models/journal/JournalStatus";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
 import {AdminJournalService} from "../../admin/journal/admin-journal.service";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-publish',

@@ -12,7 +12,7 @@ import {CategoryPage} from "../../domain/category/CategoryPage";
 import {CategoryModule} from "./category.module";
 
 @Injectable({
-  providedIn: CategoryModule
+  providedIn: 'root'
 })
 export class AdminCategoryService {
   constructor(

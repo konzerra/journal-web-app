@@ -40,7 +40,7 @@ export class SignUpComponent implements OnInit {
         },
         complete:()=>{
           this.router.navigate(
-            [ComponentRoutingPaths.userControl.login],
+            [ComponentRoutingPaths.userControl.signin],
             { queryParams: { info: "registered" } })
 
         }

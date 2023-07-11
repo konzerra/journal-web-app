@@ -1,38 +1,24 @@
-import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {inject} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
-import {AuthService} from "../domain/auth/auth.service";
+import {AuthService} from "../auth/auth.service";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-  constructor(
-    private userAuthService: AuthService,
-    private router:Router
-  ) {
-  }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if(this.userAuthService.getJwtToken()!==null){
-      const role = route.data["role"] as string
-      if(role===null){
-        this.router.navigate(['/forbidden'])
-        return false
-      }
-      if(this.userAuthService.hasRole(role)){
-        return true
-      }else{
-        this.router.navigate(['/forbidden'])
-        return false
-      }
+export const AuthGuard: CanActivateFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
+  const router: Router = inject(Router);
+  const userAuthService: AuthService = inject(AuthService);
 
+  if (userAuthService.getJwtToken() === null) {
+    return router.navigate(['/auth/signin']);
+  } else {
+    const role = route.data["role"] as string
+    if (role === null || !userAuthService.hasRole(role)) {
+      return router.navigate(['/forbidden']);
+    } else {
+      return true;
     }
-    this.router.navigate(['/login'])
-    return false;
   }
-
 }

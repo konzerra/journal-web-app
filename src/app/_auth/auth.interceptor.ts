@@ -3,17 +3,19 @@ import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
-  HttpRequest,
-  HttpResponse
+  HttpRequest
 } from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
 
 import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
-import {AuthService} from "../domain/auth/auth.service";
-import {AppLanguage} from "../AppLanguage";
 
-@Injectable()
+import {AppLanguage} from "../AppLanguage";
+import {AuthService} from "../auth/auth.service";
+
+@Injectable({
+  providedIn: "root"
+})
 export class AuthInterceptor implements HttpInterceptor{
 
   constructor(

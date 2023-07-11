@@ -16,12 +16,12 @@ import {FormsModule} from "@angular/forms";
     SignUpComponent,
     ResetPasswordComponent
   ],
-    imports: [
-        CommonModule,
-        AuthRoutingModule,
-        CoreModule,
-        TranslateModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+    CoreModule,
+    TranslateModule,
+    FormsModule
+  ]
 })
 export class AuthModule { }

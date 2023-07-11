@@ -14,7 +14,7 @@ import {ArticleUpdateDtoByReviewer} from "../../domain/article/dto/ArticleUpdate
 import {ArticleModule} from "./article.module";
 
 @Injectable({
-  providedIn: ArticleModule
+  providedIn: 'root'
 })
 export class AdminArticleService {
 

@@ -1,9 +1,9 @@
 export class ComponentRoutingPaths {
   public static userControl = {
-    login : "login",
-    register : "register",
+    signin : "auth/signin",
+    signup : "auth/signup",
     profile : "user/profile",
-    handbook: "user/handbook",
+    handbook: "handbook",
     publish: "user/publish",
     reset_password: "user/reset_password"
   }

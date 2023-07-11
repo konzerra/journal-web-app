@@ -10,7 +10,9 @@ import {MarkdownFull} from "../../domain/markdown/MarkdownFull";
 import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {MarkdownPage} from "../../domain/markdown/MarkdownPage";
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
 export class AdminMarkdownService {
   constructor(
     protected httpClient:HttpClient

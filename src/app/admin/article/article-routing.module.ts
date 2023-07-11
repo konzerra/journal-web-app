@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full' },
   { path: 'manage', component: ManageArticleComponent },
   { path: 'update', component: UpdateArticleComponent },
+  { path: '**', redirectTo: 'manage', pathMatch: 'prefix' },
 ];
 
 @NgModule({
