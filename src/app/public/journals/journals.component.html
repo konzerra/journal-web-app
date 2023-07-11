@@ -1,0 +1,51 @@
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+/>
+
+<div class = "journals-background">
+  <div class="container">
+    <div class="col-lg-6">
+      <br>
+      <br class="mt-5">
+      <h2 class="mt-5">{{'journals' | translate}}</h2>
+
+      <div *ngFor="let i = index; let model of modelPage.content | paginate :{
+      itemsPerPage: 10,
+      currentPage : modelPage.number+1,
+      totalItems: modelPage.totalElements
+      }">
+        <div class="panel mb-3" (click)="onJournalPanelClicked(model.id)">
+          <div class="row">
+            <div class="col-3 fit-content" >
+              <img fill ngSrc="{{FileApi.download + model.image}}"
+                   class=""
+                   alt="...">
+            </div>
+            <div class="col mt-4 ms-3" >
+              <h4 class="pb-2">{{model.name}}</h4>
+              <h6 class="pb-2">{{model.version}}</h6>
+              <a class="link pb-2" href="{{FileApi.download+model.pdf}}">{{'download_pdf' | translate}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-100 mt-4"></div>
+
+      <!-- Pagination box -->
+      <pagination-controls
+        class="pagination-c mt-3"
+        (pageChange)="onPageChange($event)"
+        previousLabel="{{'previous' | translate}}"
+        nextLabel="{{'next' | translate}}"
+      ></pagination-controls>
+    </div>
+  </div>
+
+
+</div>
+
+
+
