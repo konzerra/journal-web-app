@@ -15,6 +15,7 @@ import {AboutJournalComponent} from "./home/components/about-journal/about-journ
 import {FooterPageComponent} from "./home/components/footer-page/footer-page.component";
 import {GreetingComponent} from "./home/components/greeting/greeting.component";
 import {PublishGuideComponent} from "./home/components/publish-guide/publish-guide.component";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {PublishGuideComponent} from "./home/components/publish-guide/publish-gui
     NgxPaginationModule,
     TranslateModule,
     NgOptimizedImage,
-    MarkdownModule
+    MarkdownModule.forRoot(),
+    FormsModule
   ]
 })
 export class PublicModule { }

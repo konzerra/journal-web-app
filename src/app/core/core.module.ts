@@ -24,7 +24,8 @@ import {RouterLink} from "@angular/router";
   exports:[
     NgxPaginationModule,
     NgxTranslateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeaderComponent
   ]
 })
 export class CoreModule { }

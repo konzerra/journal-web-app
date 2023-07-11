@@ -61,7 +61,7 @@
         ></textarea>
       </div>
       <label *ngIf="isNotBlanc(article.wordDoc)">
-        <a class="link mt-2" href="{{FileApi.paths.download + article.wordDoc}}">
+        <a class="link mt-2" href="{{FileApi.download + article.wordDoc}}">
           {{'download_existing_version_of_article' | translate}}
         </a>
       </label>

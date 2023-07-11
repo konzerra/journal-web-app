@@ -13,7 +13,6 @@ import {DialogsService} from "./shared/dialogs/dialogs.service";
 import {AngularMaterialModule} from "./angular-material/angular-material.module";
 import {MatIconModule} from "@angular/material/icon";
 import {NgxPaginationModule} from "ngx-pagination";
-import {MarkdownModule} from "ngx-markdown";
 import {NgxTranslateModule} from "../translate/translate.module";
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
@@ -35,9 +34,9 @@ import { CoreModule } from './core/core.module';
       NgxPaginationModule,
       FormsModule,
       NgxTranslateModule,
-      MarkdownModule.forRoot(),
       SharedModule,
-      CoreModule
+      CoreModule,
+
 
     ],
   providers: [

@@ -8,6 +8,8 @@ import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {ArticlePage} from "../../shared/models/article/ArticlePage";
 import {JournalStatus} from "../../shared/models/journal/JournalStatus";
 import {ArticleSearchDto} from "../../domain/article/ArticleSearchDto";
+import {FileApi} from "../../shared/models/file/FileApi";
+import {AdminJournalService} from "../../admin/journal/admin-journal.service";
 
 @Component({
   selector: 'app-articles',
@@ -22,7 +24,7 @@ export class ArticlesComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute,
-    private journalService: JournalService,
+    private journalService: AdminJournalService,
     private articleService: AdminArticleService,
     private dialogsService:DialogsService,
   ) { }
