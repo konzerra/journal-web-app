@@ -8,7 +8,7 @@ import {UseCaseGetAllPaginatedAbstract} from "../../usecase/get/UseCaseGetAllPag
 import {ModelPageI} from "../../../shared/models/pagination/ModelPageI";
 import {Journal} from "../../../shared/models/journal/Journal";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 
 export abstract class GenericModelEditorMainComponent
 < Model extends ModelI,

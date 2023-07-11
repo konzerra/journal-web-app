@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { JournalRoutingModule } from './journal-routing.module';
 import { ManageJournalComponent } from './manage-journal/manage-journal.component';
 import { AdminJournalService } from './admin-journal.service';
@@ -16,13 +16,14 @@ import { UpdateJournalComponent } from './update-journal/update-journal.componen
     SaveJournalComponent,
     UpdateJournalComponent
   ],
-  imports: [
-    CommonModule,
-    JournalRoutingModule,
-    SharedModule,
-    CoreModule,
-    FormsModule
-  ],
+    imports: [
+        CommonModule,
+        JournalRoutingModule,
+        SharedModule,
+        CoreModule,
+        FormsModule,
+        NgOptimizedImage
+    ],
   providers: [
     AdminJournalService
   ]

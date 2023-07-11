@@ -3,7 +3,7 @@ import {MarkdownSaveForm} from "./markdown.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {MarkdownService} from "../../../domain/markdown/markdown.service";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {MarkdownSaveDto} from "../../../domain/markdown/dto/MarkdownSaveDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";

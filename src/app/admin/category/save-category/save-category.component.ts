@@ -5,7 +5,7 @@ import {
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {AdminCategoryService} from "../admin.category.service";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";

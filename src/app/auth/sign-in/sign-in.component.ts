@@ -1,31 +1,33 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {UserUseCaseLogin} from "../../domain/user/usecase/UserUseCaseLogin";
 import {UserLoginDto} from "../../domain/user/dto/UserLoginDto";
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
-import {SignInForm} from "./sign-in.form";
+
 import {AuthService} from "../auth.service";
+import {SignInForm} from "./sign-in.form";
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
+
   constructor(
     private router:Router,
     private route: ActivatedRoute,
     private dialogsService:DialogsService,
     private userUseCaseLogin:UserUseCaseLogin,
-    private userAuthService:AuthService,
+    private userAuthService:AuthService
   ) { }
 
   public infoParam : string = ''
   public errorParam: string = ''
 
-  public signInForm = new SignInForm()
+  public form:SignInForm = new SignInForm()
 
   ngOnInit(): void {
     this.route.queryParams.subscribe({
@@ -36,10 +38,10 @@ export class SignInComponent {
     )
   }
   onSubmit() {
-    if(this.signInForm.group.valid){
+    if(this.form.group.valid){
       let userLoginDto:UserLoginDto = {
-        email : this.signInForm.email.value ?? "",
-        password : this.signInForm.password.value ?? ""
+        email : this.form.email.value,
+        password : this.form.password.value
       }
       this.userUseCaseLogin.execute(userLoginDto).subscribe({
         next: (response) => {
@@ -66,4 +68,5 @@ export class SignInComponent {
   checkFormControl(modelName: FormControl):boolean {
     return genericCheckFormControl(modelName)
   }
+
 }

@@ -3,7 +3,7 @@ import {MarkdownPage} from "../../../domain/markdown/MarkdownPage";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Markdown} from "../../../domain/markdown/Markdown";
 import {AdminMarkdownService} from "../admin-markdown.service";
 

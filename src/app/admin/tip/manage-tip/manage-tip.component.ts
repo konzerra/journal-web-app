@@ -4,7 +4,7 @@ import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {TipPage} from "../../../domain/tip/TipPage";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Tip} from "../../../domain/tip/Tip";
 
 @Component({

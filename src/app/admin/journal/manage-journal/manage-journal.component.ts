@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";

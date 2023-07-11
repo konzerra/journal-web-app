@@ -1,6 +1,6 @@
+import {GenericSaveFormGroup} from "../../_generic/form-group/GenricSaveFormGroup";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {WordCountValidators} from "../../_generic/util/WordValidators";
-
 
 export class SignUpForm {
   name: FormControl =  new FormControl("", [Validators.required, WordCountValidators.min(2)])
@@ -13,4 +13,6 @@ export class SignUpForm {
     email: this.email,
     password: this.password
   })
+
+
 }

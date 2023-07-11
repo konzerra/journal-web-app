@@ -4,7 +4,7 @@ import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {CategoryPage} from "../../../domain/category/CategoryPage";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Category} from "../../../domain/category/Category";
 
 @Component({

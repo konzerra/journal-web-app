@@ -6,7 +6,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
 import {AppLanguage} from "../../AppLanguage";
 import {AuthService} from "../../auth/auth.service";
-import {ComponentRoutingPaths} from "../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 
 

@@ -7,7 +7,7 @@ import {AdminArticleService} from "../admin.article.service";
 import {AdminReviewerService} from "../../reviewer/admin.reviewer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {AdminJournalService} from "../../journal/admin-journal.service";
 
 @Component({

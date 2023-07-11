@@ -4,7 +4,7 @@ import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {
   JournalUpdateForm
 } from "./journal.update.form";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {AdminJournalService} from "../admin-journal.service";

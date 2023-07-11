@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 
 @Component({
   selector: 'app-save-reviewer',

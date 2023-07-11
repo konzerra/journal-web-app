@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AdminCategoryService} from "../admin.category.service";
 import {AdminReviewerService} from "../../reviewer/admin.reviewer.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
-import {ComponentRoutingPaths} from "../../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategoryUpdateDto} from "../../../domain/category/dto/CategoryUpdateDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";

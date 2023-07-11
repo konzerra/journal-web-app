@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserUseCaseRegister} from "../../domain/user/usecase/UserUseCaseRegister";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {UserRegisterFormGroup} from "../../components/_user-control/user-register/form-group/UserRegisterFormGroup";
 import {UserRegisterDto} from "../../domain/user/dto/UserRegisterDto";
-import {ComponentRoutingPaths} from "../../components/ComponentRoutingPaths";
+import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
 import {SignUpForm} from "./sign-up.form";
@@ -14,7 +13,7 @@ import {SignUpForm} from "./sign-up.form";
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
 
   constructor(
     private router:Router,
@@ -22,8 +21,9 @@ export class SignUpComponent {
     private userUseCaseRegister:UserUseCaseRegister,
     private dialogsService: DialogsService
   ) { }
-
-  public form = new SignUpForm()
+  public infoParam : string = ''
+  public errorParam: string = ''
+  public form:SignUpForm = new SignUpForm()
   ngOnInit(): void {
   }
 

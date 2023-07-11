@@ -1,14 +1,14 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 export class SignInForm {
-
-
-  email =  new FormControl("", [Validators.required, Validators.email]);
-  password = new FormControl("", Validators.required);
+  email: FormControl =  new FormControl("", [Validators.required, Validators.email]);
+  password: FormControl = new FormControl("", Validators.required);
 
   group:FormGroup = new FormGroup({
     email: this.email,
     password: this.password
   })
+
+
 }
