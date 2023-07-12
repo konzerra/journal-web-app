@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ReviewerUpdateForm} from "./reviewer.update.form";
 import {Category} from "../../../domain/category/Category";
-import {AdminCategoryService} from "../../category/admin.category.service";
-import {AdminReviewerService} from "../admin.reviewer.service";
+import {CategoryService} from "../../../shared/services/category.service";
+import {ReviewerService} from "../../../shared/services/reviewer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
@@ -21,8 +21,8 @@ export class UpdateReviewerComponent implements OnInit {
   categoryList = new Array<Category>()
 
   constructor(
-    private categoryService: AdminCategoryService,
-    private reviewerService: AdminReviewerService,
+    private categoryService: CategoryService,
+    private reviewerService: ReviewerService,
     private router:Router,
     private route:ActivatedRoute,
     private dialogsService: DialogsService

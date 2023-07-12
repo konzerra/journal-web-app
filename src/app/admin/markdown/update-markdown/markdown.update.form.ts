@@ -1,10 +1,10 @@
 import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {MarkdownData} from "../../../domain/markdown/MarkdownData";
+import {MarkdownData} from "../../../shared/models/markdown/MarkdownData";
 import { MarkdownDataControls } from "../_models/MarkdownDataControls";
 import {MarkdownUpdateDto} from "../../../domain/markdown/dto/MarkdownUpdateDto";
-import {MarkdownFull} from "../../../domain/markdown/MarkdownFull";
+import {MarkdownFull} from "../../../shared/models/markdown/MarkdownFull";
 
 export class MarkdownUpdateForm
   extends GenericUpdateFormGroup<MarkdownFull, MarkdownData, MarkdownDataControls, MarkdownUpdateDto>

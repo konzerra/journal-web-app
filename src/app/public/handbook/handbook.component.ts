@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminTipService} from "../../admin/tip/admin.tip.service";
+import {TipService} from "../../shared/services/tip.service";
 import {Tip} from "../../domain/tip/Tip";
 
 @Component({
@@ -10,7 +10,7 @@ import {Tip} from "../../domain/tip/Tip";
 export class HandbookComponent implements OnInit {
 
   constructor(
-    private tipService: AdminTipService
+    private tipService: TipService
   ) { }
 
   ngOnInit(): void {

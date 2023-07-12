@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminArticleService} from "../../admin/article/admin.article.service";
+import {ArticleService} from "../../shared/services/article.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {
@@ -21,7 +21,7 @@ export class ReviewerUpdateArticlesComponent implements OnInit {
 
 
   constructor(
-    private articleService: AdminArticleService,
+    private articleService: ArticleService,
     private route : ActivatedRoute,
     private dialogsService: DialogsService,
     private router: Router

@@ -23,9 +23,9 @@
       <h3>{{'additional' | translate}}</h3>
       <div class="bar"></div>
       <ul class="mt-4">
-        <li><a routerLink = "/user/handbook">{{'handbook' | translate}}</a></li>
-        <div *ngFor="let name of pagesName">
-          <li (click)="onMarkdownPageClicked(name)"><a>{{name}}</a></li>
+        <li><a routerLink = "/handbook">{{'handbook' | translate}}</a></li>
+        <div *ngFor="let page of pages">
+          <li (click)="onMarkdownPageClicked(page.id)"><a>{{page.name}}</a></li>
         </div>
       </ul>
     </div>

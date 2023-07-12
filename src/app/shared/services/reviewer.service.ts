@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Article} from "../../shared/models/article/Article";
+import {Article} from "../models/article/Article";
 import {ReviewerApi} from "../../domain/reviewer/ReviewerApi";
-import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
+import {PageRequestDto} from "../models/pagination/PageRequestDto";
 import {ReviewerPage} from "../../domain/reviewer/ReviewerPage";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
 import {Reviewer} from "../../domain/reviewer/Reviewer";
 import {ReviewerSaveDto} from "../../domain/reviewer/dto/ReviewerSaveDto";
 import {ReviewerUpdateDto} from "../../domain/reviewer/dto/ReviewerUpdateDto";
-import {ReviewerModule} from "./reviewer.module";
+import {ReviewerModule} from "../../admin/reviewer/reviewer.module";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminReviewerService {
+export class ReviewerService {
 
   constructor(
     private httpClient:HttpClient
@@ -40,14 +40,9 @@ export class AdminReviewerService {
   }
 
   public getPaginated(pageRequestDto: PageRequestDto): Observable<ReviewerPage> {
-    const params = {
-      pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
-    };
 
-    return this.httpClient.get<ReviewerPage>(ReviewerApi.getPaginated, {
-      headers: new HttpHeaders(),
-      params: params,
-    });
+
+    return this.httpClient.post<ReviewerPage>(ReviewerApi.getPaginated, pageRequestDto );
   }
 
   public getById(id : string):Observable<Reviewer>{

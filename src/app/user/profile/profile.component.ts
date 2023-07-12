@@ -3,7 +3,7 @@ import {ProfileForm} from "./profile.form";
 import {Article} from "../../shared/models/article/Article";
 import {UserUseCaseUpdate} from "../../domain/user/usecase/UserUseCaseUpdate";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {AdminArticleService} from "../../admin/article/admin.article.service";
+import {ArticleService} from "../../shared/services/article.service";
 import {Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
     private userAuthService: AuthService,
     private userUseCaseUpdate: UserUseCaseUpdate,
     private dialogsService: DialogsService,
-    private articleService: AdminArticleService,
+    private articleService: ArticleService,
     private router: Router
   ) { }
 

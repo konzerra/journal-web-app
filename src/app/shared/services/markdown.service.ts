@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MarkdownSaveDto} from "../../domain/markdown/dto/MarkdownSaveDto";
 import {Observable} from "rxjs";
-import {MarkdownApi} from "../../domain/markdown/MarkdownApi";
-import {MarkdownUpdateDto} from "../../domain/markdown/dto/MarkdownUpdateDto";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {Markdown} from "../../domain/markdown/Markdown";
-import {MarkdownFull} from "../../domain/markdown/MarkdownFull";
-import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {MarkdownPage} from "../../domain/markdown/MarkdownPage";
+import {PageRequestDto} from "../models/pagination/PageRequestDto";
+import {MarkdownSaveDto} from "../../domain/markdown/dto/MarkdownSaveDto";
+import {MarkdownUpdateDto} from "../../domain/markdown/dto/MarkdownUpdateDto";
+import {MarkdownFull} from "../models/markdown/MarkdownFull";
+import {MarkdownApi} from "../models/markdown/MarkdownApi";
+import {MarkdownPage} from "../models/markdown/MarkdownPage";
+import {Markdown} from "../models/markdown/Markdown";
 
 @Injectable({
-  providedIn:'root'
+  providedIn:"root"
 })
-export class AdminMarkdownService {
+export class MarkdownService {
   constructor(
     protected httpClient:HttpClient
   ){
@@ -40,7 +40,7 @@ export class AdminMarkdownService {
 
   public getById(id : string):Observable<Markdown>{
     return this.httpClient.get<Markdown>(
-      ApiPathUtil.insertId(MarkdownApi.getByIdFull,id),
+      ApiPathUtil.insertId(MarkdownApi.getById,id),
       { headers: new HttpHeaders()}
     )
   }
@@ -56,18 +56,11 @@ export class AdminMarkdownService {
 
 
   public getPaginated(pageRequestDto: PageRequestDto): Observable<MarkdownPage> {
-    const params = {
-      pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
-    };
-
-    return this.httpClient.get<MarkdownPage>(MarkdownApi.getPaginated, {
-      headers: new HttpHeaders(),
-      params: params,
-    });
+    return this.httpClient.post<MarkdownPage>(MarkdownApi.getPaginated, pageRequestDto);
   }
 
-  public getAllNames(): Observable<Array<string>>{
-    return this.httpClient.get<Array<string>>(
+  public getAllNames(): Observable<Array<{ id: string, name: string }>>{
+    return this.httpClient.get<Array<{ id: string, name: string }>>(
       MarkdownApi.getAllNames,
       {
         headers: new HttpHeaders()

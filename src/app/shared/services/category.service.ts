@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
+import {PageRequestDto} from "../models/pagination/PageRequestDto";
 import {CategorySaveDto} from "../../domain/category/dto/CategorySaveDto";
 import {CategoryApi} from "../../domain/category/CategoryApi";
 import {CategoryUpdateDto} from "../../domain/category/dto/CategoryUpdateDto";
 import {CategoryFull} from "../../domain/category/CategoryFull";
 import {Category} from "../../domain/category/Category";
 import {CategoryPage} from "../../domain/category/CategoryPage";
-import {CategoryModule} from "./category.module";
+import {CategoryModule} from "../../admin/category/category.module";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminCategoryService {
+export class CategoryService {
   constructor(
     private httpClient:HttpClient
   ) {
@@ -54,13 +54,6 @@ export class AdminCategoryService {
   }
 
   public getPaginated(pageRequestDto: PageRequestDto): Observable<CategoryPage> {
-    const params = {
-      pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
-    };
-
-    return this.httpClient.get<CategoryPage>(CategoryApi.getPaginated, {
-      headers: new HttpHeaders(),
-      params: params,
-    });
+    return this.httpClient.post<CategoryPage>(CategoryApi.getPaginated, pageRequestDto);
   }
 }

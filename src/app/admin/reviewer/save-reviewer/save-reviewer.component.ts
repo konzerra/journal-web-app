@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ReviewerSaveForm} from "./reviewer.save.form";
 import {Category} from "../../../domain/category/Category";
-import {AdminCategoryService} from "../../category/admin.category.service";
-import {AdminReviewerService} from "../admin.reviewer.service";
+import {CategoryService} from "../../../shared/services/category.service";
+import {ReviewerService} from "../../../shared/services/reviewer.service";
 import {Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
@@ -19,8 +19,8 @@ export class SaveReviewerComponent implements OnInit {
   form = new ReviewerSaveForm()
   categoryList = new Array<Category>()
   constructor(
-    private categoryService: AdminCategoryService,
-    private reviewerService: AdminReviewerService,
+    private categoryService: CategoryService,
+    private reviewerService: ReviewerService,
     private router: Router,
     private dialogsService: DialogsService
   ) { }

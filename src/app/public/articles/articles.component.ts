@@ -2,14 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {Journal} from "../../shared/models/journal/Journal";
 import {FormControl} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {AdminArticleService} from "../../admin/article/admin.article.service";
+import {ArticleService} from "../../shared/services/article.service";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {ArticlePage} from "../../shared/models/article/ArticlePage";
 import {JournalStatus} from "../../shared/models/journal/JournalStatus";
 import {ArticleSearchDto} from "./ArticleSearchDto";
 import {FileApi} from "../../shared/models/file/FileApi";
-import {AdminJournalService} from "../../admin/journal/admin-journal.service";
+import {JournalService} from "../../shared/services/journal.service";
 
 @Component({
   selector: 'app-articles',
@@ -24,8 +24,8 @@ export class ArticlesComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute,
-    private journalService: AdminJournalService,
-    private articleService: AdminArticleService,
+    private journalService: JournalService,
+    private articleService: ArticleService,
     private dialogsService:DialogsService,
   ) { }
 

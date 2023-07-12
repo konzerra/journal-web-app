@@ -5,7 +5,7 @@ import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {CategoryData} from "../../../domain/category/CategoryData";
 import {TipDataControls} from "../_models/TipDataControls";
 import {TipData} from "../../../domain/tip/TipData";
-import {TipSaveDto} from "../../../domain/tip/dto/TipSaveDto";
+import {TipSaveDto} from "../_models/TipSaveDto";
 import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
 
 export class TipSaveFormGroup

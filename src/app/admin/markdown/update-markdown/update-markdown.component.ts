@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {MarkdownUpdateForm} from "./markdown.update.form";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MarkdownService} from "../../../domain/markdown/markdown.service";
+import {MarkdownService} from "../../../shared/services/markdown.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {MarkdownUpdateDto} from "../../../domain/markdown/dto/MarkdownUpdateDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {AdminMarkdownRoutes} from "../admin.markdown.routes";
 
 @Component({
   selector: 'app-update-markdown',
@@ -39,7 +39,7 @@ export class UpdateMarkdownComponent implements OnInit {
               this.formGroup.setDto(v)
             },
             error:(err) =>{
-              this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+              this.router.navigate([AdminMarkdownRoutes.manage])
               this.dialogsService.openInfoDialog(err)
             }
           })
@@ -64,7 +64,7 @@ export class UpdateMarkdownComponent implements OnInit {
         complete:()=>{
           this.dialogsService.openInfoDialog('Обновлено')
           this.updateDisabled = false
-          this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+          this.router.navigate([AdminMarkdownRoutes.manage])
         }
       })
     }else{
@@ -82,7 +82,7 @@ export class UpdateMarkdownComponent implements OnInit {
   }
 
   onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+    this.router.navigate([AdminMarkdownRoutes.manage])
   }
 
 }

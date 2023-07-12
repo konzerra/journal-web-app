@@ -7,7 +7,7 @@ import { ManageArticleComponent } from './manage-article/manage-article.componen
 import {NgxPaginationModule} from "ngx-pagination";
 import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AdminArticleService} from "./admin.article.service";
+import {ArticleService} from "../../shared/services/article.service";
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import {AdminArticleService} from "./admin.article.service";
     ReactiveFormsModule
   ],
   providers: [
-    AdminArticleService
+    ArticleService
   ]
 })
 export class ArticleModule { }

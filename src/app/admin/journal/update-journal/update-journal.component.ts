@@ -7,7 +7,7 @@ import {
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {AdminJournalService} from "../admin-journal.service";
+import {JournalService} from "../../../shared/services/journal.service";
 import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
@@ -20,7 +20,7 @@ export class UpdateJournalComponent
 
   constructor(
     protected route: ActivatedRoute,
-    private journalService: AdminJournalService,
+    private journalService: JournalService,
     private dialogsService: DialogsService,
     private router:Router
   ) {

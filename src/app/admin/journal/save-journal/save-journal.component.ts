@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {AdminJournalService} from "../admin-journal.service";
+import {JournalService} from "../../../shared/services/journal.service";
 
 @Component({
   selector: 'app-save-journal',
@@ -21,7 +21,7 @@ export class SaveJournalComponent implements OnInit {
   constructor(
     protected dialogsService: DialogsService,
     protected router:Router,
-    private journalService: AdminJournalService,
+    private journalService: JournalService,
   ) {
   }
 

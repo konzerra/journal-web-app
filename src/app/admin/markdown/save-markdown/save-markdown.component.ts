@@ -2,11 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {MarkdownSaveForm} from "./markdown.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {MarkdownService} from "../../../domain/markdown/markdown.service";
+import {MarkdownService} from "../../../shared/services/markdown.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {MarkdownSaveDto} from "../../../domain/markdown/dto/MarkdownSaveDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {AdminMarkdownRoutes} from "../admin.markdown.routes";
 
 @Component({
   selector: 'app-save-markdown',
@@ -31,7 +32,7 @@ export class SaveMarkdownComponent implements OnInit {
   }
 
   onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.tip.main])
+    this.router.navigate([AdminMarkdownRoutes.manage])
   }
 
   onSubmit() {
@@ -49,7 +50,7 @@ export class SaveMarkdownComponent implements OnInit {
         complete:()=>{
           this.dialogsService.openInfoDialog("сохранено")
           this.saveDisabled = false
-          this.router.navigate([ComponentRoutingPaths.adminControl.markdown.main])
+          this.router.navigate([AdminMarkdownRoutes.manage])
         }
       })
     }else{

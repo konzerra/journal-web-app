@@ -6,6 +6,10 @@
 <div class = "wrapper container pt-5 " >
   <h2 class="mt-5">{{'markdown_texts' | translate}}</h2>
 
+  <p>
+    {{ 'missing_ids' | translate }}:
+    <span *ngFor="let id of missingIds">{{ id+', '}}</span>
+  </p>
   <table class="table " >
     <thead>
     <tr>

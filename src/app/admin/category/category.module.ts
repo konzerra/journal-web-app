@@ -10,7 +10,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {CoreModule} from "../../core/core.module";
 import {FormsModule} from "@angular/forms";
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import {AdminCategoryService} from "./admin.category.service";
+import {CategoryService} from "../../shared/services/category.service";
 
 
 
@@ -29,7 +29,7 @@ import {AdminCategoryService} from "./admin.category.service";
     FormsModule
   ],
   providers: [
-    AdminCategoryService
+    CategoryService
   ]
 })
 export class CategoryModule { }

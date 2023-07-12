@@ -2,11 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {TipSaveFormGroup} from "./category.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {AdminTipService} from "../admin.tip.service";
+import {TipService} from "../../../shared/services/tip.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {TipSaveDto} from "../../../domain/tip/dto/TipSaveDto";
+import {TipSaveDto} from "../_models/TipSaveDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {AdminTipRoutes} from "../admin.tip.routes";
 
 @Component({
   selector: 'app-save-tip',
@@ -22,7 +23,7 @@ export class SaveTipComponent implements OnInit {
   constructor(
     protected dialogsService: DialogsService,
     protected router:Router,
-    private tipService:AdminTipService
+    private tipService:TipService
   ) {
   }
 
@@ -44,12 +45,12 @@ export class SaveTipComponent implements OnInit {
         },
         error:(error)=>{
           this.saveDisabled = false
-          alert(error)
+          this.dialogsService.openInfoDialog(error)
         },
         complete:()=>{
           this.dialogsService.openInfoDialog("сохранено")
           this.saveDisabled = false
-          this.router.navigate([ComponentRoutingPaths.adminControl.tip.main])
+          this.router.navigate([AdminTipRoutes.manage])
         }
       })
     }else{

@@ -1,20 +1,20 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {TipSaveDto} from "../../domain/tip/dto/TipSaveDto";
+import {TipSaveDto} from "../../admin/tip/_models/TipSaveDto";
 import {TipApi} from "../../domain/tip/TipApi";
-import {TipUpdateDto} from "../../domain/tip/dto/TipUpdateDto";
+import {TipUpdateDto} from "../../admin/tip/_models/TipUpdateDto";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
 import {TipFull} from "../../domain/tip/TipFull";
 import {TipPage} from "../../domain/tip/TipPage";
-import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
+import {PageRequestDto} from "../models/pagination/PageRequestDto";
 import {Tip} from "../../domain/tip/Tip";
-import {AdminModule} from "../admin.module";
+import {AdminModule} from "../../admin/admin.module";
 
 @Injectable({
   providedIn:'root'
 })
-export class AdminTipService {
+export class TipService {
   constructor(
     protected httpClient:HttpClient
   ){
@@ -54,13 +54,6 @@ export class AdminTipService {
   }
 
   public getPaginated(pageRequestDto: PageRequestDto): Observable<TipPage> {
-    const params = {
-      pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
-    };
-
-    return this.httpClient.get<TipPage>(TipApi.getPaginated, {
-      headers: new HttpHeaders(),
-      params: params,
-    });
+    return this.httpClient.post<TipPage>(TipApi.getPaginated, pageRequestDto);
   }
 }

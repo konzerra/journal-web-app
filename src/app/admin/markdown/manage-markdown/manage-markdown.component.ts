@@ -1,11 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {MarkdownPage} from "../../../domain/markdown/MarkdownPage";
+import {MarkdownPage} from "../../../shared/models/markdown/MarkdownPage";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {Markdown} from "../../../domain/markdown/Markdown";
-import {AdminMarkdownService} from "../admin-markdown.service";
+
+import {Markdown} from "../../../shared/models/markdown/Markdown";
+
+import {AdminMarkdownRoutes} from "../admin.markdown.routes";
+import {MarkdownService} from "../../../shared/services/markdown.service";
+import {RequiredMarkdowns} from "../../../shared/models/markdown/RequiredMarkdowns";
+
 
 @Component({
   selector: 'app-manage-markdown',
@@ -34,29 +38,38 @@ export class ManageMarkdownComponent implements OnInit {
       }
     ]
   }
+  missingIds:Array<string>= []
+  ids:Array<string>= []
   constructor(
     private dialogsService: DialogsService,
     private router: Router,
-    private markdownService: AdminMarkdownService
+    private markdownService: MarkdownService
   ) {
   }
   ngOnInit(): void {
+
     this.markdownService.getPaginated(this.pageRequestDto).subscribe(
       {
         next:(modelPage)=>{
           this.modelPage = modelPage
         },
-        error:()=>{
-
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
         },
         complete:()=>{
 
         }
       })
+    this.markdownService.getAllNames().subscribe({
+      next:(v)=>{
+        this.ids = v.map((it)=> it.id)
+        this.refreshMissingIds()
+      }
+    })
   }
 
   onAddClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.markdown.save])
+    this.router.navigate([AdminMarkdownRoutes.save])
   }
 
   onDeleteClicked(model: Markdown, index: number) {
@@ -67,6 +80,7 @@ export class ManageMarkdownComponent implements OnInit {
             complete:()=>{
               this.dialogsService.openInfoDialog("Успешно удалено")
               this.modelPage.content.splice(index,1)
+              this.refreshMissingIds()
             },
             error:(err)=>{
               this.dialogsService.openInfoDialog(err)
@@ -75,16 +89,18 @@ export class ManageMarkdownComponent implements OnInit {
         }
       }
     })
+    this.refreshMissingIds()
   }
 
   onEdit(model: Markdown) {
     this.router.navigate(
-      [ComponentRoutingPaths.adminControl.markdown.update],
+      [AdminMarkdownRoutes.update],
       {queryParams: {id: JSON.stringify(model.id)}}
     )
   }
 
   onPageChange($event: number) {
+    this.refreshMissingIds()
     this.pageRequestDto.page = $event-1
     this.markdownService.getPaginated(this.pageRequestDto).subscribe(
       {
@@ -99,4 +115,9 @@ export class ManageMarkdownComponent implements OnInit {
         }
       })
   }
+
+  private refreshMissingIds(): void {
+    this.missingIds = RequiredMarkdowns.list.filter((id) => !this.ids.includes(id));
+  }
+
 }

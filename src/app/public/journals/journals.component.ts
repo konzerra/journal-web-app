@@ -7,7 +7,7 @@ import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {JournalStatus} from "../../shared/models/journal/JournalStatus";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {FileApi} from "../../shared/models/file/FileApi";
-import {AdminJournalService} from "../../admin/journal/admin-journal.service";
+import {JournalService} from "../../shared/services/journal.service";
 
 @Component({
   selector: 'app-journals',
@@ -42,7 +42,7 @@ export class JournalsComponent implements OnInit {
   }
 
   constructor(
-    private journalService: AdminJournalService,
+    private journalService: JournalService,
     private router:Router,
     private dialogsService: DialogsService,
   ) { }

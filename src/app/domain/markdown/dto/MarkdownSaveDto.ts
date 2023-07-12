@@ -1,4 +1,4 @@
-import {MarkdownData} from "../MarkdownData";
+import {MarkdownData} from "../../../shared/models/markdown/MarkdownData";
 
 export interface MarkdownSaveDto{
   id: string,

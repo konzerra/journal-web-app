@@ -3,20 +3,20 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {ArticleSaveDto} from "./_models/ArticleSaveDto";
-import {ArticleApi} from "../../shared/models/article/ArticleApi";
-import {ArticleUpdateDtoByAdmin} from "./_models/ArticleUpdateDtoByAdmin";
-import {ArticleFull} from "../../shared/models/article/ArticleFull";
-import {Article} from "../../shared/models/article/Article";
+import {ArticleSaveDto} from "../../admin/article/_models/ArticleSaveDto";
+import {ArticleApi} from "../models/article/ArticleApi";
+import {ArticleUpdateDtoByAdmin} from "../../admin/article/_models/ArticleUpdateDtoByAdmin";
+import {ArticleFull} from "../models/article/ArticleFull";
+import {Article} from "../models/article/Article";
 import {ArticleSearchDto} from "../../public/articles/ArticleSearchDto";
-import {ArticlePage} from "../../shared/models/article/ArticlePage";
+import {ArticlePage} from "../models/article/ArticlePage";
 import {ArticleUpdateDtoByReviewer} from "../../reviewer-portal/dto/ArticleUpdateDtoByReviewer";
-import {ArticleModule} from "./article.module";
+import {ArticleModule} from "../../admin/article/article.module";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminArticleService {
+export class ArticleService {
 
   constructor(
     private httpClient: HttpClient
@@ -67,6 +67,7 @@ export class AdminArticleService {
       headers: new HttpHeaders(),
     })
   }
+
   public updateByReviewer(
     updateDto: ArticleUpdateDtoByReviewer,
     reviewerBlancFile: File | null,

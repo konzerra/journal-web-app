@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminTipService} from "../admin.tip.service";
+import {TipService} from "../../../shared/services/tip.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
@@ -15,7 +15,7 @@ import {Tip} from "../../../domain/tip/Tip";
 export class ManageTipComponent implements OnInit {
 
   constructor(
-    private tipService: AdminTipService,
+    private tipService: TipService,
     protected dialogsService: DialogsService,
     protected router: Router,
   ) {

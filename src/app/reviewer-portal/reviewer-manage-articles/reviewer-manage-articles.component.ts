@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from "../../shared/models/article/Article";
-import {AdminReviewerService} from "../../admin/reviewer/admin.reviewer.service";
+import {ReviewerService} from "../../shared/services/reviewer.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {AuthService} from "../../auth/auth.service";
@@ -15,7 +15,7 @@ export class ReviewerManageArticlesComponent implements OnInit {
   modelList = new Array<Article>()
 
   constructor(
-    private reviewerService : AdminReviewerService,
+    private reviewerService : ReviewerService,
     private userAuthService:AuthService,
     private router: Router
   ) { }

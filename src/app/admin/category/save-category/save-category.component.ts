@@ -4,7 +4,7 @@ import {
 } from "./category.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {AdminCategoryService} from "../admin.category.service";
+import {CategoryService} from "../../../shared/services/category.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
 import {FormControl} from "@angular/forms";
@@ -24,7 +24,7 @@ export class SaveCategoryComponent implements OnInit {
   constructor(
     protected dialogsService: DialogsService,
     protected router:Router,
-    private categoryService: AdminCategoryService
+    private categoryService: CategoryService
   ) {
   }
 

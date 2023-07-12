@@ -2,22 +2,21 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {JournalSaveDto} from "./_models/JournalSaveDto";
-import {JournalUpdateDto} from "./_models/JournalUpdateDto";
-import {JournalFull} from "../../shared/models/journal/JournalFull";
-import {Journal} from "../../shared/models/journal/Journal";
-import {AdminJournalApi} from "./_models/AdminJournalApi";
-import {JournalPage} from "../../shared/models/journal/JournalPage";
-import {JournalReport} from "./_models/JournalReport";
-import {ArticlePage} from "../../shared/models/article/ArticlePage";
-import {JournalStatus} from "../../shared/models/journal/JournalStatus";
-import {JournalModule} from "./journal.module";
+import {PageRequestDto} from "../models/pagination/PageRequestDto";
+import {JournalSaveDto} from "../../admin/journal/_models/JournalSaveDto";
+import {JournalUpdateDto} from "../../admin/journal/_models/JournalUpdateDto";
+import {JournalFull} from "../models/journal/JournalFull";
+import {Journal} from "../models/journal/Journal";
+import {AdminJournalApi} from "../../admin/journal/_models/AdminJournalApi";
+import {JournalPage} from "../models/journal/JournalPage";
+import {JournalReport} from "../../admin/journal/_models/JournalReport";
+import {ArticlePage} from "../models/article/ArticlePage";
+import {JournalStatus} from "../models/journal/JournalStatus";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminJournalService {
+export class JournalService {
 
   constructor(
     private httpClient: HttpClient
@@ -81,25 +80,16 @@ export class AdminJournalService {
 
 
   public getPaginated(pageRequestDto: PageRequestDto): Observable<JournalPage> {
-    const params = {
-      pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
-    };
 
-    return this.httpClient.get<JournalPage>(AdminJournalApi.getPaginated, {
-      headers: new HttpHeaders(),
-      params: params,
-    });
+    return this.httpClient.post<JournalPage>(AdminJournalApi.getPaginated, pageRequestDto);
   }
 
   public getPaginatedJournalArticles(journalId:Number, pageRequestDto: PageRequestDto): Observable<ArticlePage>{
-    const params = {
-      pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
-    };
 
-    return this.httpClient.get<ArticlePage>(ApiPathUtil.insertId(AdminJournalApi.getPaginatedJournalArticles, journalId.toString()), {
-      headers: new HttpHeaders(),
-      params: params,
-    });
+    return this.httpClient.post<ArticlePage>(
+      ApiPathUtil.insertId(AdminJournalApi.getPaginatedJournalArticles, journalId.toString()),
+      pageRequestDto
+      );
   }
 
   public getAllByStatus(status: string):Observable<Array<Journal>>{
@@ -109,13 +99,8 @@ export class AdminJournalService {
 
   public getPaginatedByStatus(status: string, pageRequestDto: PageRequestDto): Observable<JournalPage> {
     let apiPath: string = AdminJournalApi.getPaginatedByStatus.replace("{status}",JournalStatus.Published)
-    const params = {
-      pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
-    };
 
-    return this.httpClient.get<JournalPage>(apiPath, {
-      headers: new HttpHeaders(),
-      params: params,
-    });
+
+    return this.httpClient.post<JournalPage>(apiPath, pageRequestDto );
   }
 }

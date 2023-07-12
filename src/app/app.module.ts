@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthInterceptor } from "./_auth/auth.interceptor";
 import {AppLanguage} from "./AppLanguage";
+import {MarkdownModule} from "ngx-markdown";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,6 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     RouterModule,
     SharedModule,
+    MarkdownModule.forRoot(),
     TranslateModule.forRoot({
       defaultLanguage: AppLanguage.languages.Kg,
       loader: {

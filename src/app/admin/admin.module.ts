@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import {AdminTipService} from "./tip/admin.tip.service";
+import {TipService} from "../shared/services/tip.service";
 
 
 @NgModule({
@@ -11,6 +11,6 @@ import {AdminTipService} from "./tip/admin.tip.service";
     CommonModule,
     AdminRoutingModule,
   ],
-  providers:[AdminTipService]
+  providers:[]
 })
 export class AdminModule { }

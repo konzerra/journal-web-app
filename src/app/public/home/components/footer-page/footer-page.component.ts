@@ -3,7 +3,7 @@ import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../../ComponentRoutingPaths";
 import {AppLanguage} from "../../../../AppLanguage";
-import {MarkdownService} from "../../../../domain/markdown/markdown.service";
+import {MarkdownService} from "../../../../shared/services/markdown.service";
 
 @Component({
   selector: 'app-footer-page',
@@ -12,7 +12,7 @@ import {MarkdownService} from "../../../../domain/markdown/markdown.service";
 })
 export class FooterPageComponent implements OnInit {
 
-  pagesName = new Array<string>()
+  pages = new Array<{ id: string, name: string }>()
   locale:string
   constructor(
     private markdownService: MarkdownService,
@@ -27,8 +27,8 @@ export class FooterPageComponent implements OnInit {
 
     this.markdownService.getAllNames().subscribe({
       next:(v)=>{
-        console.log(v)
-        this.pagesName = v
+
+        this.pages = v
       },
       error:(err)=>{
         this.dialogsService.openInfoDialog('server_not_responding')
@@ -36,10 +36,10 @@ export class FooterPageComponent implements OnInit {
     })
   }
 
-  onMarkdownPageClicked(name: string) {
+  onMarkdownPageClicked(id: string) {
     this.router.navigate(
-      [ComponentRoutingPaths.common.markdown],
-      {queryParams: {name: name}}
+      ['/markdown'],
+      {queryParams: {id: id}}
     )
   }
 }

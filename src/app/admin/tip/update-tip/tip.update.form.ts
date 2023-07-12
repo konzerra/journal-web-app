@@ -4,7 +4,7 @@ import {FormControl,  Validators} from "@angular/forms";
 import {TipFull} from "../../../domain/tip/TipFull";
 import {TipData} from "../../../domain/tip/TipData";
 import {TipDataControls} from "../_models/TipDataControls";
-import {TipUpdateDto} from "../../../domain/tip/dto/TipUpdateDto";
+import {TipUpdateDto} from "../_models/TipUpdateDto";
 
 export class TipUpdateForm
   extends GenericUpdateFormGroup<TipFull, TipData, TipDataControls, TipUpdateDto>

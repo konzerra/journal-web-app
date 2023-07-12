@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ArticleUpdateForm} from "./article.update.form";
 import {Category} from "../../../domain/category/Category";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AdminArticleService} from "../admin.article.service";
-import {AdminCategoryService} from "../../category/admin.category.service";
+import {ArticleService} from "../../../shared/services/article.service";
+import {CategoryService} from "../../../shared/services/category.service";
 import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Location} from "@angular/common";
@@ -25,8 +25,8 @@ export class UpdateArticleComponent implements OnInit {
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
-    private articleService: AdminArticleService,
-    private categoryService: AdminCategoryService,
+    private articleService: ArticleService,
+    private categoryService: CategoryService,
     private docUseCaseDownload: DocUseCaseDownload,
     protected dialogsService: DialogsService,
     private location: Location
