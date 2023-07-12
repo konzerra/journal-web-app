@@ -7,7 +7,7 @@ import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
 import {ArticlePage} from "../../shared/models/article/ArticlePage";
 import {JournalStatus} from "../../shared/models/journal/JournalStatus";
-import {ArticleSearchDto} from "../../domain/article/ArticleSearchDto";
+import {ArticleSearchDto} from "./ArticleSearchDto";
 import {FileApi} from "../../shared/models/file/FileApi";
 import {AdminJournalService} from "../../admin/journal/admin-journal.service";
 

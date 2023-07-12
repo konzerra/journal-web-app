@@ -1,6 +1,6 @@
 
 
-export interface PasswordResetDto {
+export interface AuthResetDto {
   email: string
   pin: Number
   newPassword: string

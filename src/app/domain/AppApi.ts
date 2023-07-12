@@ -1,13 +1,13 @@
 
-export class AppApi {
-  public static server = {
 
-    publicApi : "https://api.journal.kstu.kg/api/v1/public",
-    protectedApi: "https://api.journal.kstu.kg/api/v1/protected",
+const ip = "http://172.24.84.232:8080"
+export const AppApi = {
 
-    fileDownload: "https://api.journal.kstu.kg/api/v1/public/file/download"
+    publicApi : `${ip}/api/v1/public`,
+    protectedApi: `${ip}/api/v1/protected`,
+    fileDownload: `${ip}/api/v1/public/file/download`
 
-  }
+
 
 
 }

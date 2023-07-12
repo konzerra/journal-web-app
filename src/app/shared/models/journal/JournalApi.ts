@@ -1,7 +1,7 @@
 import {AppApi} from "../../../domain/AppApi";
 
-const publicPath = `${AppApi.server.publicApi}/journal`
-const protectedPath = `${AppApi.server.protectedApi}/journal`
+const publicPath = `${AppApi.publicApi}/journal`
+const protectedPath = `${AppApi.protectedApi}/journal`
 
 export const JournalApi =  {
   makeReport : `${protectedPath}/report/{id}`,

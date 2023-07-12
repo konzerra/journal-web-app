@@ -1,16 +1,16 @@
 import {AppApi} from "../../../domain/AppApi";
 
-export class ArticleApi {
-  public static paths={
-    save: `${AppApi.server.protectedApi}/article`,
-    deleteById: `${AppApi.server.protectedApi}/article/{id}`,
-    updateByAdmin: `${AppApi.server.protectedApi}/article/admin`,
-    updateByReviewer: `${AppApi.server.protectedApi}/article/reviewer`,
+export const ArticleApi =  {
 
-    getByIdFull: `${AppApi.server.protectedApi}/article/full/{id}`,
-    getMyArticles: `${AppApi.server.protectedApi}/article/my/{id}`,
-    getAllPaginated: `${AppApi.server.publicApi}/article/all/{pageNumber}/{pageSize}`,
+  save: `${AppApi.protectedApi}/article`,
+  deleteById: `${AppApi.protectedApi}/article/{id}`,
+  updateByAdmin: `${AppApi.protectedApi}/article/admin`,
+  updateByReviewer: `${AppApi.protectedApi}/article/reviewer`,
 
-    search: `${AppApi.server.publicApi}/article/search/{pageNumber}`,
-  }
+  getByIdFull: `${AppApi.protectedApi}/article/full/{id}`,
+  getMyArticles: `${AppApi.protectedApi}/article/my/{id}`,
+  getAllPaginated: `${AppApi.publicApi}/article/all/{pageNumber}/{pageSize}`,
+
+  search: `${AppApi.publicApi}/article/search/{pageNumber}`,
+
 }

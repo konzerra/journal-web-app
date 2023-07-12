@@ -2,13 +2,22 @@ import { Injectable } from '@angular/core';
 import { JwtDto } from '../domain/auth/JwtDto';
 import { User } from '../domain/user/User';
 import { Role } from '../domain/role/Role';
+import {AuthSigninDto} from "./_models/auth.signin.dto";
+import {UserApi} from "../domain/user/UserApi";
+import {HttpClient} from "@angular/common/http";
+import {AuthApi} from "./auth.api";
+import {AuthSignupDto} from "./_models/auth.signup.dto";
+import {AuthResetDto} from "./_models/auth.reset.dto";
+import {ApiPathUtil} from "../_generic/util/ApiPathUtil";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   public setData(jwtDto: JwtDto) {
     this.setUser(jwtDto.user)
@@ -16,6 +25,19 @@ export class AuthService {
     this.setRole(jwtDto.user.roles)
   }
 
+  signin(signinDto:AuthSigninDto){
+    return this.httpClient.post<JwtDto>(AuthApi.signin, signinDto)
+  }
+  signup(signupDto: AuthSignupDto){
+    return this.httpClient.post(AuthApi.signup,signupDto)
+  }
+
+  resetPassword(resetDto:AuthResetDto){
+    return this.httpClient.post<JwtDto>(AuthApi.reset, resetDto)
+  }
+  generatePasswordPin(email:string){
+    return this.httpClient.get<JwtDto>(ApiPathUtil.insertEmail(AuthApi.generate_password_pin,email))
+  }
   private setUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user))
   }

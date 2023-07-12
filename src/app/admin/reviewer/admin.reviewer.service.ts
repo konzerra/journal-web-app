@@ -21,19 +21,19 @@ export class AdminReviewerService {
   ) { }
 
   public save(saveDto:ReviewerSaveDto):Observable<any>{
-    return this.httpClient.post(ReviewerApi.paths.save,saveDto)
+    return this.httpClient.post(ReviewerApi.save,saveDto)
   }
 
   public update(updateDto:ReviewerUpdateDto):Observable<any>{
-    return this.httpClient.put(ReviewerApi.paths.update,updateDto)
+    return this.httpClient.put(ReviewerApi.update,updateDto)
   }
 
   public deleteById(id:string):Observable<any>{
-    return this.httpClient.delete(ApiPathUtil.insertId(ReviewerApi.paths.deleteById, id)
+    return this.httpClient.delete(ApiPathUtil.insertId(ReviewerApi.deleteById, id)
     )
   }
   getAllArticles(id:Number):Observable<Array<Article>>{
-    let apiPath = ReviewerApi.paths.getAllArticles.replace('{id}', id.toString())
+    let apiPath = ReviewerApi.getAllArticles.replace('{id}', id.toString())
     return this.httpClient.get<Array<Article>>(apiPath,{
       headers: new HttpHeaders(),
     })
@@ -44,7 +44,7 @@ export class AdminReviewerService {
       pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
     };
 
-    return this.httpClient.get<ReviewerPage>(ReviewerApi.paths.getPaginated, {
+    return this.httpClient.get<ReviewerPage>(ReviewerApi.getPaginated, {
       headers: new HttpHeaders(),
       params: params,
     });
@@ -52,18 +52,18 @@ export class AdminReviewerService {
 
   public getById(id : string):Observable<Reviewer>{
     return this.httpClient.get<Reviewer>(
-      ApiPathUtil.insertId(ReviewerApi.paths.getById,id),
+      ApiPathUtil.insertId(ReviewerApi.getById,id),
       { headers: new HttpHeaders()}
     )
   }
 
   public getQueueByCategory(categoryId: Number):Observable<Array<Reviewer>>{
-    let apiPath = ApiPathUtil.insertId(ReviewerApi.paths.getQueue, categoryId.toString())
+    let apiPath = ApiPathUtil.insertId(ReviewerApi.getQueue, categoryId.toString())
     return this.httpClient.get<Array<Reviewer>>(apiPath)
   }
 
   public distribute(journalId:Number):Observable<{ message: string }>{
-    let apiPath= ApiPathUtil.insertId(ReviewerApi.paths.distribute,journalId.toString())
+    let apiPath= ApiPathUtil.insertId(ReviewerApi.distribute,journalId.toString())
     return this.httpClient.get<{ message: string }>(apiPath)
   }
 }

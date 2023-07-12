@@ -8,7 +8,6 @@ import { JournalsComponent } from './journals/journals.component';
 import { MarkdownComponent } from './markdown/markdown.component';
 import {CoreModule} from "../core/core.module";
 import {NgxPaginationModule} from "ngx-pagination";
-import {TranslateModule} from "@ngx-translate/core";
 import {MarkdownModule} from "ngx-markdown";
 import { HandbookComponent } from './handbook/handbook.component';
 import {AboutJournalComponent} from "./home/components/about-journal/about-journal.component";

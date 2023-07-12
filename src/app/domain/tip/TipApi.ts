@@ -1,13 +1,12 @@
 import {AppApi} from "../AppApi";
 
-export class TipApi {
-  public static paths={
-    save: `${AppApi.server.protectedApi}/tip`,
-    deleteById: `${AppApi.server.protectedApi}/tip/{id}`,
-    update: `${AppApi.server.protectedApi}/tip`,
+export const TipApi = {
 
-    getByIdFull: `${AppApi.server.protectedApi}/tip/full/{id}`,
-    getAll:`${AppApi.server.publicApi}/tip/all`,
-    getPaginated: `${AppApi.server.publicApi}/tip/paginated`,
-  }
+  save: `${AppApi.protectedApi}/tip`,
+  deleteById: `${AppApi.protectedApi}/tip/{id}`,
+  update: `${AppApi.protectedApi}/tip`,
+
+  getByIdFull: `${AppApi.protectedApi}/tip/full/{id}`,
+  getAll:`${AppApi.publicApi}/tip/all`,
+  getPaginated: `${AppApi.publicApi}/tip/paginated`,
 }

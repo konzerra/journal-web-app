@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ResetPasswordForm} from "./reset.password.form";
-import {UserUseCaseResetPassword} from "../../domain/user/usecase/UserUseCaseResetPassword";
-import {UserUseCaseGeneratePasswordPin} from "../../domain/user/usecase/UserUseCaseGeneratePasswordPin";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-reset-password',
@@ -15,8 +14,7 @@ export class ResetPasswordComponent implements OnInit {
 
   formGroup = new ResetPasswordForm()
   constructor(
-    private resetPasswordUseCase:UserUseCaseResetPassword,
-    private generatePasswordPinUseCase:UserUseCaseGeneratePasswordPin,
+    private authService:AuthService,
     private dialogsService: DialogsService
   ) { }
 
@@ -31,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
   sendPin() {
     if(this.formGroup.email.valid){
       console.log(this.formGroup.email.value)
-      this.generatePasswordPinUseCase.execute(this.formGroup.email.value || "").subscribe({
+      this.authService.generatePasswordPin(this.formGroup.email.value || "").subscribe({
         error:(err)=>{
           this.dialogsService.openInfoDialog(err)
         },
@@ -46,7 +44,7 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPassword(){
     if( this.formGroup.valid()){
-      this.resetPasswordUseCase.execute(this.formGroup.getDto()).subscribe({
+      this.authService.resetPassword(this.formGroup.getDto()).subscribe({
         error:(err)=>{
           this.dialogsService.openInfoDialog(err)
         },

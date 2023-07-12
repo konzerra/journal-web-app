@@ -8,9 +8,9 @@ import {ArticleApi} from "../../shared/models/article/ArticleApi";
 import {ArticleUpdateDtoByAdmin} from "./_models/ArticleUpdateDtoByAdmin";
 import {ArticleFull} from "../../shared/models/article/ArticleFull";
 import {Article} from "../../shared/models/article/Article";
-import {ArticleSearchDto} from "../../domain/article/ArticleSearchDto";
+import {ArticleSearchDto} from "../../public/articles/ArticleSearchDto";
 import {ArticlePage} from "../../shared/models/article/ArticlePage";
-import {ArticleUpdateDtoByReviewer} from "../../domain/article/dto/ArticleUpdateDtoByReviewer";
+import {ArticleUpdateDtoByReviewer} from "../../reviewer-portal/dto/ArticleUpdateDtoByReviewer";
 import {ArticleModule} from "./article.module";
 
 @Injectable({
@@ -33,7 +33,7 @@ export class AdminArticleService {
     }))
 
 
-    return this.httpClient.post(ArticleApi.paths.save,formData)
+    return this.httpClient.post(ArticleApi.save,formData)
   }
 
   public updateByAdmin(
@@ -63,7 +63,7 @@ export class AdminArticleService {
       }))
     }
 
-    return this.httpClient.put(ArticleApi.paths.updateByAdmin,formData,{
+    return this.httpClient.put(ArticleApi.updateByAdmin,formData,{
       headers: new HttpHeaders(),
     })
   }
@@ -82,33 +82,33 @@ export class AdminArticleService {
         type: reviewerBlancFile.type
       }))
     }
-    return this.httpClient.put(ArticleApi.paths.updateByReviewer,formData,{
+    return this.httpClient.put(ArticleApi.updateByReviewer,formData,{
       headers: new HttpHeaders(),
     })
   }
 
 
   public deleteById(id:string):Observable<any>{
-    return this.httpClient.delete(ApiPathUtil.insertId(ArticleApi.paths.deleteById, id),
+    return this.httpClient.delete(ApiPathUtil.insertId(ArticleApi.deleteById, id),
       {headers: new HttpHeaders()}
     )
   }
 
   public getByIdFull(id : string):Observable<ArticleFull>{
     return this.httpClient.get<ArticleFull>(
-      ApiPathUtil.insertId(ArticleApi.paths.getByIdFull,id)
+      ApiPathUtil.insertId(ArticleApi.getByIdFull,id)
     )
   }
 
   public getMyArticles(userId:Number): Observable<Array<Article>> {
     return this.httpClient.get<Array<Article>>(
-      ApiPathUtil.insertId(ArticleApi.paths.getMyArticles,userId.toString())
+      ApiPathUtil.insertId(ArticleApi.getMyArticles,userId.toString())
     )
   }
 
   public search(pageNumber: Number, articleSearchDto: ArticleSearchDto):Observable<ArticlePage>{
     let apiPath = ApiPathUtil.insertPageNumber(
-      ArticleApi.paths.search,
+      ArticleApi.search,
       pageNumber.toString(),
     )
     return this.httpClient.post<ArticlePage>(apiPath,articleSearchDto)

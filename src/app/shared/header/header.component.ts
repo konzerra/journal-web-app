@@ -40,12 +40,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([ComponentRoutingPaths.userControl.signin])
   }
   hasRole(role:string): boolean{
-    return true
-    //return this.userAuthService.hasRole(role)
+    return this.userAuthService.hasRole(role)
   }
 
   onLangChange() {
-    const lang = this.selectedLang.value ?? AppLanguage.languages.Default
+    const lang = this.selectedLang.value ?? "kg"
+    console.log(lang)
     AppLanguage.setLocalLanguage(lang)
     this.translate.use(lang);
     window.location.reload()

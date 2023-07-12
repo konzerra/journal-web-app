@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
   providedIn:"root"
 })
 export class DocUseCaseDownload {
-  private apiPath: string = DocApi.paths.download
+  private apiPath: string = DocApi.download
   constructor(
     private httpClient:HttpClient
   ) {}

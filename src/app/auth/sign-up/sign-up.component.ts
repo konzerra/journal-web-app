@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserUseCaseRegister} from "../../domain/user/usecase/UserUseCaseRegister";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {UserRegisterDto} from "../../domain/user/dto/UserRegisterDto";
-import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
+import {AuthSignupDto} from "../_models/auth.signup.dto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
 import {SignUpForm} from "./sign-up.form";
+import {AuthRoutes} from "../auth.routes";
+import {AuthService} from "../auth.service";
+import {AppLanguage} from "../../AppLanguage";
 
 @Component({
   selector: 'app-sign-up',
@@ -18,29 +19,33 @@ export class SignUpComponent implements OnInit {
   constructor(
     private router:Router,
     private route: ActivatedRoute,
-    private userUseCaseRegister:UserUseCaseRegister,
-    private dialogsService: DialogsService
+    private dialogsService: DialogsService,
+    private authService: AuthService
   ) { }
   public infoParam : string = ''
   public errorParam: string = ''
   public form:SignUpForm = new SignUpForm()
   ngOnInit(): void {
+    console.log(AppLanguage.getLocalLanguage())
   }
 
   onSubmit() {
     if(this.form.group.valid){
-      let userRegisterDto:UserRegisterDto = {
+      let userRegisterDto:AuthSignupDto = {
         name : this.form.name.value,
         email : this.form.email.value,
         password : this.form.password.value || ""
       }
-      this.userUseCaseRegister.execute(userRegisterDto).subscribe({
+      this.authService.signup(userRegisterDto).subscribe({
         next:(response)=>{
 
         },
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
+        },
         complete:()=>{
           this.router.navigate(
-            [ComponentRoutingPaths.userControl.signin],
+            [AuthRoutes.signin],
             { queryParams: { info: "registered" } })
 
         }

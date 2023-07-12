@@ -1,5 +1,5 @@
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {PasswordResetDto} from "../../domain/user/dto/PasswordResetDto";
+import {AuthResetDto} from "../_models/auth.reset.dto";
 
 
 export class ResetPasswordForm {
@@ -7,7 +7,7 @@ export class ResetPasswordForm {
   pin: FormControl<Number | null> = new FormControl(null, Validators.required)
   password: FormControl<string | null> = new FormControl("", [Validators.required, Validators.minLength(6)]);
 
-  getDto():PasswordResetDto{
+  getDto():AuthResetDto{
     return {
       email: this.email.value || "",
       newPassword: this.password.value || "",

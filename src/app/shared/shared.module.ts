@@ -5,6 +5,9 @@ import {MatInfoDialogComponent} from "./dialogs/mat-info-dialog/mat-info-dialog.
 import {CoreModule} from "../core/core.module";
 import {AngularMaterialModule} from "../angular-material/angular-material.module";
 import {DialogsService} from "./dialogs/dialogs.service";
+import {HeaderComponent} from "./header/header.component";
+import {NotFoundComponent} from "../core/not-found/not-found.component";
+import {RouterLink} from "@angular/router";
 
 
 
@@ -13,11 +16,14 @@ import {DialogsService} from "./dialogs/dialogs.service";
   declarations: [
     MatConfirmDialogComponent,
     MatInfoDialogComponent,
+    HeaderComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
     CoreModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    RouterLink
   ],
   providers:[
     DialogsService
@@ -25,6 +31,8 @@ import {DialogsService} from "./dialogs/dialogs.service";
   exports:[
     MatConfirmDialogComponent,
     MatInfoDialogComponent,
+    HeaderComponent,
+    NotFoundComponent
   ],
 })
 export class SharedModule { }

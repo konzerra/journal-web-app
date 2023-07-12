@@ -1,14 +1,14 @@
 import {AppApi} from "../AppApi";
 
-export class DocApi {
-  private static publicPath = `${AppApi.server.publicApi}/doc`
-  private static protectedPath = `${AppApi.server.protectedApi}/doc`
+const publicPath = `${AppApi.publicApi}/doc`
+const protectedPath = `${AppApi.protectedApi}/doc`
+export const DocApi =  {
 
 
 
-  public static paths={
 
-    download: `${this.publicPath}/{id}`,
 
-  }
+    download: `${publicPath}/{id}`,
+
+
 }

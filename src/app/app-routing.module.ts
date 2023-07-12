@@ -15,7 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'reviewer',
-    loadChildren: () => import('./reviewer-portal/reviewer-portal.module').then(m => m.ReviewerPortalModule)
+    loadChildren: () => import('./reviewer-portal/reviewer-portal.module').then(m => m.ReviewerPortalModule),
+    canActivate:[AuthGuard], data:{role:'Reviewer'}
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+    canActivate:[AuthGuard], data:{role:'User'}
   },
   {
     path: '',

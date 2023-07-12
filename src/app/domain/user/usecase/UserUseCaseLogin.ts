@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserApi} from "../UserApi";
-import {UserLoginDto} from "../dto/UserLoginDto";
+import {AuthSigninDto} from "../../../auth/_models/auth.signin.dto";
 import {JwtDto} from "../../auth/JwtDto";
 
 @Injectable({
@@ -13,7 +13,7 @@ export class UserUseCaseLogin {
     private httpClient:HttpClient
   ) { }
 
-  execute(loginDto:UserLoginDto){
+  execute(loginDto:AuthSigninDto){
     return this.httpClient.post<JwtDto>(UserApi.paths.login, loginDto, {
       headers: this.requestHeader,
     })

@@ -1,8 +1,8 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserLoginDto} from "../dto/UserLoginDto";
+import {AuthSigninDto} from "../../../auth/_models/auth.signin.dto";
 import {JwtDto} from "../../auth/JwtDto";
 import {UserApi} from "../UserApi";
-import {PasswordResetDto} from "../dto/PasswordResetDto";
+import {AuthResetDto} from "../../../auth/_models/auth.reset.dto";
 import {Injectable} from "@angular/core";
 
 
@@ -15,7 +15,7 @@ export class UserUseCaseResetPassword {
     private httpClient:HttpClient
   ) { }
 
-  execute(passwordResetDto:PasswordResetDto){
+  execute(passwordResetDto:AuthResetDto){
     return this.httpClient.post<JwtDto>(UserApi.paths.resetPassword, passwordResetDto, {
       headers: this.requestHeader,
     })

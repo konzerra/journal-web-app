@@ -21,33 +21,33 @@ export class MarkdownService {
   }
 
   public save(saveDto:MarkdownSaveDto):Observable<any>{
-    return this.httpClient.post(MarkdownApi.paths.save,saveDto,{
+    return this.httpClient.post(MarkdownApi.save,saveDto,{
       headers: new HttpHeaders(),
     })
   }
 
   public update(updateDto:MarkdownUpdateDto):Observable<any>{
-    return this.httpClient.put(MarkdownApi.paths.update,updateDto,{
+    return this.httpClient.put(MarkdownApi.update,updateDto,{
       headers: new HttpHeaders(),
     })
   }
 
   public deleteById(id:string):Observable<any>{
-    return this.httpClient.delete(ApiPathUtil.insertId(MarkdownApi.paths.deleteById, id),
+    return this.httpClient.delete(ApiPathUtil.insertId(MarkdownApi.deleteById, id),
       {headers: new HttpHeaders()}
     )
   }
 
   public getById(id : string):Observable<Markdown>{
     return this.httpClient.get<Markdown>(
-      ApiPathUtil.insertId(MarkdownApi.paths.getByIdFull,id),
+      ApiPathUtil.insertId(MarkdownApi.getByIdFull,id),
       { headers: new HttpHeaders()}
     )
   }
 
   public getByIdFull(id : string):Observable<MarkdownFull>{
     return this.httpClient.get<MarkdownFull>(
-      ApiPathUtil.insertId(MarkdownApi.paths.getByIdFull,id),
+      ApiPathUtil.insertId(MarkdownApi.getByIdFull,id),
       { headers: new HttpHeaders()}
     )
   }
@@ -60,7 +60,7 @@ export class MarkdownService {
       pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
     };
 
-    return this.httpClient.get<MarkdownPage>(MarkdownApi.paths.getPaginated, {
+    return this.httpClient.get<MarkdownPage>(MarkdownApi.getPaginated, {
       headers: new HttpHeaders(),
       params: params,
     });
@@ -68,7 +68,7 @@ export class MarkdownService {
 
   public getAllNames(): Observable<Array<string>>{
     return this.httpClient.get<Array<string>>(
-      MarkdownApi.paths.getAllNames,
+      MarkdownApi.getAllNames,
       {
         headers: new HttpHeaders()
       }

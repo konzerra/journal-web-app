@@ -22,33 +22,33 @@ export class AdminTipService {
   }
 
   public save(saveDto:TipSaveDto):Observable<any>{
-    return this.httpClient.post(TipApi.paths.save,saveDto,{
+    return this.httpClient.post(TipApi.save,saveDto,{
       headers: new HttpHeaders(),
     })
   }
 
   public update(updateDto:TipUpdateDto):Observable<any>{
-    return this.httpClient.put(TipApi.paths.update,updateDto,{
+    return this.httpClient.put(TipApi.update,updateDto,{
       headers: new HttpHeaders(),
     })
   }
 
   public deleteById(id:string):Observable<any>{
-    return this.httpClient.delete(ApiPathUtil.insertId(TipApi.paths.deleteById, id),
+    return this.httpClient.delete(ApiPathUtil.insertId(TipApi.deleteById, id),
       {headers: new HttpHeaders()}
     )
   }
 
   public getByIdFull(id : string):Observable<TipFull>{
     return this.httpClient.get<TipFull>(
-      ApiPathUtil.insertId(TipApi.paths.getByIdFull,id),
+      ApiPathUtil.insertId(TipApi.getByIdFull,id),
       { headers: new HttpHeaders()}
     )
   }
 
   public getAll():Observable<Tip[]>{
     return this.httpClient.get<Tip[]>(
-      TipApi.paths.getAll,
+      TipApi.getAll,
       {headers: new HttpHeaders()}
     )
   }
@@ -58,7 +58,7 @@ export class AdminTipService {
       pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
     };
 
-    return this.httpClient.get<TipPage>(TipApi.paths.getPaginated, {
+    return this.httpClient.get<TipPage>(TipApi.getPaginated, {
       headers: new HttpHeaders(),
       params: params,
     });

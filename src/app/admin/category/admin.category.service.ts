@@ -22,33 +22,33 @@ export class AdminCategoryService {
   }
 
   public save(saveDto:CategorySaveDto):Observable<any>{
-    return this.httpClient.post(CategoryApi.paths.save,saveDto,{
+    return this.httpClient.post(CategoryApi.save,saveDto,{
       headers: new HttpHeaders(),
     })
   }
 
   public update(updateDto:CategoryUpdateDto):Observable<any>{
-    return this.httpClient.put(CategoryApi.paths.update,updateDto,{
+    return this.httpClient.put(CategoryApi.update,updateDto,{
       headers: new HttpHeaders(),
     })
   }
 
   public deleteById(id:string):Observable<any>{
-    return this.httpClient.delete(ApiPathUtil.insertId(CategoryApi.paths.deleteById, id),
+    return this.httpClient.delete(ApiPathUtil.insertId(CategoryApi.deleteById, id),
       {headers: new HttpHeaders()}
     )
   }
 
   public getByIdFull(id : string):Observable<CategoryFull>{
     return this.httpClient.get<CategoryFull>(
-      ApiPathUtil.insertId(CategoryApi.paths.getByIdFull,id),
+      ApiPathUtil.insertId(CategoryApi.getByIdFull,id),
       { headers: new HttpHeaders()}
     )
   }
 
   public getAll():Observable<Category[]>{
     return this.httpClient.get<Category[]>(
-      CategoryApi.paths.getAll,
+      CategoryApi.getAll,
       {headers: new HttpHeaders()}
     )
   }
@@ -58,7 +58,7 @@ export class AdminCategoryService {
       pageRequestDto: encodeURIComponent(JSON.stringify(pageRequestDto)),
     };
 
-    return this.httpClient.get<CategoryPage>(CategoryApi.paths.getPaginated, {
+    return this.httpClient.get<CategoryPage>(CategoryApi.getPaginated, {
       headers: new HttpHeaders(),
       params: params,
     });

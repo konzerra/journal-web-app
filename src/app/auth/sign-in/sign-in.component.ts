@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {UserUseCaseLogin} from "../../domain/user/usecase/UserUseCaseLogin";
-import {UserLoginDto} from "../../domain/user/dto/UserLoginDto";
+import {AuthSigninDto} from "../_models/auth.signin.dto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
 
 import {AuthService} from "../auth.service";
 import {SignInForm} from "./sign-in.form";
+import {AuthRoutes} from "../auth.routes";
 
 @Component({
   selector: 'app-sign-in',
@@ -20,8 +20,7 @@ export class SignInComponent implements OnInit {
     private router:Router,
     private route: ActivatedRoute,
     private dialogsService:DialogsService,
-    private userUseCaseLogin:UserUseCaseLogin,
-    private userAuthService:AuthService
+    private authService:AuthService
   ) { }
 
   public infoParam : string = ''
@@ -39,13 +38,13 @@ export class SignInComponent implements OnInit {
   }
   onSubmit() {
     if(this.form.group.valid){
-      let userLoginDto:UserLoginDto = {
+      let userLoginDto:AuthSigninDto = {
         email : this.form.email.value,
         password : this.form.password.value
       }
-      this.userUseCaseLogin.execute(userLoginDto).subscribe({
+      this.authService.signin(userLoginDto).subscribe({
         next: (response) => {
-          this.userAuthService.setData(response)
+          this.authService.setData(response)
         },
         error: (e) => {
           this.errorParam = "произошла неизвестная ошибка"
@@ -69,4 +68,5 @@ export class SignInComponent implements OnInit {
     return genericCheckFormControl(modelName)
   }
 
+    protected readonly AuthRoutes = AuthRoutes;
 }

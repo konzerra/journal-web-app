@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserApi} from "../UserApi";
 import {Injectable} from "@angular/core";
-import {UserRegisterDto} from "../dto/UserRegisterDto";
+import {AuthSignupDto} from "../../../auth/_models/auth.signup.dto";
 import {UserUpdateDto} from "../dto/UserUpdateDto";
 
 
@@ -15,7 +15,7 @@ export class UserUseCaseUpdate {
 
   private requestHeader = new HttpHeaders({  })
   execute(updateDto:UserUpdateDto){
-    return this.httpClient.put(UserApi.paths.update,updateDto, {
+    return this.httpClient.put(UserApi.update,updateDto, {
       headers: this.requestHeader,
     })
   }

@@ -1,15 +1,14 @@
 import {AppApi} from "../AppApi";
 
-export class MarkdownApi {
-  public static paths={
-    save: `${AppApi.server.protectedApi}/markdown`,
-    deleteById: `${AppApi.server.protectedApi}/markdown/{id}`,
-    update: `${AppApi.server.protectedApi}/markdown`,
+export const MarkdownApi = {
 
-    getAllNames: `${AppApi.server.publicApi}/markdown/all_names`,
-    getByIdFull: `${AppApi.server.protectedApi}/markdown/full/{id}`,
-    getById: `${AppApi.server.publicApi}/markdown/{id}`,
-    getPaginated: `${AppApi.server.protectedApi}/markdown/paginated`,
+  save: `${AppApi.protectedApi}/markdown`,
+  deleteById: `${AppApi.protectedApi}/markdown/{id}`,
+  update: `${AppApi.protectedApi}/markdown`,
 
-  }
+  getAllNames: `${AppApi.publicApi}/markdown/all_names`,
+  getByIdFull: `${AppApi.protectedApi}/markdown/full/{id}`,
+  getById: `${AppApi.publicApi}/markdown/{id}`,
+  getPaginated: `${AppApi.protectedApi}/markdown/paginated`,
+
 }
