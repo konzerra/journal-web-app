@@ -9,6 +9,7 @@ import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {AdminCategoryRoutes} from "../admin.category.routes";
 
 @Component({
   selector: 'app-save-category',
@@ -33,7 +34,7 @@ export class SaveCategoryComponent implements OnInit {
   }
 
   onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+    this.router.navigate([AdminCategoryRoutes.manage])
   }
 
   onSubmit() {
@@ -51,7 +52,7 @@ export class SaveCategoryComponent implements OnInit {
         complete:()=>{
           this.dialogsService.openInfoDialog("сохранено")
           this.saveDisabled = false
-          this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+          this.router.navigate([AdminCategoryRoutes.manage])
         }
       })
     }else{

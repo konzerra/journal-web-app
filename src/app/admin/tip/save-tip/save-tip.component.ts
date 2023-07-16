@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TipSaveFormGroup} from "./category.save.form";
+import {TipSaveForm} from "./tip.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {TipService} from "../../../shared/services/tip.service";
@@ -16,7 +16,7 @@ import {AdminTipRoutes} from "../admin.tip.routes";
 })
 export class SaveTipComponent implements OnInit {
 
-  formGroup = new TipSaveFormGroup();
+  formGroup = new TipSaveForm();
   selectedRadioButton = this.formGroup.requiredLangs[0]
   saveDisabled =  false;
 
@@ -32,7 +32,7 @@ export class SaveTipComponent implements OnInit {
   }
 
   onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.tip.main])
+    this.router.navigate([AdminTipRoutes.manage])
   }
 
   onSubmit() {

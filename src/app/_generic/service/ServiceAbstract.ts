@@ -1,8 +1,8 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Tip} from "../../domain/tip/Tip";
+import {Tip} from "../../shared/models/tip/Tip";
 import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {TipPage} from "../../domain/tip/TipPage";
+import {TipPage} from "../../shared/models/tip/TipPage";
 
 export abstract class ServiceAbstract<Model, ModelFull, ModelPage, SaveDto, UpdateDto> {
   protected constructor(

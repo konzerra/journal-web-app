@@ -3,9 +3,9 @@ import {TipService} from "../../../shared/services/tip.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
-import {TipPage} from "../../../domain/tip/TipPage";
+import {TipPage} from "../../../shared/models/tip/TipPage";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {Tip} from "../../../domain/tip/Tip";
+import {Tip} from "../../../shared/models/tip/Tip";
 
 @Component({
   selector: 'app-manage-tip',

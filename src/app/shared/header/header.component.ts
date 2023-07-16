@@ -8,6 +8,12 @@ import {AppLanguage} from "../../AppLanguage";
 import {AuthService} from "../../auth/auth.service";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
+import {AdminJournalRoutes} from "../../admin/journal/admin.journal.routes";
+import {AdminCategoryRoutes} from "../../admin/category/admin.category.routes";
+import {AdminTipRoutes} from "../../admin/tip/admin.tip.routes";
+import {AdminReviewerRoutes} from "../../admin/reviewer/admin.reviewer.routes";
+import {AdminMarkdownRoutes} from "../../admin/markdown/admin.markdown.routes";
+import {AdminPriceRoutes} from "../../admin/price/admin.price.routes";
 
 
 
@@ -50,4 +56,11 @@ export class HeaderComponent implements OnInit {
     this.translate.use(lang);
     window.location.reload()
   }
+
+    protected readonly AdminJournalRoutes = AdminJournalRoutes;
+  protected readonly AdminCategoryRoutes = AdminCategoryRoutes;
+  protected readonly AdminTipRoutes = AdminTipRoutes;
+  protected readonly AdminReviewerRoutes = AdminReviewerRoutes;
+  protected readonly AdminMarkdownRoutes = AdminMarkdownRoutes;
+  protected readonly AdminPriceRoutes = AdminPriceRoutes;
 }

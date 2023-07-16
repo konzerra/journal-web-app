@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TipService} from "../../shared/services/tip.service";
-import {Tip} from "../../domain/tip/Tip";
+import {Tip} from "../../shared/models/tip/Tip";
 
 @Component({
   selector: 'app-handbook',

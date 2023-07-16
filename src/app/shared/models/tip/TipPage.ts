@@ -1,4 +1,4 @@
-import {ModelPageI} from "../../shared/models/pagination/ModelPageI";
+import {ModelPageI} from "../pagination/ModelPageI";
 import {Tip} from "./Tip";
 
 export interface TipPage extends ModelPageI<Tip>{

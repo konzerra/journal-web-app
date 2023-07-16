@@ -11,7 +11,7 @@ export const JournalApi =  {
   getAllCategories : `${publicPath}/{id}/categories`,
   getByIdFull : `${protectedPath}/full/{id}`,
   getById: `${publicPath}/{id}`,
-  getPaginated: `${publicPath}/all/{pageNumber}/{pageSize}`,
+  getPaginated: `${publicPath}/paginated`,
   getPaginatedByStatus: `${publicPath}/paginated/by_status/{status}`,
   save: `${protectedPath}`,
   deleteById: `${protectedPath}/{id}`,

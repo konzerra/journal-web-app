@@ -6,6 +6,7 @@ import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
 import {JournalPage} from "../../../shared/models/journal/JournalPage";
 import {Journal} from "../../../shared/models/journal/Journal";
 import {JournalService} from "../../../shared/services/journal.service";
+import {AdminJournalRoutes} from "../admin.journal.routes";
 
 @Component({
   selector: 'app-manage-journal',
@@ -57,7 +58,7 @@ export class ManageJournalComponent implements OnInit {
 
 
   onAddClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.journal.save])
+    this.router.navigate([AdminJournalRoutes.save])
   }
 
   onDeleteClicked(model: Journal, index: number) {
@@ -79,7 +80,7 @@ export class ManageJournalComponent implements OnInit {
   }
   onEdit(model: Journal) {
     this.router.navigate(
-      [ComponentRoutingPaths.adminControl.journal.update],
+      [AdminJournalRoutes.update],
       { queryParams: { id: JSON.stringify(model.id) } }
     )
   }

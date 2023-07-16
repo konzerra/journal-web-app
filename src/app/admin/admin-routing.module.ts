@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'markdown', loadChildren: () => import('./markdown/markdown.module').then(m => m.MarkdownModule) },
   { path: 'tip', loadChildren: () => import('./tip/tip.module').then(m => m.TipModule) },
   { path: 'reviewer', loadChildren: () => import('./reviewer/reviewer.module').then(m => m.ReviewerModule) },
+  { path: 'price', loadChildren: () => import('./price/price.module').then(m => m.PriceModule) },
   { path: '**', redirectTo: '/', pathMatch: 'prefix' },
 ];
 

@@ -1,21 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryService} from "../../../shared/services/category.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
-import {CategoryPage} from "../../../domain/category/CategoryPage";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {Category} from "../../../domain/category/Category";
-import {AdminCategoryRoutes} from "../admin.category.routes";
+import {PriceService} from "../../../shared/services/price.service";
+import {PricePage} from "../../../shared/models/price/PricePage";
+import {AdminPriceRoutes} from "../admin.price.routes";
+import {Price} from "../../../shared/models/price/Price";
 
 @Component({
-  selector: 'app-manage-category',
-  templateUrl: './manage-category.component.html',
-  styleUrls: ['./manage-category.component.css']
+  selector: 'app-manage-price',
+  templateUrl: './manage-price.component.html',
+  styleUrls: ['./manage-price.component.css']
 })
-export class ManageCategoryComponent implements OnInit {
+export class ManagePriceComponent implements OnInit {
+
   constructor(
-    private categoryService: CategoryService,
+    private priceService: PriceService,
     protected dialogsService: DialogsService,
     protected router: Router,
   ) {
@@ -32,7 +32,7 @@ export class ManageCategoryComponent implements OnInit {
       }
     ]
   }
-  modelPage: CategoryPage = {
+  modelPage: PricePage = {
     content: [],
     empty: true,
     first: true,
@@ -43,16 +43,13 @@ export class ManageCategoryComponent implements OnInit {
     totalPages: 0
   }
   ngOnInit(): void {
-    this.categoryService.getPaginated(this.pageRequestDto).subscribe(
+    this.priceService.getPaginated(this.pageRequestDto).subscribe(
       {
         next:(modelPage)=>{
           this.modelPage = modelPage
         },
         error:(err)=>{
           this.dialogsService.openInfoDialog(err)
-        },
-        complete:()=>{
-
         }
       })
   }
@@ -60,14 +57,14 @@ export class ManageCategoryComponent implements OnInit {
 
 
   onAddClicked() {
-    this.router.navigate([AdminCategoryRoutes.save])
+    this.router.navigate([AdminPriceRoutes.save])
   }
 
-  onDeleteClicked(model: Category, index: number) {
+  onDeleteClicked(model: Price, index: number) {
     this.dialogsService.openConfirmDialog().afterClosed().subscribe({
       next:(value)=>{
         if(value){
-          this.categoryService.deleteById(model.id.toString()).subscribe({
+          this.priceService.deleteById(model.id.toString()).subscribe({
             complete:()=>{
               this.dialogsService.openInfoDialog("Успешно удалено")
               this.modelPage.content.splice(index,1)
@@ -80,15 +77,15 @@ export class ManageCategoryComponent implements OnInit {
       }
     })
   }
-  onEdit(model: Category) {
+  onEdit(model: Price) {
     this.router.navigate(
-      [AdminCategoryRoutes.update],
+      [AdminPriceRoutes.update],
       {queryParams: {id: JSON.stringify(model.id)}}
     )
   }
   onPageChange($event: number) {
     this.pageRequestDto.page = $event-1
-    this.categoryService.getPaginated(this.pageRequestDto).subscribe(
+    this.priceService.getPaginated(this.pageRequestDto).subscribe(
       {
         next:(modelPage)=>{
           this.modelPage = modelPage
@@ -101,6 +98,4 @@ export class ManageCategoryComponent implements OnInit {
         }
       })
   }
-
-
 }

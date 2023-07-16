@@ -1,28 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {JournalSaveForm} from "./journal.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {JournalService} from "../../../shared/services/journal.service";
-import {AdminJournalRoutes} from "../admin.journal.routes";
+import {PriceSaveForm} from "./price.save.form";
+import {PriceService} from "../../../shared/services/price.service";
+import {AdminPriceRoutes} from "../admin.price.routes";
+import {PriceSaveDto} from "../_models/PriceSaveDto";
 
 @Component({
-  selector: 'app-save-journal',
-  templateUrl: './save-journal.component.html',
-  styleUrls: ['./save-journal.component.css']
+  selector: 'app-save-price',
+  templateUrl: './save-price.component.html',
+  styleUrls: ['./save-price.component.css']
 })
-export class SaveJournalComponent implements OnInit {
+export class SavePriceComponent implements OnInit {
 
-  formGroup = new JournalSaveForm();
+  formGroup = new PriceSaveForm();
   selectedRadioButton = this.formGroup.requiredLangs[0]
-  saveDisabled: boolean = false
+  saveDisabled =  false;
 
   constructor(
     protected dialogsService: DialogsService,
     protected router:Router,
-    private journalService: JournalService,
+    private priceService:PriceService
   ) {
   }
 
@@ -30,40 +30,33 @@ export class SaveJournalComponent implements OnInit {
 
   }
 
-  onSuccessfulSave(): void {
-    this.router.navigate([AdminJournalRoutes.manage])
+  onCancelClicked() {
+    this.router.navigate([AdminPriceRoutes.manage])
   }
 
-  onCancelClicked() {
-    this.router.navigate([AdminJournalRoutes.manage])
-  }
   onSubmit() {
     this.saveDisabled = true
-    if (this.formGroup.valid() && this.formGroup.image!=null) {
-      this.journalService.save(this.formGroup.getDto(), this.formGroup.image).subscribe({
+    if (this.formGroup.valid()) {
+      const saveDto:PriceSaveDto = this.formGroup.getDto()
+      this.priceService.save(saveDto).subscribe({
+        next:(value) =>{
+
+        },
         error:(error)=>{
           this.saveDisabled = false
-          alert(error)
+          this.dialogsService.openInfoDialog(error)
         },
         complete:()=>{
           this.dialogsService.openInfoDialog("сохранено")
           this.saveDisabled = false
-          this.onSuccessfulSave()
+          this.router.navigate([AdminPriceRoutes.manage])
         }
       })
-    }
-    else{
+    }else{
       this.saveDisabled = false
       this.dialogsService.openInfoDialog("Не все данные введены")
     }
   }
-
-  onImageChange($event: Event) {
-    this.formGroup.image = ($event.target as HTMLInputElement).files?.[0] ?? null;
-  }
-
-
-
 
   onLangChange(lang: string) {
     this.selectedRadioButton = lang
@@ -73,4 +66,5 @@ export class SaveJournalComponent implements OnInit {
   checkFormControl(formControl: FormControl): boolean {
     return genericCheckFormControl(formControl)
   }
+
 }

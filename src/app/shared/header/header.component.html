@@ -48,12 +48,13 @@
             {{"admin" | translate}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink = "/admin/journal/manage">{{"journals" | translate}}</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/category/main">{{"categories" | translate}}</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/reviewer/main">{{"reviewers" | translate}}</a></li>
-            <li><a class="dropdown-item" routerLink = "/admin/tip/main">{{"handbook" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "{{AdminJournalRoutes.manage}}">{{"journals" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "{{AdminCategoryRoutes.manage}}">{{"categories" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "{{AdminReviewerRoutes.manage}}">{{"reviewers" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "{{AdminPriceRoutes.manage}}">{{"prices" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink = "{{AdminTipRoutes.manage}}">{{"handbook" | translate}}</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" routerLink="admin/markdown/main">{{"pages" | translate}}</a></li>
+            <li><a class="dropdown-item" routerLink="{{AdminMarkdownRoutes.manage}}">{{"pages" | translate}}</a></li>
           </ul>
         </li>
 

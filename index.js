@@ -11,5 +11,5 @@ app.get('/*', (req, res) =>
   res.sendFile('index.html', {root: 'dist/academic-journal-kstu-client/'}),
 );
 
-// Start the app by listening on the default Heroku port
+// Start the app by listening on the port 5001
 app.listen(process.env.PORT || 5001);

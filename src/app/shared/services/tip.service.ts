@@ -2,13 +2,13 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {TipSaveDto} from "../../admin/tip/_models/TipSaveDto";
-import {TipApi} from "../../domain/tip/TipApi";
+import {TipApi} from "../models/tip/TipApi";
 import {TipUpdateDto} from "../../admin/tip/_models/TipUpdateDto";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
-import {TipFull} from "../../domain/tip/TipFull";
-import {TipPage} from "../../domain/tip/TipPage";
+import {TipFull} from "../models/tip/TipFull";
+import {TipPage} from "../models/tip/TipPage";
 import {PageRequestDto} from "../models/pagination/PageRequestDto";
-import {Tip} from "../../domain/tip/Tip";
+import {Tip} from "../models/tip/Tip";
 import {AdminModule} from "../../admin/admin.module";
 
 @Injectable({

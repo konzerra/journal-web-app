@@ -9,6 +9,7 @@ import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {JournalService} from "../../../shared/services/journal.service";
 import {FileApi} from "../../../shared/models/file/FileApi";
+import {AdminJournalRoutes} from "../admin.journal.routes";
 
 @Component({
   selector: 'app-update-journal',
@@ -52,7 +53,7 @@ export class UpdateJournalComponent
 
 
   onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
+    this.router.navigate([AdminJournalRoutes.manage])
   }
 
   onReportClicked() {
@@ -87,7 +88,7 @@ export class UpdateJournalComponent
         complete:()=>{
           this.dialogsService.openInfoDialog("Обновлено")
           this.updateDisabled = false
-          this.router.navigate([ComponentRoutingPaths.adminControl.journal.main])
+          this.router.navigate([AdminJournalRoutes.manage])
         },
         error:(err)=> {
           this.dialogsService.openInfoDialog(err)

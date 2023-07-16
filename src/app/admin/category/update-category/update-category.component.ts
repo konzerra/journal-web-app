@@ -9,6 +9,7 @@ import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {CategoryUpdateDto} from "../../../domain/category/dto/CategoryUpdateDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
+import {AdminCategoryRoutes} from "../admin.category.routes";
 
 @Component({
   selector: 'app-update-category',
@@ -42,7 +43,7 @@ export class UpdateCategoryComponent implements OnInit {
               this.formGroup.setDto(v)
             },
             error:(err) =>{
-              this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+              this.router.navigate([AdminCategoryRoutes.manage])
               this.dialogsService.openInfoDialog(err)
             }
           })
@@ -70,7 +71,7 @@ export class UpdateCategoryComponent implements OnInit {
         complete:()=>{
           this.dialogsService.openInfoDialog('Обновлено')
           this.updateDisabled = false
-          this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+          this.router.navigate([AdminCategoryRoutes.manage])
         }
       })
     }else{
@@ -88,7 +89,7 @@ export class UpdateCategoryComponent implements OnInit {
   }
 
   onCancelClicked() {
-    this.router.navigate([ComponentRoutingPaths.adminControl.category.main])
+    this.router.navigate([AdminCategoryRoutes.manage])
   }
 
 }
