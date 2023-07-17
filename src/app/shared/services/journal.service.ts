@@ -22,36 +22,41 @@ export class JournalService {
     private httpClient: HttpClient
   ) { }
 
-  public save(saveDto:JournalSaveDto, image: File):Observable<any>{
+  public save(saveDto:JournalSaveDto, imageFile: File):Observable<any>{
     let formData = new FormData()
+
     formData.set('saveDto' , new Blob([JSON.stringify(saveDto)],{
       type: "application/json"
     }))
-
-    formData.append("image", new Blob([image],{
-      type: image.type
-    }))
+    let image = new Blob([imageFile],  {type: imageFile.type})
+    formData.append(
+      "image",
+      image,
+      imageFile.name
+    )
 
 
     return this.httpClient.post(AdminJournalApi.save,formData)
   }
 
-  public update(updateDto:JournalUpdateDto, image: File | null, pdfFile: File | null):Observable<any>{
+  public update(updateDto:JournalUpdateDto, imageFile: File | null, pdfFile: File | null):Observable<any>{
     let formData = new FormData()
     formData.set('updateDto' , new Blob([JSON.stringify(updateDto)],{
       type: "application/json"
     }))
 
-    if (image != null) {
-      formData.append("image", new Blob([image],{
-        type: image.type
-      }))
+    if (imageFile != null) {
+      let image = new Blob([imageFile],  {type: imageFile.type})
+      formData.append(
+        "image",
+        image,
+        imageFile.name
+      )
     }
 
     if (pdfFile != null) {
-      formData.append("pdfFile", new Blob([pdfFile],{
-        type: pdfFile.type
-      }))
+      let pdf =  new Blob([pdfFile],  {type: pdfFile.type})
+      formData.append("pdfFile", pdf, pdfFile.name)
     }
 
     return this.httpClient.put(AdminJournalApi.update,formData,{

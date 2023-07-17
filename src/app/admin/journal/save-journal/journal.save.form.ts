@@ -11,6 +11,7 @@ export class JournalSaveForm extends GenericSaveFormGroup<JournalData, JournalDa
   name : FormControl
   version:FormControl
   image:File | null = null
+  localImageURL: string | null = null;
 
   constructor() {
     super();

@@ -1,6 +1,7 @@
 
 
-const ip = "http://localhost:8080"
+//const ip = "http://localhost:8080"
+const ip = "http://api.journal.kstu.kg"
 export const AppApi = {
 
     publicApi : `${ip}/api/v1/public`,

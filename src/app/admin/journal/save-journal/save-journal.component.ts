@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {JournalSaveForm} from "./journal.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {JournalService} from "../../../shared/services/journal.service";
 import {AdminJournalRoutes} from "../admin.journal.routes";
+import {HttpClient} from "@angular/common/http";
+import {AppApi} from "../../../domain/AppApi";
+import {FileApi} from "../../../shared/models/file/FileApi";
 
 @Component({
   selector: 'app-save-journal',
@@ -15,14 +17,16 @@ import {AdminJournalRoutes} from "../admin.journal.routes";
 })
 export class SaveJournalComponent implements OnInit {
 
-  formGroup = new JournalSaveForm();
-  selectedRadioButton = this.formGroup.requiredLangs[0]
+  form = new JournalSaveForm();
+  selectedRadioButton = this.form.requiredLangs[0]
   saveDisabled: boolean = false
+
 
   constructor(
     protected dialogsService: DialogsService,
     protected router:Router,
     private journalService: JournalService,
+    private http: HttpClient
   ) {
   }
 
@@ -39,8 +43,8 @@ export class SaveJournalComponent implements OnInit {
   }
   onSubmit() {
     this.saveDisabled = true
-    if (this.formGroup.valid() && this.formGroup.image!=null) {
-      this.journalService.save(this.formGroup.getDto(), this.formGroup.image).subscribe({
+    if (this.form.valid() && this.form.image!=null) {
+      this.journalService.save(this.form.getDto(), this.form.image).subscribe({
         error:(error)=>{
           this.saveDisabled = false
           alert(error)
@@ -59,7 +63,13 @@ export class SaveJournalComponent implements OnInit {
   }
 
   onImageChange($event: Event) {
-    this.formGroup.image = ($event.target as HTMLInputElement).files?.[0] ?? null;
+    this.form.image = ($event.target as HTMLInputElement).files?.[0] ?? null;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.form.localImageURL = reader.result as string || null;
+    };
+    if(this.form.image != null)
+      reader.readAsDataURL(this.form.image);
   }
 
 
@@ -67,10 +77,13 @@ export class SaveJournalComponent implements OnInit {
 
   onLangChange(lang: string) {
     this.selectedRadioButton = lang
-    this.formGroup.onLangChange(lang)
+    this.form.onLangChange(lang)
+
   }
 
   checkFormControl(formControl: FormControl): boolean {
     return genericCheckFormControl(formControl)
   }
+
+  protected readonly FileApi = FileApi;
 }

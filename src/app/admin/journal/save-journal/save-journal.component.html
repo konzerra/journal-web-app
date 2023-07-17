@@ -15,14 +15,19 @@
         id="journalImage"
         (change)="onImageChange($event)"
         accept=".jpeg, .png"
-
       />
+      <img
+        *ngIf="form.localImageURL"
+        [src]="form.localImageURL"
+        class="mt-2"
+        alt="...">
+      <br>
 
       <!-- Select input language   radio-buttons -->
       <label class = "mt-2">{{'enter_data_in_languages' | translate}}</label>
       <br>
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <div *ngFor="let lang of formGroup.requiredLangs" >
+        <div *ngFor="let lang of form.requiredLangs" >
           <input
             [value]="lang"
             type="radio"
@@ -41,13 +46,13 @@
         <input type="text"
                id="name"
                class="form-control"
-               [formControl]="formGroup.name"
+               [formControl]="form.name"
                placeholder="{{'enter_journal_title' | translate}}"
                required autofocus="autofocus" />
-        <div *ngIf="checkFormControl(formGroup.name)"
+        <div *ngIf="checkFormControl(form.name)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.name.errors?.['required']">
+          <div *ngIf="form.name.errors?.['required']">
             {{'enter_journal_title' | translate}}
           </div>
 
@@ -58,13 +63,13 @@
         <input type="text"
                id="version"
                class="form-control"
-               [formControl]="formGroup.version"
+               [formControl]="form.version"
                placeholder="{{'enter_version' | translate}}"
                required autofocus="autofocus" />
-        <div *ngIf="checkFormControl(formGroup.version)"
+        <div *ngIf="checkFormControl(form.version)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.version.errors?.['required']">
+          <div *ngIf="form.version.errors?.['required']">
             {{'enter_version' | translate}}
           </div>
 

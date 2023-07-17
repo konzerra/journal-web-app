@@ -10,6 +10,8 @@ import {Location} from "@angular/common";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {FileApi} from "../../../shared/models/file/FileApi";
+import {Price} from "../../../shared/models/price/Price";
+import {PriceService} from "../../../shared/services/price.service";
 
 @Component({
   selector: 'app-update-article',
@@ -21,12 +23,14 @@ export class UpdateArticleComponent implements OnInit {
   formGroup = new ArticleUpdateForm()
   selectedRadioButton: string = this.formGroup.requiredLangs[0]
   categoryList = new Array<Category>()
+  priceList = new Array<Price>()
   updateDisabled = false
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
     private articleService: ArticleService,
     private categoryService: CategoryService,
+    private priceService: PriceService,
     private docUseCaseDownload: DocUseCaseDownload,
     protected dialogsService: DialogsService,
     private location: Location
@@ -45,23 +49,10 @@ export class UpdateArticleComponent implements OnInit {
               this.dialogsService.openInfoDialog(err)
             },
             complete:()=>{
-              this.categoryService.getAll().subscribe({
-                next:(categoryList)=>{
-                  this.categoryList = categoryList
-                },
-                complete:()=>{
-                  if(this.formGroup.updateDto.categoryId!=null){
-                    for(const category of this.categoryList){
-                      if(category.id==this.formGroup.updateDto.categoryId){
-                        this.formGroup.category = category
-                      }
-                    }
-                  }
-                }
-              })
+              this.getPrices()
+              this.getCategories()
 
             }
-
           })
         }
       }
@@ -136,6 +127,40 @@ export class UpdateArticleComponent implements OnInit {
 
   onAntiplagiatFileChange($event: Event) {
     this.formGroup.antiplagiatFile = ($event.target as HTMLInputElement).files?.[0] ?? null
+  }
+
+  private getCategories(){
+    this.categoryService.getAll().subscribe({
+      next:(categoryList)=>{
+        this.categoryList = categoryList
+      },
+      complete:()=>{
+        if(this.formGroup.updateDto.categoryId!=null){
+          for(const category of this.categoryList){
+            if(category.id==this.formGroup.updateDto.categoryId){
+              this.formGroup.category = category
+            }
+          }
+        }
+      }
+    })
+  }
+
+  private getPrices(){
+    this.priceService.getAll().subscribe({
+      next:(priceList)=>{
+        this.priceList = priceList
+      },
+      complete:()=>{
+        if(this.formGroup.updateDto.categoryId!=null){
+          for(const price of this.priceList){
+            if(price.id==this.formGroup.updateDto.priceId){
+              this.formGroup.price = price
+            }
+          }
+        }
+      }
+    })
   }
 
   protected readonly FileApi = FileApi;

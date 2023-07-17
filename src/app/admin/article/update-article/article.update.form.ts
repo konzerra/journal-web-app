@@ -10,6 +10,7 @@ import {ArticleStatusesAdmin} from "../_models/ArticleStatusesAdmin";
 import {Category} from "../../../domain/category/Category";
 import {ArticleFull} from "../../../shared/models/article/ArticleFull";
 import {Journal} from "../../../shared/models/journal/Journal";
+import {Price} from "../../../shared/models/price/Price";
 
 
 
@@ -23,6 +24,7 @@ export class ArticleUpdateForm
   journal= new FormControl<Journal | null>(null, Validators.required)
   pages = new FormControl<Number | null>(null, Validators.required)
   category : Category | null = null
+  price: Price | null = null
   wordFile: File | null = null
   pdfFile: File | null = null
   antiplagiatFile: File | null = null
@@ -49,6 +51,7 @@ export class ArticleUpdateForm
     journalId: null,
     pagesInJournal: null,
     status: "",
+    priceId: null,
   }
   articleFull!: ArticleFull
 
@@ -69,6 +72,7 @@ export class ArticleUpdateForm
       journalId: modelFull.journal.id,
       pagesInJournal: modelFull.pagesInJournal,
       status: modelFull.status,
+      priceId: modelFull.price?.id || null
     }
     this.status.setValue(modelFull.status)
     this.journal.setValue(modelFull.journal)
@@ -118,6 +122,7 @@ export class ArticleUpdateForm
       journalId: this.journal.value?.id || 0,
       pagesInJournal: this.pagesInJournal.value,
       status: this.status.value || this.updateDto.status,
+      priceId: this.price?.id || 0,
     }
     console.log(articleUpdateDto)
     this.dataControlsList.forEach((data)=>{
@@ -139,7 +144,6 @@ export class ArticleUpdateForm
 
 
   valid(): boolean {
-    console.log(this.pages.valid)
     return (
       this.journal.valid &&
         this.isDataControlsListValid()
@@ -152,6 +156,4 @@ export class ArticleUpdateForm
     this.authors =dataControls.authors
     this.tags = dataControls.tags
   }
-
-
 }

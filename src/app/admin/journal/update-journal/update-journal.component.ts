@@ -10,6 +10,9 @@ import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormCo
 import {JournalService} from "../../../shared/services/journal.service";
 import {FileApi} from "../../../shared/models/file/FileApi";
 import {AdminJournalRoutes} from "../admin.journal.routes";
+import {JournalSaveDto} from "../_models/JournalSaveDto";
+import {isEmpty} from "rxjs";
+import {isNotBlanc} from "../../../shared/validators";
 
 @Component({
   selector: 'app-update-journal',
@@ -82,7 +85,7 @@ export class UpdateJournalComponent
     if (this.form.valid()) {
       this.journalService.update(
         this.form.getDto(),
-        this.form.journalImage,
+        this.form.image,
         this.form.journalFile
       ).subscribe({
         complete:()=>{
@@ -116,10 +119,17 @@ export class UpdateJournalComponent
   }
 
   onImageChange($event: Event) {
-    this.form.journalImage = ($event.target as HTMLInputElement).files?.[0] ?? null
-
+    this.form.image = ($event.target as HTMLInputElement).files?.[0] ?? null
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.form.localImageURL = reader.result as string || null;
+    };
+    if(this.form.image != null)
+      reader.readAsDataURL(this.form.image);
   }
 
 
   protected readonly FileApi = FileApi;
+  protected readonly isEmpty = isEmpty;
+  protected readonly isNotBlanc = isNotBlanc;
 }

@@ -1,7 +1,7 @@
 
 
 export interface Price {
-  id: Number,
+  id: number,
   name: string,
   overview: string,
   sum: number

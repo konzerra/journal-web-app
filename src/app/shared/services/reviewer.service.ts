@@ -9,7 +9,6 @@ import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
 import {Reviewer} from "../../domain/reviewer/Reviewer";
 import {ReviewerSaveDto} from "../../domain/reviewer/dto/ReviewerSaveDto";
 import {ReviewerUpdateDto} from "../../domain/reviewer/dto/ReviewerUpdateDto";
-import {ReviewerModule} from "../../admin/reviewer/reviewer.module";
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +39,6 @@ export class ReviewerService {
   }
 
   public getPaginated(pageRequestDto: PageRequestDto): Observable<ReviewerPage> {
-
-
     return this.httpClient.post<ReviewerPage>(ReviewerApi.getPaginated, pageRequestDto );
   }
 

@@ -1,3 +1,4 @@
+import {Price} from "../price/Price";
 
 export interface Article {
   id: Number,
@@ -19,7 +20,8 @@ export interface Article {
   } | null
   annotation: string,
   reviewer:string | null
-
+  sum: number
+  price: Price | null,
 
   authors: Array<String>,
 

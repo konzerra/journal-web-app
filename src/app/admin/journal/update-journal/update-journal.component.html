@@ -14,8 +14,10 @@
                 [formControl]="form.status"
                 required
         >
+
           <option value="" disabled selected hidden>{{'select_status' | translate}}</option>
           <option *ngFor="let status of form.journalStatuses"
+                  [selected]="form.status.value === status"
                   [value]="status">{{status}}
           </option>
         </select>
@@ -39,7 +41,7 @@
         accept=".pdf"
         (change)="onJournalFileChange($event)"
       />
-      <label *ngIf="form.journalFull.pdf!=null" class="">
+      <label *ngIf="form.journalFull.pdf" class="">
         <a class="link" href="{{FileApi.download + form.journalFull.pdf }}">
           {{"download_existing_version" | translate}}
         </a>
@@ -57,10 +59,16 @@
         accept=".jpeg"
 
       />
-      <br>
-      <img ngSrc="{{FileApi.download + form.journalImage}}"
-           class=""
-           alt="..." fill>
+      <img
+        *ngIf="form.localImageURL"
+        [src]="form.localImageURL"
+        class="mt-2"
+        alt="...">
+      <img
+        *ngIf="form.localImageURL == null && isNotBlanc(form.journalFull.image)"
+        [src]="FileApi.download + form.journalFull.image"
+        class="mt-2"
+        alt="...">
       <br>
 
       <!-- Select input language   radio-buttons -->

@@ -11,13 +11,17 @@ export class JournalUpdateForm
   extends GenericUpdateFormGroup<JournalFull,JournalData, JournalDataControls, JournalUpdateDto>
 {
 
-  journalFull!:JournalFull
+  journalFull:JournalFull ={
+    dataList: [], id: 0, image: "", pdf: "", status: ""
+
+  }
 
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
   journalStatuses : Array<string> = Object.values(JournalStatus)
   journalFile: File | null = null
-  journalImage:File | null = null
-  journalImageBase64:string = ''
+  image:File | null = null
+  localImageURL: string | null = null;
+
 
   //changes on lang changed
   name : FormControl = new FormControl("", Validators.required)
@@ -34,6 +38,7 @@ export class JournalUpdateForm
 
   setDto(modelFull:JournalFull){
     this.journalFull = modelFull
+    console.log(this.journalFull)
     this.updateDto = {
       dataList: modelFull.dataList,
       id: modelFull.id,

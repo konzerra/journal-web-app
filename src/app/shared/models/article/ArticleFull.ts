@@ -1,6 +1,7 @@
 import {ArticleData} from "./ArticleData";
 import {Category} from "../../../domain/category/Category";
 import {Journal} from "../journal/Journal";
+import {Price} from "../price/Price";
 
 export interface ArticleFull {
   id: Number,
@@ -11,6 +12,7 @@ export interface ArticleFull {
 
   journal: Journal,
   category: Category | null
+  price: Price | null
 
   reviewer: string | null,
 

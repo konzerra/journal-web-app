@@ -11,6 +11,6 @@ export const ReviewerApi = {
   getById:`${AppApi.protectedApi}/reviewer/{id}`,
   getQueue: `${AppApi.protectedApi}/reviewer/category/{id}`,
   getAllArticles: `${AppApi.protectedApi}/reviewer/{id}/articles`,
-  getPaginated: `${AppApi.protectedApi}/reviewer/all/{pageNumber}/{pageSize}`,
+  getPaginated: `${AppApi.protectedApi}/reviewer/paginated`,
 
 }
