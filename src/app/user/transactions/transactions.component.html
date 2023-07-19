@@ -33,13 +33,17 @@
         <th scope="col">{{'date' | translate}}</th>
       </tr>
       </thead>
-
-      <tbody >
-      <div *ngIf="receipts.length ==0" class="text-center">
+      <div *ngIf="receiptPage.content.length ==0" class="text-center">
+        <br>
         <i class="bi bi-search icon-not-found"></i>
         <h3>{{'not_found' | translate}}</h3>
       </div>
-      <tr *ngFor="let receipt of receipts;">
+      <tbody >
+      <tr *ngFor="let i = index; let receipt of receiptPage.content | paginate :{
+        itemsPerPage: receiptPage.size,
+        currentPage : receiptPage.number+1,
+        totalItems: receiptPage.totalElements
+        }">
         <td>{{receipt.id}}</td>
         <td>{{receipt.sum}}</td>
         <td>{{receipt.date}}</td>
@@ -58,13 +62,17 @@
         <th scope="col">{{'date' | translate}}</th>
       </tr>
       </thead>
-
-      <tbody >
-      <div *ngIf="purchases.length ==0" class="text-center">
-        <i class="bi bi-search icon-not-found mt-2"></i>
+      <div *ngIf="purchasePage.content.length == 0" class="text-center">
+        <br>
+        <i class="bi bi-search icon-not-found "></i>
         <h3>{{'not_found' | translate}}</h3>
       </div>
-      <tr *ngFor="let purchase of purchases;">
+      <tbody >
+      <tr *ngFor="let i = index; let purchase of purchasePage.content | paginate :{
+        itemsPerPage: purchasePage.size,
+        currentPage : purchasePage.number+1,
+        totalItems: purchasePage.totalElements
+        }">
         <td>{{purchase.id}}</td>
         <td>{{purchase.articleId}}</td>
         <td>{{purchase.sum}}</td>

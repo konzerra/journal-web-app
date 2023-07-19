@@ -48,19 +48,16 @@ export class ArticleService {
       type:"application/json"
     }))
     if(wordFile!=null){
-      formData.set("wordFile", new Blob([wordFile],{
-        type: wordFile.type
-      }))
+      let word =  new Blob([wordFile],  {type: wordFile.type})
+      formData.set("wordFile", word, wordFile.name)
     }
     if(pdfFile!= null){
-      formData.set("pdfFile", new Blob([pdfFile],{
-        type: pdfFile.type
-      }))
+      let pdf =  new Blob([pdfFile],  {type: pdfFile.type})
+      formData.set("pdfFile", pdf, pdfFile.name)
     }
     if(antiplagiatFile!= null){
-      formData.set("antiplagiatFile", new Blob([antiplagiatFile],{
-        type: antiplagiatFile.type
-      }))
+      let antiplagiat =  new Blob([antiplagiatFile],  {type: antiplagiatFile.type})
+      formData.set("antiplagiatFile", antiplagiat, antiplagiatFile.name)
     }
 
     return this.httpClient.put(ArticleApi.updateByAdmin,formData,{
@@ -79,9 +76,8 @@ export class ArticleService {
     }))
 
     if(reviewerBlancFile!=null){
-      formData.set("reviewerBlankFile", new Blob([reviewerBlancFile],{
-        type: reviewerBlancFile.type
-      }))
+      let reviewerBlanc =  new Blob([reviewerBlancFile],  {type: reviewerBlancFile.type})
+      formData.set("reviewerBlankFile", reviewerBlanc, reviewerBlancFile.name)
     }
     return this.httpClient.put(ArticleApi.updateByReviewer,formData,{
       headers: new HttpHeaders(),

@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Receipt} from "../../domain/receipt/Receipt";
-import {Purchase} from "../../domain/purchase/Purchase";
 import {PurchaseService} from "../../domain/purchase/purchase.service";
 import {PageRequestDto} from "../../domain/pagination/PageRequestDto";
-import {TipPage} from "../../domain/tip/TipPage";
 import {PurchasePage} from "../../domain/purchase/PurchasePage";
 import {AuthService} from "../../auth/auth.service";
 import {ReceiptService} from "../../domain/receipt/receipt.service";
@@ -15,10 +12,8 @@ import {ReceiptPage} from "../../domain/receipt/ReceiptPage";
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit{
-  transactionTypes = ['receipt','purchase'];
-  selectedRadioButton = 'receipt';
-  receipts: Array<Receipt> = [];
-  purchases: Array<Purchase> = []
+  transactionTypes = ['receipts','purchases'];
+  selectedRadioButton = 'receipts';
   userId: number = 0
 
   constructor(
@@ -39,7 +34,26 @@ export class TransactionsComponent implements OnInit{
     ]
   }
   purchasePage: PurchasePage = {
-    content: [],
+    content: [
+      {
+        id: 0,
+        sum: 500,
+        articleId: 1,
+        date: new Date()
+      },
+      {
+        id: 11,
+        sum: 500,
+        articleId: 1,
+        date: new Date()
+      },
+      {
+        id: 22,
+        sum: 500,
+        articleId: 1,
+        date: new Date()
+      }
+    ],
     empty: true,
     first: true,
     number: 0,
@@ -60,7 +74,23 @@ export class TransactionsComponent implements OnInit{
     ]
   }
   receiptPage: ReceiptPage = {
-    content: [],
+    content: [
+      {
+        id: 0,
+        sum: 1000,
+        date: new Date()
+      },
+      {
+        id: 1,
+        sum: 1000,
+        date: new Date()
+      },
+      {
+        id: 2,
+        sum: 1000,
+        date: new Date()
+      }
+    ],
     empty: true,
     first: true,
     number: 0,
@@ -93,7 +123,7 @@ export class TransactionsComponent implements OnInit{
   }
   onPageChange($event: number) {
     let page = $event-1
-    if(this.selectedRadioButton === "receipt"){
+    if(this.selectedRadioButton === "receipts"){
       this.getReceiptPage(page)
     }else{
       this.getPurchasePage(page)

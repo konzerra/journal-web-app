@@ -8,6 +8,8 @@ import {CoreModule} from "../core/core.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
 import { TransactionsComponent } from './transactions/transactions.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { TransactionsComponent } from './transactions/transactions.component';
     UserRoutingModule,
     CoreModule,
     TranslateModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 export class UserModule { }

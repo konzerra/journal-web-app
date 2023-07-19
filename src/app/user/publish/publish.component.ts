@@ -60,6 +60,7 @@ export class PublishComponent implements OnInit {
   onSubmit() {
     this.publishDisabled = true
     let userId = this.userService.getUser()?.id
+    this.formGroup.userId = userId || 0
     if (this.formGroup.valid() && userId!=undefined && this.formGroup.wordFile != null) {
       this.formGroup.userId = userId
       this.articleService.save(
