@@ -1,4 +1,4 @@
-import {TipData} from "../../../shared/models/tip/TipData";
+import {TipData} from "../../../domain/tip/TipData";
 
 export interface TipUpdateDto {
   id: Number,

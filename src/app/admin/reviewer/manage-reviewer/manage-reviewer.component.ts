@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ReviewerService} from "../../../shared/services/reviewer.service";
+import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
 import {ReviewerPage} from "../../../domain/reviewer/ReviewerPage";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Reviewer} from "../../../domain/reviewer/Reviewer";

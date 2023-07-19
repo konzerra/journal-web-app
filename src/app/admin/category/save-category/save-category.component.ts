@@ -4,9 +4,9 @@ import {
 } from "./category.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {CategoryService} from "../../../shared/services/category.service";
+import {CategoryService} from "../../../domain/category/category.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
+import {CategorySaveDto} from "../_models/CategorySaveDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {AdminCategoryRoutes} from "../admin.category.routes";

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TipSaveForm} from "./tip.save.form";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {TipService} from "../../../shared/services/tip.service";
+import {TipService} from "../../../domain/tip/tip.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {TipSaveDto} from "../_models/TipSaveDto";
 import {FormControl} from "@angular/forms";

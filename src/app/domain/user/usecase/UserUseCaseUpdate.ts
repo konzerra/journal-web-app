@@ -1,8 +1,7 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserApi} from "../UserApi";
 import {Injectable} from "@angular/core";
-import {AuthSignupDto} from "../../../auth/_models/auth.signup.dto";
-import {UserUpdateDto} from "../dto/UserUpdateDto";
+import {UserUpdateDto} from "../../../user/profile/_models/UserUpdateDto";
 
 
 @Injectable({

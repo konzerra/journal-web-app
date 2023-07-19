@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {MarkdownPage} from "../../../shared/models/markdown/MarkdownPage";
-import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
+import {MarkdownPage} from "../../../domain/markdown/MarkdownPage";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 
-import {Markdown} from "../../../shared/models/markdown/Markdown";
+import {Markdown} from "../../../domain/markdown/Markdown";
 
 import {AdminMarkdownRoutes} from "../admin.markdown.routes";
-import {MarkdownService} from "../../../shared/services/markdown.service";
-import {RequiredMarkdowns} from "../../../shared/models/markdown/RequiredMarkdowns";
+import {MarkdownService} from "../../../domain/markdown/markdown.service";
+import {RequiredMarkdowns} from "../../../domain/markdown/RequiredMarkdowns";
 
 
 @Component({

@@ -4,7 +4,7 @@ import {FormControl} from "@angular/forms";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 
 import {TipDataControls} from "../_models/TipDataControls";
-import {TipData} from "../../../shared/models/tip/TipData";
+import {TipData} from "../../../domain/tip/TipData";
 import {TipSaveDto} from "../_models/TipSaveDto";
 
 

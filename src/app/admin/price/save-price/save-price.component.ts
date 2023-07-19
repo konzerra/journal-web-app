@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {PriceSaveForm} from "./price.save.form";
-import {PriceService} from "../../../shared/services/price.service";
+import {PriceService} from "../../../domain/price/price.service";
 import {AdminPriceRoutes} from "../admin.price.routes";
 import {PriceSaveDto} from "../_models/PriceSaveDto";
 

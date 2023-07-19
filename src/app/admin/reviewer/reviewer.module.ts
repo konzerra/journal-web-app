@@ -10,7 +10,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
 import {SaveReviewerComponent} from "./save-reviewer/save-reviewer.component";
 import {CoreModule} from "../../core/core.module";
-import {ReviewerService} from "../../shared/services/reviewer.service";
+import {ReviewerService} from "../../domain/reviewer/reviewer.service";
 
 
 @NgModule({

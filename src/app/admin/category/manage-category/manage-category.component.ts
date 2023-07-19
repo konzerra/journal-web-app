@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryService} from "../../../shared/services/category.service";
+import {CategoryService} from "../../../domain/category/category.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
 import {CategoryPage} from "../../../domain/category/CategoryPage";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Category} from "../../../domain/category/Category";

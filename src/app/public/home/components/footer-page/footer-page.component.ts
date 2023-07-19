@@ -3,7 +3,7 @@ import {DialogsService} from "../../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../../../ComponentRoutingPaths";
 import {AppLanguage} from "../../../../AppLanguage";
-import {MarkdownService} from "../../../../shared/services/markdown.service";
+import {MarkdownService} from "../../../../domain/markdown/markdown.service";
 
 @Component({
   selector: 'app-footer-page',

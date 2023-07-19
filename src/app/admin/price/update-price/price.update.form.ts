@@ -1,10 +1,10 @@
 import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {FormControl,  Validators} from "@angular/forms";
-import {PriceFull} from "../../../shared/models/price/PriceFull";
+import {PriceFull} from "../../../domain/price/PriceFull";
 import {PriceDataControls} from "../_models/PriceDataControls";
 import {PriceUpdateDto} from "../_models/PriceUpdateDto";
-import {PriceData} from "../../../shared/models/price/PriceData";
+import {PriceData} from "../../../domain/price/PriceData";
 
 
 export class PriceUpdateForm

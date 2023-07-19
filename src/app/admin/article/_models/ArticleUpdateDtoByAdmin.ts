@@ -1,4 +1,4 @@
-import {ArticleData} from "../../../shared/models/article/ArticleData";
+import {ArticleData} from "../../../domain/article/ArticleData";
 
 export interface ArticleUpdateDtoByAdmin {
   id: Number | null,

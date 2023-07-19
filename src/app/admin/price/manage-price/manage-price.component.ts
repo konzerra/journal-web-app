@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
-import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
-import {PriceService} from "../../../shared/services/price.service";
-import {PricePage} from "../../../shared/models/price/PricePage";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
+import {PriceService} from "../../../domain/price/price.service";
+import {PricePage} from "../../../domain/price/PricePage";
 import {AdminPriceRoutes} from "../admin.price.routes";
-import {Price} from "../../../shared/models/price/Price";
+import {Price} from "../../../domain/price/Price";
 
 @Component({
   selector: 'app-manage-price',

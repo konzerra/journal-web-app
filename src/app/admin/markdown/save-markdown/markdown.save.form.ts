@@ -1,8 +1,8 @@
 import {GenericSaveFormGroup} from "../../../_generic/form-group/GenricSaveFormGroup";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
-import {MarkdownData} from "../../../shared/models/markdown/MarkdownData";
-import {MarkdownSaveDto} from "../../../domain/markdown/dto/MarkdownSaveDto";
+import {MarkdownData} from "../../../domain/markdown/MarkdownData";
+import {MarkdownSaveDto} from "../_models/MarkdownSaveDto";
 import {MarkdownDataControls} from "../_models/MarkdownDataControls";
 
 export class MarkdownSaveForm

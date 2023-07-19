@@ -1,4 +1,4 @@
-import {JournalData} from "../../shared/models/journal/JournalData";
+import {JournalData} from "../../domain/journal/JournalData";
 import {ModelI} from "../model/ModelI";
 
 export abstract class DataControlsAbstract<DataModel extends ModelI> {

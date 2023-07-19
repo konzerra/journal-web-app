@@ -1,0 +1,89 @@
+
+<body>
+<div class="wrapper container pt-5">
+  <h2 class="mt-5">{{'profile' | translate}}</h2>
+
+
+
+  <div class = "col-lg-6 col-md-offset-1">
+    <!-- Select transaction type -->
+    <label class = "mt-2">{{'select_transaction_type' | translate}}</label>
+    <br>
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+      <div *ngFor="let type of transactionTypes" >
+        <input
+          [value]="type"
+          type="radio"
+          class="btn-check"
+          name="btnradio"
+          id="btnradio{{type}}"
+          (change)="onTransactionTypeChange(type)"
+          autocomplete="off"
+          [checked]="selectedRadioButton===type"
+        >
+        <label class="btn btn-outline-primary" for="btnradio{{type}}">&emsp;{{type}}&emsp;</label>
+      </div>
+    </div>
+    <!-- Table of user receipts  -->
+    <table *ngIf = "selectedRadioButton==='receipts'" class="table " >
+      <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">{{'sum' | translate}}</th>
+        <th scope="col">{{'date' | translate}}</th>
+      </tr>
+      </thead>
+
+      <tbody >
+      <div *ngIf="receipts.length ==0" class="text-center">
+        <i class="bi bi-search icon-not-found"></i>
+        <h3>{{'not_found' | translate}}</h3>
+      </div>
+      <tr *ngFor="let receipt of receipts;">
+        <td>{{receipt.id}}</td>
+        <td>{{receipt.sum}}</td>
+        <td>{{receipt.date}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <!-- Table of user purchases  -->
+    <table *ngIf = "selectedRadioButton==='purchases'" class="table " >
+      <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">{{'articleId' | translate}}</th>
+        <th scope="col">{{'sum' | translate}}</th>
+        <th scope="col">{{'date' | translate}}</th>
+      </tr>
+      </thead>
+
+      <tbody >
+      <div *ngIf="purchases.length ==0" class="text-center">
+        <i class="bi bi-search icon-not-found mt-2"></i>
+        <h3>{{'not_found' | translate}}</h3>
+      </div>
+      <tr *ngFor="let purchase of purchases;">
+        <td>{{purchase.id}}</td>
+        <td>{{purchase.articleId}}</td>
+        <td>{{purchase.sum}}</td>
+        <td>{{purchase.date}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <!-- Pagination box -->
+  <pagination-controls
+    class="pagination mb-5"
+    (pageChange)="onPageChange($event)"
+  ></pagination-controls>
+  <br>
+
+
+
+</div>
+</body>
+
+

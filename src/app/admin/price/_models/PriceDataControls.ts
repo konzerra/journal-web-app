@@ -1,6 +1,6 @@
 import {DataControlsAbstract} from "../../../_generic/form-group/DataControlsAbstract";
 import {FormControl, Validators} from "@angular/forms";
-import {PriceData} from "../../../shared/models/price/PriceData";
+import {PriceData} from "../../../domain/price/PriceData";
 
 export class PriceDataControls extends DataControlsAbstract<PriceData>
 {

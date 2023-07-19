@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {TipUpdateForm} from "../../tip/update-tip/tip.update.form";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TipService} from "../../../shared/services/tip.service";
+import {TipService} from "../../../domain/tip/tip.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {TipUpdateDto} from "../../tip/_models/TipUpdateDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {PriceUpdateForm} from "./price.update.form";
-import {PriceService} from "../../../shared/services/price.service";
+import {PriceService} from "../../../domain/price/price.service";
 import {AdminPriceRoutes} from "../admin.price.routes";
 import {PriceUpdateDto} from "../_models/PriceUpdateDto";
 

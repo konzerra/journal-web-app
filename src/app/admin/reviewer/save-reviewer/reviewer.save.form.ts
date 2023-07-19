@@ -1,5 +1,5 @@
 import {FormControl, Validators} from "@angular/forms";
-import {ReviewerSaveDto} from "../../../domain/reviewer/dto/ReviewerSaveDto";
+import {ReviewerSaveDto} from "../_models/ReviewerSaveDto";
 
 export class ReviewerSaveForm {
 

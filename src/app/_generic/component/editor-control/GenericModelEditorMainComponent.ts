@@ -5,8 +5,8 @@ import {SaveDtoI} from "../../model/SaveDtoI";
 import {UpdateDtoI} from "../../model/UpdateDtoI";
 import {UseCaseDeleteByIdAbstract} from "../../usecase/UseCaseDeleteByIdAbstract";
 import {UseCaseGetAllPaginatedAbstract} from "../../usecase/get/UseCaseGetAllPaginatedAbstract";
-import {ModelPageI} from "../../../shared/models/pagination/ModelPageI";
-import {Journal} from "../../../shared/models/journal/Journal";
+import {ModelPageI} from "../../../domain/pagination/ModelPageI";
+import {Journal} from "../../../domain/journal/Journal";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 

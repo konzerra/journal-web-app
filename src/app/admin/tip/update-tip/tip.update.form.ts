@@ -1,8 +1,8 @@
 import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {FormControl,  Validators} from "@angular/forms";
-import {TipFull} from "../../../shared/models/tip/TipFull";
-import {TipData} from "../../../shared/models/tip/TipData";
+import {TipFull} from "../../../domain/tip/TipFull";
+import {TipData} from "../../../domain/tip/TipData";
 import {TipDataControls} from "../_models/TipDataControls";
 import {TipUpdateDto} from "../_models/TipUpdateDto";
 

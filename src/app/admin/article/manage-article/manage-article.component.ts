@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
-import {ArticlePage} from "../../../shared/models/article/ArticlePage";
-import {Article} from "../../../shared/models/article/Article";
-import {Journal} from "../../../shared/models/journal/Journal";
-import {ArticleService} from "../../../shared/services/article.service";
-import {ReviewerService} from "../../../shared/services/reviewer.service";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
+import {ArticlePage} from "../../../domain/article/ArticlePage";
+import {Article} from "../../../domain/article/Article";
+import {Journal} from "../../../domain/journal/Journal";
+import {ArticleService} from "../../../domain/article/article.service";
+import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
-import {JournalService} from "../../../shared/services/journal.service";
+import {JournalService} from "../../../domain/journal/journal.service";
 
 @Component({
   selector: 'app-manage-article',

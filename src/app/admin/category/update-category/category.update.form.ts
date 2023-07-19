@@ -2,7 +2,7 @@ import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdate
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {FormControl,  Validators} from "@angular/forms";
 import {CategoryData} from "../../../domain/category/CategoryData";
-import {CategoryUpdateDto} from "../../../domain/category/dto/CategoryUpdateDto";
+import {CategoryUpdateDto} from "../_models/CategoryUpdateDto";
 import {CategoryDataControls} from "../_models/CategoryDataControls";
 import {CategoryFull} from "../../../domain/category/CategoryFull";
 

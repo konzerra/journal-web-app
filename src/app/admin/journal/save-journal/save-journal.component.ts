@@ -4,11 +4,11 @@ import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {JournalService} from "../../../shared/services/journal.service";
+import {JournalService} from "../../../domain/journal/journal.service";
 import {AdminJournalRoutes} from "../admin.journal.routes";
 import {HttpClient} from "@angular/common/http";
 import {AppApi} from "../../../domain/AppApi";
-import {FileApi} from "../../../shared/models/file/FileApi";
+import {FileApi} from "../../../domain/file/FileApi";
 
 @Component({
   selector: 'app-save-journal',

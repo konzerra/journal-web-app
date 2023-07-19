@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileForm} from "./profile.form";
-import {Article} from "../../shared/models/article/Article";
+import {Article} from "../../domain/article/Article";
 import {UserUseCaseUpdate} from "../../domain/user/usecase/UserUseCaseUpdate";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {ArticleService} from "../../shared/services/article.service";
+import {ArticleService} from "../../domain/article/article.service";
 import {Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
-import {UserUpdateDto} from "../../domain/user/dto/UserUpdateDto";
+import {UserUpdateDto} from "./_models/UserUpdateDto";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {AuthService} from "../../auth/auth.service";
+import {UserRoutes} from "../user.routes";
 
 @Component({
   selector: 'app-profile',
@@ -72,4 +73,6 @@ export class ProfileComponent implements OnInit {
     this.userAuthService.logout()
     this.router.navigate([ComponentRoutingPaths.common.home])
   }
+
+  protected readonly UserRoutes = UserRoutes;
 }

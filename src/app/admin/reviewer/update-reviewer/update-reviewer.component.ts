@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ReviewerUpdateForm} from "./reviewer.update.form";
 import {Category} from "../../../domain/category/Category";
-import {CategoryService} from "../../../shared/services/category.service";
-import {ReviewerService} from "../../../shared/services/reviewer.service";
+import {CategoryService} from "../../../domain/category/category.service";
+import {ReviewerService} from "../../../domain/reviewer/reviewer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {FormControl} from "@angular/forms";

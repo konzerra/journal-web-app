@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Journal} from "../../shared/models/journal/Journal";
+import {Journal} from "../../domain/journal/Journal";
 import {FormControl} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {ArticleService} from "../../shared/services/article.service";
+import {ArticleService} from "../../domain/article/article.service";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {PageRequestDto} from "../../shared/models/pagination/PageRequestDto";
-import {ArticlePage} from "../../shared/models/article/ArticlePage";
-import {JournalStatus} from "../../shared/models/journal/JournalStatus";
+import {PageRequestDto} from "../../domain/pagination/PageRequestDto";
+import {ArticlePage} from "../../domain/article/ArticlePage";
+import {JournalStatus} from "../../domain/journal/JournalStatus";
 import {ArticleSearchDto} from "./ArticleSearchDto";
-import {FileApi} from "../../shared/models/file/FileApi";
-import {JournalService} from "../../shared/services/journal.service";
+import {FileApi} from "../../domain/file/FileApi";
+import {JournalService} from "../../domain/journal/journal.service";
 
 @Component({
   selector: 'app-articles',

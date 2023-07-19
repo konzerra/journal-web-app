@@ -7,8 +7,8 @@ import {
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {JournalService} from "../../../shared/services/journal.service";
-import {FileApi} from "../../../shared/models/file/FileApi";
+import {JournalService} from "../../../domain/journal/journal.service";
+import {FileApi} from "../../../domain/file/FileApi";
 import {AdminJournalRoutes} from "../admin.journal.routes";
 import {JournalSaveDto} from "../_models/JournalSaveDto";
 import {isEmpty} from "rxjs";

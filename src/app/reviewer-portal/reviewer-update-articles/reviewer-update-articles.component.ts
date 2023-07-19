@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleService} from "../../shared/services/article.service";
+import {ArticleService} from "../../domain/article/article.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
 import {
   ReviewerArticleUpdateForm
 } from "./reviewer.article.update.form";
-import {Article} from "../../shared/models/article/Article";
+import {Article} from "../../domain/article/Article";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
 import {isNotBlanc} from "../../shared/validators";
-import {FileApi} from "../../shared/models/file/FileApi";
+import {FileApi} from "../../domain/file/FileApi";
 
 @Component({
   selector: 'app-reviewer-update-articles',

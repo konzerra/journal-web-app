@@ -1,7 +1,7 @@
 import {GenericSaveFormGroup} from "../../../_generic/form-group/GenricSaveFormGroup";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoryDataControls} from "../_models/CategoryDataControls";
-import {CategorySaveDto} from "../../../domain/category/dto/CategorySaveDto";
+import {CategorySaveDto} from "../_models/CategorySaveDto";
 import {CategoryData} from "../../../domain/category/CategoryData";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 

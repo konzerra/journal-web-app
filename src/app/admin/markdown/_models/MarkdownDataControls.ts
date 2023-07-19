@@ -1,5 +1,5 @@
 import {DataControlsAbstract} from "../../../_generic/form-group/DataControlsAbstract";
-import {MarkdownData} from "../../../shared/models/markdown/MarkdownData";
+import {MarkdownData} from "../../../domain/markdown/MarkdownData";
 import {FormControl, Validators} from "@angular/forms";
 
 export class MarkdownDataControls

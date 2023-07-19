@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Article} from "../../shared/models/article/Article";
-import {ReviewerService} from "../../shared/services/reviewer.service";
+import {Article} from "../../domain/article/Article";
+import {ReviewerService} from "../../domain/reviewer/reviewer.service";
 import {Router} from "@angular/router";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {AuthService} from "../../auth/auth.service";

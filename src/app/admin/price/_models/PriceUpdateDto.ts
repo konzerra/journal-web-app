@@ -1,4 +1,4 @@
-import {PriceData} from "../../../shared/models/price/PriceData";
+import {PriceData} from "../../../domain/price/PriceData";
 
 export interface PriceUpdateDto {
   id: Number,

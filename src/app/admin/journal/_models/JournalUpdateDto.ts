@@ -1,5 +1,5 @@
 import {UpdateDtoI} from "../../../_generic/model/UpdateDtoI";
-import {JournalData} from "../../../shared/models/journal/JournalData";
+import {JournalData} from "../../../domain/journal/JournalData";
 
 export interface JournalUpdateDto extends UpdateDtoI{
   id:Number,

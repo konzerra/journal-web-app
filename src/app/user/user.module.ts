@@ -7,12 +7,14 @@ import { PublishComponent } from './publish/publish.component';
 import {CoreModule} from "../core/core.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
+import { TransactionsComponent } from './transactions/transactions.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    PublishComponent
+    PublishComponent,
+    TransactionsComponent
   ],
   imports: [
     CommonModule,

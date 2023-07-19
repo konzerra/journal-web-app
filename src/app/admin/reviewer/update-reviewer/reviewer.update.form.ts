@@ -1,6 +1,6 @@
 import {FormControl, Validators} from "@angular/forms";
 import {Reviewer} from "../../../domain/reviewer/Reviewer";
-import {ReviewerUpdateDto} from "../../../domain/reviewer/dto/ReviewerUpdateDto";
+import {ReviewerUpdateDto} from "../_models/ReviewerUpdateDto";
 import {Category} from "../../../domain/category/Category";
 
 export class ReviewerUpdateForm {

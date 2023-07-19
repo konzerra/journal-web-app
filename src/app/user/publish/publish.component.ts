@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {PublishForm} from "./publish.form";
-import {Journal} from "../../shared/models/journal/Journal";
+import {Journal} from "../../domain/journal/Journal";
 import {Router} from "@angular/router";
-import {ArticleService} from "../../shared/services/article.service";
+import {ArticleService} from "../../domain/article/article.service";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
-import {JournalStatus} from "../../shared/models/journal/JournalStatus";
+import {JournalStatus} from "../../domain/journal/JournalStatus";
 import {ComponentRoutingPaths} from "../../ComponentRoutingPaths";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../_generic/util/genericCheckFormControl";
-import {JournalService} from "../../shared/services/journal.service";
+import {JournalService} from "../../domain/journal/journal.service";
 import {AuthService} from "../../auth/auth.service";
 
 @Component({
@@ -42,6 +42,9 @@ export class PublishComponent implements OnInit {
     this.journalService.getAllByStatus(JournalStatus.Open).subscribe({
       next:(journalList)=>{
         this.journalList = journalList
+      },
+      error:(err)=>{
+        this.dialogsService.openInfoDialog(err)
       }
     })
 

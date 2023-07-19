@@ -1,7 +1,7 @@
 import {ModelI} from "../../model/ModelI";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ModelPageI} from "../../../shared/models/pagination/ModelPageI";
+import {ModelPageI} from "../../../domain/pagination/ModelPageI";
 import {ApiPathUtil} from "../../util/ApiPathUtil";
 
 export abstract class UseCaseGetAllPaginatedAbstract <Model,ModelPage extends ModelPageI<Model>>{

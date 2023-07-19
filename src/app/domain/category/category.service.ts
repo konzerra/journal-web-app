@@ -1,0 +1,59 @@
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
+import {PageRequestDto} from "../pagination/PageRequestDto";
+import {CategorySaveDto} from "../../admin/category/_models/CategorySaveDto";
+import {CategoryApi} from "./CategoryApi";
+import {CategoryUpdateDto} from "../../admin/category/_models/CategoryUpdateDto";
+import {CategoryFull} from "./CategoryFull";
+import {Category} from "./Category";
+import {CategoryPage} from "./CategoryPage";
+import {CategoryModule} from "../../admin/category/category.module";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CategoryService {
+  constructor(
+    private httpClient:HttpClient
+  ) {
+
+  }
+
+  public save(saveDto:CategorySaveDto):Observable<any>{
+    return this.httpClient.post(CategoryApi.save,saveDto,{
+      headers: new HttpHeaders(),
+    })
+  }
+
+  public update(updateDto:CategoryUpdateDto):Observable<any>{
+    return this.httpClient.put(CategoryApi.update,updateDto,{
+      headers: new HttpHeaders(),
+    })
+  }
+
+  public deleteById(id:string):Observable<any>{
+    return this.httpClient.delete(ApiPathUtil.insertId(CategoryApi.deleteById, id),
+      {headers: new HttpHeaders()}
+    )
+  }
+
+  public getByIdFull(id : string):Observable<CategoryFull>{
+    return this.httpClient.get<CategoryFull>(
+      ApiPathUtil.insertId(CategoryApi.getByIdFull,id),
+      { headers: new HttpHeaders()}
+    )
+  }
+
+  public getAll():Observable<Category[]>{
+    return this.httpClient.get<Category[]>(
+      CategoryApi.getAll,
+      {headers: new HttpHeaders()}
+    )
+  }
+
+  public getPaginated(pageRequestDto: PageRequestDto): Observable<CategoryPage> {
+    return this.httpClient.post<CategoryPage>(CategoryApi.getPaginated, pageRequestDto);
+  }
+}

@@ -32,8 +32,12 @@
 
         </div>
         <hr class="w-100">
-        <label class="ms-3" style="color: red" (click)="onLogout()">{{'logout' | translate}}</label>
+        <a class="ms-3"  routerLink="{{UserRoutes.transactions}}">{{'transactions' | translate}}</a>
         <hr class="w-100">
+        <a class="ms-3" style="color: red" routerLink = "" (click)="onLogout()">{{'logout' | translate}}</a>
+        <hr class="w-100">
+
+
       </div>
     </form>
   </div>

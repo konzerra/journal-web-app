@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Router} from "@angular/router";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
-import {PageRequestDto} from "../../../shared/models/pagination/PageRequestDto";
-import {JournalPage} from "../../../shared/models/journal/JournalPage";
-import {Journal} from "../../../shared/models/journal/Journal";
-import {JournalService} from "../../../shared/services/journal.service";
+import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
+import {JournalPage} from "../../../domain/journal/JournalPage";
+import {Journal} from "../../../domain/journal/Journal";
+import {JournalService} from "../../../domain/journal/journal.service";
 import {AdminJournalRoutes} from "../admin.journal.routes";
 
 @Component({

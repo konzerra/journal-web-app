@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TipUpdateForm} from "./tip.update.form";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TipService} from "../../../shared/services/tip.service";
+import {TipService} from "../../../domain/tip/tip.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {TipUpdateDto} from "../_models/TipUpdateDto";

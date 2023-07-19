@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MarkdownUpdateForm} from "./markdown.update.form";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MarkdownService} from "../../../shared/services/markdown.service";
+import {MarkdownService} from "../../../domain/markdown/markdown.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
-import {MarkdownUpdateDto} from "../../../domain/markdown/dto/MarkdownUpdateDto";
+import {MarkdownUpdateDto} from "../_models/MarkdownUpdateDto";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 import {AdminMarkdownRoutes} from "../admin.markdown.routes";

@@ -2,16 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {ArticleUpdateForm} from "./article.update.form";
 import {Category} from "../../../domain/category/Category";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ArticleService} from "../../../shared/services/article.service";
-import {CategoryService} from "../../../shared/services/category.service";
-import {DocUseCaseDownload} from "../../../domain/doc/usecase/DocUseCaseDownload";
+import {ArticleService} from "../../../domain/article/article.service";
+import {CategoryService} from "../../../domain/category/category.service";
 import {DialogsService} from "../../../shared/dialogs/dialogs.service";
 import {Location} from "@angular/common";
 import {FormControl} from "@angular/forms";
 import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
-import {FileApi} from "../../../shared/models/file/FileApi";
-import {Price} from "../../../shared/models/price/Price";
-import {PriceService} from "../../../shared/services/price.service";
+import {FileApi} from "../../../domain/file/FileApi";
+import {Price} from "../../../domain/price/Price";
+import {PriceService} from "../../../domain/price/price.service";
 
 @Component({
   selector: 'app-update-article',
@@ -31,7 +30,6 @@ export class UpdateArticleComponent implements OnInit {
     private articleService: ArticleService,
     private categoryService: CategoryService,
     private priceService: PriceService,
-    private docUseCaseDownload: DocUseCaseDownload,
     protected dialogsService: DialogsService,
     private location: Location
   ) {}

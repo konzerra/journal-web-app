@@ -1,7 +1,7 @@
 import {GenericSaveFormGroup} from "../../../_generic/form-group/GenricSaveFormGroup";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {FormControl, Validators} from "@angular/forms";
-import {PriceData} from "../../../shared/models/price/PriceData";
+import {PriceData} from "../../../domain/price/PriceData";
 import {PriceDataControls} from "../_models/PriceDataControls";
 import {PriceSaveDto} from "../_models/PriceSaveDto";
 
