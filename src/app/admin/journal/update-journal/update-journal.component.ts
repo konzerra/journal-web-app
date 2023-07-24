@@ -13,6 +13,7 @@ import {AdminJournalRoutes} from "../admin.journal.routes";
 import {JournalSaveDto} from "../_models/JournalSaveDto";
 import {isEmpty} from "rxjs";
 import {isNotBlanc} from "../../../shared/validators";
+import {JournalStatus} from "../../../domain/journal/JournalStatus";
 
 @Component({
   selector: 'app-update-journal',
@@ -33,8 +34,8 @@ export class UpdateJournalComponent
 
   form = new JournalUpdateForm()
   selectedRadioButton = this.form.requiredLangs[0]
-
   updateDisabled = false
+  makeReportClicked = false
 
 
   ngOnInit(): void {
@@ -60,29 +61,49 @@ export class UpdateJournalComponent
   }
 
   onReportClicked() {
+    this.dialogsService.openInfoDialog(
+      "Скачивание отчета началось"
+    )
     this.journalService.makeReport(this.form.updateDto.id.toString()).subscribe({
-      next:(v)=>{
-        let reviewersMessage =''
-        v.reviewers.forEach((v)=>{
-          reviewersMessage+=`${v.name} рецензировал ${v.articles} статей, почта: ${v.email}\n`
-        })
-        this.dialogsService.openInfoDialog(
-          `Название: ${v.name}\n
-          Статьи на публикацию: ${v.articles}\n
-          Рецензенты:\n
-          ${reviewersMessage}
-          `
-        )
+      next:(response)=>{
+        if(response.body!=null){
+          const blob = new Blob([response.body], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+
+          // Generate a download link for the Blob
+          const downloadLink = document.createElement('a');
+          downloadLink.href = URL.createObjectURL(blob);
+          downloadLink.download = `Report_journal_id_${this.form.updateDto.id}.docx`;
+
+          // Append the link to the document and click it programmatically to trigger the download
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+
+          // Clean up after download is initiated
+          URL.revokeObjectURL(downloadLink.href);
+          document.body.removeChild(downloadLink);
+        }
+
       },
       error:(err)=>{
         this.dialogsService.openInfoDialog(err)
+      },
+      complete:()=>{
+        this.makeReportClicked = true
       }
     })
   }
 
   onSubmit() {
     this.updateDisabled = true
+
     if (this.form.valid()) {
+      if(this.form.status.value === JournalStatus.Published){
+        if(!this.makeReportClicked){
+          this.dialogsService.openInfoDialog("Скачайте сперва отчет")
+          this.updateDisabled = false
+          return
+        }
+      }
       this.journalService.update(
         this.form.getDto(),
         this.form.image,

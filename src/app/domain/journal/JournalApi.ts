@@ -4,7 +4,7 @@ const publicPath = `${AppApi.publicApi}/journal`
 const protectedPath = `${AppApi.protectedApi}/journal`
 
 export const JournalApi =  {
-  makeReport : `${protectedPath}/report/{id}`,
+  makeReport : `${protectedPath}/{id}/report`,
   getAllByStatus: `${protectedPath}/all/by_status/{status}`,
   getAllPublishedArticlesPaginated : `${publicPath}/published/{id}/articles/{pageNumber}/{pageSize}`,
   getPaginatedJournalArticles : `${publicPath}/{id}/articles`,

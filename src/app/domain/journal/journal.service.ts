@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
 import {PageRequestDto} from "../pagination/PageRequestDto";
 import {JournalSaveDto} from "../../admin/journal/_models/JournalSaveDto";
@@ -64,10 +64,14 @@ export class JournalService {
     })
   }
 
-  public makeReport(journalId: string):Observable<JournalReport>{
-    return this.httpClient.get<JournalReport>(
-      ApiPathUtil.insertId(JournalApi.makeReport,journalId)
-    )
+  makeReport(journalId: string): Observable<HttpResponse<Blob>> {
+    const apiUrl = ApiPathUtil.insertId(JournalApi.makeReport, journalId);
+
+    // Set the response type to 'blob' to handle binary data (Word file)
+    return this.httpClient.get(apiUrl, {
+      observe: 'response',
+      responseType: 'blob'
+    });
   }
 
   public deleteById(id:string):Observable<any>{
