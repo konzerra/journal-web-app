@@ -1,6 +1,7 @@
 
 export const UserRoutes = {
-  profile: "user/profile",
-  transactions: "user/transactions",
-  publish: "user/publish"
+  profile: "/user/profile",
+  transactions: "/user/transactions",
+  publish: "/user/publish",
+  articles: "/user/articles"
 }

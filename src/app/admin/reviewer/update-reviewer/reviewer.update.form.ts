@@ -8,7 +8,10 @@ export class ReviewerUpdateForm {
   category : Category | null = null
   active = new FormControl<boolean>(false, Validators.required)
 
-  reviewer!:Reviewer
+  reviewer:Reviewer = {
+    active: false, category: null, email: "", id: 0, name: ""
+
+  }
 
   setDto(model: Reviewer){
     this.reviewer = model

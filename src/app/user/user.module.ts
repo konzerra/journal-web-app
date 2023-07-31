@@ -10,13 +10,17 @@ import {FormsModule} from "@angular/forms";
 import { TransactionsComponent } from './transactions/transactions.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {SharedModule} from "../shared/shared.module";
+import { UserArticlesComponent } from './user-articles/user-articles.component';
+
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     PublishComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    UserArticlesComponent,
+
   ],
   imports: [
     CommonModule,

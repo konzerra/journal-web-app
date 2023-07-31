@@ -9,6 +9,7 @@ import {ApiPathUtil} from "../../_generic/util/ApiPathUtil";
 import {Reviewer} from "./Reviewer";
 import {ReviewerSaveDto} from "../../admin/reviewer/_models/ReviewerSaveDto";
 import {ReviewerUpdateDto} from "../../admin/reviewer/_models/ReviewerUpdateDto";
+import {ModelPageI} from "../pagination/ModelPageI";
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,10 @@ export class ReviewerService {
   public distribute(journalId:Number):Observable<{ message: string }>{
     let apiPath= ApiPathUtil.insertId(ReviewerApi.distribute,journalId.toString())
     return this.httpClient.get<{ message: string }>(apiPath)
+  }
+
+  public searchByEmail(email:string, pageRequestDto: PageRequestDto):Observable<ModelPageI<Reviewer>>{
+    let apiPath = ApiPathUtil.insertEmail(ReviewerApi.searchByEmail, email)
+    return this.httpClient.post<ModelPageI<Reviewer>>(apiPath, pageRequestDto)
   }
 }

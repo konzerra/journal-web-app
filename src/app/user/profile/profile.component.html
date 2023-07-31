@@ -32,7 +32,9 @@
 
         </div>
         <hr class="w-100">
-        <a class="ms-3"  routerLink="{{UserRoutes.transactions}}">{{'transactions' | translate}}</a>
+        <a class="ms-3"  [routerLink]="UserRoutes.articles">{{'my_articles' | translate}}</a>
+        <hr class="w-100">
+        <a class="ms-3"  [routerLink]="UserRoutes.transactions">{{'transactions' | translate}}</a>
         <hr class="w-100">
         <a class="ms-3" style="color: red" routerLink = "" (click)="onLogout()">{{'logout' | translate}}</a>
         <hr class="w-100">
@@ -41,36 +43,6 @@
       </div>
     </form>
   </div>
-
-  <h4 class ="mt-5">{{'info_for_authors' | translate}}</h4>
-
-  <!-- Table of user articles  -->
-  <table class="table " >
-    <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">{{'name' | translate}}</th>
-      <th scope="col">{{'journal' | translate}}</th>
-      <th scope="col">{{'category' | translate}}</th>
-      <th scope="col">{{'article_status' | translate}}</th>
-    </tr>
-    </thead>
-
-    <tbody >
-    <div *ngIf="modelList.length ==0" class="text-center">
-      <i class="bi bi-search icon-not-found"></i>
-      <h3>{{'not_found' | translate}}</h3>
-    </div>
-    <tr *ngFor="let model of modelList;">
-      <th>{{model.id}}</th>
-      <td>{{model.name}}</td>
-      <td>{{model.journal.name +" "+ model.journal.version}}</td>
-      <td>{{model.category?.name || ""}}</td>
-      <td>{{model.status}}</td>
-    </tr>
-
-    </tbody>
-  </table>
 </div>
 </body>
 

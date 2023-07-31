@@ -27,6 +27,7 @@ export class SignInComponent implements OnInit {
   public errorParam: string = ''
 
   public form:SignInForm = new SignInForm()
+  public signinDisabled = false
 
   ngOnInit(): void {
     this.route.queryParams.subscribe({
@@ -37,6 +38,7 @@ export class SignInComponent implements OnInit {
     )
   }
   onSubmit() {
+    this.signinDisabled = true
     if(this.form.group.valid){
       let userLoginDto:AuthSigninDto = {
         email : this.form.email.value,
@@ -48,6 +50,7 @@ export class SignInComponent implements OnInit {
         },
         error: (e) => {
           this.errorParam = "произошла неизвестная ошибка"
+          this.signinDisabled = false
           this.dialogsService.openInfoDialog(e)
         },
         complete: () => this.router.navigate([''])

@@ -5,6 +5,6 @@ export interface Reviewer extends ModelI {
   id:Number,
   name:string,
   email:string,
-  category:Category,
+  category:Category | null,
   active:boolean
 }

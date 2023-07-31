@@ -46,9 +46,8 @@ export class UpdateReviewerComponent implements OnInit {
                 },
                 complete:()=>{
                   for(const category of this.categoryList){
-                    if(category.id==this.formGroup.reviewer.category.id){
+                    if(category.id==this.formGroup.reviewer.category?.id ){
                       this.formGroup.category = category
-                      console.log(this.formGroup.category)
                     }
                   }
                 }

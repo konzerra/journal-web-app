@@ -25,11 +25,14 @@ export class SignUpComponent implements OnInit {
   public infoParam : string = ''
   public errorParam: string = ''
   public form:SignUpForm = new SignUpForm()
+
+  public signupDisabled= false
   ngOnInit(): void {
     console.log(AppLanguage.getLocalLanguage())
   }
 
   onSubmit() {
+    this.signupDisabled = true
     if(this.form.group.valid){
       let userRegisterDto:AuthSignupDto = {
         name : this.form.name.value,
@@ -37,13 +40,11 @@ export class SignUpComponent implements OnInit {
         password : this.form.password.value || ""
       }
       this.authService.signup(userRegisterDto).subscribe({
-        next:(response)=>{
-
-        },
         error:(err)=>{
           this.dialogsService.openInfoDialog(err)
         },
         complete:()=>{
+          this.signupDisabled = false
           this.router.navigate(
             [AuthRoutes.signin],
             { queryParams: { info: "registered" } })
@@ -52,6 +53,7 @@ export class SignUpComponent implements OnInit {
       })
     }else{
       this.dialogsService.openInfoDialog('enter_all_correctly')
+      this.signupDisabled = false
     }
 
   }

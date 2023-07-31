@@ -61,7 +61,7 @@
       <div class="form-group">
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3 mt-3">
-            <input type="submit" name="login-submit" id="login-submit"
+            <input [disabled]="signinDisabled" type="submit" name="login-submit" id="login-submit"
                    class="form-control btn btn-primary" value="{{'login' | translate}}" />
           </div>
         </div>

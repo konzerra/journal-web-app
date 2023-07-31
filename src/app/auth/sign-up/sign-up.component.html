@@ -65,7 +65,7 @@
       <div class="form-group">
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3 mt-3">
-            <input type="submit" name="register-submit" id="register-submit"
+            <input [disabled]="signupDisabled" type="submit" name="register-submit" id="register-submit"
                    class="form-control btn btn-primary" value="{{'register' | translate}}" />
           </div>
         </div>

@@ -57,7 +57,7 @@ export class AuthInterceptor implements HttpInterceptor{
       catchError(
         (error:HttpErrorResponse ) =>{
           if(error.status === 401){
-            this.router.navigate(['/unauthorized']);
+            return throwError(()=>"unauthorized")
           }
           if(error.status === 403 ){
             this.router.navigate(['/forbidden']);
@@ -71,7 +71,7 @@ export class AuthInterceptor implements HttpInterceptor{
           if(error.status === 400){
             return throwError(()=>error.error.message)
           }
-          return throwError(()=>"Неизвестная ошибка"+ error.message);
+          return throwError(()=>"Неизвестная ошибка \n"+ error.message);
         }
       )
     )

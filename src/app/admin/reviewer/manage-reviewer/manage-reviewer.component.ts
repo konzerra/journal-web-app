@@ -6,6 +6,8 @@ import {PageRequestDto} from "../../../domain/pagination/PageRequestDto";
 import {ReviewerPage} from "../../../domain/reviewer/ReviewerPage";
 import {ComponentRoutingPaths} from "../../../ComponentRoutingPaths";
 import {Reviewer} from "../../../domain/reviewer/Reviewer";
+import {FormControl, Validators} from "@angular/forms";
+import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormControl";
 
 @Component({
   selector: 'app-manage-reviewer',
@@ -21,7 +23,10 @@ export class ManageReviewerComponent implements OnInit {
   ) {
 
   }
-
+  searchControl = new FormControl<string>(
+    "",
+    [Validators.minLength(3), Validators.required]
+  )
   pageRequestDto: PageRequestDto = {
     page: 0,
     size: 10,
@@ -42,6 +47,8 @@ export class ManageReviewerComponent implements OnInit {
     totalElements: 0,
     totalPages: 0
   }
+
+  searchDisabled = false
   ngOnInit(): void {
     this.reviewerService.getPaginated(this.pageRequestDto).subscribe(
       {
@@ -55,6 +62,13 @@ export class ManageReviewerComponent implements OnInit {
 
         }
       })
+    this.searchControl.valueChanges.subscribe({
+      next:(value)=>{
+        if (value?.length === 0) {
+          this.handleSearchEmptied();
+        }
+      }
+    });
   }
 
 
@@ -88,19 +102,70 @@ export class ManageReviewerComponent implements OnInit {
   }
   onPageChange($event: number) {
     this.pageRequestDto.page = $event-1
+    if(this.searchControl.valid){
+      this.runSearch()
+    }
+    else {
+      this.reviewerService.getPaginated(this.pageRequestDto).subscribe(
+        {
+          next:(modelPage)=>{
+            this.modelPage = modelPage
+          },
+          error:(err)=>{
+            this.dialogsService.openInfoDialog(err)
+          }
+        })
+    }
+  }
+
+
+  checkFormControl(email: FormControl) {
+    return genericCheckFormControl(email)
+  }
+
+  search() {
+    if(this.searchControl.valid){
+      this.pageRequestDto.page = 0
+      this.runSearch()
+    }
+
+  }
+  private runSearch(){
+    this.searchDisabled = true
+    console.log(this.searchControl.valid);
+    if(this.searchControl.valid){
+      console.log(this.modelPage.content)
+      this.reviewerService.searchByEmail(this.searchControl.value || "email", this.pageRequestDto).subscribe({
+        next:(v)=>{
+          this.modelPage = v
+        },
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
+          this.searchDisabled = false
+        },
+        complete:() =>{
+          this.searchDisabled = false
+        }
+      })
+    }else{
+      this.searchDisabled = false
+    }
+  }
+
+  private runDefaultFetch(){
     this.reviewerService.getPaginated(this.pageRequestDto).subscribe(
       {
         next:(modelPage)=>{
           this.modelPage = modelPage
         },
-        error:()=>{
-
-        },
-        complete:()=>{
-
+        error:(err)=>{
+          this.dialogsService.openInfoDialog(err)
         }
       })
   }
 
-
+  handleSearchEmptied() {
+    this.pageRequestDto.page = 0
+    this.runDefaultFetch()
+  }
 }

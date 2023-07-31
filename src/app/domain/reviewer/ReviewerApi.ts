@@ -13,4 +13,6 @@ export const ReviewerApi = {
   getAllArticles: `${AppApi.protectedApi}/reviewer/{id}/articles`,
   getPaginated: `${AppApi.protectedApi}/reviewer/paginated`,
 
+  searchByEmail: `${AppApi.protectedApi}/reviewer/search/{email}`
+
 }

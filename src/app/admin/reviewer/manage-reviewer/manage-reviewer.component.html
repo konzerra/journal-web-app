@@ -9,13 +9,28 @@
 
   <!-- Search box -->
   <div class="col-lg-6 col-md-offset-1">
-    <div class="input-group w-75 mb-3" >
-      <input type="search" class="form-control" placeholder="{{'search' | translate}}" >
-      <button class="btn btn-primary" type="button" id="button-search">
+    <div class="input-group w-75" >
+      <input
+        type="search" class="form-control"
+        placeholder="{{'search' | translate}}"
+        [formControl] = searchControl
+        minlength="3"
+      >
+
+      <button [disabled]="searchDisabled" class="btn btn-primary" type="button" id="button-search" (click)="search()">
         <i class="bi bi-search"></i>
       </button>
+
+    </div>
+    <div *ngIf="checkFormControl(searchControl)"
+         class="alert-danger w-75">
+      <div *ngIf="searchControl.errors?.['minlength']" class="">
+        {{'enter_minimum_symbols' | translate}} 3
+      </div>
+
     </div>
   </div>
+
   <table class="table " >
     <thead>
     <tr>
@@ -45,7 +60,7 @@
       <td>{{model.name}}</td>
       <td *ngIf="model.active">{{'active' | translate}}</td>
       <td *ngIf="!model.active">{{'inactive' | translate}}</td>
-      <td>{{model.category.name || "no_category" | translate}}</td>
+      <td>{{model.category?.name || "no_category" | translate}}</td>
       <td class = "text-nowrap">
         <! –– edit button ––>
         <button type="button" class="btn btn-primary btn-sm me-2" (click)="onEdit(model)">

@@ -211,5 +211,6 @@
 
   "payment_status": "Payment status",
 
-  "pin_sent_to_email": "Pin was sent to your email"
+  "pin_sent_to_email": "Pin was sent to your email",
+  "enter_minimum_symbols": "Enter minimum amount of symbols:"
 }
