@@ -3,6 +3,9 @@ import {ArticleService} from "../../domain/article/article.service";
 import {Article} from "../../domain/article/Article";
 import {AuthService} from "../../auth/auth.service";
 import {DialogsService} from "../../shared/dialogs/dialogs.service";
+import {PurchaseService} from "../../domain/purchase/purchase.service";
+import {PurchaseSaveDto} from "../../domain/purchase/dto/PurchaseSaveDto";
+
 
 @Component({
   selector: 'app-user-articles',
@@ -14,7 +17,8 @@ export class UserArticlesComponent implements OnInit{
   constructor(
     private userAuthService: AuthService,
     private articleService: ArticleService,
-    private dialogsService: DialogsService
+    private dialogsService: DialogsService,
+    private purchaseService: PurchaseService
   ) {
   }
   modelList = new Array<Article>()
@@ -33,4 +37,18 @@ export class UserArticlesComponent implements OnInit{
     }
   }
 
+  onPay(model: Article) {
+    let saveDto: PurchaseSaveDto = {
+      articleId : model.id.valueOf(),
+      journalId : model.journal.id.valueOf()
+    }
+    this.purchaseService.save(saveDto).subscribe({
+      error:(err)=>{
+        this.dialogsService.openInfoDialog(err)
+      },
+      complete:()=>{
+        this.dialogsService.openInfoDialog("successfully_paid")
+      }
+    })
+  }
 }

@@ -1,7 +1,7 @@
+import {environment} from "../../environments/environment";
 
 
-// const ip = "http://localhost:8080"
-const ip = "http://api.journal.kstu.kg"
+const ip = environment.apiIp
 export const AppApi = {
 
     publicApi : `${ip}/api/v1/public`,

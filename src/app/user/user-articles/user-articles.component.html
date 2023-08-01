@@ -1,3 +1,7 @@
+
+<body
+  class = "wrapper pt-5 container"
+>
 <h4 class ="mt-5">{{'info_for_authors' | translate}}</h4>
 
 <!-- Table of user articles  -->
@@ -9,6 +13,8 @@
     <th scope="col">{{'journal' | translate}}</th>
     <th scope="col">{{'category' | translate}}</th>
     <th scope="col">{{'article_status' | translate}}</th>
+    <th scope="col">{{'price' | translate}}</th>
+    <th scope="col">{{'actions' | translate}}</th>
   </tr>
   </thead>
 
@@ -23,7 +29,16 @@
     <td>{{model.journal.name +" "+ model.journal.version}}</td>
     <td>{{model.category?.name || ""}}</td>
     <td>{{model.status}}</td>
+    <td>{{model.price?.name || 'no_price'}}</td>
+    <td class = "text-nowrap">
+      <! –– edit button ––>
+      <button type="button" class="btn btn-primary btn-sm me-2" (click)="onPay(model)">
+        <i class="bi bi-cash"></i>
+      </button>
+    </td>
   </tr>
 
   </tbody>
 </table>
+
+</body>
