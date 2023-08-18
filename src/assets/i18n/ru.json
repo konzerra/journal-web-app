@@ -214,11 +214,11 @@
 
   "pin_sent_to_email": "Пин-код был отправлен на почту",
 
-  "enter_minimum_symbols": "Enter minimum amount of symbols:",
+  "enter_minimum_symbols": "Введите минимальное количество символов:",
 
-  "successfully_paid": "Successfully paid",
-  "no_price": "No price",
+  "successfully_paid": "Успешно оплачено",
+  "no_price": "Нет тарифа",
 
-  "help": "Help",
+  "help": "Помощь",
   "server_not_responding": "Server not responding"
 }
