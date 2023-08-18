@@ -10,6 +10,7 @@ import {JournalStatus} from "../../domain/journal/JournalStatus";
 import {ArticleSearchDto} from "./ArticleSearchDto";
 import {FileApi} from "../../domain/file/FileApi";
 import {JournalService} from "../../domain/journal/journal.service";
+import {ArticleStatus} from "../../domain/article/ArticleStatus";
 
 @Component({
   selector: 'app-articles',
@@ -117,7 +118,8 @@ export class ArticlesComponent implements OnInit {
     if(this.currentJournal!=null){
       this.journalService.getPaginatedJournalArticles(
         this.currentJournal.id,
-        this.pageRequestDto
+        this.pageRequestDto,
+        ArticleStatus.Published
       ).subscribe({
         next:(v)=>{
           this.modelPage = v

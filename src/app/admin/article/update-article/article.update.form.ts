@@ -11,6 +11,7 @@ import {Category} from "../../../domain/category/Category";
 import {ArticleFull} from "../../../domain/article/ArticleFull";
 import {Journal} from "../../../domain/journal/Journal";
 import {Price} from "../../../domain/price/Price";
+import {ArticleStatus} from "../../../domain/article/ArticleStatus";
 
 
 
@@ -19,7 +20,7 @@ export class ArticleUpdateForm
   extends GenericUpdateFormGroup<ArticleFull,ArticleData, ArticleDataControls, ArticleUpdateDtoByAdmin>
 {
   requiredLangs: Array<string> = Object.values(RequiredLanguages)
-  articleStatuses : Array<string> = Object.values(ArticleStatusesAdmin)
+  articleStatuses : Array<string> = Object.values(ArticleStatus)
 
   journal= new FormControl<Journal | null>(null, Validators.required)
   pages = new FormControl<Number | null>(null, Validators.required)

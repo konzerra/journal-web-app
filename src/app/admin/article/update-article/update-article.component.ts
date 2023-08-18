@@ -11,6 +11,7 @@ import {genericCheckFormControl} from "../../../_generic/util/genericCheckFormCo
 import {FileApi} from "../../../domain/file/FileApi";
 import {Price} from "../../../domain/price/Price";
 import {PriceService} from "../../../domain/price/price.service";
+import {isNotBlanc} from "../../../shared/validators";
 
 @Component({
   selector: 'app-update-article',
@@ -19,8 +20,8 @@ import {PriceService} from "../../../domain/price/price.service";
 })
 export class UpdateArticleComponent implements OnInit {
 
-  formGroup = new ArticleUpdateForm()
-  selectedRadioButton: string = this.formGroup.requiredLangs[0]
+  form = new ArticleUpdateForm()
+  selectedRadioButton: string = this.form.requiredLangs[0]
   categoryList = new Array<Category>()
   priceList = new Array<Price>()
   updateDisabled = false
@@ -41,7 +42,7 @@ export class UpdateArticleComponent implements OnInit {
         next:(param) =>{
           this.articleService.getByIdFull(JSON.parse(param["id"])).subscribe({
             next:(v)=>{
-              this.formGroup.setDto(v)
+              this.form.setDto(v)
             },
             error:(err) =>{
               this.dialogsService.openInfoDialog(err)
@@ -59,10 +60,10 @@ export class UpdateArticleComponent implements OnInit {
   }
 
   addAuthor():void{
-    this.formGroup.addAuthor()
+    this.form.addAuthor()
   }
   onAuthorRemove(i: number) {
-    this.formGroup.removeAuthor(i)
+    this.form.removeAuthor(i)
   }
 
   onCancelClicked() {
@@ -84,17 +85,17 @@ export class UpdateArticleComponent implements OnInit {
   }
 
   onLangChange(lang: string) {
-    this.formGroup.onLangChange(lang)
+    this.form.onLangChange(lang)
   }
 
   onSubmit() {
     this.updateDisabled = true
-    if(this.formGroup.valid()){
+    if(this.form.valid()){
       this.articleService.updateByAdmin(
-        this.formGroup.getDto(),
-        this.formGroup.wordFile,
-        this.formGroup.pdfFile,
-        this.formGroup.antiplagiatFile
+        this.form.getDto(),
+        this.form.wordFile,
+        this.form.pdfFile,
+        this.form.antiplagiatFile
       ).subscribe({
         error:(err)=>{
           this.updateDisabled = false
@@ -113,18 +114,18 @@ export class UpdateArticleComponent implements OnInit {
   }
 
   onCategoryChanged(value: Category | null) {
-    this.formGroup.category = value
+    this.form.category = value
   }
 
   onWordFileChange($event: Event) {
-    this.formGroup.wordFile = ($event.target as HTMLInputElement).files?.[0] ?? null
+    this.form.wordFile = ($event.target as HTMLInputElement).files?.[0] ?? null
   }
   onPdfFileChange($event: Event) {
-    this.formGroup.pdfFile = ($event.target as HTMLInputElement).files?.[0] ?? null
+    this.form.pdfFile = ($event.target as HTMLInputElement).files?.[0] ?? null
   }
 
   onAntiplagiatFileChange($event: Event) {
-    this.formGroup.antiplagiatFile = ($event.target as HTMLInputElement).files?.[0] ?? null
+    this.form.antiplagiatFile = ($event.target as HTMLInputElement).files?.[0] ?? null
   }
 
   private getCategories(){
@@ -133,10 +134,10 @@ export class UpdateArticleComponent implements OnInit {
         this.categoryList = categoryList
       },
       complete:()=>{
-        if(this.formGroup.updateDto.categoryId!=null){
+        if(this.form.updateDto.categoryId!=null){
           for(const category of this.categoryList){
-            if(category.id==this.formGroup.updateDto.categoryId){
-              this.formGroup.category = category
+            if(category.id==this.form.updateDto.categoryId){
+              this.form.category = category
             }
           }
         }
@@ -150,10 +151,10 @@ export class UpdateArticleComponent implements OnInit {
         this.priceList = priceList
       },
       complete:()=>{
-        if(this.formGroup.updateDto.categoryId!=null){
+        if(this.form.updateDto.categoryId!=null){
           for(const price of this.priceList){
-            if(price.id==this.formGroup.updateDto.priceId){
-              this.formGroup.price = price
+            if(price.id==this.form.updateDto.priceId){
+              this.form.price = price
             }
           }
         }
@@ -162,4 +163,5 @@ export class UpdateArticleComponent implements OnInit {
   }
 
   protected readonly FileApi = FileApi;
+  protected readonly isNotBlanc = isNotBlanc;
 }

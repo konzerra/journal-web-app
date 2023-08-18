@@ -47,6 +47,8 @@ export class ManageArticleComponent implements OnInit {
     pdf: "",
     articlesCount:0
   }
+
+  status = "none"
   constructor(
     private articleService: ArticleService,
     private journalService: JournalService,
@@ -101,7 +103,8 @@ export class ManageArticleComponent implements OnInit {
   private loadData(){
     this.journalService.getPaginatedJournalArticles(
       this.journal.id,
-      this.pageRequestDto
+      this.pageRequestDto,
+      this.status
     ).subscribe(
       {
         next:(modelPage)=>{

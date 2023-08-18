@@ -7,7 +7,7 @@ export const JournalApi =  {
   makeReport : `${protectedPath}/{id}/report`,
   getAllByStatus: `${protectedPath}/all/by_status/{status}`,
   getAllPublishedArticlesPaginated : `${publicPath}/published/{id}/articles/{pageNumber}/{pageSize}`,
-  getPaginatedJournalArticles : `${publicPath}/{id}/articles`,
+  getPaginatedJournalArticles : `${protectedPath}/{id}/paginated/articles/{status}`,
   getAllCategories : `${publicPath}/{id}/categories`,
   getByIdFull : `${protectedPath}/full/{id}`,
   getById: `${publicPath}/{id}`,

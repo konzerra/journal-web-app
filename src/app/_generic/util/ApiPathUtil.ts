@@ -4,6 +4,9 @@ export class ApiPathUtil {
   public static insertName(path:string,name:string):string{
     return path.replace("{name}", name)
   }
+  public static insertStatus(path:string,status:string):string{
+    return path.replace("{status}", status)
+  }
   public static insertId(path:string,id:string):string{
     return path.replace("{id}", id)
   }

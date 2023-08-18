@@ -27,10 +27,11 @@ export class ArticleService {
     formData.set('saveDto' , new Blob([JSON.stringify(saveDto)],{
       type: "application/json"
     }))
-
-    formData.append("file", new Blob([file],{
-      type: file.type
-    }))
+    formData.append(
+      "file",
+      new Blob([file],  {type: file.type}),
+      file.name
+    )
 
 
     return this.httpClient.post(ArticleApi.save,formData)

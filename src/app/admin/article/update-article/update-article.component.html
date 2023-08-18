@@ -15,14 +15,14 @@
         <label class = "mt-2">{{"journal" | translate}}</label>
         <input class="form-control"
                id="journal"
-               [value]="formGroup.journal.value?.name || 'не найдено'+' '+formGroup.journal.value?.version || ''"
+               [value]="form.journal.value?.name || 'не найдено'+' '+form.journal.value?.version || ''"
                disabled
                required
         >
-        <div *ngIf="checkFormControl(formGroup.journal)"
+        <div *ngIf="checkFormControl(form.journal)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.journal.errors?.['required']">
+          <div *ngIf="form.journal.errors?.['required']">
             {{"select_journal" | translate}}
           </div>
 
@@ -37,7 +37,7 @@
           class="form-control"
           disabled
           placeholder="{{'enter_preferred_category' | translate}}"
-          [value]="formGroup.articleFull.preferredCategory"
+          [value]="form.articleFull.preferredCategory"
           required autofocus="autofocus"
           rows="2"></textarea>
       </div>
@@ -50,12 +50,12 @@
                class="form-control"
                disabled
                placeholder="{{'enter_pages_count' | translate}}"
-               [value]="formGroup.articleFull.pages"
+               [value]="form.articleFull.pages"
                required autofocus="autofocus"
         >
-        <div *ngIf="checkFormControl(formGroup.pages)"
+        <div *ngIf="checkFormControl(form.pages)"
              class="alert-danger">
-          <div *ngIf="formGroup.pages.errors?.['required']">
+          <div *ngIf="form.pages.errors?.['required']">
             {{'enter_pages_count' | translate}}
           </div>
         </div>
@@ -63,23 +63,24 @@
 
       <!-- Status select -->
       <div class="form-group">
-        <label class = "mt-2">{{"article_status" | translate}}</label>
+        <label class = "mt-2">{{'status' | translate}}</label>
         <select class="form-control"
                 id="status"
-                [formControl]="formGroup.status"
-                [value]="formGroup.status.value"
+                [formControl]="form.status"
                 required
         >
-          <option value="" disabled selected hidden>{{"select_status" | translate}}</option>
-          <option *ngFor="let status of formGroup.articleStatuses"
+
+          <option value="" disabled selected hidden>{{'select_status' | translate}}</option>
+          <option *ngFor="let status of form.articleStatuses"
+                  [selected]="form.status.value === status"
                   [value]="status">{{status}}
           </option>
         </select>
-        <div *ngIf="checkFormControl(formGroup.status)"
+        <div *ngIf="checkFormControl(form.status)"
              class="alert-danger">
 
-          <div *ngIf="formGroup.status.errors?.['required']">
-            {{"select_status" | translate}}
+          <div *ngIf="form.status.errors?.['required']">
+            {{'select_status' | translate}}
           </div>
 
         </div>
@@ -89,26 +90,26 @@
       <div class="form-group">
         <label class = "mt-2">{{"category" | translate}}</label>
         <select class="form-control"
-                [(ngModel)]="formGroup.category"
+                [(ngModel)]="form.category"
                 name="category-select"
                 (ngModelChange)="onCategoryChanged($event)"
                 id="category"
                 required
         >
           <option [ngValue]="null"
-                  [selected]="formGroup.category == null"
+                  [selected]="form.category == null"
           >{{"select_category" | translate}}</option>
           <option *ngFor="let category of categoryList"
-                  [selected]="formGroup.category?.id == category.id"
+                  [selected]="form.category?.id == category.id"
                   [ngValue]="category">
             {{category.name}}
           </option>
         </select>
       </div>
 
-      <label *ngIf="formGroup.articleFull.reviewerBlankDoc != null"
+      <label *ngIf="isNotBlanc(form.articleFull.reviewerBlankDoc)"
              class = "link mt-0"
-      ><a href="{{FileApi.download+formGroup.articleFull.reviewerBlankDoc}}">
+      ><a href="{{FileApi.download+form.articleFull.reviewerBlankDoc}}">
         {{"download_reviewer_form" | translate}}
       </a></label>
 
@@ -118,13 +119,13 @@
         <input type="text"
                id="antiplagiat"
                class="form-control"
-               [formControl]="formGroup.antiplagiat"
+               [formControl]="form.antiplagiat"
                placeholder="{{'enter_antiplagiat' | translate}}"
                required autofocus="autofocus"
         />
-        <div *ngIf="checkFormControl(formGroup.antiplagiat)"
+        <div *ngIf="checkFormControl(form.antiplagiat)"
              class="alert-danger">
-          <div *ngIf="formGroup.antiplagiat.errors?.['required']">
+          <div *ngIf="form.antiplagiat.errors?.['required']">
             {{'enter_antiplagiat' | translate}}
           </div>
         </div>
@@ -141,9 +142,9 @@
         (change)="onAntiplagiatFileChange($event)"
       />
 
-      <label *ngIf="formGroup.articleFull.antiplagiatDoc!=null"
+      <label *ngIf="isNotBlanc(form.articleFull.antiplagiatDoc)"
              class="">
-        <a class="link" href="{{FileApi.download+formGroup.articleFull.antiplagiatDoc}}">
+        <a class="link" href="{{FileApi.download+form.articleFull.antiplagiatDoc}}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
@@ -155,13 +156,13 @@
         <input type="text"
                id="pages_in_journal"
                class="form-control"
-               [formControl]="formGroup.pagesInJournal"
+               [formControl]="form.pagesInJournal"
                placeholder="{{'enter_pages_journal' | translate}}"
                required autofocus="autofocus"
         />
-        <div *ngIf="checkFormControl(formGroup.pagesInJournal)"
+        <div *ngIf="checkFormControl(form.pagesInJournal)"
              class="alert-danger">
-          <div *ngIf="formGroup.pagesInJournal.errors?.['required']">
+          <div *ngIf="form.pagesInJournal.errors?.['required']">
             {{'enter_article_title' | translate}}
           </div>
         </div>
@@ -180,9 +181,9 @@
         accept=".doc, .docx"
         (change)="onWordFileChange($event)"
       />
-      <label *ngIf="formGroup.articleFull.wordDoc!=null"
+      <label *ngIf="isNotBlanc(form.articleFull.wordDoc)"
              class="">
-        <a class="link" href="{{FileApi.download+formGroup.articleFull.wordDoc}}">
+        <a class="link" href="{{FileApi.download+form.articleFull.wordDoc}}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
@@ -198,10 +199,10 @@
         accept=".pdf"
         (change)="onPdfFileChange($event)"
       />
-      <label *ngIf="formGroup.articleFull.pdfDoc!=null"
+      <label *ngIf="isNotBlanc(form.articleFull.pdfDoc)"
              class=""
       >
-        <a class="link" href="{{FileApi.download+formGroup.articleFull.pdfDoc}}">
+        <a class="link" href="{{FileApi.download+form.articleFull.pdfDoc}}">
           {{"download_existing_version" | translate}}
         </a>
       </label>
@@ -212,7 +213,7 @@
       <label class = "mt-2">{{"enter_data_in_languages" | translate}}</label>
       <br>
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <div *ngFor="let lang of formGroup.requiredLangs" >
+        <div *ngFor="let lang of form.requiredLangs" >
           <input
             [value]="lang"
             type="radio"
@@ -233,13 +234,13 @@
         <textarea type="text"
                   id="name"
                   class="form-control"
-                  [formControl]="formGroup.name"
+                  [formControl]="form.name"
                   placeholder="{{'enter_article_title' | translate}}"
                   required autofocus="autofocus"
                   rows="3"></textarea>
-        <div *ngIf="checkFormControl(formGroup.name)"
+        <div *ngIf="checkFormControl(form.name)"
              class="alert-danger">
-          <div *ngIf="formGroup.name.errors?.['required']">
+          <div *ngIf="form.name.errors?.['required']">
             {{'enter_article_title' | translate}}
           </div>
         </div>
@@ -247,7 +248,7 @@
 
       <!-- Authors enter -->
       <label class="mt-2">{{"author(s)" | translate}}</label>
-      <div *ngFor="let author of formGroup.authors; let i = index">
+      <div *ngFor="let author of form.authors; let i = index">
         <div class="input-group mt-2" >
           <input type="text"
                  id="author{{i+selectedRadioButton}}"
@@ -261,7 +262,7 @@
           </button>
 
         </div>
-        <div *ngIf="checkFormControl(formGroup.name)"
+        <div *ngIf="checkFormControl(form.name)"
              class="alert-danger">
           <div *ngIf="author.errors?.['required']">
             {{'enter_author' | translate}}
@@ -278,13 +279,13 @@
         <textarea type="text"
                   id="annotation"
                   class="form-control"
-                  [formControl]="formGroup.annotation"
+                  [formControl]="form.annotation"
                   placeholder="{{'enter_annotation' | translate}}"
                   required autofocus="autofocus"
                   rows="6"></textarea>
-        <div *ngIf="checkFormControl(formGroup.annotation)"
+        <div *ngIf="checkFormControl(form.annotation)"
              class="alert-danger">
-          <div *ngIf="formGroup.annotation.errors?.['required']">
+          <div *ngIf="form.annotation.errors?.['required']">
             {{'enter_annotation' | translate}}
           </div>
         </div>
@@ -296,13 +297,13 @@
         <textarea type="text"
                   id="tags"
                   class="form-control"
-                  [formControl]="formGroup.tags"
+                  [formControl]="form.tags"
                   placeholder="{{'enter_tags' | translate}}"
                   required autofocus="autofocus"
                   rows="2"></textarea>
-        <div *ngIf="checkFormControl(formGroup.tags)"
+        <div *ngIf="checkFormControl(form.tags)"
              class="alert-danger">
-          <div *ngIf="formGroup.tags.errors?.['required']">
+          <div *ngIf="form.tags.errors?.['required']">
             {{'enter_tags' | translate}}
           </div>
         </div>

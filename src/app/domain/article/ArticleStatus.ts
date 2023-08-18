@@ -1,10 +1,12 @@
 
 export enum ArticleStatus {
-  Published='Published',
-  Registered = "Registered",
-  RejectedByAdmin = "RejectedByAdmin",
-  InModeration = "InModeration",
-  AcceptedByReviewer='AcceptedByReviewer',
-  RejectedByReviewer='RejectedByReviewer',
-  SkippedByReviewer='SkippedByReviewer'
+  Published = 'PUBLISHED',
+  Registered = 'REGISTERED',
+  RejectedByAdmin = 'REJECTED_BY_ADMIN',
+  InModeration = 'IN_MODERATION',
+  AcceptedByReviewer = 'ACCEPTED_BY_REVIEWER',
+  RejectedByReviewer = 'REJECTED_BY_REVIEWER',
+  SkippedByReviewer = 'SKIPPED_BY_REVIEWER',
+  ForPublishing = 'FOR_PUBLISHING'
 }
+

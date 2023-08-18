@@ -93,10 +93,11 @@ export class JournalService {
     return this.httpClient.post<JournalPage>(JournalApi.getPaginated, pageRequestDto);
   }
 
-  public getPaginatedJournalArticles(journalId:Number, pageRequestDto: PageRequestDto): Observable<ArticlePage>{
-
+  public getPaginatedJournalArticles(journalId:Number, pageRequestDto: PageRequestDto, status: string): Observable<ArticlePage>{
+    let path = ApiPathUtil.insertId(JournalApi.getPaginatedJournalArticles, journalId.toString())
+    path = ApiPathUtil.insertStatus(path, status)
     return this.httpClient.post<ArticlePage>(
-      ApiPathUtil.insertId(JournalApi.getPaginatedJournalArticles, journalId.toString()),
+      path,
       pageRequestDto
       );
   }
