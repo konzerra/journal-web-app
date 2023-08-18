@@ -11,11 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Install sshpass
-        run: sudo apt-get update && sudo apt-get install -y sshpass
-      - name: Execute remote commands
-        run: |
-          sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} -p ${{ secrets.SERVER_PORT }} 'whoami; ls -al'
+
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
