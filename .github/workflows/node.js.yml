@@ -11,18 +11,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          port: ${{ secrets.SERVER_PORT }}
-          timeout: 120s
-          script: |
-            whoami
-            ls -al
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+      - name: Execute remote commands
+        run: |
+          sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} -p ${{ secrets.SERVER_PORT }} 'whoami; ls -al'
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
