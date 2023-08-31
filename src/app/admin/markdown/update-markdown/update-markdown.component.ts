@@ -34,7 +34,8 @@ export class UpdateMarkdownComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe({
         next:(param) =>{
-          this.markdownService.getByIdFull(param["id"]).subscribe({
+          const id = param["id"].replace(/"/g, '');  // Remove all quotes from the id
+          this.markdownService.getByIdFull(id).subscribe({
             next:(v)=>{
               this.formGroup.setDto(v)
             },
@@ -54,9 +55,6 @@ export class UpdateMarkdownComponent implements OnInit {
     if (this.formGroup.valid()) {
       const updateDto: MarkdownUpdateDto = this.formGroup.getDto()
       this.markdownService.update(updateDto).subscribe({
-        next:(value) =>{
-
-        },
         error:(error)=>{
           this.dialogsService.openInfoDialog(error)
           this.updateDisabled = false

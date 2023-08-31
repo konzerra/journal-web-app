@@ -46,8 +46,9 @@ export class MarkdownService {
   }
 
   public getByIdFull(id : string):Observable<MarkdownFull>{
+    let path = ApiPathUtil.insertId(MarkdownApi.getByIdFull,id)
     return this.httpClient.get<MarkdownFull>(
-      ApiPathUtil.insertId(MarkdownApi.getByIdFull,id),
+      path,
       { headers: new HttpHeaders()}
     )
   }

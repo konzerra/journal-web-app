@@ -6,7 +6,6 @@ import {ArticleDataControls} from "../_models/ArticleDataControls";
 import {RequiredLanguages} from "../../../domain/RequiredLanguages";
 import {ArticleUpdateDtoByAdmin} from "../_models/ArticleUpdateDtoByAdmin";
 import {GenericUpdateFormGroup} from "../../../_generic/form-group/GenericUpdateFormGroup";
-import {ArticleStatusesAdmin} from "../_models/ArticleStatusesAdmin";
 import {Category} from "../../../domain/category/Category";
 import {ArticleFull} from "../../../domain/article/ArticleFull";
 import {Journal} from "../../../domain/journal/Journal";
@@ -63,7 +62,6 @@ export class ArticleUpdateForm
 
   setDto(modelFull: ArticleFull): void {
     this.articleFull = modelFull
-    console.log(this.articleFull)
     this.updateDto = {
       id: modelFull.id,
       pages: modelFull.pages,
@@ -125,7 +123,6 @@ export class ArticleUpdateForm
       status: this.status.value || this.updateDto.status,
       priceId: this.price?.id || 0,
     }
-    console.log(articleUpdateDto)
     this.dataControlsList.forEach((data)=>{
       articleUpdateDto.dataList.push(data.getData())
     })

@@ -220,5 +220,25 @@
   "no_price": "Нет тарифа",
 
   "help": "Помощь",
-  "server_not_responding": "Server not responding"
+  "server_not_responding": "Сервер не отвечает",
+
+  "transactions": "Транзакции",
+
+  "must_be_more_200_words": "Должно быть больше чем 200 слов",
+  "must_be_more_10_words": "Должно быть больше чем 10 слов",
+
+  "REGISTERED": "Зарегистрирован",
+  "OPEN": "Открыт",
+  "CLOSED": "Закрыт",
+  "PUBLISHED": "Опубликован",
+
+
+  "IN_MODERATION" : "На рецензировании",
+  "FOR_PUBLISHING" : "Для публикации",
+
+  "REJECTED_BY_REVIEWER" : "Отклонен рецензентом",
+  "ACCEPTED_BY_REVIEWER" : "Принят рецензентом",
+  "SKIPPED_BY_REVIEWER" : "Пропущен рецензентом",
+
+  "REJECTED_BY_ADMIN" : "Отклонен администратором"
 }

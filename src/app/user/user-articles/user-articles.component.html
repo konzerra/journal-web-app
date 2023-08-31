@@ -19,26 +19,26 @@
   </thead>
 
   <tbody >
-  <div *ngIf="modelList.length ==0" class="text-center">
-    <i class="bi bi-search icon-not-found"></i>
-    <h3>{{'not_found' | translate}}</h3>
-  </div>
   <tr *ngFor="let model of modelList;">
     <th>{{model.id}}</th>
     <td>{{model.name}}</td>
     <td>{{model.journal.name +" "+ model.journal.version}}</td>
     <td>{{model.category?.name || ""}}</td>
-    <td>{{model.status}}</td>
+    <td>{{model.status | translate}}</td>
     <td>{{model.price?.name || 'no_price'}}</td>
     <td class = "text-nowrap">
       <! –– edit button ––>
-      <button type="button" class="btn btn-primary btn-sm me-2" (click)="onPay(model)">
+      <button *ngIf="model.price != null" type="button" class="btn btn-primary btn-sm me-2" (click)="onPay(model)">
         <i class="bi bi-cash"></i>
       </button>
     </td>
   </tr>
 
   </tbody>
-</table>
 
+</table>
+<div *ngIf="modelList.length ==0" class="text-center">
+  <i class="bi bi-search icon-not-found"></i>
+  <h3>{{'not_found' | translate}}</h3>
+</div>
 </body>

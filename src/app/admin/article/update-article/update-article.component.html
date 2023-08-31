@@ -37,7 +37,7 @@
           class="form-control"
           disabled
           placeholder="{{'enter_preferred_category' | translate}}"
-          [value]="form.articleFull.preferredCategory"
+          [value]="form.articleFull.preferredCategory || ''"
           required autofocus="autofocus"
           rows="2"></textarea>
       </div>
@@ -73,7 +73,7 @@
           <option value="" disabled selected hidden>{{'select_status' | translate}}</option>
           <option *ngFor="let status of form.articleStatuses"
                   [selected]="form.status.value === status"
-                  [value]="status">{{status}}
+                  [value]="status">{{status | translate}}
           </option>
         </select>
         <div *ngIf="checkFormControl(form.status)"

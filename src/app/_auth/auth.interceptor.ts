@@ -66,7 +66,7 @@ export class AuthInterceptor implements HttpInterceptor{
             return throwError(()=>"Сервер сейчас не работает");
           }
           if(error.status === 404 ){
-            return throwError(()=>"Не найдено");
+            return throwError(()=>error.error.message);
           }
           if(error.status === 400){
             return throwError(()=>error.error.message)

@@ -223,5 +223,20 @@
   "transactions": "Transactions",
 
   "must_be_more_200_words": "Must be more than 200 words",
-  "must_be_more_10_words": "Must be more than 10 words"
+  "must_be_more_10_words": "Must be more than 10 words",
+
+  "REGISTERED": "Registered",
+  "OPEN": "Open",
+  "CLOSED": "Closed",
+  "PUBLISHED": "Published",
+
+
+  "IN_MODERATION" : "In reviewing",
+  "FOR_PUBLISHING" : "For publishing",
+
+  "REJECTED_BY_REVIEWER" : "Rejected by reviewer",
+  "ACCEPTED_BY_REVIEWER" : "Accepted by reviewer",
+  "SKIPPED_BY_REVIEWER" : "Skipped by reviewer",
+
+  "REJECTED_BY_ADMIN" : "Rejected by admin"
 }
