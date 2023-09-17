@@ -116,6 +116,9 @@ export class UpdateArticleComponent implements OnInit {
   onCategoryChanged(value: Category | null) {
     this.form.category = value
   }
+  onPriceChanged(value: Price | null) {
+    this.form.price = value
+  }
 
   onWordFileChange($event: Event) {
     this.form.wordFile = ($event.target as HTMLInputElement).files?.[0] ?? null
@@ -164,4 +167,6 @@ export class UpdateArticleComponent implements OnInit {
 
   protected readonly FileApi = FileApi;
   protected readonly isNotBlanc = isNotBlanc;
+
+
 }

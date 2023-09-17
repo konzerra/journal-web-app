@@ -22,7 +22,7 @@ export interface Article {
   reviewer:string | null
   sum: number
   price: Price | null,
-
+  paid: boolean
   authors: Array<String>,
 
 

@@ -16,6 +16,7 @@
       <th scope="col">{{"category" | translate}}</th>
       <th scope="col">{{"reviewer" | translate}}</th>
       <th scope="col">{{"article_status" | translate}}</th>
+      <th scope="col">{{"price" | translate}}</th>
       <th scope="col">{{"payment_status" | translate}}</th>
       <th scope="col">
         <button type="button" class="btn btn-primary btn-sm text-nowrap"
@@ -37,8 +38,9 @@
       <td>{{model.name}}</td>
       <td>{{model.category?.name || "нет"}}</td>
       <td>{{model.reviewer}}</td>
-      <td>{{model.status}}</td>
-      <td>Not_paid</td>
+      <td>{{model.status | translate}}</td>
+      <td>{{model.price?.name || 'отсутствует'}}</td>
+      <td>{{ model.paid ? 'оплачено' : 'не оплачено' }}</td>
       <td class = "text-nowrap">
         <! –– edit button ––>
         <button type="button" class="btn btn-primary btn-sm me-2" (click)="onEdit(model)">
